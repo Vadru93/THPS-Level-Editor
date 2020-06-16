@@ -1,11 +1,16 @@
 # THPS-Level-Editor
 A level editor for Tony Hawk games.
+
 Currently supports:
 
 THPS2X .psx, .trg, .ddm files - only import
+
 THPS3 .BSP, .QB .TDX, .DFF - import not finished/export
+
 THPS4 .col, .tex, .scn, .QB - import/export not finished
+
 THUG .col, .tex, .scn, .QB - import/export not finished
+
 THUG 2 .col, .tex, .scn, .QB import/export not finished
 
 # TODO-LIST
