@@ -13,6 +13,8 @@ THUG .col, .tex, .scn, .QB - import/export not finished
 
 THUG 2 .col, .tex, .scn, .QB import/export not finished
 
+Exporting .obj
+
 # TODO-LIST
 1. Add thps3 imp1ort
 
