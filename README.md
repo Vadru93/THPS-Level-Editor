@@ -16,7 +16,7 @@ THUG 2 .col, .tex, .scn, .QB import/export not finished
 Exporting .obj
 
 # TODO-LIST
-1. Add thps3 imp1ort
+1. Add thps3 import
 
 2. Fix thps4-thug2 export
 
