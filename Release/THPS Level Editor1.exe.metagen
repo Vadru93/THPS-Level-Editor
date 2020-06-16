@@ -1,0 +1,70 @@
+  THPSLevelEditor.THPSLevel.resources - Embedded, ContainedInManifestFile, 
+ImageRuntimeVersion: v4.0.30319
+Assembly THPS Level Editor1, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class NodeProperties: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(Node*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Node* node : Public
+  Properties:
+    System.ValueType Z 'get set' Single IsBoxed : 
+    System.ValueType Y 'get set' Single IsBoxed : 
+    System.ValueType X 'get set' Single IsBoxed : 
+    System.ValueType Type 'get set' Int32 IsBoxed : 
+    System.String Name 'get ' : 
+  Methods:
+    get_Name(): PrivateScope, Public, HideBySig, SpecialName
+    get_Type(): PrivateScope, Public, HideBySig, SpecialName
+    set_Type(ValueType Int32 IsBoxed): PrivateScope, Public, HideBySig, SpecialName
+    get_X(): PrivateScope, Public, HideBySig, SpecialName
+    set_X(ValueType Single IsBoxed): PrivateScope, Public, HideBySig, SpecialName
+    get_Y(): PrivateScope, Public, HideBySig, SpecialName
+    set_Y(ValueType Single IsBoxed): PrivateScope, Public, HideBySig, SpecialName
+    get_Z(): PrivateScope, Public, HideBySig, SpecialName
+    set_Z(ValueType Single IsBoxed): PrivateScope, Public, HideBySig, SpecialName
+Class MeshProperties: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(Mesh*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Mesh* mesh : Public
+  Properties:
+    System.ValueType Z 'get set' Single IsBoxed : 
+    System.ValueType Y 'get set' Single IsBoxed : 
+    System.ValueType X 'get set' Single IsBoxed : 
+    System.String Name 'get set' : 
+  Methods:
+    get_Name(): PrivateScope, Public, HideBySig, SpecialName
+    set_Name(String): PrivateScope, Public, HideBySig, SpecialName
+    get_X(): PrivateScope, Public, HideBySig, SpecialName
+    set_X(ValueType Single IsBoxed): PrivateScope, Public, HideBySig, SpecialName
+    get_Y(): PrivateScope, Public, HideBySig, SpecialName
+    set_Y(ValueType Single IsBoxed): PrivateScope, Public, HideBySig, SpecialName
+    get_Z(): PrivateScope, Public, HideBySig, SpecialName
+    set_Z(ValueType Single IsBoxed): PrivateScope, Public, HideBySig, SpecialName
+Class THPSLevelEditor.THPSLevel: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2 : Public
+    System.String sceneName : Public
+    System.Windows.Forms.Panel panel6 : Public
+    System.Windows.Forms.ListBox listBox1 : Public, Static
+    System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1 : Public, Static
+    System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1 : Public, Static
+    System.Windows.Forms.ListBox listBox2 : Public, Static
+    System.Windows.Forms.ToolStripButton toolStripButton3 : Public, Static
+    System.Windows.Forms.ToolStripButton toolStripButton4 : Public, Static
+    System.Windows.Forms.TreeView MaterialList : Public, Static
+    System.Collections.Generic.List`1[MeshProperties] properties : Public, Static
+    System.Windows.Forms.CheckedListBox checkedListBox1 : Public, Static
