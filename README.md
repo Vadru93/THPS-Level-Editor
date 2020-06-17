@@ -15,6 +15,13 @@ THUG 2 .col, .tex, .scn, .QB import/export not finished
 
 Exporting .obj
 
+# Things you need to compile
+1. .NET framework 4.5
+
+2. DirectX 9 SDK
+
+3. Boost 1.47
+
 # TODO-LIST
 1. Add thps3 import
 
