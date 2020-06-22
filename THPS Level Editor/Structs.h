@@ -1534,7 +1534,7 @@ struct KnownScript
         else if (*(tempY) == '\0')
         {
           if (*(tempZ) == '\0')
-            sprintf(result, "VECTOR[%d%s; %d.0; %.0] ", iX, tempX, iY, iZ);
+            sprintf(result, "VECTOR[%d%s; %d.0; %d.0] ", iX, tempX, iY, iZ);
           else
             sprintf(result, "VECTOR[%d%s; %d.0; %d%s] ", iX, tempX, iY, iZ, tempZ);
         }

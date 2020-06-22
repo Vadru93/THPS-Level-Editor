@@ -154,6 +154,7 @@ public:
   vector <KnownScript> KnownScripts;
   vector <Checksum> globals;
   vector <UVAnim> animations;
+  vector <Node> compressedNodes;
 protected:
   BYTE blendValue;//2 for th3/thug(colour*2) 1 for th4(colour*1)
   char name[MAX_PATH];
@@ -1268,6 +1269,7 @@ public:
     triggers.clear();
     KnownScripts.clear();
     globals.clear();
+    compressedNodes.clear();
     //matList.~MaterialList();
   }
 };

@@ -2914,165 +2914,234 @@ void Scene::ExportBSP(const char* const __restrict path)
 			if (nodes[i].Angles.x || nodes[i].Angles.y || nodes[i].Angles.z)
 				WriteQBKey("Angles", &nodes[i].Angles, f);
 			WriteQBKey("Name", nodes[i].Name, f);
-			WriteQBKey("Class", nodes[i].Class, f);
-			if (nodes[i].TrickObject)
-				WriteQBKey("TrickObject", f);
-			if (nodes[i].Cluster.checksum)
-				WriteQBKey("Cluster", nodes[i].Cluster, f);
-			//WriteQBKey("NodeNum", i, f);
-			if (nodes[i].TerrainType.checksum)
-				WriteQBKey("TerrainType", GetTerrainType(nodes[i].TerrainType), f);
-			if (nodes[i].Class.checksum == 0x1806DDF8)//Restart
+			if (nodes[i].Class.checksum != Restart::GetClass() && nodes[i].Compressed.checksum)
 			{
-				WriteQBKey("RestartName", nodes[i].RestartName.GetString(), f);
-				WriteQBKey("Type", Checksum("UserDefined"), f);
-				if (nodes[i].Name.checksum == 0xF1EFFD1B)//team1
-					WriteArray("restart_types", 1, &Checksum("CTF_1"), f);
-				else if (nodes[i].Name.checksum == 0x68E6ACA1)//team2
-					WriteArray("restart_types", 1, &Checksum("CTF_2"), f);
-				else
-					WriteArray("restart_types", 1, &Checksum("MultiPlayer"), f);
-				if (nodes[i].Trigger.checksum)
-					WriteQBKey("TriggerScript", nodes[i].Trigger, f);
-				else
-					WriteQBKey("TriggerScript", Checksum("TRG_SpawnSkater"), f);
-			}
-			/*else if(nodes[i].Class.checksum==EnvironmentObject::GetClass() && nodes[i].CreatedAtStart)
-			{
-			if(nodes[i].LinksTo(0x1806DDF8, &nodes[i].Links[0], &nodes.front()))
-			WriteQBKey("TriggerScript", Checksum("sk3_killskater"),f);
-			else if(nodes[i].Trigger.checksum)
-			{
-			WriteQBKey("NetEnabled",f);
-			WriteQBKey("Permanent",f);
-			WriteQBKey("TriggerScript", nodes[i].Trigger,f);
-			}
-			nodes[i].FixCheck(0x1806DDF8, &nodes.front());
-			}*/
-			else if (nodes[i].Trigger.checksum)
-			{
-				WriteQBKey("TriggerScript", nodes[i].Trigger, f);
-				if (nodes[i].NetEnabled)
-					WriteQBKey("NetEnabled", f);
-				if (nodes[i].Permanent)
-					WriteQBKey("Permanent", f);
-			}
-			/*else if(nodes[i].Class.checksum==EnvironmentObject::GetClass() && nodes[i].CreatedAtStart)
-			{
-			bool found = false;
-			for(DWORD j=0; j<nodes[i].Links.size(); j++)
-			{
-			if(!found)
-			{
-			if(nodes[nodes[i].Links[j]].Class.checksum == 0x1806DDF8)
-			{
-			WriteQBKey("TriggerScript", Checksum("sk3_killskater"),f);
-			break;
-			}
-			else if(nodes[nodes[i].Links[j]].Class.checksum == EnvironmentObject::GetClass())
-			{
-			for(DWORD k=0; k<nodes[nodes[i].Links[j]].Links.size(); k++)
-			{
-			if(nodes[nodes[nodes[i].Links[j]].Links[k]].Class.checksum == 0x1806DDF8)
-			{
-			WriteQBKey("TriggerScript", Checksum("sk3_killskater"),f);
-			found=true;
-			break;
-			}
-			}
-			}
-			}
-			else
-			break;
-			}
-			}*/
-			else
-			{
-				if (nodes[i].Type.checksum)
-					WriteQBKey("Type", nodes[i].Type, f);
-				//float furthestDist = 0.0f;
-				if (nodes[i].Class.checksum == RailNode::GetClass())
+				for (int j = 0; j < compressedNodes.size(); j++)
 				{
-					float furthestDist = 0.0f;
-					for (DWORD j = 0, numLinks = nodes[i].Links.size(); j < numLinks; j++)
+					if (compressedNodes[j].Name.checksum == nodes[i].Compressed.checksum)
 					{
-						float distance = nodes[i].Position.DistanceTo(nodes[nodes[i].Links[j]].Position);
+						if (!compressedNodes[j].Class.checksum && nodes[i].Class.checksum)
+							WriteQBKey("Class", nodes[i].Class, f);
+						if (!compressedNodes[j].TrickObject && nodes[i].TrickObject)
+							WriteQBKey("TrickObject", f);
+						if (!compressedNodes[j].Cluster.checksum && nodes[i].Cluster.checksum)
+							WriteQBKey("Cluster", nodes[i].Cluster, f);
+						if (!compressedNodes[j].TerrainType.checksum && nodes[i].TerrainType.checksum)
+							WriteQBKey("TerrainType", GetTerrainType(nodes[i].TerrainType), f);
+						if (!compressedNodes[j].Type.checksum && nodes[i].Type.checksum)
+							WriteQBKey("Type", nodes[i].Type, f);
 
-						if (distance > furthestDist || furthestLink == 0xFFFF)
+
+						
+							if (!compressedNodes[j].Type.checksum && nodes[i].Type.checksum)
+								WriteQBKey("Type", nodes[i].Type, f);
+							if (nodes[i].Class.checksum == RailNode::GetClass())
+							{
+								float furthestDist = 0.0f;
+								for (DWORD k = 0, numLinks = nodes[i].Links.size(); k < numLinks; k++)
+								{
+									float distance = nodes[i].Position.DistanceTo(nodes[nodes[i].Links[k]].Position);
+
+									if (distance > furthestDist || furthestLink == 0xFFFF)
+									{
+										furthestLink = nodes[i].Links[k];
+										furthestDist = distance;
+									}
+								}
+							}
+
+						if (nodes[i].Trigger.checksum)
 						{
-							furthestLink = nodes[i].Links[j];
-							furthestDist = distance;
+							WriteQBKey("TriggerScript", nodes[i].Trigger, f);
+							if (nodes[i].NetEnabled)
+								WriteQBKey("NetEnabled", f);
+							if (nodes[i].Permanent)
+								WriteQBKey("Permanent", f);
 						}
+
+						if (!compressedNodes[j].CreatedAtStart && nodes[i].CreatedAtStart)
+							WriteQBKey("CreatedAtStart", f);
+						if (!compressedNodes[j].AbsentInNetGames && nodes[i].AbsentInNetGames)
+							WriteQBKey("AbsentInNetGames", f);
+						if (nodes[i].Links.size())
+						{
+							if (furthestLink == 0xFFFF)
+								WriteArray("Links", nodes[i].Links.size(), &nodes[i].Links.front(), f);
+							else
+								WriteArray("Links", 1, &furthestLink, f);
+
+						}
+
+
+						WriteQBKey("Compressed", nodes[i].Compressed, f);
+						break;
 					}
-					/*for(DWORD j=0, numLinks = nodes[i].Links.size(); j<numLinks; j++)
+
+				}
+			}
+			else
+			{
+				WriteQBKey("Class", nodes[i].Class, f);
+				if (nodes[i].TrickObject)
+					WriteQBKey("TrickObject", f);
+				if (nodes[i].Cluster.checksum)
+					WriteQBKey("Cluster", nodes[i].Cluster, f);
+				//WriteQBKey("NodeNum", i, f);
+				if (nodes[i].TerrainType.checksum)
+					WriteQBKey("TerrainType", GetTerrainType(nodes[i].TerrainType), f);
+				if (nodes[i].Class.checksum == 0x1806DDF8)//Restart
+				{
+					WriteQBKey("RestartName", nodes[i].RestartName.GetString(), f);
+					WriteQBKey("Type", Checksum("UserDefined"), f);
+					if (nodes[i].Name.checksum == 0xF1EFFD1B)//team1
+						WriteArray("restart_types", 1, &Checksum("CTF_1"), f);
+					else if (nodes[i].Name.checksum == 0x68E6ACA1)//team2
+						WriteArray("restart_types", 1, &Checksum("CTF_2"), f);
+					else
+						WriteArray("restart_types", 1, &Checksum("MultiPlayer"), f);
+					if (nodes[i].Trigger.checksum)
+						WriteQBKey("TriggerScript", nodes[i].Trigger, f);
+					else
+						WriteQBKey("TriggerScript", Checksum("TRG_SpawnSkater"), f);
+
+				}
+				/*else if(nodes[i].Class.checksum==EnvironmentObject::GetClass() && nodes[i].CreatedAtStart)
+				{
+				if(nodes[i].LinksTo(0x1806DDF8, &nodes[i].Links[0], &nodes.front()))
+				WriteQBKey("TriggerScript", Checksum("sk3_killskater"),f);
+				else if(nodes[i].Trigger.checksum)
+				{
+				WriteQBKey("NetEnabled",f);
+				WriteQBKey("Permanent",f);
+				WriteQBKey("TriggerScript", nodes[i].Trigger,f);
+				}
+				nodes[i].FixCheck(0x1806DDF8, &nodes.front());
+				}*/
+				
+				/*else if(nodes[i].Class.checksum==EnvironmentObject::GetClass() && nodes[i].CreatedAtStart)
+				{
+				bool found = false;
+				for(DWORD j=0; j<nodes[i].Links.size(); j++)
+				{
+				if(!found)
+				{
+				if(nodes[nodes[i].Links[j]].Class.checksum == 0x1806DDF8)
+				{
+				WriteQBKey("TriggerScript", Checksum("sk3_killskater"),f);
+				break;
+				}
+				else if(nodes[nodes[i].Links[j]].Class.checksum == EnvironmentObject::GetClass())
+				{
+				for(DWORD k=0; k<nodes[nodes[i].Links[j]].Links.size(); k++)
+				{
+				if(nodes[nodes[nodes[i].Links[j]].Links[k]].Class.checksum == 0x1806DDF8)
+				{
+				WriteQBKey("TriggerScript", Checksum("sk3_killskater"),f);
+				found=true;
+				break;
+				}
+				}
+				}
+				}
+				else
+				break;
+				}
+				}*/
+				else
+				{
+					if (nodes[i].Type.checksum)
+						WriteQBKey("Type", nodes[i].Type, f);
+					//float furthestDist = 0.0f;
+					if (nodes[i].Class.checksum == RailNode::GetClass())
+					{
+						float furthestDist = 0.0f;
+						for (DWORD j = 0, numLinks = nodes[i].Links.size(); j < numLinks; j++)
+						{
+							float distance = nodes[i].Position.DistanceTo(nodes[nodes[i].Links[j]].Position);
+
+							if (distance > furthestDist || furthestLink == 0xFFFF)
+							{
+								furthestLink = nodes[i].Links[j];
+								furthestDist = distance;
+							}
+						}
+						/*for(DWORD j=0, numLinks = nodes[i].Links.size(); j<numLinks; j++)
+						{
+						furthestLink = nodes[i].Links[j];
+
+
+						if(nodes[furthestLink].exportedLink)
+						{
+						furthestLink=0xFFFE;
+						}
+						else
+						{
+						nodes[furthestLink].exportedLink=true;
+						break;
+						}
+						}*/
+						/*furthestLink = nodes[i].Links.back();
+						if(nodes[furthestLink].Class.checksum != RailNode::GetClass())
+						furthestLink=0xFF;*/
+					}
+					/*for(DWORD j=0; j<nodes[i].Links.size(); j++)
+					{
+					if(nodes[nodes[i].Links[j]].Class.checksum == RailNode::GetClass())
+					{*/
+					/*float distance = nodes[i].Position.DistanceTo(nodes[nodes[i].Links[j]].Position);
+
+					if(distance>furthestDist || furthestLink == 0xFFFF)
+					{*/
+					//furthestLink = nodes[i].Links[j];
+					/*furthestDist = distance;
+					}*/
+					/* }
+					}*/
+				}
+				if (nodes[i].Trigger.checksum)
+				{
+					WriteQBKey("TriggerScript", nodes[i].Trigger, f);
+					if (nodes[i].NetEnabled)
+						WriteQBKey("NetEnabled", f);
+					if (nodes[i].Permanent)
+						WriteQBKey("Permanent", f);
+				}
+				if (nodes[i].CreatedAtStart)
+					WriteQBKey("CreatedAtStart", f);
+				if (nodes[i].AbsentInNetGames)
+					WriteQBKey("AbsentInNetGames", f);
+				if (nodes[i].Links.size())
+				{
+					if (furthestLink == 0xFFFF)
+						WriteArray("Links", nodes[i].Links.size(), &nodes[i].Links.front(), f);
+					/*else if(furthestLink==0xFFFE)
+					{
+					furthestLink = nodes.size();
+					WriteArray("Links", 1, &furthestLink, f);
+					WriteQBKey("FuckedLinks",f);
+					float furthestDist = 0.0f;
+					furthestLink = 0xFFFF;
+					for(DWORD j=0, numLinks = nodes[i].Links.size(); j<numLinks; j++)
+					{
+					float distance = nodes[i].Position.DistanceTo(nodes[nodes[i].Links[j]].Position);
+
+					if(distance>furthestDist || furthestLink == 0xFFFF)
 					{
 					furthestLink = nodes[i].Links[j];
-
-
-					if(nodes[furthestLink].exportedLink)
-					{
-					furthestLink=0xFFFE;
+					furthestDist = distance;
 					}
-					else
-					{
-					nodes[furthestLink].exportedLink=true;
-					break;
 					}
+					nodes.push_back(Node(nodes[furthestLink]));
+					nodes.back().Links.erase(nodes.back().Links.begin(),nodes.back().Links.end());
+					char chc[128];
+					sprintf(chc, "FuckedRailNodes%d", numFucked);
+					numFucked++;
+					nodes.back().Name = Checksum(chc);
+					numNodes++;
 					}*/
-					/*furthestLink = nodes[i].Links.back();
-					if(nodes[furthestLink].Class.checksum != RailNode::GetClass())
-					furthestLink=0xFF;*/
+					else
+						WriteArray("Links", 1, &furthestLink, f);
 				}
-				/*for(DWORD j=0; j<nodes[i].Links.size(); j++)
-				{
-				if(nodes[nodes[i].Links[j]].Class.checksum == RailNode::GetClass())
-				{*/
-				/*float distance = nodes[i].Position.DistanceTo(nodes[nodes[i].Links[j]].Position);
-
-				if(distance>furthestDist || furthestLink == 0xFFFF)
-				{*/
-				//furthestLink = nodes[i].Links[j];
-				/*furthestDist = distance;
-				}*/
-				/* }
-				}*/
-			}
-
-			if (nodes[i].CreatedAtStart)
-				WriteQBKey("CreatedAtStart", f);
-			if (nodes[i].AbsentInNetGames)
-				WriteQBKey("AbsentInNetGames", f);
-			if (nodes[i].Links.size())
-			{
-				if (furthestLink == 0xFFFF)
-					WriteArray("Links", nodes[i].Links.size(), &nodes[i].Links.front(), f);
-				/*else if(furthestLink==0xFFFE)
-				{
-				furthestLink = nodes.size();
-				WriteArray("Links", 1, &furthestLink, f);
-				WriteQBKey("FuckedLinks",f);
-				float furthestDist = 0.0f;
-				furthestLink = 0xFFFF;
-				for(DWORD j=0, numLinks = nodes[i].Links.size(); j<numLinks; j++)
-				{
-				float distance = nodes[i].Position.DistanceTo(nodes[nodes[i].Links[j]].Position);
-
-				if(distance>furthestDist || furthestLink == 0xFFFF)
-				{
-				furthestLink = nodes[i].Links[j];
-				furthestDist = distance;
-				}
-				}
-				nodes.push_back(Node(nodes[furthestLink]));
-				nodes.back().Links.erase(nodes.back().Links.begin(),nodes.back().Links.end());
-				char chc[128];
-				sprintf(chc, "FuckedRailNodes%d", numFucked);
-				numFucked++;
-				nodes.back().Name = Checksum(chc);
-				numNodes++;
-				}*/
-				else
-					WriteArray("Links", 1, &furthestLink, f);
 			}
 
 			WriteBYTE(f, 0x4);
@@ -3436,6 +3505,42 @@ void Scene::ExportBSP(const char* const __restrict path)
 		}
 		fputc(0, f);
 		fclose(f);
+	}
+
+	if (compressedNodes.size())
+	{
+		memcpy(Path, path, len + 1);
+
+		Path[len - 2] = 0x0;
+		Path[len - 3] = 'q';
+
+		f = fopen(Path, "wb");
+		if (f)
+		{
+			fputc(0xAA, f);
+			for (int i = 0; i < compressedNodes.size(); i++)
+			{
+				WriteQBKey(compressedNodes[i].Name.checksum, f);
+				if (compressedNodes[i].CreatedAtStart)
+					WriteQBKey("CreatedAtStart", f);
+				if(compressedNodes[i].Class.checksum)
+					WriteQBKey("Class", compressedNodes[i].Class, f);
+				if (compressedNodes[i].Type.checksum)
+					WriteQBKey("Type", compressedNodes[i].Type, f);
+				if (compressedNodes[i].TrickObject)
+					WriteQBKey("TrickObject", f);
+				if (compressedNodes[i].Cluster.checksum)
+					WriteQBKey("Cluster", compressedNodes[i].Cluster, f);
+				if (compressedNodes[i].AbsentInNetGames)
+					WriteQBKey("AbsentInNetGames", f);
+				if (compressedNodes[i].TerrainType.checksum)
+					WriteQBKey("TerrainType", GetTerrainType(compressedNodes[i].TerrainType), f);
+				fputc(0x1, f);
+			}
+			fputc(0x0, f);
+			fclose(f);
+	    }
+		
 	}
 	SetProgressbarValue(200);
 }

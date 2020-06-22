@@ -253,18 +253,20 @@ public:
   vector <WORD> Links;
   Checksum TerrainType;
   //WORD type;
+  Checksum Compressed;
   bool CreatedAtStart;
   bool AbsentInNetGames;
   bool NetEnabled;
   bool Permanent;
   bool TrickObject;
+
   mutable bool checked;
   //vector <BYTE> IgnoredLights;
 
   Node()
   {
     ZeroMemory(&this->Position, sizeof(SimpleVertex) * 2 + sizeof(Checksum) * 6);
-    ZeroMemory(&this->CreatedAtStart, 6);
+    ZeroMemory(&this->Compressed, 10);
     //ZeroMemory(this,sizeof(Node));
   }
 
@@ -446,6 +448,7 @@ struct RailNode : public Node
     
     this->Class = rail;
     CreatedAtStart = true;
+    this->Compressed.checksum = 0;
   }
 
   RailNode(const D3DXVECTOR3 & position, Checksum name, DWORD link)
@@ -457,6 +460,7 @@ struct RailNode : public Node
     this->Class = rail;
     this->Trigger.checksum = 0;
     CreatedAtStart = true;
+    this->Compressed.checksum = 0;
   }
 
   RailNode(const SimpleVertex &position, const SimpleVertex &angle, const Checksum name, const DWORD numLinks, const WORD* const __restrict links)
@@ -469,6 +473,7 @@ struct RailNode : public Node
       Links.push_back(links[i]);
     this->Class = rail;
     CreatedAtStart=true;
+    this->Compressed.checksum = 0;
   }
   static DWORD GetClass()
   {
@@ -490,6 +495,7 @@ struct EnvironmentObject : public Node
     this->Trigger.checksum = 0;
     //this->shatter.checksum = shatter;
     this->CreatedAtStart = CreatedAtStart;
+    this->Compressed = 0;
     for(WORD i=0; i<numLinks; i++)
     {
       Links.push_back(links[i]);
@@ -538,6 +544,7 @@ struct Restart : public Node
     Name = Checksum("TRG_Restart01");
     this->Class = res;
     RestartName = Checksum("P1: Restart");
+    this->Compressed.checksum = 0;
     //restart_types.push_back(Checksum("Multiplayer"));
     //TriggerScript = Checksum("TRG_SpawnSkater");
   }
@@ -558,6 +565,7 @@ struct Restart : public Node
     {
       Links.push_back(links[i]);
     }
+    this->Compressed.checksum = 0;
   }
 
   static DWORD GetClass()
@@ -612,6 +620,7 @@ struct GenericNode : Node
     Position = position;
     CreatedAtStart=true;
     this->Class=Class;
+    this->Compressed.checksum = 0;
   }
 };
 

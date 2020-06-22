@@ -1110,6 +1110,8 @@ Thug2Scene::Thug2Scene(char* Path, bool sky)
         vector<Script> sounds;
         LoadScriptsFile(path, scripts, sounds);
         LoadThugNodeArray(pFile, pFile + size, scripts, sounds, extraLayerMeshes);
+        /*KnownScripts.clear();
+        triggers.clear();*/
         KnownScripts.push_back(KnownScript(Checksum("LoadSounds"), NULL, 0));
         triggers.push_back(Checksum("LoadSounds"));
         KnownScript& script = KnownScripts.back();

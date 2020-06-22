@@ -57,15 +57,16 @@ Checksum GenerateCaseSensChecksum(const char* string)
 Checksum::Checksum(const char* const string, bool createTable)
 {
   this->checksum = 0xFFFFFFFF;
+  const char* p = string;
 
-  for(DWORD i=0; i<strlen(string); i++)
+  while (*p)
   {
-    char c = string[i];
+      if(*p >= 'A' && *p <= 'Z') *p += 32;
+      if (*p == '/') *p = '\\';
 
-    if(c >= 'A' && c <= 'Z') c += 32;
-    if(c == '/') c = '\\';
 
-    this->checksum = checksumTable[(BYTE)(this->checksum ^ c)] ^ (this->checksum >> 8);
+      this->checksum = checksumTable[(BYTE)(this->checksum ^ *p)] ^ (this->checksum >> 8);
+      p++;
   }
   if(createTable)
   {

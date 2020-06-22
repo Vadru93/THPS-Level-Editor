@@ -7,6 +7,7 @@
 using std::vector;
 #pragma unmanaged
 DWORD numFucked=0;
+//#define remove
 
 void Node::ApplyCluster(Node* const __restrict nodes)
 {
@@ -805,11 +806,20 @@ found:
             triggers.push_back(node.Trigger);
             break;
 
-          case 0x1A3A966B:
+          case 0x9D2D0915:
+              pFile += 2;
+              node.Angles = *(SimpleVertex*)pFile;
+              //node->Angles.y*=-1;
+              //node->Angles.x*=-1;
+              //node->Angles.z*=-1;
+              pFile += sizeof(SimpleVertex);
+              break;
+
+          /*case 0x1A3A966B:
             pFile+=2;
             node.Cluster = *(Checksum*)pFile;
             pFile+=sizeof(Checksum);
-            break;
+            break;*/
 
           case 0x54CF8532:
             pFile += 2;
@@ -2743,7 +2753,7 @@ namespace Scripts
 extern const char Angles[] = "Angles";
 __declspec (noalias) void Scene::LoadThugNodeArray(register const BYTE const* __restrict pFile, const BYTE const* __restrict eof, vector<KnownScript> &scripts, vector<Script> &sounds, vector<ExtraLayerMesh> &extraLayerMeshes)
 {
-  vector<Node> compressedNodes;
+  //vector<Node> compressedNodes;
   AddCompressedNodes(pFile,eof, compressedNodes);//, scripts);
   if(compressedNodes.size() && scripts.size())
     MessageBox(0,"yea","yea",0);
@@ -3114,11 +3124,11 @@ dne:
           triggers.push_back(node->Trigger);
           break;
 
-        case 0x1A3A966B:
+        /*case 0x1A3A966B:
           pFile+=2;
           node->Cluster = *(Checksum*)pFile;
           pFile+=sizeof(Checksum);
-          break;
+          break;*/
 
         case 0x54CF8532:
           pFile += 2;
@@ -3139,7 +3149,9 @@ dne:
           break;
 
         case 0x2E7D5EE7:
-          pFile+=3;
+            while (*pFile != 0x17)
+                pFile++;
+            pFile++;
           /*if(*(DWORD*)pFile>=0xFFFF)
           MessageBox(0, "...", "...", 0);*/
           if(node->Class.checksum==Checksum("Waypoint").checksum)
@@ -3177,6 +3189,7 @@ done:
           {
             if(compressedNodes[i].Name.checksum == qbKey)
             {
+              node->Compressed.checksum = qbKey;
               if(compressedNodes[i].Class.checksum && !node->Class.checksum)
               {
                 node->Class = compressedNodes[i].Class;
@@ -3187,6 +3200,10 @@ done:
                   node->Name = Checksum(nodename);
                   numRails++;
                 }
+              }
+              if (compressedNodes[i].Angles.x || compressedNodes[i].Angles.y || compressedNodes[i].Angles.z)
+              {
+                  node->Angles = compressedNodes[i].Angles;
               }
               if(compressedNodes[i].Type.checksum && !node->Type.checksum)
                 node->Type = compressedNodes[i].Type;
@@ -3244,7 +3261,8 @@ qbTable:
   Checksum("Flags");
   Checksum("PURE_AIR");
   Checksum("text");*/
-  compressedNodes.clear(); DWORD numCrowns=0;
+  //compressedNodes.clear(); 
+  DWORD numCrowns=0;
   for(DWORD i=0, numNodes = nodes.size(); i<numNodes; i++)
   {
 #ifdef remove
@@ -3401,12 +3419,12 @@ qbTable:
           numNodes--;
         }
       }
-      /*else if(nodes[i].Class.checksum != Checksum("EnvironmentObject").checksum && nodes[i].Class.checksum != Checksum("Restart").checksum && nodes[i].Class.checksum != Checksum("Waypoint").checksum)
+      else if(nodes[i].Class.checksum != Checksum("EnvironmentObject").checksum && nodes[i].Class.checksum != Checksum("Restart").checksum && nodes[i].Class.checksum != Checksum("Waypoint").checksum)
       {
         DeleteNode(i);
         i--;
         numNodes--;
-      }*/
+      }
 #ifdef remove
     }
     else
@@ -4070,6 +4088,8 @@ qbTable:
         i--;
         numNodes--;
       }
+      nodes[i].Trigger.checksum = 0;
+      //KnownScripts.clear();
 #ifdef remove
     }
     else
