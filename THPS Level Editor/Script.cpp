@@ -560,6 +560,297 @@ void Scene::LoadSound(Checksum sound, vector<Script> &sounds)
   }
 }
 
+__declspec (noalias)Node* Scene::FindCompressed(const DWORD qbKey, const BYTE const* __restrict pFile, const BYTE const* __restrict eof)
+{
+    const BYTE* const beg = pFile;
+
+    DWORD checksum = 0;
+    for (DWORD i = 0; i < compressedNodes.size(); i++)
+    {
+        if (compressedNodes[i].Name.checksum == qbKey)
+            return &compressedNodes[i];
+    }
+    char unk[128] = "";
+    /*sprintf(unk, "file %X", pFile);
+    MessageBox(0, "FindCompressed", unk, 0);*/
+    bool found = false;
+
+    while (pFile < eof)
+    {
+        const BYTE opcode = *pFile;
+        pFile++;
+        switch (opcode)
+        {
+        case 0x49:
+        case 0x48:
+        case 0x47:
+            pFile += 2;
+            break;
+        case 0x1C:
+        case 0x1B:
+            pFile += *(DWORD*)pFile + 4;
+            break;
+            //case 0x18:
+        case 0x17:
+        case 0x1A:
+        case 0x2E:
+        case 2:
+            pFile += 4;
+            break;
+        case 1:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 9:
+        case 0x2D:
+        case 0x25:
+        case 0x26:
+        case 0x28:
+        case 0x18:
+        case 0x0E:
+        case 0x0F:
+        case 0x39:
+        case 0x30:
+        case 0x24:
+        case 0x20:
+        case 0x21:
+            break;
+        case 0x23:
+            found = true;
+            break;
+        case 0x1F:
+            pFile += 8;
+            break;
+        case 0x16:
+            checksum = *(DWORD*)pFile;
+            pFile += 4;
+            if (found && checksum == qbKey)
+            {
+                compressedNodes.push_back(Node());
+                Node& node = compressedNodes.back();
+                node.Name.checksum = checksum;
+                pFile += 2;
+                while (*pFile == 0x1 || *pFile == 0x2)
+                {
+                    if (*pFile == 0x2)
+                        pFile += 5;
+                    else
+                        pFile++;
+                }
+
+                while (pFile<eof)
+                {
+                    const DWORD op = *(BYTE*)pFile;
+                    pFile++;
+                    switch (op)
+                    {
+                    case 0x49:
+                    case 0x48:
+                    case 0x47:
+                        pFile += 2;
+                        break;
+                    case 4:
+                        return &node;
+                    case 0x1C:
+                    case 0x1B:
+                        pFile += *(DWORD*)pFile + 4;
+                        break;
+                    case 0x17:
+                    case 0x1A:
+                    case 0x2E:
+                    case 2:
+                        pFile += 4;
+                        break;
+                    case 0x1F:
+                        pFile += 8;
+                        break;
+
+                    case 0x1E:
+                        pFile += 12;
+                        break;
+                    case 0x40:
+                    case 0x2F:
+                    case 0x37:
+                        pFile += *(DWORD*)pFile * 6 + 4;
+                        break;
+                    case 0x2B:
+                        return &node;
+                        break;
+                    case 0:
+                        return &node;
+                    case 0x16:
+                        const DWORD key = *(DWORD*)pFile;
+                        pFile += 4;
+                        switch (key)
+                        {
+                        case 0x12B4E660:
+                            while (*pFile == 0x1 || *pFile == 0x2)
+                            {
+                                if (*pFile == 0x2)
+                                    pFile += 5;
+                                else
+                                    pFile++;
+                            }
+                            pFile += 2;
+                            node.Class = *(Checksum*)pFile;
+                            pFile += sizeof(Checksum);
+                            break;
+                        case 0x7321A8D6:
+                            while (*pFile == 0x1 || *pFile == 0x2)
+                            {
+                                if (*pFile == 0x2)
+                                    pFile += 5;
+                                else
+                                    pFile++;
+                            }
+                            pFile += 2;
+                            node.Type = *(Checksum*)pFile;
+                            if (node.Type.checksum == Checksum("PedAI").checksum || node.Type.checksum == Checksum("default").checksum)
+                            {
+                                node.Class.checksum = 0;
+                            }
+                            pFile += sizeof(Checksum);
+                            break;
+                        case 0x1645B830:
+                            node.TrickObject = true;
+                            break;
+                        case 0x2CA8A299:
+                            while (*pFile == 0x1 || *pFile == 0x2)
+                            {
+                                if (*pFile == 0x2)
+                                    pFile += 5;
+                                else
+                                    pFile++;
+                            }
+                            pFile += 2;
+                            node.Trigger = *(Checksum*)pFile;
+                            pFile += sizeof(Checksum);
+                            triggers.push_back(node.Trigger);
+                            break;
+
+                        case 0x9D2D0915:
+                            while (*pFile == 0x1 || *pFile == 0x2)
+                            {
+                                if (*pFile == 0x2)
+                                    pFile += 5;
+                                else
+                                    pFile++;
+                            }
+                            pFile += 2;
+                            node.Angles = *(SimpleVertex*)pFile;
+                            //node->Angles.y*=-1;
+                            //node->Angles.x*=-1;
+                            //node->Angles.z*=-1;
+                            pFile += sizeof(SimpleVertex);
+                            break;
+
+                            case 0x1A3A966B:
+                              pFile+=2;
+                              node.Cluster = *(Checksum*)pFile;
+                              pFile+=sizeof(Checksum);
+                              break;
+
+                        case 0x54CF8532:
+                            while (*pFile == 0x1 || *pFile == 0x2)
+                            {
+                                if (*pFile == 0x2)
+                                    pFile += 5;
+                                else
+                                    pFile++;
+                            }
+                            pFile += 2;
+                            node.TerrainType = *(Checksum*)pFile;
+                            pFile += sizeof(Checksum);
+                            break;
+
+                        case 0x68910AC6:
+                            node.AbsentInNetGames = true;
+                            break;
+
+                        case 0x20209C31:
+                            node.NetEnabled = true;
+                            break;
+
+                        case 0x23627FD7:
+                            node.Permanent = true;
+                            break;
+
+                        case 0x2E7D5EE7:
+                            while (*pFile != 0x17)
+                                pFile++;
+                            pFile++;
+                            /*if(*(DWORD*)pFile>=0xFFFF)
+                            MessageBox(0, "...", "...", 0);*/
+                            if (node.Class.checksum == Checksum("Waypoint").checksum)
+                            {
+                                MessageBox(0, "ok", "ok", MB_OK);
+                                /*node.Class.checksum=0;
+                                if(node.Trigger.checksum)
+                                  triggers.pop_back();*/
+                            }
+                            node.Links.push_back(*(WORD*)pFile);
+                            pFile += 4;
+     
+                            while (true)
+                            {
+                                const BYTE opcode = *pFile;
+                                pFile++;
+                                switch (opcode)
+                                {
+                                case 0x2:
+                                    pFile += 4;
+                                    break;
+                                case 0x17:
+                                    node.Links.push_back(*(WORD*)pFile);
+                                    pFile += 4;
+                                    break;
+                                case 0x6:
+                                    goto gotLinks;
+                                }
+                            }
+                        gotLinks:
+                            break;
+
+                        case 0x7C2552B9:
+                            node.CreatedAtStart = true;
+                            break;
+
+                        case 0xFCD206E1:
+                            pFile += 2;
+                            const DWORD len = *(DWORD*)pFile;
+                            pFile += 4;
+                            node.RestartName = Checksum((char*)pFile);
+                            pFile += len;
+                            break;
+                        }
+                        break;
+                    }
+                }
+                return &node;
+            }
+            break;
+        case 0x1E:
+            pFile += 12;
+            break;
+        case 0x40:
+        case 0x2F:
+        case 0x37:
+            pFile += *(DWORD*)pFile * 6 + 4;
+            break;
+        case 0:
+            return NULL;
+        default:
+            sprintf(unk, "%X file %X Beg %X qb %X", opcode, pFile, beg, qbKey);
+            MessageBox(0, "unk", unk, 0);
+            break;
+        case 0x2B:
+            return NULL;
+        }
+    }
+    return NULL;
+}
 __declspec (noalias) void Scene::AddCompressedNodes(register const BYTE const* __restrict pFile, const BYTE const* __restrict eof, vector<Node> &compressedNodes)//, vector<KnownScript> &scripts)
 {
   while(pFile<eof)
@@ -627,8 +918,8 @@ __declspec (noalias) void Scene::AddCompressedNodes(register const BYTE const* _
     case 0:
       return;
     default:
-      char unk[5];
-      sprintf(unk, "%X", opcode);
+      char unk[50];
+      sprintf(unk, "%X file %X", opcode, pFile);
       MessageBox(0,"unk",unk,0);
       break;
     case 0x2B:
@@ -815,11 +1106,11 @@ found:
               pFile += sizeof(SimpleVertex);
               break;
 
-          /*case 0x1A3A966B:
+          case 0x1A3A966B:
             pFile+=2;
             node.Cluster = *(Checksum*)pFile;
             pFile+=sizeof(Checksum);
-            break;*/
+            break;
 
           case 0x54CF8532:
             pFile += 2;
@@ -840,34 +1131,40 @@ found:
             break;
 
           case 0x2E7D5EE7:
-            pFile+=3;
-            /*if(*(DWORD*)pFile>=0xFFFF)
-            MessageBox(0, "...", "...", 0);*/
-            if(node.Class.checksum==Checksum("Waypoint").checksum)
-            {
-                MessageBox(0, "ok", "ok", MB_OK);
-              /*node.Class.checksum=0;
-              if(node.Trigger.checksum)
-                triggers.pop_back();*/
-            }
-            node.Links.push_back(*(WORD*)pFile);
-            pFile+=4;
-            while(true)
-            {
-              const BYTE opcode = *pFile;
+              while (*pFile != 0x17)
+                  pFile++;
               pFile++;
-              switch(opcode)
+              /*if(*(DWORD*)pFile>=0xFFFF)
+              MessageBox(0, "...", "...", 0);*/
+              if (node.Class.checksum == Checksum("Waypoint").checksum)
               {
-              case 0x17:
-                node.Links.push_back(*(WORD*)pFile);
-                pFile+=4;
-                break;
-              case 0x6:
-                goto gotLinks;
+                  MessageBox(0, "ok", "ok", MB_OK);
+                  /*node.Class.checksum=0;
+                  if(node.Trigger.checksum)
+                    triggers.pop_back();*/
               }
-            }
-gotLinks:
-            break;
+              node.Links.push_back(*(WORD*)pFile);
+              pFile += 4;
+
+              while (true)
+              {
+                  const BYTE opcode = *pFile;
+                  pFile++;
+                  switch (opcode)
+                  {
+                  case 0x2:
+                      pFile += 4;
+                      break;
+                  case 0x17:
+                      node.Links.push_back(*(WORD*)pFile);
+                      pFile += 4;
+                      break;
+                  case 0x6:
+                      goto gotLinks;
+                  }
+              }
+          gotLinks:
+              break;
 
           case 0x7C2552B9:
             node.CreatedAtStart = true;
@@ -2765,6 +3062,7 @@ __declspec (noalias) void Scene::LoadThugNodeArray(register const BYTE const* __
   pFile += 5;
   Node* node = NULL;
   KnownScript* script = NULL;
+  Node* compNode = NULL;
   bool nodesDone = false;
   //bool added=false;
   bool ifs[32];
@@ -3172,11 +3470,11 @@ dne:
           triggers.push_back(node->Trigger);
           break;
 
-        /*case 0x1A3A966B:
+        case 0x1A3A966B:
           pFile+=2;
           node->Cluster = *(Checksum*)pFile;
           pFile+=sizeof(Checksum);
-          break;*/
+          break;
 
         case 0x54CF8532:
             while (*pFile == 0x2 || *pFile == 0x1)
@@ -3225,6 +3523,9 @@ dne:
             pFile++;
             switch(opcode)
             {
+            case 0x2:
+                pFile += 4;
+                break;
             case 0x17:
               node->Links.push_back(*(WORD*)pFile);
               pFile+=4;
@@ -3241,10 +3542,12 @@ done:
           break;
 
         default:
+            /*bool comp = false;
           for(DWORD i=0, numComp = compressedNodes.size(); i<numComp; i++)
           {
             if(compressedNodes[i].Name.checksum == qbKey)
             {
+                comp = true;
               node->Compressed.checksum = qbKey;
               if(compressedNodes[i].Class.checksum && !node->Class.checksum)
               {
@@ -3291,6 +3594,56 @@ done:
               break;
             }
           }
+          if (!comp)
+          {*/
+              compNode = FindCompressed(qbKey, pFile, eof);
+              if (compNode)
+              {
+                  node->Compressed.checksum = qbKey;
+                  if (compNode->Class.checksum && !node->Class.checksum)
+                  {
+                      node->Class = compNode->Class;
+                      if (node->Class.checksum == RailNode::GetClass())
+                      {
+                          char nodename[128];
+                          sprintf(nodename, "rn%u", numRails);
+                          node->Name = Checksum(nodename);
+                          numRails++;
+                      }
+                  }
+                  if (compNode->Angles.x || compNode->Angles.y || compNode->Angles.z)
+                  {
+                      node->Angles = compNode->Angles;
+                  }
+                  if (compNode->Type.checksum && !node->Type.checksum)
+                      node->Type = compNode->Type;
+                  if (compNode->RestartName.checksum && !node->RestartName.checksum)
+                      node->RestartName = compNode->RestartName;
+                  if (compNode->Cluster.checksum && !node->Cluster.checksum)
+                      node->Cluster = compNode->Cluster;
+                  if (compNode->Trigger.checksum && !node->Trigger.checksum)
+                      node->Trigger = compNode->Trigger;
+                  if (compNode->Links.size())
+                  {
+                      for (DWORD j = 0, numLinks = compNode->Links.size(); j < numLinks; j++)
+                      {
+                          node->Links.push_back(compNode->Links[j]);
+                      }
+                  }
+                  if (compNode->TerrainType.checksum && !node->TerrainType.checksum)
+                      node->TerrainType = compNode->TerrainType;
+                  if (compNode->CreatedAtStart)
+                      node->CreatedAtStart = true;
+                  if (compNode->AbsentInNetGames)
+                      node->AbsentInNetGames = true;
+                  if (compNode->NetEnabled)
+                      node->NetEnabled = true;
+                  if (compNode->Permanent)
+                      node->Permanent = true;
+                  if (compNode->TrickObject)
+                      node->TrickObject = true;
+              }
+          //}
           break;
 
         case 0xFCD206E1:
@@ -3527,6 +3880,41 @@ qbTable:
   FixLinksFinal();
   if(nodes.size()>=0xFFFF)
     MessageBox(0, "NodeArray too big...", "", 0);
+
+  for (DWORD i = 0; i < compressedNodes.size(); i++)
+  {
+      bool found = false;
+
+      for (DWORD j = 0; j < nodes.size(); j++)
+      {
+          if (nodes[j].Compressed.checksum == compressedNodes[i].Name.checksum)
+          {
+              found = true;
+              break;
+          }
+      }
+      if (!found)
+      {
+          compressedNodes.erase(compressedNodes.begin() + i);
+          i--;
+      }
+      else
+      {
+          if (!compressedNodes[i].CreatedAtStart && !compressedNodes[i].Class.checksum && !compressedNodes[i].Type.checksum && !compressedNodes[i].TrickObject && !compressedNodes[i].Cluster.checksum && !compressedNodes[i].AbsentInNetGames && !compressedNodes[i].TerrainType.checksum)
+          {
+              for (DWORD j = 0; j < nodes.size(); j++)
+              {
+                  if (nodes[j].Compressed.checksum == compressedNodes[i].Name.checksum)
+                  {
+                      DeleteNode(j);
+                      j--;
+                  }
+              }
+              compressedNodes.erase(compressedNodes.begin() + i);
+              i--;
+          }
+      }
+  }
 }
 
 __declspec (noalias) void Th4Scene::LoadProSkaterNodeArray(register const BYTE const* __restrict pFile, const BYTE const* __restrict eof, vector<KnownScript> &scripts, vector<Script> &sounds)

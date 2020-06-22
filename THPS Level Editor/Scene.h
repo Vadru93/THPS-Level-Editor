@@ -668,6 +668,7 @@ public:
   __declspec (noalias) bool FixLinks();
   __declspec (noalias) void ParseQBTable(register const BYTE const* __restrict pFile, const BYTE const* __restrict eof);
   void LoadSound(Checksum sound, vector<Script> &sounds);
+  __declspec (noalias) Node* FindCompressed(const DWORD qbKey, const BYTE const* __restrict pFile, const BYTE const* __restrict eof);
   __declspec (noalias) void AddCompressedNodes(register const BYTE const* __restrict pFile, const BYTE const* __restrict eof, vector<Node> &compressedNodes);//, vector<KnownScript> &scripts);
   __declspec (noalias) void LoadThugNodeArray(register const BYTE const* __restrict pFile, const BYTE const* __restrict eof, vector<KnownScript> &scripts, vector<Script> &sounds, vector<ExtraLayerMesh> &extraLayerMeshes);
   //__declspec (noalias) void LoadProSkaterNodeArray(register const BYTE const* __restrict pFile, const BYTE const* __restrict eof, vector<KnownScript> &scripts, vector<Script> &sounds);
