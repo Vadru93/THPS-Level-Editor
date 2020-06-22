@@ -56,39 +56,53 @@ Checksum GenerateCaseSensChecksum(const char* string)
 
 Checksum::Checksum(const char* const string, bool createTable)
 {
-  this->checksum = 0xFFFFFFFF;
-  const char* p = string;
+    if (string == NULL)
+    {
+        this->checksum = Checksum("NULL_STRING").checksum;
+    }
+    else
+    {
+        this->checksum = 0xFFFFFFFF;
 
-  while (*p)
-  {
-      if(*p >= 'A' && *p <= 'Z') *p += 32;
-      if (*p == '/') *p = '\\';
+        for (DWORD i = 0; i < strlen(string); i++)
+        {
+            char c = string[i];
 
+            if (c >= 'A' && c <= 'Z') c += 32;
+            if (c == '/') c = '\\';
 
-      this->checksum = checksumTable[(BYTE)(this->checksum ^ *p)] ^ (this->checksum >> 8);
-      p++;
-  }
-  if(createTable)
-  {
-    if(!GetString())
-      Scripts.push_back(Script(checksum, string));
-  }
+            this->checksum = checksumTable[(BYTE)(this->checksum ^ c)] ^ (this->checksum >> 8);
+        }
+
+        if (createTable)
+        {
+            if (!GetString())
+                Scripts.push_back(Script(checksum, string));
+        }
+    }
 }
 
 Checksum::Checksum(const char* const string)
 {
-  this->checksum = 0xFFFFFFFF;
+    if (string == NULL)
+    {
+        this->checksum = Checksum("NULL_STRING").checksum;
+   }
+    else
+    {
+        this->checksum = 0xFFFFFFFF;
 
-  for(DWORD i=0; i<strlen(string); i++)
-  {
-    char c = string[i];
+        for (DWORD i = 0; i < strlen(string); i++)
+        {
+            char c = string[i];
 
-    if(c >= 'A' && c <= 'Z') c += 32;
-    if(c == '/') c = '\\';
+            if (c >= 'A' && c <= 'Z') c += 32;
+            if (c == '/') c = '\\';
 
-    this->checksum = checksumTable[(BYTE)(this->checksum ^ c)] ^ (this->checksum >> 8);
-  }
+            this->checksum = checksumTable[(BYTE)(this->checksum ^ c)] ^ (this->checksum >> 8);
+        }
 
-  if(!GetString())
-    Scripts.push_back(Script(checksum, string));
+        if (!GetString())
+            Scripts.push_back(Script(checksum, string));
+    }
 }
