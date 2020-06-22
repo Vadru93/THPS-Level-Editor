@@ -2371,6 +2371,17 @@ inline void WriteQBKey(const char* const __restrict key, FILE* const __restrict 
 	}
 }
 
+inline void WriteQBKey(Checksum & key, FILE* const __restrict f, const bool ending = false)
+{
+	fputc(0x16, f);
+	fwrite(&key, 4, 1, f);
+	if (ending)
+	{
+		fputc(0x2, f);
+		WriteDWORD(f, 1);
+	}
+}
+
 inline void WriteQBKey(const char* const __restrict key, const char* const __restrict string, FILE* const __restrict f)
 {
 	WriteQBKey(key, f);
@@ -2973,7 +2984,7 @@ void Scene::ExportBSP(const char* const __restrict path)
 						}
 
 
-						WriteQBKey("Compressed", nodes[i].Compressed, f);
+						WriteQBKey(nodes[i].Compressed, f);
 						break;
 					}
 
@@ -3335,6 +3346,30 @@ void Scene::ExportBSP(const char* const __restrict path)
 			WriteDWORD(f, 1);
 		Next2:;
 		}
+
+		for (DWORD i = 0; i < compressedNodes.size(); i++)
+		{
+			WriteQBKey(*(Checksum*)&compressedNodes[i].Name, f);
+			fputc(0x07, f);
+			fputc(0x03, f);
+
+			if (compressedNodes[i].CreatedAtStart)
+				WriteQBKey("CreatedAtStart", f);
+			if (compressedNodes[i].Class.checksum)
+				WriteQBKey("Class", compressedNodes[i].Class, f);
+			if (compressedNodes[i].Type.checksum)
+				WriteQBKey("Type", compressedNodes[i].Type, f);
+			if (compressedNodes[i].TrickObject)
+				WriteQBKey("TrickObject", f);
+			if (compressedNodes[i].Cluster.checksum)
+				WriteQBKey("Cluster", compressedNodes[i].Cluster, f);
+			if (compressedNodes[i].AbsentInNetGames)
+				WriteQBKey("AbsentInNetGames", f);
+			if (compressedNodes[i].TerrainType.checksum)
+				WriteQBKey("TerrainType", GetTerrainType(compressedNodes[i].TerrainType), f);
+			fputc(0x4, f);
+			fputc(0x1, f);
+		}
 		/*if(Scripts[i].checksum==Checksum("Position",false).checksum || Scripts[i].checksum==Checksum("Angles",false).checksum
 		|| Scripts[i].checksum==Checksum("Type",false).checksum || Scripts[i].checksum==Checksum("Class",false).checksum
 		|| Scripts[i].checksum==Checksum("Name",false).checksum || Scripts[i].checksum==Checksum("TriggerScript",false).checksum
@@ -3507,7 +3542,7 @@ void Scene::ExportBSP(const char* const __restrict path)
 		fclose(f);
 	}
 
-	if (compressedNodes.size())
+	/*if (compressedNodes.size())
 	{
 		memcpy(Path, path, len + 1);
 
@@ -3541,7 +3576,7 @@ void Scene::ExportBSP(const char* const __restrict path)
 			fclose(f);
 	    }
 		
-	}
+	}*/
 	SetProgressbarValue(200);
 }
 

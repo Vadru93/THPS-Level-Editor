@@ -3069,12 +3069,28 @@ dne:
         {
         case 0x7F261953:
           //MessageBox(0,"found pos", "", 0);
+            while (*pFile == 0x2 || *pFile == 0x1)
+            {
+                
+                if (*pFile == 0x2)
+                    pFile += 5;
+                else
+                    pFile++;
+            }
           pFile+=2;
           node->Position = *(SimpleVertex*)pFile;
           node->Position.z *= -1;
           pFile+=sizeof(SimpleVertex);
           break;
         case 0x9D2D0915:
+            while (*pFile == 0x2 || *pFile == 0x1)
+            {
+
+                if (*pFile == 0x2)
+                    pFile += 5;
+                else
+                    pFile++;
+            }
           pFile+=2;
           node->Angles = *(SimpleVertex*)pFile;
           //node->Angles.y*=-1;
@@ -3083,6 +3099,14 @@ dne:
           pFile+=sizeof(SimpleVertex);
           break;
         case 0xA1DC81F9:
+            while (*pFile == 0x2 || *pFile == 0x1)
+            {
+
+                if (*pFile == 0x2)
+                    pFile += 5;
+                else
+                    pFile++;
+            }
           pFile+=2;
           node->Name = *(Checksum*)pFile;
           pFile+=sizeof(Checksum);
@@ -3091,6 +3115,14 @@ dne:
           node->TrickObject=true;
           break;
         case 0x12B4E660:
+            while (*pFile == 0x2 || *pFile == 0x1)
+            {
+
+                if (*pFile == 0x2)
+                    pFile += 5;
+                else
+                    pFile++;
+            }
           pFile+=2;
           node->Class = *(Checksum*)pFile;
           if(node->Class.checksum == RailNode::GetClass())
@@ -3108,6 +3140,14 @@ dne:
           pFile+=sizeof(Checksum);
           break;
         case 0x7321A8D6:
+            while (*pFile == 0x2 || *pFile == 0x1)
+            {
+
+                if (*pFile == 0x2)
+                    pFile += 5;
+                else
+                    pFile++;
+            }
           pFile+=2;
           node->Type = *(Checksum*)pFile;
           if(node->Type.checksum==Checksum("PedAI").checksum || node->Type.checksum==Checksum("default").checksum)
@@ -3118,6 +3158,14 @@ dne:
           break;
 
         case 0x2CA8A299:
+            while (*pFile == 0x2 || *pFile == 0x1)
+            {
+
+                if (*pFile == 0x2)
+                    pFile += 5;
+                else
+                    pFile++;
+            }
           pFile+=2;
           node->Trigger = *(Checksum*)pFile;
           pFile+=sizeof(Checksum);
@@ -3131,6 +3179,14 @@ dne:
           break;*/
 
         case 0x54CF8532:
+            while (*pFile == 0x2 || *pFile == 0x1)
+            {
+
+                if (*pFile == 0x2)
+                    pFile += 5;
+                else
+                    pFile++;
+            }
           pFile += 2;
           node->TerrainType = *(Checksum*)pFile;
           pFile += sizeof(Checksum);
@@ -3238,6 +3294,14 @@ done:
           break;
 
         case 0xFCD206E1:
+            while (*pFile == 0x2 || *pFile == 0x1)
+            {
+
+                if (*pFile == 0x2)
+                    pFile += 5;
+                else
+                    pFile++;
+            }
           pFile+=2;
           const DWORD len = *(DWORD*)pFile;
           pFile+=4;
