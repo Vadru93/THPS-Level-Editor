@@ -392,7 +392,8 @@ const BYTE* AddParams(const BYTE* pFile, KnownScript* script, bool THUG = false)
     case 0x24:
       if(id>0)
       {
-        MessageBox(0,"id","",0);
+          fprintf(stdout, "Script? %X\n", id);
+        //MessageBox(0,"id","",0);
         script->size--;
         script->Append(0x4);
       }
@@ -403,7 +404,7 @@ const BYTE* AddParams(const BYTE* pFile, KnownScript* script, bool THUG = false)
     case 0x1:
       if(id>0)
       {
-        MessageBox(0,"id","",0);
+          fprintf(stdout, "End of Line? %X\n", id);
         script->size--;
         script->Append(0x4);
       }
@@ -440,9 +441,7 @@ const BYTE* AddParams(const BYTE* pFile, KnownScript* script, bool THUG = false)
       script->Append(*(Checksum*)&numRands);
       pFile+=THUG?numRands*2+4:4;
       const DWORD size = numRands*4;
-      char sizes[128];
-      sprintf(sizes, "size %u num %u", size, numRands);
-      MessageBox(0, "adding RNd1", sizes,0);
+      fprintf(stdout, "adding RNd1\nsize %u num %u\n", size, numRands);
       script->Append(pFile, size);
       pFile+=size;
       break;
@@ -528,7 +527,7 @@ void Scene::LoadSound(Checksum sound, vector<Script> &sounds)
     if (!found)
     {
       sounds.push_back(Script(0x24FFB92D, "shared\FallWater"));
-      MessageBox(0, "fallwater", "", 0);
+      printf("Fallwater\n");
     }
     break;
   case 0xB0A2A4C5:
@@ -603,6 +602,7 @@ __declspec (noalias)Node* Scene::FindCompressed(const DWORD qbKey, const BYTE co
         case 5:
         case 6:
         case 7:
+        case 8:
         case 9:
         case 0x2D:
         case 0x25:
@@ -616,6 +616,7 @@ __declspec (noalias)Node* Scene::FindCompressed(const DWORD qbKey, const BYTE co
         case 0x24:
         case 0x20:
         case 0x21:
+        case 0x42:
             break;
         case 0x23:
             found = true;
@@ -842,8 +843,8 @@ __declspec (noalias)Node* Scene::FindCompressed(const DWORD qbKey, const BYTE co
         case 0:
             return NULL;
         default:
-            sprintf(unk, "%X file %X Beg %X qb %X", opcode, pFile, beg, qbKey);
-            MessageBox(0, "unk", unk, 0);
+            fprintf(stdout, "################################\n");
+            fprintf(stdout, "UNKNOWN %X file %X Beg %X qb %X\n", opcode, pFile, beg, qbKey);
             break;
         case 0x2B:
             return NULL;
@@ -881,6 +882,7 @@ __declspec (noalias) void Scene::AddCompressedNodes(register const BYTE const* _
     case 5:
     case 6:
     case 7:
+    case 8:
     case 9:
     case 0x2D:
     case 0x25:
@@ -893,6 +895,7 @@ __declspec (noalias) void Scene::AddCompressedNodes(register const BYTE const* _
     case 0x30:
     case 0x24:
     case 0x23:
+    case 0x42:
       break;
 
     case 0x16:
@@ -918,9 +921,8 @@ __declspec (noalias) void Scene::AddCompressedNodes(register const BYTE const* _
     case 0:
       return;
     default:
-      char unk[50];
-      sprintf(unk, "%X file %X", opcode, pFile);
-      MessageBox(0,"unk",unk,0);
+        fprintf(stdout, "################################\n");
+        fprintf(stdout, "UNKNOWN %X file %X\n", opcode, pFile);
       break;
     case 0x2B:
       extern vector<Script> Scripts;
@@ -1743,7 +1745,7 @@ _declspec (noalias) const BYTE const* __restrict Scene::ParseScript(register con
           script->size--;
           if (ids > 0)
           {
-            MessageBox(0, "ids", "", 0);
+            printf("ids@%X\n", pFile);
             script->Append(0x4);
           }
           goto doneParsing;
@@ -1773,7 +1775,7 @@ _declspec (noalias) const BYTE const* __restrict Scene::ParseScript(register con
           script->Append(*(Checksum*)&numRands);
           pFile += THUG ? numRands * 2 + 4 : 4;
           const DWORD size = numRands * 4;
-          MessageBox(0, "adding RNd2", "", 0);
+          fprintf(stdout, "adding RNd2\nsize %u num %u\n", size, numRands);
           script->Append(pFile, size);
           pFile += size;
           break;
@@ -2020,7 +2022,7 @@ _declspec (noalias) const BYTE const* __restrict Scene::ParseScript(register con
         script->size--;
         if(ibs>0)
         {
-          MessageBox(0,"ibs","",0);
+          printf("ibs@%X\n",pFile);
           script->Append(0x4);
         }
         goto doneParsing;
@@ -2063,7 +2065,7 @@ _declspec (noalias) const BYTE const* __restrict Scene::ParseScript(register con
         script->Append(*(Checksum*)&numRands);
         pFile+=THUG?numRands*2+4:4;
         const DWORD size = numRands*4;
-        MessageBox(0, "adding RNd3", "",0);
+        fprintf(stdout, "adding RNd3\nsize %u num %u\n", size, numRands);
         script->Append(pFile, size);
         pFile+=size;
         break;
@@ -2535,9 +2537,8 @@ __declspec (noalias) void Scene::LoadScriptsFile(char* path, vector<KnownScript>
                   script->Append(*(Checksum*)&numRands);
                   pFile+=THUG?numRands*2+4:4;
                   const DWORD size = numRands*4;
-                  char sizes[128];
-                  sprintf(sizes, "size %u num %u", size, numRands);
-                  MessageBox(0, "adding RNdIf1", sizes,0);
+                  
+                  fprintf(stdout, "adding RNdIf1\nsize %u num %u\n", size, numRands);
                   script->Append(pFile, size);
                   pFile+=size;
                   break;
@@ -3152,9 +3153,7 @@ __declspec (noalias) void Scene::LoadThugNodeArray(register const BYTE const* __
                 script->Append(*(Checksum*)&numRands);
                 pFile+=numRands*2+4;
                 const DWORD size = numRands*4;
-                char sizes[128];
-                sprintf(sizes, "size %u num %u", size, numRands);
-                MessageBox(0, "adding RNdIf2", sizes,0);
+                fprintf(stdout, "adding RNdIf2\nsize %u num %u\n", size, numRands);
                 script->Append(pFile, size);
                 pFile+=size;
                 break;
@@ -3510,7 +3509,7 @@ dne:
           MessageBox(0, "...", "...", 0);*/
           if(node->Class.checksum==Checksum("Waypoint").checksum)
           {
-              MessageBox(0, "ok", "ok", MB_OK);
+              fprintf(stdout, "Waypoint %s\n", node->Name.GetString());
             /*node->Class.checksum=0;
             if(node->Trigger.checksum)
               triggers.pop_back();*/
@@ -3600,7 +3599,7 @@ done:
               if (compNode)
               {
                   node->Compressed.checksum = qbKey;
-                  if (compNode->Class.checksum && !node->Class.checksum)
+                  if (compNode->Class.checksum)
                   {
                       node->Class = compNode->Class;
                       if (node->Class.checksum == RailNode::GetClass())
@@ -3725,6 +3724,7 @@ qbTable:
             }
             else
             {
+              fprintf(stdout, "Deleting GameObject Node %s\n", nodes[i].Name.GetString());
               DeleteNode(i);
               i--;
               numNodes--;
@@ -3748,6 +3748,7 @@ qbTable:
             }
             else
             {
+                fprintf(stdout, "Deleting GameObject Node %s\n", nodes[i].Name.GetString());
               DeleteNode(i);
               i--;
               numNodes--;
@@ -3755,34 +3756,41 @@ qbTable:
             break;
           default:
             nodes[i].Class = Checksum("EnvironmentObject");
+            bool movedMesh = false;
             for(DWORD j=0, numMeshes = meshes.size(); j<numMeshes; j++)
             {
               if(meshes[j].GetName().checksum == nodes[i].Name.checksum)
               {
                 D3DXVECTOR3 center = meshes[j].GetCenter();
-                /*if(center.x == 0 && center.y == 0 && center.z == 0)
+                if(center.x == 0 && center.y == 0 && center.z == 0)
                 {
-                MessageBox(0,nodes[i].Name.GetString(),"moving GameObj",0);*/
-                /*meshes[j].UnSetFlag(MeshFlags::isVisible);
-                meshes[j].SetFlag(MeshFlags::isDeleted);
-                //CloneMesh(&meshes[j]);
-                Mesh &mesh = meshes.back();
-                mesh.SetFlag(MeshFlags::isVisible);
-                mesh.UnSetFlag(MeshFlags::isDeleted);
-                D3DXVECTOR3 angle = *(D3DXVECTOR3*)&nodes[i].Angles;
-                // angle.y*=-1;
-                //  angle.y+=D3DX_PI;
-                //angle.x+=D3DX_PI;
-                mesh.SetPosition((D3DXVECTOR3*)&nodes[i].Position, &angle);*/
-                /* }
+                    movedMesh = true;
+                    fprintf(stdout, "moving GameObj %s\n", meshes[j].GetName().GetString());
+                    meshes[j].UnSetFlag(MeshFlags::isVisible);
+                    meshes[j].SetFlag(MeshFlags::isDeleted);
+                    CloneMesh(&meshes[j]);
+                    Mesh &mesh = meshes.back();
+                    mesh.SetFlag(MeshFlags::isVisible);
+                    mesh.UnSetFlag(MeshFlags::isDeleted);
+                    D3DXVECTOR3 angle = *(D3DXVECTOR3*)&nodes[i].Angles;
+                    angle.y*=-1;
+                    angle.y+=D3DX_PI;
+                    angle.x+=D3DX_PI;
+                    mesh.SetPosition((D3DXVECTOR3*)&nodes[i].Position, &angle);
+                }
                 else
-                MessageBox(0,nodes[i].Name.GetString(),"NOT moving GameObj",0);*/
+                   fprintf(stdout, "NOT moving GameObj %s\n",meshes[j].GetName().GetString());
+                
                 break;
               }
             }
-            DeleteNode(i);
-            i--;
-            numNodes--;
+            if (!movedMesh)
+            {
+                fprintf(stdout, "Deleting GameObject Node %s\n", nodes[i].Name.GetString());
+                DeleteNode(i);
+                i--;
+                numNodes--;
+            }
             break;
         }
       }
@@ -3831,6 +3839,7 @@ qbTable:
       {
         if(!nodes[i].CreatedAtStart || nodes[i].AbsentInNetGames)
         {
+          fprintf(stdout, "Deleting absent Node %s\n", nodes[i].Name.GetString());
           DeleteNode(i);
           i--;
           numNodes--;
@@ -3838,6 +3847,7 @@ qbTable:
       }
       else if(nodes[i].Class.checksum != Checksum("EnvironmentObject").checksum && nodes[i].Class.checksum != Checksum("Restart").checksum && nodes[i].Class.checksum != Checksum("Waypoint").checksum)
       {
+        fprintf(stdout, "Deleting Node %s\n", nodes[i].Name.GetString());
         DeleteNode(i);
         i--;
         numNodes--;
@@ -3852,12 +3862,14 @@ qbTable:
       }
       else if(nodes[i].Class.checksum != Checksum("EnvironmentObject").checksum && nodes[i].Class.checksum != Checksum("RailNode").checksum && nodes[i].Class.checksum != Checksum("Restart").checksum)// && nodes[i].Class.checksum != Checksum("Waypoint").checksum)
       {
+        fprintf(stdout, "Deleting Node %s\n", nodes[i].Name.GetString());
         DeleteNode(i);
         i--;
       }
       Mesh* mesh = GetMesh(nodes[i].Name);
       if(mesh)
       {
+        fprintf(stdout, "Deleting Mesh %s\n", mesh->Name.GetString());
         mesh->SetFlag(MeshFlags::isDeleted);
         mesh->UnSetFlag(MeshFlags::isVisible);
       }
@@ -3895,6 +3907,7 @@ qbTable:
       }
       if (!found)
       {
+          fprintf(stdout, "Deleting ncomp %s\n", compressedNodes[i].Name.GetString());
           compressedNodes.erase(compressedNodes.begin() + i);
           i--;
       }
@@ -3906,16 +3919,73 @@ qbTable:
               {
                   if (nodes[j].Compressed.checksum == compressedNodes[i].Name.checksum)
                   {
+                      fprintf(stdout, "Deleting Node %s\n", nodes[i].Name.GetString());
                       DeleteNode(j);
                       j--;
                   }
               }
+              fprintf(stdout, "Deleting ncomp %s\n", compressedNodes[i].Name.GetString());
               compressedNodes.erase(compressedNodes.begin() + i);
               i--;
           }
+          else
+          {
+              if (compressedNodes[i].Class.checksum == Checksum("LevelObject").checksum || compressedNodes[i].Class.checksum == Checksum("LevelGeometry").checksum)
+                  compressedNodes[i].Class = Checksum("EnvironmentObject");
+          }
       }
   }
+
+  if (compressedNodes.size() == 0)
+  {
+      GenerateCompressedNodes();
+  }
 }
+_declspec (noalias) void Scene::GenerateCompressedNodes()
+{
+    DWORD numNodes = nodes.size();
+    char msg[128] = "";
+    
+    for (DWORD i = 0; i < numNodes; i++)
+    {
+        Node maybeCompress = Node();
+
+        if (nodes[i].CreatedAtStart)
+            maybeCompress.CreatedAtStart = true;
+        if (nodes[i].TrickObject)
+            maybeCompress.TrickObject = true;
+        if (nodes[i].Cluster.checksum)
+            maybeCompress.Cluster = nodes[i].Cluster;
+        maybeCompress.Class = nodes[i].Class;
+        sprintf(msg, "Node%d_ncomp", i);
+        fprintf(stdout, "Maybe compress: %s\n", msg);
+        maybeCompress.Name = Checksum(msg);
+        bool compress = false;
+
+        for (DWORD j = i + 1; i < numNodes; j++)
+        {
+            if (maybeCompress.CreatedAtStart && !nodes[j].CreatedAtStart)
+                goto Next;
+            if (maybeCompress.TrickObject && !nodes[j].TrickObject)
+                goto Next;
+            if (maybeCompress.Cluster.checksum && maybeCompress.Cluster.checksum != nodes[j].Cluster.checksum)
+                goto Next;
+            if (maybeCompress.Class.checksum && maybeCompress.Class.checksum != nodes[j].Class.checksum)
+                goto Next;
+
+            compress = true;
+            nodes[j].Compressed = maybeCompress.Name;
+
+        Next:;
+        }
+        if (compress)
+            nodes[i].Compressed = maybeCompress.Name;
+
+        compressedNodes.push_back(maybeCompress);
+        fprintf(stdout, "Added Compress: %s\n", maybeCompress.Name.GetString());
+    }
+}
+
 
 __declspec (noalias) void Th4Scene::LoadProSkaterNodeArray(register const BYTE const* __restrict pFile, const BYTE const* __restrict eof, vector<KnownScript> &scripts, vector<Script> &sounds)
 {
@@ -4010,9 +4080,7 @@ __declspec (noalias) void Th4Scene::LoadProSkaterNodeArray(register const BYTE c
                 script->Append(*(Checksum*)&numRands);
                 pFile+=4;
                 const DWORD size = numRands*4;
-                char sizes[128];
-                sprintf(sizes, "size %u num %u", size, numRands);
-                MessageBox(0, "adding RNdIf0", sizes,0);
+                fprintf(stdout, "adding RNdIf0\nsize %u num %u\n", size, numRands);
                 script->Append(pFile, size);
                 pFile+=size;
                 break;

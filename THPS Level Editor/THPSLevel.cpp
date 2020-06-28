@@ -22,6 +22,12 @@
 #include <tlhelp32.h> 
 #include <shlwapi.h>
 #include "player.h"
+#include <windows.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <io.h>
+#include <iostream>
+#include <fstream>
 #pragma unmanaged
 #define DIRECTINPUT_VERSION 0x0800
 //#define MEMORY_LEAK_CHECK
@@ -224,6 +230,7 @@ VOID CreateConsole()
 
 #pragma managed
 
+
 [STAThreadAttribute]
 int WINAPI  WinMain(
   HINSTANCE hInstance,
@@ -231,7 +238,6 @@ int WINAPI  WinMain(
   LPSTR lpCmdLine,
   int nCmdShow)
 {
-  //CreateConsole();
   //ExtractResource(hInstance, 102, "boost_system-vc100-mt-1_47.dll");
   //ExtractResource(hInstance, 103, "boost_filesystem-vc100-mt-1_47.dll");
   // Enabling Windows XP visual effects before any controls are created
@@ -260,13 +266,75 @@ int WINAPI  WinMain(
     MessageBox::Show("WHY?" + GetLastError().ToString());
   }
 
+
+  
+
+  //CreateConsole();
+
   THPSLevel^ app = gcnew THPSLevel();
   Application::Exit();
   //Application::Run(gcnew THPSLevel());
 
   return 0;
 }
+
+#pragma managed(push, off)
+void InitConsole()
+{
+    if (AllocConsole())
+    {
+        FILE* fpstdin = stdin, * fpstdout = stdout, * fpstderr = stderr;
+
+        freopen_s(&fpstdin, "CONIN$", "r", stdin);
+        freopen_s(&fpstdout, "CONOUT$", "w", stdout);
+        freopen_s(&fpstderr, "CONOUT$", "w", stderr);
+    }
+}
+#pragma managed(pop)
 #pragma unmanaged
+static const WORD MAX_CONSOLE_LINES = 500;
+
+void RedirectIOToConsole()
+{
+    int hConHandle;
+    long lStdHandle;
+    CONSOLE_SCREEN_BUFFER_INFO coninfo;
+    FILE* fp;
+
+    // allocate a console for this app
+    AllocConsole();
+
+    // set the screen buffer to be big enough to let us scroll text
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &coninfo);
+    coninfo.dwSize.Y = MAX_CONSOLE_LINES;
+    SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE), coninfo.dwSize);
+
+    // redirect unbuffered STDOUT to the console
+    lStdHandle = (long)GetStdHandle(STD_OUTPUT_HANDLE);
+    hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
+    fp = _fdopen(hConHandle, "w");
+    *stdout = *fp;
+    setvbuf(stdout, NULL, _IONBF, 0);
+
+    // redirect unbuffered STDIN to the console
+    lStdHandle = (long)GetStdHandle(STD_INPUT_HANDLE);
+    hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
+    fp = _fdopen(hConHandle, "r");
+    *stdin = *fp;
+    setvbuf(stdin, NULL, _IONBF, 0);
+
+    // redirect unbuffered STDERR to the console
+    lStdHandle = (long)GetStdHandle(STD_ERROR_HANDLE);
+    hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
+    fp = _fdopen(hConHandle, "w");
+    *stderr = *fp;
+    setvbuf(stderr, NULL, _IONBF, 0);
+
+    // make cout, wcout, cin, wcin, wcerr, cerr, wclog and clog
+    // point to console as well
+    std::ios::sync_with_stdio();
+}
+
 void CreateCamera()
 {
   if (!camera)
@@ -1523,22 +1591,27 @@ bool THPSLevel::LoadScene(char* path)
   }
   else if (strstr(path, ".scn.xbx") || strstr(path, ".skin.xbx") || strstr(path, ".mdl.xbx"))
   {
-    char Path[256] = "";
+    char Path[MAX_PATH] = "";
 
-    memcpy(Path, path, strlen(Path) + 1);
+    memcpy(Path, path, strlen(path) + 1);
     char tmp[25] = "";
-    DWORD pos = ((std::string)Path).find_last_of("\\");
-    DWORD endPos = ((std::string)Path).find("_net.scn.xbx");
+    std::string s_path(path);
+    DWORD pos = s_path.find_last_of("\\");
+    printf("pos %d\n", pos);
+    DWORD endPos = s_path.find("_net.scn.xbx");
     if (endPos == std::string::npos)
-      endPos = ((std::string)Path).find(".scn.xbx");
+      endPos = s_path.find(".scn.xbx");
     if(endPos == std::string::npos)
-      endPos = ((std::string)Path).find("_net.mdl.xbx");
+      endPos = s_path.find("_net.mdl.xbx");
     if (endPos == std::string::npos)
-      endPos = ((std::string)Path).find(".mdl.xbx");
+      endPos = s_path.find(".mdl.xbx");
     if (endPos == std::string::npos)
-      endPos = ((std::string)Path).find("_net.skin.xbx");
+      endPos = s_path.find("_net.skin.xbx");
     if (endPos == std::string::npos)
-      endPos = ((std::string)Path).find(".skin.xbx");
+      endPos = s_path.find(".skin.xbx");
+
+    printf("endPos %d\n", endPos);
+
     if (endPos != std::string::npos)
     {
       for (DWORD i = pos; i < endPos; i++)
@@ -1546,20 +1619,25 @@ bool THPSLevel::LoadScene(char* path)
         tmp[i - pos] = path[i];
       }
       char tmp2[100] = "";
-      sprintf(tmp2, "%s.qb", tmp);
+      sprintf(tmp2, "%s.col.xbx", tmp);
       memcpy(&Path[pos], tmp2, strlen(tmp2) + 1);
       FILE* f = fopen(Path, "rb");
-      fseek(f, SEEK_SET, 1);
-      DWORD node;
-      fread(&node, 4, 1, f);
+      //fseek(f, SEEK_SET, 1);
+      DWORD version;
+      fread(&version, 4, 1, f);
       fclose(f);
-      if (node == 0xC472ECC5)//NodeArray
-        scene = new ThugScene(path);
+      if (version == 0x9)
+          scene = new ThugScene(path);
+      else if (version == 0xA)
+          scene = new Thug2Scene(path);
       else
-        scene = new Thug2Scene(path);
+          MessageBox::Show("Unknown Version");
     }
     else
-      scene = new Thug2Scene(path);
+    {
+        printf("Whyy???\n");
+        scene = new Thug2Scene(path);
+    }
     //sort = true;
   }
   else if (strstr(path, ".psx"))
@@ -4378,6 +4456,7 @@ void THPSLevel::InitRenderScene()
     }
 
   }
+  InitConsole();
 }
 
 void THPSLevel::ResizePictureWindow(System::Object^  sender, System::EventArgs^  e) {

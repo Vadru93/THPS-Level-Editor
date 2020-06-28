@@ -1796,7 +1796,8 @@ private: System::Windows::Forms::Panel^  pictureBox1;
   private: System::Void THPSLevel_Load(System::Object^  sender, System::EventArgs^  e) {
              //SetFloatingPointRoundingToTruncate();
              InitRenderScene();
-
+             //AllocConsole();
+             printf("Welcome\n");
              //CreateThread(0,0,(LPTHREAD_START_ROUTINE)DrawFrame, 0, 0, 0);
 
            }

@@ -1934,7 +1934,7 @@ void Th3Scene::Export(FILE* const __restrict f)
 	for (DWORD i = 0; i < numMeshes; i++)
 	{
 		SetProgressbarValue(i / divider);
-		printf("Exporting mesh %d ", i);
+		printf("Exporting mesh %s ", meshes[i].GetName().GetString());
 		/*if (meshes[i].GetName().checksum == 0xE18484C7 || meshes[i].GetName().checksum == 0xC78484E1)
 		{
 		  if (meshes[i].GetVertex(2).colour.a != 0xFF)
@@ -2740,7 +2740,7 @@ static const Checksum const GetTerrainType(const Checksum const TerrainType)
 	}
 	return TerrainType;*/
 
-	DWORD KnownTerrains[41] = { Default, ConcSmooth, ConcRough, MetalSmooth, MetalRough, MetalCorrugated, MetalGrating, MetalTin, WoodMasonite, WoodPlywood, WoodFlimsy, WoodShingle, WoodPier, Brick, Tile, Asphalt, Rock, Gravel, Sidewalk, Grass, GrassDried, Dirt, DirtPacked, Water, Ice, Snow, Sand, Carpet, Conveyor, Generic1, Generic2, Wheels, WetConc, MetalFence, GrindTrain, GrindRope, Wood, ChainLink, MetalFuture, PlexiGlass, FiberGlass };
+	static const DWORD KnownTerrains[41] = { Default, ConcSmooth, ConcRough, MetalSmooth, MetalRough, MetalCorrugated, MetalGrating, MetalTin, WoodMasonite, WoodPlywood, WoodFlimsy, WoodShingle, WoodPier, Brick, Tile, Asphalt, Rock, Gravel, Sidewalk, Grass, GrassDried, Dirt, DirtPacked, Water, Ice, Snow, Sand, Carpet, Conveyor, Generic1, Generic2, Wheels, WetConc, MetalFence, GrindTrain, GrindRope, Wood, ChainLink, MetalFuture, PlexiGlass, FiberGlass };
 	for (DWORD i = 0; i < 41; i++)
 	{
 		if (TerrainType.checksum == KnownTerrains[i])

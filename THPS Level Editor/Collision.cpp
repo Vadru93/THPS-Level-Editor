@@ -837,11 +837,19 @@ NSCollisionObject* ProcessNSCollision(DWORD ptr)
   for (DWORD i = 0; i < collisionHeader->numObjects; ++i)
   {
     if (collisionHeader->Version == 8)
-      collision[i].FloatVert = (NSFloatVert*)(baseVertAddr + (DWORD)((DWORD)collision[i].FloatVert << 4));
+      collision[i].FloatVert = (NSFloatVert*)(baseVertAddr + (DWORD)((DWORD)collision[i].FloatVert << 4) & 0xF0);
     else
       collision[i].FloatVert = (NSFloatVert*)(baseVertAddr + (DWORD)((DWORD)collision[i].FloatVert));
     collision[i].Faces = (NSFace*)(baseFaceAddr + (DWORD)collision[i].Faces);
   }
+  ptr += ((collisionHeader->numLargeFaces + collisionHeader->numLargeFaces * 2)*4);
+  ptr += (collisionHeader->numSmallFaces * 8);
 
+  DWORD nodes = (ptr+0x4);
+  DWORD pFaces = *(DWORD*)(nodes);
+
+  DWORD faces = nodes + pFaces;
+  
+  printf("Begining of Nodes %X\n", ptr);
   return collision;
 }
