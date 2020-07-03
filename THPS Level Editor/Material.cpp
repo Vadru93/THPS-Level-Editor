@@ -148,6 +148,7 @@ __declspec (noalias) void Texture::CreateTexture()
   HRESULT hres = D3DXCreateTextureFromFileEx(Device, imageName, D3DX_DEFAULT, D3DX_DEFAULT, D3DX_FROM_FILE, D3DUSAGE_DYNAMIC, D3DFMT_FROM_FILE, D3DPOOL_DEFAULT, D3DX_DEFAULT, D3DX_DEFAULT, 0, NULL, NULL, &imageData);
   if(FAILED(hres))
   {
+      imageData = NULL;
     //MessageBox(0,imageName,"failed to create texture",0);
     //ZeroMemory(imageName,MAX_PATH);
     //ZeroMemory(tmp,15);
@@ -165,9 +166,14 @@ __declspec (noalias) void Texture::CreateTexture()
       strcpy(&imageName[len],name);
       strcat(imageName,".tga");
     }
-    /*if(FAILED(*/D3DXCreateTextureFromFileEx(Device, imageName, D3DX_DEFAULT, D3DX_DEFAULT, 1, D3DUSAGE_DYNAMIC, D3DFMT_FROM_FILE, D3DPOOL_DEFAULT, D3DX_DEFAULT, D3DX_DEFAULT, 0, NULL, NULL, &imageData);//))
-    //MessageBox(0,"Failed to load texture",imageName,0);
+    if (FAILED(D3DXCreateTextureFromFileEx(Device, imageName, D3DX_DEFAULT, D3DX_DEFAULT, 1, D3DUSAGE_DYNAMIC, D3DFMT_FROM_FILE, D3DPOOL_DEFAULT, D3DX_DEFAULT, D3DX_DEFAULT, 0, NULL, NULL, &imageData)))
+    {
+        printf("Failed to load texture %s\n", imageName);
+        imageData = NULL;
+    }
   }
+  if (imageData != NULL)
+      SetCreated();
 }
 
 _declspec (noalias) void Material::SubmitPass()

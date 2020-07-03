@@ -46,12 +46,24 @@ struct MultiLayeredVertex
   TexCoord tUV[7];
 };
 
+#pragma pack(1)
+struct Thug2VertexHeader2
+{
+    BYTE padding;
+    BYTE stride;
+    WORD numVertices;
+    WORD numBuffers;
+    DWORD bufferSize;
+};
+#pragma pop(pack)
 struct ExtraLayerMesh
 {
   Checksum name;
   vector<MaterialSplit> matSplits;
   DWORD numPasses;
+  DWORD pass;
   vector<MultiLayeredVertex> vertices;
+  bool exportAsOne;
   //vector<vector<MultiLayeredVertex>> vertices;
 
   /*~ExtraLayerMesh()
@@ -99,25 +111,149 @@ struct ExtraLayerMesh
     }
   }
 
-  ExtraLayerMesh(Checksum name, MaterialSplit* split, const Vertex* vertices, DWORD numVertices, TexCoord* texCoords, DWORD numTexCoords)
+
+  ExtraLayerMesh(Checksum name, MaterialSplit* split, void* vh, DWORD ptr, DWORD flags, DWORD _pass = 0)
   {
+      exportAsOne = false;
+      pass = _pass;
+      Thug2VertexHeader2* vertexHeader = (Thug2VertexHeader2*)vh;
+      TexCoord* texCoords = NULL;
+
+      this->name = name;
+      matSplits.push_back(MaterialSplit());
+      matSplits.back().matId = split->matId;
+      matSplits.back().numIndices = split->numIndices;
+      matSplits.back().Indices.assign(split->Indices.begin(), split->Indices.end());
+      numPasses = 1;
+
+      for (DWORD k = 1; k < vertexHeader->numBuffers; k++)
+      {
+          DWORD numVertices = vertexHeader->numVertices;
+          /*if (k == 0)
+            vOffset += numVertices;*/
+            /*if(numVertices>vertexHeader->numVertices)
+            numVertices=vertexHeader->numVertices;*/
+          DWORD numUV = 0;
+          if (flags & 1)
+          {
+              numUV = vertexHeader->stride - 12;
+              if (flags & 4)
+                  numUV -= 12;
+              if (flags & 2)
+                  numUV -= 4;
+              if (flags & 16)
+                  numUV -= 12;
+
+
+              numUV = numUV / 8;
+              if (numUV > 8)
+                  numUV = 8;
+
+
+          }
+
+          Vertex vertex;
+          vertex.colour.a = 255;
+          vertex.colour.b = 128;
+          vertex.colour.r = 128;
+          vertex.colour.g = 128;
+
+
+          if (k == 1)
+          {
+              texCoords = new TexCoord[numUV * numVertices];
+              this->vertices.resize(numVertices);
+          }
+
+          for (DWORD l = 0; l < numVertices; l++)
+          {
+              DWORD stride = 0;
+              vertex.x = ((SimpleVertex*)ptr)->x;
+              vertex.y = ((SimpleVertex*)ptr)->y;
+              vertex.z = -((SimpleVertex*)ptr)->z;
+              stride += 12;
+              if (flags & 4)
+              {
+                  stride += 12;
+              }
+              if (flags & 2)
+              {
+                  vertex.colour = ((Colour*)(ptr + stride))[0];
+                  stride += 4;
+              }
+              if (flags & 16)
+                  stride += 12;
+
+              vertex.tUV[0] = ((TexCoord*)(ptr + stride))[0];
+
+              if (k == 1)
+              {
+                  for (DWORD m = 0; m < numUV; m++)
+                  {
+                      texCoords[l * numUV + m] = ((TexCoord*)(ptr + stride))[m];
+                  }
+              }
+
+              ptr += vertexHeader->stride;
+              if (k == 1)
+              {
+                  this->vertices[l].x = vertex.x;
+                  this->vertices[l].y = vertex.y;
+                  this->vertices[l].z = vertex.z;
+                  this->vertices[l].colour = vertex.colour;
+                  this->vertices[l].colour.a = 0x80;
+                  this->vertices[l].tUV[0] = texCoords[l * numUV + 1 + pass];
+                  /*if (numUV > 1)
+                  {
+                      Material* mat = matList.GetMaterial(matSplit.matId);
+                      if (mat)
+                      {
+                          if (mat->fucked && mat->fucked < numUV)
+                          {
+                              Vertex* verts = (Vertex*)this->GetVertices();
+                              for (DWORD l = 0; l < matSplit.Indices.size(); l++)
+                              {
+                                  if (matSplit.Indices[l] < this->GetNumVertices())
+                                      verts[matSplit.Indices[l]].tUV[0] = texCoords[matSplit.Indices[l] * numUV + mat->fucked ];
+                              }
+                          }
+                      }
+                  }*/
+              }
+          }
+          if (k + 1 != vertexHeader->numBuffers)//16E00
+          {
+              //MessageBox(0, "I", "", 0);
+              ptr++;
+          }
+          vertexHeader->bufferSize = ((DWORD*)ptr)[0];
+          ptr += 4;
+          if (k == 1)
+              delete[]texCoords;
+      }
+  }
+
+  ExtraLayerMesh(Checksum name, MaterialSplit* split, const Vertex* vertices, DWORD numVertices, TexCoord* texCoords, DWORD numTexCoords, DWORD _pass = 0, bool _exportAsOne = false)
+  {
+      exportAsOne = _exportAsOne;
+      pass = _pass;
     this->name = name;
     matSplits.push_back(MaterialSplit());
     matSplits.back().matId = split->matId;
-    matSplits.back().numIndices = split->numIndices;
+    matSplits.back().numIndices = split->Indices.size();
     matSplits.back().Indices.assign(split->Indices.begin(), split->Indices.end());
-    numPasses = numTexCoords - 1;
+    numPasses = numTexCoords - 1-pass;
     this->vertices.resize(numVertices);
     for (DWORD j = 0; j<numVertices; j++)
     {
-      for (DWORD k = 1; k<numTexCoords; k++)
+      for (DWORD k = 1; k<numTexCoords-pass; k++)
       {
         this->vertices[j].x = vertices[j].x;
         this->vertices[j].y = vertices[j].y;
         this->vertices[j].z = vertices[j].z;
         this->vertices[j].colour = vertices[j].colour;
         this->vertices[j].colour.a = 0x80;
-        this->vertices[j].tUV[k - 1] = texCoords[j*numTexCoords + k];
+        this->vertices[j].tUV[k - 1] = texCoords[j*numTexCoords + k+pass];
       }
     }
     /*DWORD vertexIndex = this->vertices.size();
@@ -199,6 +335,15 @@ public:
         return &animations[i].anim;
     }
     return NULL;
+  }
+
+  void Scale(float scale)
+  {
+      for (DWORD i = 0; i < meshes.size(); i++)
+      {
+          if(!meshes[i].IsDeleted() && meshes[i].IsVisible())
+            meshes[i].Scale(scale);
+      }
   }
 
   void ProcessTRG(BYTE* pFile, DWORD size);
@@ -730,7 +875,7 @@ public:
     ZeroMemory(&texture,sizeof(Texture));
     texture.vAddress = D3DTADDRESS_WRAP;
     texture.uAddress = D3DTADDRESS_WRAP;
-    texture.blendMode = 20;
+    texture.SetBlendMode(20);
     char chc[128]="";
 
     for(DWORD i=0; i<meshes.size(); i++)
@@ -803,6 +948,29 @@ public:
 
   void LoadScene(const char* path);
 
+  void FixNames()
+  {
+      for (DWORD i = 0; i < triggers.size(); i++)
+      {
+          bool found = false;
+          extern vector <Script> Scripts;
+          for (DWORD j = 0; j < Scripts.size(); j++)
+          {
+              if (triggers[i].checksum == Scripts[j].checksum)
+              {
+                  found = true;
+                  break;
+              }
+          }
+          if (!found)
+          {
+              char name[128] = "";
+              sprintf(name, "Unknown%u", i);
+              Scripts.push_back(Script(triggers[i].checksum, name));
+          }
+      }
+  }
+
   void FixZFighting2()
   {
     extern void SelectObjectOnly(Mesh* mesh, bool);
@@ -844,7 +1012,27 @@ public:
             meshes[i].MoveRelative(&normalized);
           //}
         }
+        else
+        {
+            for (DWORD j = 0; j < meshes[i].matSplits.size(); j++)
+            {
+                Material* mat = matList.GetMaterial(meshes[i].matSplits[j].matId);
+                if (mat && mat->zbias)
+                {
+                    printf("Moving Object zbias: %s\n", meshes[i].GetName().GetString());
+                    SelectObjectOnly(&meshes[i], true);
+
+                    D3DXVec3Normalize(&normalized, &faceNormal);
+                    normalized.x *= -0.2f * (float)mat->zbias;//-distance;
+                    normalized.y *= -0.2f * (float)mat->zbias;//-distance;
+                    normalized.z *= -0.2f * (float)mat->zbias;//-distance;
+                    meshes[i].MoveRelative(&normalized);
+                    break;
+                }
+            }
+        }
       }
+      
     }
   }
 
@@ -1123,7 +1311,7 @@ public:
     ZeroMemory(&texture,sizeof(Texture));
     texture.vAddress = D3DTADDRESS_WRAP;
     texture.uAddress = D3DTADDRESS_WRAP;
-    texture.blendMode = 20;
+    texture.SetBlendMode(20);
     char chc[128]="";
 
     for(DWORD i=0; i<meshes.size(); i++)
@@ -1404,7 +1592,7 @@ struct RwMaterial : Material
           MessageBox(0, name, "AW", 0);*/
         texture.SetId(material->GetTexture(0)->GetTexId());
         texture.imageSize = strlen(texture.name) + 1;
-        texture.blendMode = material->GetTexture(0)->blendMode;
+        texture.SetBlendMode(material->GetTexture(0)->GetBlendMode());
         /*texture.SetBlue(material->GetTexture(0)->GetBlue());
         texture.SetRed(material->GetTexture(0)->GetRed());
         texture.SetGreen(material->GetTexture(0)->GetGreen());*/

@@ -67,6 +67,39 @@ __declspec (noalias) void Mesh::Move(const D3DXVECTOR3 *direction)
   //node->SetPosition(GetCenter());
 }
 
+__declspec (noalias)void Mesh::Scale(float scale)
+{
+    if (verts)
+        verts->Release();
+    D3DXVECTOR3 center = GetCenter();
+    center *= scale;
+    SetCenter(center);
+    extern Scene* __restrict scene;
+    /*Node* node = scene->GetNode(name);
+    if (node)
+        *(D3DXVECTOR3*)&node->Position *= scale;
+    */
+    for (DWORD i = 0; i < vertices.size(); i++)
+    {
+        vertices[i].x *= scale;
+        vertices[i].y *= scale;
+        vertices[i].z *= scale;
+    }
+    if (verts)
+    {
+        DWORD fvf;
+        Device->GetFVF(&fvf);
+        if (FAILED(Device->CreateVertexBuffer(vertices.size() * sizeof(Vertex), D3DUSAGE_WRITEONLY, fvf, D3DPOOL_DEFAULT, &verts, NULL)))
+            MessageBox(0, "failed to create vertex buffer", "", 0);
+
+
+        Vertex* pVertices;
+        verts->Lock(0, 0, (void**)&pVertices, 0);
+        memcpy(pVertices, &vertices.front(), vertices.size() * sizeof(Vertex));
+        verts->Unlock();
+    }
+}
+
 __declspec (noalias)void Mesh::MoveRelative(const D3DXVECTOR3* relDist)
 {
   /*char pos[256]="";

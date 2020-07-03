@@ -405,7 +405,8 @@ void SaveMaterials(char* name)
         fwrite(&texture->uAddress, 4, 1, f);
         fwrite(&texture->vAddress, 4, 1, f);
         fwrite(&texture->fixedAlpha, 4, 1, f);
-        fwrite(&texture->blendMode, 4, 1, f);
+        DWORD blendMode = texture->GetBlendMode();
+        fwrite(&blendMode, 4, 1, f);
         DWORD temp = texture->GetTexId();
         fwrite(&temp, 4, 1, f);
         temp = texture->GetFlags();
@@ -557,7 +558,8 @@ void SaveState(char* name)
         fwrite(&texture->uAddress, 4, 1, f);
         fwrite(&texture->vAddress, 4, 1, f);
         fwrite(&texture->fixedAlpha, 4, 1, f);
-        fwrite(&texture->blendMode, 4, 1, f);
+        DWORD blendMode = texture->GetBlendMode();
+        fwrite(&blendMode, 4, 1, f);
         DWORD temp = texture->GetTexId();
         fwrite(&temp, 4, 1, f);
         temp = texture->GetFlags();
@@ -632,7 +634,8 @@ void SaveState(char* name)
           fwrite(&texture->uAddress, 4, 1, f);
           fwrite(&texture->vAddress, 4, 1, f);
           fwrite(&texture->fixedAlpha, 4, 1, f);
-          fwrite(&texture->blendMode, 4, 1, f);
+          DWORD blendMode = texture->GetBlendMode();
+          fwrite(&blendMode, 4, 1, f);
           DWORD temp = texture->GetTexId();
           fwrite(&temp, 4, 1, f);
           temp = texture->GetFlags();
@@ -1229,7 +1232,7 @@ void LoadMaterials(register const BYTE const* __restrict pFile)
       pFile += 4;
       texture.fixedAlpha = *(DWORD*)pFile;
       pFile += 4;
-      texture.blendMode = *(DWORD*)pFile;
+      texture.SetBlendMode(*(DWORD*)pFile);
       pFile += 4;
       texture.SetId(*(DWORD*)pFile);
       pFile += 4;
@@ -1374,7 +1377,7 @@ bool LoadState_unmanaged(register const BYTE const* __restrict pFile)
         pFile += 4;
         texture.fixedAlpha = *(DWORD*)pFile;
         pFile += 4;
-        texture.blendMode = *(DWORD*)pFile;
+        texture.SetBlendMode(*(DWORD*)pFile);
         pFile += 4;
         texture.SetId(*(DWORD*)pFile);
         pFile += 4;
@@ -1482,7 +1485,7 @@ bool LoadState_unmanaged(register const BYTE const* __restrict pFile)
           pFile += 4;
           texture.fixedAlpha = *(DWORD*)pFile;
           pFile += 4;
-          texture.blendMode = *(DWORD*)pFile;
+          texture.SetBlendMode(*(DWORD*)pFile);
           pFile += 4;
           texture.SetId(*(DWORD*)pFile);
           pFile += 4;
@@ -1732,8 +1735,8 @@ bool THPSLevel::LoadScene(char* path)
                   pFile += *(DWORD*)pFile * 4 + 4;
                   break;
                 case 0x16:
-                  if (*(DWORD*)pFile == 0xEEC24148 || *(DWORD*)pFile == 0x6E77719D || *(DWORD*)pFile == 0xF8D6A996 ||
-                    *(DWORD*)pFile == 0x70291F04 || *(DWORD*)pFile == 0xCB8B5900 || *(DWORD*)pFile == 0x854F17A6)
+                  if (*(DWORD*)pFile == Checksums::Kill || *(DWORD*)pFile == Checksums::Create || *(DWORD*)pFile == Checksums::Shatter ||
+                    *(DWORD*)pFile == Checksums::Visible || *(DWORD*)pFile == Checksums::Invisible || *(DWORD*)pFile == Checksums::ShatterAndDie)
                   {
                     scene->nodes[i].NetEnabled = true;
                     scene->nodes[i].Permanent = true;
@@ -2242,6 +2245,7 @@ bool THPSLevel::LoadScene(char* path)
     }
     Next:;
     }*/
+    scene->FixNames();
     scene->FixZFighting2();
     sprintf(info, "%d Verts %d Tris", scene->GetNumVertices(), scene->GetNumTriangles());
     Checksum("Shatter");

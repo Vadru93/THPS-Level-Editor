@@ -2925,8 +2925,10 @@ void Scene::ExportBSP(const char* const __restrict path)
 			if (nodes[i].Angles.x || nodes[i].Angles.y || nodes[i].Angles.z)
 				WriteQBKey("Angles", &nodes[i].Angles, f);
 			WriteQBKey("Name", nodes[i].Name, f);
+			bool exported = false;
 			if (nodes[i].Class.checksum != Restart::GetClass() && nodes[i].Compressed.checksum)
 			{
+				bool found = false;
 				for (int j = 0; j < compressedNodes.size(); j++)
 				{
 					if (compressedNodes[j].Name.checksum == nodes[i].Compressed.checksum)
@@ -2942,10 +2944,6 @@ void Scene::ExportBSP(const char* const __restrict path)
 						if (!compressedNodes[j].Type.checksum && nodes[i].Type.checksum)
 							WriteQBKey("Type", nodes[i].Type, f);
 
-
-						
-							if (!compressedNodes[j].Type.checksum && nodes[i].Type.checksum)
-								WriteQBKey("Type", nodes[i].Type, f);
 							if (nodes[i].Class.checksum == RailNode::GetClass())
 							{
 								float furthestDist = 0.0f;
@@ -2983,15 +2981,21 @@ void Scene::ExportBSP(const char* const __restrict path)
 
 						}
 
-
+						found = true;
 						WriteQBKey(nodes[i].Compressed, f);
 						break;
 					}
 
 				}
+				if (!found)
+				{
+					printf("Node %s Compress %s\n", nodes[i].Name.GetString2(), nodes[i].Compressed.GetString2());
+					goto notFound;
+				}
 			}
 			else
 			{
+			notFound:
 				WriteQBKey("Class", nodes[i].Class, f);
 				if (nodes[i].TrickObject)
 					WriteQBKey("TrickObject", f);
@@ -3429,6 +3433,10 @@ void Scene::ExportBSP(const char* const __restrict path)
 
 		for (DWORD i = 0, numScripts = Scripts.size(); i < numScripts; i++)
 		{
+			if (strlen(Scripts[i].name)==0)
+			{
+				sprintf(Scripts[i].name, "unknown%u", i);
+			}
 			if (Scripts[i].checksum == 0x31ADBD6E || Scripts[i].checksum == 0x6EBDAD31)
 				MessageBox(0, "YEAE", 0, 0);
 			for (DWORD j = 0; j < globals.size(); j++)
@@ -3463,9 +3471,9 @@ void Scene::ExportBSP(const char* const __restrict path)
 			}
 			for (DWORD j = 0; j < nodes.size(); j++)
 			{
-				if (nodes[j].Name.checksum == Scripts[i].checksum || nodes[j].Class.checksum == Scripts[i].checksum
+				if (nodes[j].Name.checksum == Scripts[i].checksum || nodes[j].Compressed.checksum == Scripts[i].checksum  || nodes[j].TerrainType.checksum == Scripts[i].checksum || nodes[j].Class.checksum == Scripts[i].checksum
 					|| nodes[j].Type.checksum == Scripts[i].checksum || nodes[j].Cluster.checksum == Scripts[i].checksum
-					|| nodes[j].Trigger.checksum == Scripts[i].checksum)
+					|| nodes[j].Trigger.checksum == Scripts[i].checksum || GetTerrainType(nodes[j].TerrainType).checksum == Scripts[i].checksum)
 				{
 					fputc(0x2B, f);
 					WriteDWORD(f, Scripts[i].checksum);

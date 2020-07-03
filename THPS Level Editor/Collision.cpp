@@ -837,7 +837,7 @@ NSCollisionObject* ProcessNSCollision(DWORD ptr)
   for (DWORD i = 0; i < collisionHeader->numObjects; ++i)
   {
     if (collisionHeader->Version == 8)
-      collision[i].FloatVert = (NSFloatVert*)(baseVertAddr + (DWORD)((DWORD)collision[i].FloatVert << 4) & 0xF0);
+      collision[i].FloatVert = (NSFloatVert*)(baseVertAddr + (DWORD)((DWORD)collision[i].FloatVert << 4));
     else
       collision[i].FloatVert = (NSFloatVert*)(baseVertAddr + (DWORD)((DWORD)collision[i].FloatVert));
     collision[i].Faces = (NSFace*)(baseFaceAddr + (DWORD)collision[i].Faces);

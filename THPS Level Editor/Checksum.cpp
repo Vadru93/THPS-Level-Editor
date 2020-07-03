@@ -28,6 +28,17 @@ char* const Checksum::GetString2() const
   return temp;
 }
 
+void Checksum::SetString(char* string)
+{
+    for (DWORD i = 0; i < Scripts.size(); i++)
+    {
+        if (checksum == Scripts[i].checksum)
+        {
+            memcpy(Scripts[i].name, string, strlen(string) + 1);
+        }
+    }
+}
+
 unsigned long GetCrc(char* name)
 {
   for (DWORD i = 0; i < Scripts.size(); i++)

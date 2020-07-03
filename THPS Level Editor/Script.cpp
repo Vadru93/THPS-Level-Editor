@@ -686,7 +686,7 @@ __declspec (noalias)Node* Scene::FindCompressed(const DWORD qbKey, const BYTE co
                         pFile += 4;
                         switch (key)
                         {
-                        case 0x12B4E660:
+                        case Checksums::Class:
                             while (*pFile == 0x1 || *pFile == 0x2)
                             {
                                 if (*pFile == 0x2)
@@ -698,7 +698,7 @@ __declspec (noalias)Node* Scene::FindCompressed(const DWORD qbKey, const BYTE co
                             node.Class = *(Checksum*)pFile;
                             pFile += sizeof(Checksum);
                             break;
-                        case 0x7321A8D6:
+                        case Checksums::Type:
                             while (*pFile == 0x1 || *pFile == 0x2)
                             {
                                 if (*pFile == 0x2)
@@ -708,16 +708,16 @@ __declspec (noalias)Node* Scene::FindCompressed(const DWORD qbKey, const BYTE co
                             }
                             pFile += 2;
                             node.Type = *(Checksum*)pFile;
-                            if (node.Type.checksum == Checksum("PedAI").checksum || node.Type.checksum == Checksum("default").checksum)
+                            if (node.Type.checksum == Checksums::PedAI || node.Type.checksum == Checksums::DEFAULT)
                             {
                                 node.Class.checksum = 0;
                             }
                             pFile += sizeof(Checksum);
                             break;
-                        case 0x1645B830:
+                        case Checksums::TrickObject:
                             node.TrickObject = true;
                             break;
-                        case 0x2CA8A299:
+                        case Checksums::TriggerScripts:
                             while (*pFile == 0x1 || *pFile == 0x2)
                             {
                                 if (*pFile == 0x2)
@@ -730,8 +730,20 @@ __declspec (noalias)Node* Scene::FindCompressed(const DWORD qbKey, const BYTE co
                             pFile += sizeof(Checksum);
                             triggers.push_back(node.Trigger);
                             break;
-
-                        case 0x9D2D0915:
+                        case Checksums::Pos:
+                            while (*pFile == 0x1 || *pFile == 0x2)
+                            {
+                                if (*pFile == 0x2)
+                                    pFile += 5;
+                                else
+                                    pFile++;
+                            }
+                            pFile += 2;
+                            node.Position = *(SimpleVertex*)pFile;
+                            node.Position.z *= -1;
+                            pFile += sizeof(SimpleVertex);
+                            break;
+                        case Checksums::Angles:
                             while (*pFile == 0x1 || *pFile == 0x2)
                             {
                                 if (*pFile == 0x2)
@@ -741,19 +753,22 @@ __declspec (noalias)Node* Scene::FindCompressed(const DWORD qbKey, const BYTE co
                             }
                             pFile += 2;
                             node.Angles = *(SimpleVertex*)pFile;
+                            node.Angles.y *= -1;
+                            //node.Angles.y += D3DX_PI;
+                            //node.Angles.x += D3DX_PI;
                             //node->Angles.y*=-1;
                             //node->Angles.x*=-1;
                             //node->Angles.z*=-1;
                             pFile += sizeof(SimpleVertex);
                             break;
 
-                            case 0x1A3A966B:
+                        case Checksums::Cluster:
                               pFile+=2;
                               node.Cluster = *(Checksum*)pFile;
                               pFile+=sizeof(Checksum);
                               break;
 
-                        case 0x54CF8532:
+                        case Checksums::TerrainType:
                             while (*pFile == 0x1 || *pFile == 0x2)
                             {
                                 if (*pFile == 0x2)
@@ -766,19 +781,19 @@ __declspec (noalias)Node* Scene::FindCompressed(const DWORD qbKey, const BYTE co
                             pFile += sizeof(Checksum);
                             break;
 
-                        case 0x68910AC6:
+                        case Checksums::AbsentInNetGames:
                             node.AbsentInNetGames = true;
                             break;
 
-                        case 0x20209C31:
+                        case Checksums::NetEnabled:
                             node.NetEnabled = true;
                             break;
 
-                        case 0x23627FD7:
+                        case Checksums::Permanent:
                             node.Permanent = true;
                             break;
 
-                        case 0x2E7D5EE7:
+                        case Checksums::Links:
                             while (*pFile != 0x17)
                                 pFile++;
                             pFile++;
@@ -814,7 +829,7 @@ __declspec (noalias)Node* Scene::FindCompressed(const DWORD qbKey, const BYTE co
                         gotLinks:
                             break;
 
-                        case 0x7C2552B9:
+                        case Checksums::CreatedAtStart:
                             node.CreatedAtStart = true;
                             break;
 
@@ -1075,64 +1090,76 @@ found:
           pFile+=4;
           switch(key)
           {
-          case 0x12B4E660:
+          case Checksums::Class:
             pFile+=2;
             node.Class = *(Checksum*)pFile;
             pFile+=sizeof(Checksum);
             break;
-          case 0x7321A8D6:
+          case Checksums::Type:
             pFile+=2;
             node.Type = *(Checksum*)pFile;
-            if(node.Type.checksum==Checksum("PedAI").checksum || node.Type.checksum==Checksum("default").checksum)
+            if(node.Type.checksum==Checksums::PedAI || node.Type.checksum==Checksums::DEFAULT)
             {
               node.Class.checksum=0;
             }
             pFile+=sizeof(Checksum);
             break;
-          case 0x1645B830:
+          case Checksums::TrickObject:
             node.TrickObject=true;
             break;
-          case 0x2CA8A299:
+          case Checksums::TriggerScripts:
             pFile+=2;
             node.Trigger = *(Checksum*)pFile;
             pFile+=sizeof(Checksum);
             triggers.push_back(node.Trigger);
             break;
-
-          case 0x9D2D0915:
+          case Checksums::Pos:
+              while (*pFile == 0x1 || *pFile == 0x2)
+              {
+                  if (*pFile == 0x2)
+                      pFile += 5;
+                  else
+                      pFile++;
+              }
+              pFile += 2;
+              node.Position = *(SimpleVertex*)pFile;
+              node.Position.z *= -1;
+              pFile += sizeof(SimpleVertex);
+              break;
+          case Checksums::Angles:
               pFile += 2;
               node.Angles = *(SimpleVertex*)pFile;
-              //node->Angles.y*=-1;
-              //node->Angles.x*=-1;
-              //node->Angles.z*=-1;
+              node.Angles.y *= -1;
+              //node.Angles.y += D3DX_PI;
+              //node.Angles.x += D3DX_PI;
               pFile += sizeof(SimpleVertex);
               break;
 
-          case 0x1A3A966B:
+          case Checksums::Cluster:
             pFile+=2;
             node.Cluster = *(Checksum*)pFile;
             pFile+=sizeof(Checksum);
             break;
 
-          case 0x54CF8532:
+          case Checksums::TerrainType:
             pFile += 2;
             node.TerrainType = *(Checksum*)pFile;
             pFile += sizeof(Checksum);
             break;
 
-          case 0x68910AC6:
+          case Checksums::AbsentInNetGames:
             node.AbsentInNetGames = true;
             break;
 
-          case 0x20209C31:
+          case Checksums::NetEnabled:
             node.NetEnabled = true;
             break;
 
-          case 0x23627FD7:
+          case Checksums::Permanent:
             node.Permanent = true;
             break;
 
-          case 0x2E7D5EE7:
+          case Checksums::Links:
               while (*pFile != 0x17)
                   pFile++;
               pFile++;
@@ -1168,7 +1195,7 @@ found:
           gotLinks:
               break;
 
-          case 0x7C2552B9:
+          case Checksums::CreatedAtStart:
             node.CreatedAtStart = true;
             break;
 
@@ -1981,12 +2008,12 @@ _declspec (noalias) const BYTE const* __restrict Scene::ParseScript(register con
         break;
       }
     }
-  case 0xEEC24148:
-  case 0xCB8B5900:
-  case 0x854F17A6:
-  case 0x70291F04:
-  case 0xF8D6A996:
-  case 0x6E77719D:
+  case Checksums::Kill:
+  case Checksums::Create:
+  case Checksums::Shatter:
+  case Checksums::ShatterAndDie:
+  case Checksums::Visible:
+  case Checksums::Invisible:
     script->Script(qbKey);
     //MessageBox(0,"script",(*(Checksum*)&qbKey).GetString(),0);
     signed char ibs;
@@ -2601,7 +2628,7 @@ dne:
             script->EndScript();
             ifs[ifCounter]=true;
             break;
-          case 0xA1DA6FE9:
+          case Checksums::InNetGame:
           case 0x850B3CCA:
             lastIf = 0xFFFFFFFF;
             script->Append(0x25);
@@ -3215,7 +3242,7 @@ dne:
           script->EndScript();
           ifs[ifCounter]=true;
           break;
-        case 0xA1DA6FE9:
+        case Checksums::InNetGame:
         case 0x850B3CCA:
           script->Append(0x25);
           if (addNot)
@@ -3364,7 +3391,7 @@ dne:
 
         switch(qbKey)
         {
-        case 0x7F261953:
+        case Checksums::Pos:
           //MessageBox(0,"found pos", "", 0);
             while (*pFile == 0x2 || *pFile == 0x1)
             {
@@ -3379,7 +3406,7 @@ dne:
           node->Position.z *= -1;
           pFile+=sizeof(SimpleVertex);
           break;
-        case 0x9D2D0915:
+        case Checksums::Angles:
             while (*pFile == 0x2 || *pFile == 0x1)
             {
 
@@ -3390,12 +3417,12 @@ dne:
             }
           pFile+=2;
           node->Angles = *(SimpleVertex*)pFile;
-          //node->Angles.y*=-1;
-          //node->Angles.x*=-1;
-          //node->Angles.z*=-1;
+          node->Angles.y *= -1;
+          //node->Angles.y += D3DX_PI;
+          //node->Angles.x += D3DX_PI;
           pFile+=sizeof(SimpleVertex);
           break;
-        case 0xA1DC81F9:
+        case Checksums::Name:
             while (*pFile == 0x2 || *pFile == 0x1)
             {
 
@@ -3408,10 +3435,10 @@ dne:
           node->Name = *(Checksum*)pFile;
           pFile+=sizeof(Checksum);
           break;
-        case 0x1645B830:
+        case Checksums::TrickObject:
           node->TrickObject=true;
           break;
-        case 0x12B4E660:
+        case Checksums::Class:
             while (*pFile == 0x2 || *pFile == 0x1)
             {
 
@@ -3429,14 +3456,14 @@ dne:
             node->Name = Checksum(nodename);
             numRails++;
           }
-          else if(node->Class.checksum == 0x1806DDF8)
+          else if(node->Class.checksum == Checksums::Restart)
           {
-            if(node->Angles.y<0.0f)
-              node->Angles.y*=-1;
+            /*if(node->Angles.y<0.0f)
+              node->Angles.y*=-1;*/
           }
           pFile+=sizeof(Checksum);
           break;
-        case 0x7321A8D6:
+        case Checksums::Type:
             while (*pFile == 0x2 || *pFile == 0x1)
             {
 
@@ -3447,14 +3474,14 @@ dne:
             }
           pFile+=2;
           node->Type = *(Checksum*)pFile;
-          if(node->Type.checksum==Checksum("PedAI").checksum || node->Type.checksum==Checksum("default").checksum)
+          if(node->Type.checksum==Checksums::PedAI || node->Type.checksum==Checksums::DEFAULT)
           {
             node->Class.checksum=0;
           }
           pFile+=sizeof(Checksum);
           break;
 
-        case 0x2CA8A299:
+        case Checksums::TriggerScripts:
             while (*pFile == 0x2 || *pFile == 0x1)
             {
 
@@ -3469,13 +3496,13 @@ dne:
           triggers.push_back(node->Trigger);
           break;
 
-        case 0x1A3A966B:
+        case Checksums::Cluster:
           pFile+=2;
           node->Cluster = *(Checksum*)pFile;
           pFile+=sizeof(Checksum);
           break;
 
-        case 0x54CF8532:
+        case Checksums::TerrainType:
             while (*pFile == 0x2 || *pFile == 0x1)
             {
 
@@ -3489,27 +3516,27 @@ dne:
           pFile += sizeof(Checksum);
           break;
 
-        case 0x68910AC6:
+        case Checksums::AbsentInNetGames:
           node->AbsentInNetGames = true;
           break;
 
-        case 0x20209C31:
+        case Checksums::NetEnabled:
           node->NetEnabled = true;
           break;
 
-        case 0x23627FD7:
+        case Checksums::Permanent:
           node->Permanent = true;
           break;
 
-        case 0x2E7D5EE7:
+        case Checksums::Links:
             while (*pFile != 0x17)
                 pFile++;
             pFile++;
           /*if(*(DWORD*)pFile>=0xFFFF)
           MessageBox(0, "...", "...", 0);*/
-          if(node->Class.checksum==Checksum("Waypoint").checksum)
+          if(node->Class.checksum==Checksums::Waypoint)
           {
-              fprintf(stdout, "Waypoint %s\n", node->Name.GetString());
+              fprintf(stdout, "Waypoint %s\n", node->Name.GetString2());
             /*node->Class.checksum=0;
             if(node->Trigger.checksum)
               triggers.pop_back();*/
@@ -3536,7 +3563,7 @@ dne:
 done:
           break;
 
-        case 0x7C2552B9:
+          case Checksums::CreatedAtStart:
           node->CreatedAtStart = true;
           break;
 
@@ -3724,7 +3751,7 @@ qbTable:
             }
             else
             {
-              fprintf(stdout, "Deleting GameObject Node %s\n", nodes[i].Name.GetString());
+              fprintf(stdout, "Deleting GameObject Node %s\n", nodes[i].Name.GetString2());
               DeleteNode(i);
               i--;
               numNodes--;
@@ -3748,7 +3775,7 @@ qbTable:
             }
             else
             {
-                fprintf(stdout, "Deleting GameObject Node %s\n", nodes[i].Name.GetString());
+                fprintf(stdout, "Deleting GameObject Node %s\n", nodes[i].Name.GetString2());
               DeleteNode(i);
               i--;
               numNodes--;
@@ -3765,7 +3792,7 @@ qbTable:
                 if(center.x == 0 && center.y == 0 && center.z == 0)
                 {
                     movedMesh = true;
-                    fprintf(stdout, "moving GameObj %s\n", meshes[j].GetName().GetString());
+                    fprintf(stdout, "moving GameObj %s\n", meshes[j].GetName().GetString2());
                     meshes[j].UnSetFlag(MeshFlags::isVisible);
                     meshes[j].SetFlag(MeshFlags::isDeleted);
                     CloneMesh(&meshes[j]);
@@ -3773,20 +3800,20 @@ qbTable:
                     mesh.SetFlag(MeshFlags::isVisible);
                     mesh.UnSetFlag(MeshFlags::isDeleted);
                     D3DXVECTOR3 angle = *(D3DXVECTOR3*)&nodes[i].Angles;
-                    angle.y*=-1;
+                    /*angle.y*=-1;
                     angle.y+=D3DX_PI;
-                    angle.x+=D3DX_PI;
+                    angle.x+=D3DX_PI;*/
                     mesh.SetPosition((D3DXVECTOR3*)&nodes[i].Position, &angle);
                 }
                 else
-                   fprintf(stdout, "NOT moving GameObj %s\n",meshes[j].GetName().GetString());
+                   fprintf(stdout, "NOT moving GameObj %s\n",meshes[j].GetName().GetString2());
                 
                 break;
               }
             }
             if (!movedMesh)
             {
-                fprintf(stdout, "Deleting GameObject Node %s\n", nodes[i].Name.GetString());
+                fprintf(stdout, "Deleting GameObject Node %s\n", nodes[i].Name.GetString2());
                 DeleteNode(i);
                 i--;
                 numNodes--;
@@ -3794,9 +3821,9 @@ qbTable:
             break;
         }
       }
-      else if(nodes[i].Class.checksum == 0xB7B3BD86)///*Checksum("LevelObject").checksum*/ || nodes[i].Class.checksum == 0xBF4D3536/*Checksum("LevelGeometry").checksum*/)
+      else if(nodes[i].Class.checksum == Checksums::LevelObject)// || nodes[i].Class.checksum == Checksums::LevelGeometry)
       {
-        nodes[i].Class = Checksum("EnvironmentObject");
+        nodes[i].Class.checksum = EnvironmentObject::GetClass();
         for(DWORD j=0, numMeshes = meshes.size(); j<numMeshes; j++)
         {
           if(meshes[j].GetName().checksum == nodes[i].Name.checksum)
@@ -3813,7 +3840,7 @@ qbTable:
             mesh.UnSetFlag(MeshFlags::isDeleted);
             D3DXVECTOR3 angle = *(D3DXVECTOR3*)&nodes[i].Angles;
             // angle.y*=-1;
-            angle.y+=D3DX_PI;
+            //angle.y+=D3DX_PI;
             //angle.x+=D3DX_PI;
             mesh.SetPosition((D3DXVECTOR3*)&nodes[i].Position, &angle);
             for (DWORD k = 0; k<extraLayerMeshes.size(); k++)
@@ -3833,21 +3860,21 @@ qbTable:
         i--;
         numNodes--;*/
       }
-      else if(nodes[i].Class.checksum == 0xBF4D3536)
+      else if(nodes[i].Class.checksum == Checksums::LevelGeometry)
         nodes[i].Class = Checksum("EnvironmentObject");
-      else if(nodes[i].Class.checksum == Checksum("RailNode").checksum)
+      else if(nodes[i].Class.checksum == RailNode::GetClass())
       {
-        if(!nodes[i].CreatedAtStart || nodes[i].AbsentInNetGames)
+        if(nodes[i].AbsentInNetGames)
         {
-          fprintf(stdout, "Deleting absent Node %s\n", nodes[i].Name.GetString());
+          fprintf(stdout, "Deleting absent Node %s\n", nodes[i].Name.GetString2());
           DeleteNode(i);
           i--;
           numNodes--;
         }
       }
-      else if(nodes[i].Class.checksum != Checksum("EnvironmentObject").checksum && nodes[i].Class.checksum != Checksum("Restart").checksum && nodes[i].Class.checksum != Checksum("Waypoint").checksum)
+      else if(nodes[i].Class.checksum != EnvironmentObject::GetClass() && nodes[i].Class.checksum != Restart::GetClass() && nodes[i].Class.checksum != Checksum("Waypoint").checksum)
       {
-        fprintf(stdout, "Deleting Node %s\n", nodes[i].Name.GetString());
+        fprintf(stdout, "Deleting Node %s\n", nodes[i].Name.GetString2());
         DeleteNode(i);
         i--;
         numNodes--;
@@ -3856,20 +3883,20 @@ qbTable:
     }
     else
     {
-      if(nodes[i].Class.checksum == Checksum("LevelObject").checksum || nodes[i].Class.checksum == Checksum("LevelGeometry").checksum)
+      if(nodes[i].Class.checksum == Checksums::LevelObject || nodes[i].Class.checksum == Checksums::LevelGeometry)
       {
-        nodes[i].Class = Checksum("EnvironmentObject");
+        nodes[i].Class = EnvironmentObject::GetClass();
       }
-      else if(nodes[i].Class.checksum != Checksum("EnvironmentObject").checksum && nodes[i].Class.checksum != Checksum("RailNode").checksum && nodes[i].Class.checksum != Checksum("Restart").checksum)// && nodes[i].Class.checksum != Checksum("Waypoint").checksum)
+      else if(nodes[i].Class.checksum != EnvironmentObject::GetClass() && nodes[i].Class.checksum != RailNode::GetClass() && nodes[i].Class.checksum != Restart::GetClass())// && nodes[i].Class.checksum != Checksum("Waypoint").checksum)
       {
-        fprintf(stdout, "Deleting Node %s\n", nodes[i].Name.GetString());
+        fprintf(stdout, "Deleting Node %s\n", nodes[i].Name.GetString2());
         DeleteNode(i);
         i--;
       }
       Mesh* mesh = GetMesh(nodes[i].Name);
       if(mesh)
       {
-        fprintf(stdout, "Deleting Mesh %s\n", mesh->Name.GetString());
+        fprintf(stdout, "Deleting Mesh %s\n", mesh->Name.GetString2());
         mesh->SetFlag(MeshFlags::isDeleted);
         mesh->UnSetFlag(MeshFlags::isVisible);
       }
@@ -3893,6 +3920,7 @@ qbTable:
   if(nodes.size()>=0xFFFF)
     MessageBox(0, "NodeArray too big...", "", 0);
 
+
   for (DWORD i = 0; i < compressedNodes.size(); i++)
   {
       bool found = false;
@@ -3907,7 +3935,7 @@ qbTable:
       }
       if (!found)
       {
-          fprintf(stdout, "Deleting ncomp %s\n", compressedNodes[i].Name.GetString());
+          fprintf(stdout, "Deleting ncomp %s\n", compressedNodes[i].Name.GetString2());
           compressedNodes.erase(compressedNodes.begin() + i);
           i--;
       }
@@ -3919,18 +3947,18 @@ qbTable:
               {
                   if (nodes[j].Compressed.checksum == compressedNodes[i].Name.checksum)
                   {
-                      fprintf(stdout, "Deleting Node %s\n", nodes[i].Name.GetString());
+                      fprintf(stdout, "Deleting Node %s\n", nodes[i].Name.GetString2());
                       DeleteNode(j);
                       j--;
                   }
               }
-              fprintf(stdout, "Deleting ncomp %s\n", compressedNodes[i].Name.GetString());
+              fprintf(stdout, "Deleting ncomp %s\n", compressedNodes[i].Name.GetString2());
               compressedNodes.erase(compressedNodes.begin() + i);
               i--;
           }
           else
           {
-              if (compressedNodes[i].Class.checksum == Checksum("LevelObject").checksum || compressedNodes[i].Class.checksum == Checksum("LevelGeometry").checksum)
+              if (compressedNodes[i].Class.checksum == Checksums::LevelObject || compressedNodes[i].Class.checksum == Checksums::LevelGeometry)
                   compressedNodes[i].Class = Checksum("EnvironmentObject");
           }
       }
@@ -3938,51 +3966,85 @@ qbTable:
 
   if (compressedNodes.size() == 0)
   {
+      for (DWORD i = 0; i < nodes.size(); i++)
+      {
+          nodes[i].Compressed.checksum = 0;
+      }
       GenerateCompressedNodes();
   }
+
 }
 _declspec (noalias) void Scene::GenerateCompressedNodes()
 {
     DWORD numNodes = nodes.size();
     char msg[128] = "";
     
-    for (DWORD i = 0; i < numNodes; i++)
+    for (DWORD i = 0; i < numNodes-1; i++)
     {
-        Node maybeCompress = Node();
-
-        if (nodes[i].CreatedAtStart)
-            maybeCompress.CreatedAtStart = true;
-        if (nodes[i].TrickObject)
-            maybeCompress.TrickObject = true;
-        if (nodes[i].Cluster.checksum)
-            maybeCompress.Cluster = nodes[i].Cluster;
-        maybeCompress.Class = nodes[i].Class;
-        sprintf(msg, "Node%d_ncomp", i);
-        fprintf(stdout, "Maybe compress: %s\n", msg);
-        maybeCompress.Name = Checksum(msg);
-        bool compress = false;
-
-        for (DWORD j = i + 1; i < numNodes; j++)
+        if (!nodes[i].Compressed.checksum)
         {
-            if (maybeCompress.CreatedAtStart && !nodes[j].CreatedAtStart)
-                goto Next;
-            if (maybeCompress.TrickObject && !nodes[j].TrickObject)
-                goto Next;
-            if (maybeCompress.Cluster.checksum && maybeCompress.Cluster.checksum != nodes[j].Cluster.checksum)
-                goto Next;
-            if (maybeCompress.Class.checksum && maybeCompress.Class.checksum != nodes[j].Class.checksum)
-                goto Next;
+            if (!nodes[i].Class.checksum)
+                nodes[i].Class.checksum = EnvironmentObject::GetClass();
+            Node maybeCompress = Node();
+            unsigned int compressRate = 0;
+            if (nodes[i].CreatedAtStart)
+            {
+                maybeCompress.CreatedAtStart = true;
+                compressRate++;
+            }
+            if (nodes[i].TrickObject)
+            {
+                maybeCompress.TrickObject = true;
+                compressRate++;
+            }
+            if (nodes[i].Cluster.checksum)
+            {
+                maybeCompress.Cluster = nodes[i].Cluster;
+                compressRate++;
+            }
+            maybeCompress.Class = nodes[i].Class;
+            if (compressRate>1)
+            {
+                sprintf(msg, "Node%d_ncomp", i);
+                printf("Maybe compress: %s\n", msg);
+                maybeCompress.Name = Checksum(msg);
+                bool compress = false;
 
-            compress = true;
-            nodes[j].Compressed = maybeCompress.Name;
+                for (DWORD j = i + 1; j < numNodes; j++)
+                {
+                    /*if (maybeCompress.CreatedAtStart && !nodes[j].CreatedAtStart)
+                        goto Next;
+                    if (maybeCompress.TrickObject && !nodes[j].TrickObject)
+                        goto Next;
+                    if (maybeCompress.Cluster.checksum && maybeCompress.Cluster.checksum != nodes[j].Cluster.checksum)
+                        goto Next;
+                    if (maybeCompress.Class.checksum && maybeCompress.Class.checksum != nodes[j].Class.checksum)
+                        goto Next;
+                    */
+                    if (!nodes[j].Compressed.checksum)
+                    {
+                        if (((maybeCompress.CreatedAtStart && nodes[j].CreatedAtStart) || !maybeCompress.CreatedAtStart) && ((maybeCompress.TrickObject && nodes[j].TrickObject) || !maybeCompress.TrickObject) &&
+                            ((maybeCompress.Cluster.checksum && maybeCompress.Cluster.checksum == nodes[j].Cluster.checksum) || !maybeCompress.Cluster.checksum) &&
+                            ((maybeCompress.Class.checksum && maybeCompress.Class.checksum == nodes[j].Class.checksum) || !maybeCompress.Class.checksum))
+                        {
+                            compress = true;
+                            printf("Setting compression on node %s[%d]\n", nodes[j].Name.GetString2(), j);
+                            nodes[j].Compressed = maybeCompress.Name;
+                        }
+                    }
+                    /*Next:
+                        if(compress==false)
+                          printf("Next? %s[%d]\n", nodes[j].Name.GetString2(), j);*/
+                }
+                if (compress)
+                {
+                    nodes[i].Compressed = maybeCompress.Name;
 
-        Next:;
+                    compressedNodes.push_back(maybeCompress);
+                    printf("Added Compress: %s\n", maybeCompress.Name.GetString2());
+                }
+            }
         }
-        if (compress)
-            nodes[i].Compressed = maybeCompress.Name;
-
-        compressedNodes.push_back(maybeCompress);
-        fprintf(stdout, "Added Compress: %s\n", maybeCompress.Name.GetString());
     }
 }
 
@@ -4142,7 +4204,7 @@ dne:
           script->EndScript();
           ifs[ifCounter]=true;
           break;
-        case 0xA1DA6FE9:
+        case Checksums::InNetGame:
         case 0x850B3CCA:
           lastIf = 0xFFFFFFFF;
           script->Append(0x25);
@@ -4298,25 +4360,25 @@ dne:
 
         switch(qbKey)
         {
-        case 0xB9D31B0A:
+        case Checksums::Position:
           pFile+=2;
           node->Position = *(SimpleVertex*)pFile;
           pFile+=sizeof(SimpleVertex);
           break;
-        case 0x9D2D0915:
+        case Checksums::Angles:
           pFile+=2;
           node->Angles = *(SimpleVertex*)pFile;
           pFile+=sizeof(SimpleVertex);
           break;
-        case 0xA1DC81F9:
+        case Checksums::Name:
           pFile+=2;
           node->Name = *(Checksum*)pFile;
           pFile+=sizeof(Checksum);
           break;
-        case 0x1645B830:
+        case Checksums::TrickObject:
           node->TrickObject=true;
           break;
-        case 0x12B4E660:
+        case Checksums::Class:
           pFile+=2;
           node->Class = *(Checksum*)pFile;
           if(node->Class.checksum == RailNode::GetClass())
@@ -4328,16 +4390,16 @@ dne:
           }
           pFile+=sizeof(Checksum);
           break;
-        case 0x7321A8D6:
+        case Checksums::Type:
           pFile+=2;
           //if(node->Class.checksum!=Checksum("GameObject").checksum)
           node->Type = *(Checksum*)pFile;
           pFile+=sizeof(Checksum);
           break;
 
-        case 0x2CA8A299:
+        case Checksums::TriggerScripts:
           pFile+=2;
-          if(node->Class.checksum!=Checksum("GameObject").checksum)
+          if(node->Class.checksum!=Checksums::GameObject)
           {
             node->Trigger = *(Checksum*)pFile;
             pFile+=sizeof(Checksum);
@@ -4347,31 +4409,31 @@ dne:
             pFile+=sizeof(Checksum);
           break;
 
-        case 0x1A3A966B:
+        case Checksums::Cluster:
           pFile+=2;
           node->Cluster = *(Checksum*)pFile;
           pFile+=sizeof(Checksum);
           break;
 
-        case 0x54CF8532:
+        case Checksums::TerrainType:
           pFile += 2;
           node->TerrainType = *(Checksum*)pFile;
           pFile += sizeof(Checksum);
           break;
 
-        case 0x68910AC6:
+        case Checksums::AbsentInNetGames:
           node->AbsentInNetGames = true;
           break;
 
-        case 0x20209C31:
+        case Checksums::NetEnabled:
           node->NetEnabled = true;
           break;
 
-        case 0x23627FD7:
+        case Checksums::Permanent:
           node->Permanent = true;
           break;
 
-        case 0x2E7D5EE7:
+        case Checksums::Links:
           pFile+=3;
           /*if(*(DWORD*)pFile>=0xFFFF)
           MessageBox(0, "...", "...", 0);*/
@@ -4394,7 +4456,7 @@ dne:
 done:
           break;
 
-        case 0x7C2552B9:
+        case Checksums::CreatedAtStart:
           node->CreatedAtStart = true;
           break;
 
@@ -4541,7 +4603,7 @@ qbTable:
             break;
         }
       }
-      else if(nodes[i].Class.checksum == 0xB7B3BD86/*Checksum("LevelObject").checksum*/ || nodes[i].Class.checksum == 0xBF4D3536/*Checksum("LevelGeometry").checksum*/)
+      else if(nodes[i].Class.checksum == Checksums::LevelObject || nodes[i].Class.checksum == Checksums::LevelGeometry)
       {
         nodes[i].Class = Checksum("EnvironmentObject");
         for(DWORD j=0, numMeshes = meshes.size(); j<numMeshes; j++)
@@ -4585,9 +4647,9 @@ qbTable:
           }
         }
       }
-      else if(nodes[i].Class.checksum == 0xBF4D3536)
+      else if(nodes[i].Class.checksum == Checksums::LevelGeometry)
         nodes[i].Class = Checksum("EnvironmentObject");
-      else if(nodes[i].Class.checksum == Checksum("RailNode").checksum)
+      else if(nodes[i].Class.checksum == RailNode::GetClass())
       {
         if(!nodes[i].CreatedAtStart || nodes[i].AbsentInNetGames)
         {

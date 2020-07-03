@@ -23,6 +23,9 @@ const enum MeshFlags
   isDeleted=8,
 };
 
+
+
+
 extern DWORD defaultCulling;
 
 struct Node;
@@ -1404,6 +1407,8 @@ public:
     *outDistance = closestIntersect;
     return hasHit;
   }
+
+  __declspec (noalias)void Mesh::Scale(float scale);
 
   __declspec (noalias) void MoveRelativeNeg(const D3DXVECTOR3* const __restrict relDist)
   {

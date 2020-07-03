@@ -104,6 +104,8 @@ struct Checksum
     this->checksum = checksum;
   }
 
+  void SetString(char* string);
+
   /*Checksum operator=(const DWORD &crc)
   {
     checksum = crc;

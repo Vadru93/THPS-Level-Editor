@@ -255,6 +255,7 @@ struct Texture
     return this->b;
   }
   */
+
   __declspec(restrict) inline const LPDIRECT3DTEXTURE9 GetImage() const
   {
     return imageData;
@@ -262,8 +263,11 @@ struct Texture
 
   void Release()
   {
+      if (IsCreated())
+      {
 #define SAFE_RELEASE(p) { if ( (p) ) { (p)->Release(); p=NULL;} }
-    SAFE_RELEASE(imageData);
+          SAFE_RELEASE(imageData);
+      }
   }
 
   void CreateTexture();
@@ -431,6 +435,39 @@ struct Texture
     }
   }
 
+  void SetEnvFlag(bool flag)
+  {
+      if (flag)
+          blendMode |= 0xF0000000;
+      else
+          blendMode &= ~0xF0000000;
+  }
+
+  void SetCreated()
+  {
+      blendMode |= 0x0F000000;
+  }
+
+  bool IsCreated()
+  {
+      return blendMode & 0x0F000000;
+  }
+
+  bool IsEnvMap()
+  {
+      return blendMode & 0xF0000000;
+  }
+
+  void SetBlendMode(DWORD mode)
+  {
+      blendMode = mode;
+      blendMode &= ~0xFF000000;
+  }
+
+  DWORD GetBlendMode()
+  {
+      return blendMode & 0xFFFFFFUL;
+  }
   void SetUVMode(const DWORD &uAddress, const DWORD &vAddress)
   {
     switch(uAddress)
@@ -493,8 +530,9 @@ struct Texture
    };
     public:
       DWORD fixedAlpha;
-      DWORD blendMode;
+      
   private:
+      DWORD blendMode;
     Checksum textureId;
     //DWORD flags;
     /*float r;
@@ -518,6 +556,7 @@ struct Material
     reverse=false;
     alphaMap=false;
     extraLayer=false;
+    zbias = 0;
   }
 
   void Reserve(DWORD numTextures)
@@ -682,6 +721,8 @@ public:
   bool extraLayer;
   BYTE fucked;
   BYTE padding[3];
+  int zbias;
+  bool exportedExtraLayer;
   //D3DMATERIAL9 d3dMaterial;
 
 };

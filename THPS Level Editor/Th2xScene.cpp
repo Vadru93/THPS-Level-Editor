@@ -1100,7 +1100,7 @@ void Th2xScene::ProcessMeshes(BYTE* pFile, DWORD size, bool sky)
         texture.vAddress = D3DTADDRESS_WRAP;
         texture.uAddress = D3DTADDRESS_WRAP;
       }
-      texture.blendMode = 20;
+      texture.SetBlendMode(20);
 
       char material_name[64];
       sprintf(material_name, "Grass");
@@ -2201,7 +2201,7 @@ void Th2xScene::LoadDDM(DWORD ptr, bool sky)
     texture.vAddress = D3DTADDRESS_WRAP;
     texture.uAddress = D3DTADDRESS_WRAP;
   }
-  texture.blendMode = 20;
+  texture.SetBlendMode(20);
 
   ddmObj.resize(numObjects);
   for (DWORD i = 0; i < numObjects; i++)

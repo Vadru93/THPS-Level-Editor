@@ -63,7 +63,7 @@ typedef struct {
   unsigned long reserved2;
 } DDS_HEADER;
 
-const DWORD checksumTable[256] =
+constexpr DWORD checksumTable[256] =
 {
   0x00000000, 0x77073096, 0xee0e612c, 0x990951ba,
   0x076dc419, 0x706af48f, 0xe963a535, 0x9e6495a3,
@@ -129,6 +129,64 @@ const DWORD checksumTable[256] =
   0xbad03605, 0xcdd70693, 0x54de5729, 0x23d967bf,
   0xb3667a2e, 0xc4614ab8, 0x5d681b02, 0x2a6f2b94,
   0xb40bbe37, 0xc30c8ea1, 0x5a05df1b, 0x2d02ef8d
+};
+
+
+template<size_t idx>
+constexpr uint32_t crc32(const char* str)
+{
+    char c = str[idx];
+    if (c >= 'A' && c <= 'Z') c += 32;
+    if (c == '/') c = '\\';
+    return (crc32<idx - 1>(str) >> 8) ^ checksumTable[(crc32<idx - 1>(str) ^ c) & 0x000000FF];
+}
+
+// This is the stop-recursion function
+template<>
+constexpr uint32_t crc32<size_t(-1)>(const char* str)
+{
+    return 0xFFFFFFFF;
+}
+
+// This doesn't take into account the nul char
+#define COMPILE_CRC32(x) (crc32<sizeof(x) - 2>(x))
+
+
+namespace Checksums
+{
+    enum CompileTimeChecksums//Generated at compile-time for improved performance and code readability
+    {
+        Class = COMPILE_CRC32("Class"),
+        Name = COMPILE_CRC32("Name"),
+        Position = COMPILE_CRC32("Position"),
+        Pos = COMPILE_CRC32("Pos"),
+        Angles = COMPILE_CRC32("Angles"),
+        Kill = COMPILE_CRC32("Kill"),
+        Invisible = COMPILE_CRC32("Invisible"),
+        Shatter = COMPILE_CRC32("Shatter"),
+        Create = COMPILE_CRC32("Create"),
+        ShatterAndDie = COMPILE_CRC32("ShatterAndDie"),
+        Visible = COMPILE_CRC32("Visisble"),
+        GameObject = COMPILE_CRC32("GameObject"),
+        LevelGeometry = COMPILE_CRC32("LevelGeometry"),
+        LevelObject = COMPILE_CRC32("LevelObject"),
+        InNetGame = COMPILE_CRC32("InNetGame"),
+        Cluster = COMPILE_CRC32("Cluster"),
+        TerrainType = COMPILE_CRC32("TerrainType"),
+        Type = COMPILE_CRC32("Type"),
+        TriggerScripts = COMPILE_CRC32("TriggerScripts"),
+        PedAI = COMPILE_CRC32("PedAI"),
+        DEFAULT = COMPILE_CRC32("default"),
+        TrickObject = COMPILE_CRC32("TrickObject"),
+        TrickOb = COMPILE_CRC32("TrickOb"),
+        AbsentInNetGames = COMPILE_CRC32("AbsentInNetGames"),
+        NetEnabled = COMPILE_CRC32("NetEnabled"),
+        Permanent = COMPILE_CRC32("Permanent"),
+        CreatedAtStart = COMPILE_CRC32("CreatedAtStart"),
+        Links = COMPILE_CRC32("Links"),
+        Waypoint = COMPILE_CRC32("Waypoint"),
+        Restart = COMPILE_CRC32("Restart"),
+    };
 };
 /*
 template <const char* string, const DWORD idx> struct crc32

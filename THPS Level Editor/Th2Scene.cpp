@@ -1059,7 +1059,7 @@ void Th2Scene::ProcessXBOXMaterials(DWORD ptr, bool sky)
     texture.vAddress = D3DTADDRESS_WRAP;
     texture.uAddress = D3DTADDRESS_WRAP;
   }
-  texture.blendMode = 20;
+  texture.SetBlendMode(20);
   for (DWORD i = 0; i < numObjects; i++)
   {
     DWORD pObject = pFile + ((DWORD*)ptr)[0];

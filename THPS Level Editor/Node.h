@@ -506,6 +506,9 @@ struct EnvironmentObject : public Node
   {
     this->Class = env;
     this->Trigger.checksum = 0;
+    this->TrickObject = false;
+    this->CreatedAtStart = false;
+    this->Compressed = 0;
   }
 
   static DWORD GetClass()

@@ -30,8 +30,12 @@ struct Thug2Texture : Texture
     SetGreen(data->g);
     SetBlue(data->b);*/
     SetUVMode(data->uAddress, data->vAddress);
-    blendMode = (DWORD)( data->blendModeAlpha & 0xFFFFFFUL );
-    if(blendMode==5)
+    SetBlendMode((DWORD)(data->blendModeAlpha & 0xFFFFFFUL));
+    if (data->flags & (1 << 3))
+        SetEnvFlag(true);
+    else
+        SetEnvFlag(false);
+    if(GetBlendMode()==5)
     {
       fixedAlpha = (( data->blendModeAlpha >> 32 ) / 2)<<24;
     }
@@ -84,8 +88,12 @@ struct ThugTexture : Texture
     //SetTiling(uTiling,vTiling);
     //CreateTexture();
 
-    blendMode = (DWORD)(data->blendModeAlpha & 0xFFFFFFUL);
-    if (blendMode == 5)
+    SetBlendMode((DWORD)(data->blendModeAlpha & 0xFFFFFFUL));
+    if (data->flags & (1 << 3))
+        SetEnvFlag(true);
+    else
+        SetEnvFlag(false);
+    if (GetBlendMode() == 5)
     {
       fixedAlpha = ((data->blendModeAlpha >> 32)) << 24;
       fixedAlpha = fixedAlpha >= 0x80000000UL ? 0xFF000000UL : (fixedAlpha << 1);
@@ -103,7 +111,7 @@ struct ThugTexture : Texture
     (*(Colour*)&fixedAlpha).b = (*(Colour*)&fixedAlpha).b >= 127 ? 254 : (*(Colour*)&fixedAlpha).b * 2;
     /*if((data->r==0.5f && (*(Colour*)&fixedAlpha).r!=256) || (data->g==0.5f && (*(Colour*)&fixedAlpha).g!=256) || (data->b==0.5f && (*(Colour*)&fixedAlpha).b!=256))
     MessageBox(0,"WTF","WTF",0);*/
-    if (blendMode == 5 && data->unk1)
+    if (GetBlendMode() == 5 && data->unk1)
     {
       (*(Colour*)&fixedAlpha).r = 254;
       (*(Colour*)&fixedAlpha).g = 254;
@@ -140,8 +148,8 @@ struct Th4Texture : Texture
     /*SetRed(data->r);
     SetGreen(data->g);
     SetBlue(data->b);*/
-    blendMode = (DWORD)( data->blendModeAlpha & 0xFFFFFFUL );
-    if(blendMode==5)
+    SetBlendMode((DWORD)( data->blendModeAlpha & 0xFFFFFFUL ));
+    if(GetBlendMode()==5)
     {
       fixedAlpha = (( data->blendModeAlpha >> 32 ))<<24;
       fixedAlpha = fixedAlpha >= 0x80000000UL ? 0xFF000000UL : ( fixedAlpha << 1 );
@@ -159,7 +167,7 @@ struct Th4Texture : Texture
       (*(Colour*)&fixedAlpha).b = (*(Colour*)&fixedAlpha).b >= 127 ? 254 : (*(Colour*)&fixedAlpha).b*2;
       /*if((data->r==0.5f && (*(Colour*)&fixedAlpha).r!=256) || (data->g==0.5f && (*(Colour*)&fixedAlpha).g!=256) || (data->b==0.5f && (*(Colour*)&fixedAlpha).b!=256))
         MessageBox(0,"WTF","WTF",0);*/
-      if(blendMode == 5 && data->unk1)
+      if(GetBlendMode() == 5 && data->unk1)
       {
         (*(Colour*)&fixedAlpha).r=254;
         (*(Colour*)&fixedAlpha).g=254;
@@ -184,9 +192,8 @@ struct ThugMaterial : Material
     bool unk2;
     float drawOrder;
     bool singledSided;
-    //BYTE unk[10];
     bool doubled;
-    DWORD unk4;
+    int zbias;
     bool unkFlag;//grass?
     float grassHeight;
     DWORD grassLayers;

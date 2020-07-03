@@ -1797,7 +1797,8 @@ private: System::Windows::Forms::Panel^  pictureBox1;
              //SetFloatingPointRoundingToTruncate();
              InitRenderScene();
              //AllocConsole();
-             printf("Welcome\n");
+             printf("Welcome %X  (0x12B4E660)\n", Checksums::Class);
+             
              //CreateThread(0,0,(LPTHREAD_START_ROUTINE)DrawFrame, 0, 0, 0);
 
            }
