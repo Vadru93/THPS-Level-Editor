@@ -261,13 +261,9 @@ void Thug2Scene::ProcessMeshes(DWORD ptr)
 									delete[] data;
 								}
 							}
-							if (imageSize2 == 64)
-								MessageBox(0, "WT5?!", "...", MB_OK);
 							//mat->transparent = true;
 							texture->Release();
 							texture->CreateTexture();
-							if (imageSize2 == 64)
-								MessageBox(0, "WT6?!", "...", MB_OK);
 						}
 					}
 
@@ -1743,7 +1739,7 @@ Thug2Scene::Thug2Scene(char* Path, bool sky)
 					const DWORD index = meshes.size();
 					meshes.push_back(Mesh());
 					meshes[index].AddCollision(collision[i], header.Version);
-					meshes[index].UnSetFlag(MeshFlags::isVisible);
+					meshes[index].UnSetFlag(MeshFlags::visible);
 					collision[i].Name++;
 					meshes[index].SetName(*(Checksum*)&collision[i].Name);
 					}
@@ -1755,7 +1751,7 @@ Thug2Scene::Thug2Scene(char* Path, bool sky)
 					const DWORD index = meshes.size();
 					meshes.push_back(Mesh());
 					meshes[index].AddCollision(collision[i], header.Version);
-					meshes[index].UnSetFlag(MeshFlags::isVisible);
+					meshes[index].UnSetFlag(MeshFlags::visible);
 					meshes[index].SetName(*(Checksum*)&collision[i].Name);
 				}
 			}
@@ -1773,7 +1769,7 @@ Thug2Scene::Thug2Scene(char* Path, bool sky)
 		meshes.push_back(Mesh());
 		meshes[index].InitCollision();
 		meshes[index].AddCollision(collision[i], header.Version);
-		meshes[index].SetFlag(MeshFlags::isVisible, false);
+		meshes[index].SetFlag(MeshFlags::visible, false);
 		meshes[index].SetName(*(Checksum*)&collision[i].Name);
 		}
 		}
@@ -1909,6 +1905,36 @@ Thug2Scene::Thug2Scene(char* Path, bool sky)
 							}
 						}
 					}
+					else if (nodes[i].Class.checksum == Checksums::GameObject)
+					{
+						Mesh* mesh = GetMesh(nodes[i].Name);
+						if (mesh)
+						{
+							mesh->SetFlag(MeshFlags::movable);
+							nodes.push_back(nodes[i]);
+							char new_name[256] = "";
+							char new_name2[256] = "";
+							sprintf(new_name2, "%s_Trigger", nodes[i].Name.GetString());
+							sprintf(new_name, "%s_GameOb", nodes[i].Name.GetString());
+							Node& _node = nodes.back();
+							if (_node.Links.size())
+							{
+								_node.AbsentInNetGames = false;
+								_node.Name = Checksum(new_name);
+								_node.Trigger = Checksum(new_name2);
+								triggers.push_back(_node.Trigger);
+								KnownScripts.push_back(KnownScript(_node.Trigger, NULL, 0));
+								KnownScript& _script = KnownScripts.back();
+								_script.Script(Checksum("MoveObject"));
+								_script.Script(Checksum("Name"));
+								_script.Append(0x7);
+								_script.Script(nodes[i].Name);
+								_script.Script(Checksum("FollowPathLinked"));
+								_script.EndScript();
+							}
+							nodes[i].Class.checksum = EnvironmentObject::GetClass();
+						}
+					}
 				}
 				/*if(nodes[i].Trigger.checksum)
 				{
@@ -2005,14 +2031,14 @@ Thug2Scene::Thug2Scene(char* Path, bool sky)
 					sprintf(Name, "%s_Coll", meshes[i].GetName().GetString());
 					meshes.push_back(Mesh());
 					Mesh& mesh = meshes.back();
-					mesh.SetFlag(MeshFlags::isVisible, false);
+					mesh.SetFlag(MeshFlags::visible, false);
 					meshes[i].MoveCollision(mesh);
 					mesh.SetName(Checksum(Name));
 					for (DWORD j = 0; j < KnownScripts.size(); j++)
 					{
 						BYTE* pFile = KnownScripts[j].func;
 						BYTE* eof = pFile + KnownScripts[j].size;
-						BYTE* offset;
+						BYTE* offset=pFile;
 						while (pFile < eof)
 						{
 							const BYTE opcode = *pFile;
@@ -2274,7 +2300,7 @@ vector<DWORD> addedTextures;
 		{
 			meshes.push_back(Mesh());
 			Mesh& mesh = meshes.back();
-			mesh.SetFlag(MeshFlags::isVisible, true);
+			mesh.SetFlag(MeshFlags::visible, true);
 			//DWORD realName = extraLayerMeshes[i].name;
 			Node* node = GetNode(extraLayerMeshes[i].name);
 			if (node)
@@ -2371,8 +2397,8 @@ vector<DWORD> addedTextures;
 					{
 						if (mat->GetTexture(j + 1)->IsEnvMap())
 						{
-							mesh.SetFlag(MeshFlags::isDeleted, true);
-							mesh.SetFlag(MeshFlags::isVisible, false);
+							mesh.SetFlag(MeshFlags::deleted, true);
+							mesh.SetFlag(MeshFlags::visible, false);
 						}
 						else
 						  FixMaterialTHUG(mat, matList, addedTextures);
@@ -2396,7 +2422,7 @@ vector<DWORD> addedTextures;
 			{
 				meshes.push_back(Mesh());
 				Mesh& mesh2 = meshes.back();//th4
-				mesh2.SetFlag(MeshFlags::isVisible, true);
+				mesh2.SetFlag(MeshFlags::visible, true);
 
 				Node* node2 = GetNode(extraLayerMeshes[i].name);
 				if (node2)
@@ -2442,8 +2468,8 @@ vector<DWORD> addedTextures;
 						{
 							if (mat->GetTexture(j + 1)->IsEnvMap())
 							{
-								mesh2.SetFlag(MeshFlags::isDeleted, true);
-								mesh2.SetFlag(MeshFlags::isVisible, false);
+								mesh2.SetFlag(MeshFlags::deleted, true);
+								mesh2.SetFlag(MeshFlags::visible, false);
 							}
 							else
 							  FixMaterialTHUG(mat, matList, addedTextures, j+1);
@@ -3104,7 +3130,7 @@ ThugScene::ThugScene(char* Path, bool sky)
 					const DWORD index = meshes.size();
 					meshes.push_back(Mesh());
 					meshes[index].AddCollision(collision[i], header.Version);
-					meshes[index].UnSetFlag(MeshFlags::isVisible);
+					meshes[index].UnSetFlag(MeshFlags::visible);
 					collision[i].Name++;
 					meshes[index].SetName(*(Checksum*)&collision[i].Name);
 					}
@@ -3116,7 +3142,7 @@ ThugScene::ThugScene(char* Path, bool sky)
 					const DWORD index = meshes.size();
 					meshes.push_back(Mesh());
 					meshes[index].AddCollision(collision[i], header.Version);
-					meshes[index].UnSetFlag(MeshFlags::isVisible);
+					meshes[index].UnSetFlag(MeshFlags::visible);
 					meshes[index].SetName(*(Checksum*)&collision[i].Name);
 				}
 			}
@@ -3136,7 +3162,7 @@ ThugScene::ThugScene(char* Path, bool sky)
 		meshes.push_back(Mesh());
 		meshes[index].InitCollision();
 		meshes[index].AddCollision(collision[i], header.Version);
-		meshes[index].SetFlag(MeshFlags::isVisible, false);
+		meshes[index].SetFlag(MeshFlags::visible, false);
 		collision[i].Name++;
 		meshes[index].SetName(*(Checksum*)&collision[i].Name);current*/
 		/*}
@@ -3148,7 +3174,7 @@ ThugScene::ThugScene(char* Path, bool sky)
 		DWORD index = meshes.size();
 		meshes.push_back(Mesh());
 		meshes[index].AddCollision(collision[i], header.Version);
-		meshes[index].SetFlag(MeshFlags::isVisible, false);
+		meshes[index].SetFlag(MeshFlags::visible, false);
 		meshes[index].SetName(*(Checksum*)&collision[i].Name);
 		}*/
 		//current}
@@ -3269,6 +3295,36 @@ ThugScene::ThugScene(char* Path, bool sky)
 							}
 						}
 					}
+					else if (nodes[i].Class.checksum == Checksums::GameObject)
+					{
+						Mesh* mesh = GetMesh(nodes[i].Name);
+						if (mesh)
+						{
+							mesh->SetFlag(MeshFlags::movable);
+							nodes.push_back(nodes[i]);
+							char new_name[256] = "";
+							char new_name2[256] = "";
+							sprintf(new_name2, "%s_Trigger", nodes[i].Name.GetString());
+							sprintf(new_name, "%s_GameOb", nodes[i].Name.GetString());
+							Node& _node = nodes.back();
+							if (_node.Links.size())
+							{
+								_node.AbsentInNetGames = false;
+								_node.Name = Checksum(new_name);
+								_node.Trigger = Checksum(new_name2);
+								triggers.push_back(_node.Trigger);
+								KnownScripts.push_back(KnownScript(_node.Trigger, NULL, 0));
+								KnownScript& _script = KnownScripts.back();
+								_script.Script(Checksum("MoveObject"));
+								_script.Script(Checksum("Name"));
+								_script.Append(0x7);
+								_script.Script(nodes[i].Name);
+								_script.Script(Checksum("FollowPathLinked"));
+								_script.EndScript();
+							}
+							nodes[i].Class.checksum = EnvironmentObject::GetClass();
+						}
+					}
 				}
 				/*if(nodes[i].Trigger.checksum)
 				{
@@ -3362,7 +3418,7 @@ ThugScene::ThugScene(char* Path, bool sky)
 					sprintf(Name, "%s_Coll", meshes[i].GetName().GetString());
 					meshes.push_back(Mesh());
 					Mesh& mesh = meshes.back();
-					mesh.SetFlag(MeshFlags::isVisible, false);
+					mesh.SetFlag(MeshFlags::visible, false);
 					meshes[i].MoveCollision(mesh);
 					mesh.SetName(Checksum(Name));
 					for (DWORD j = 0; j < KnownScripts.size(); j++)
@@ -3497,14 +3553,14 @@ ThugScene::ThugScene(char* Path, bool sky)
 			Node* node2 = GetNode(this->meshes[j].GetName());
 			if (strstr(this->meshes[j].GetName().GetString2(), "occlusion") || strstr(this->meshes[j].GetName().GetString2(), "Occlusion") || strstr(this->meshes[j].GetName().GetString2(), "Occluder"))
 			{
-				this->meshes[j].SetFlag(MeshFlags::isDeleted);
-				this->meshes[j].UnSetFlag(MeshFlags::isVisible);
+				this->meshes[j].SetFlag(MeshFlags::deleted);
+				this->meshes[j].UnSetFlag(MeshFlags::visible);
 				sprintf(Name, "%s_Coll", meshes[j].GetName().GetString());
 				Mesh* tmp = GetMesh(Checksum(Name));
 				if (tmp)
 				{
-					tmp->SetFlag(MeshFlags::isDeleted);
-					tmp->UnSetFlag(MeshFlags::isVisible);
+					tmp->SetFlag(MeshFlags::deleted);
+					tmp->UnSetFlag(MeshFlags::visible);
 				}
 				for (DWORD k = 0; k < extraLayerMeshes.size(); k++)
 				{
@@ -3519,14 +3575,14 @@ ThugScene::ThugScene(char* Path, bool sky)
 			{
 				if (node2->AbsentInNetGames)
 				{
-					this->meshes[j].SetFlag(MeshFlags::isDeleted);
-					this->meshes[j].UnSetFlag(MeshFlags::isVisible);
+					this->meshes[j].SetFlag(MeshFlags::deleted);
+					this->meshes[j].UnSetFlag(MeshFlags::visible);
 					sprintf(Name, "%s_Coll", meshes[j].GetName().GetString());
 					Mesh* tmp = GetMesh(Checksum(Name));
 					if (tmp)
 					{
-						tmp->SetFlag(MeshFlags::isDeleted);
-						tmp->UnSetFlag(MeshFlags::isVisible);
+						tmp->SetFlag(MeshFlags::deleted);
+						tmp->UnSetFlag(MeshFlags::visible);
 					}
 					for (DWORD k = 0; k < extraLayerMeshes.size(); k++)
 					{
@@ -3546,7 +3602,7 @@ ThugScene::ThugScene(char* Path, bool sky)
 		  if (node2)
 		  {
 			if (node2->CreatedAtStart==false)
-			  this->meshes[j].SetFlag(MeshFlags::isDeleted);
+			  this->meshes[j].SetFlag(MeshFlags::deleted);
 		  }
 		}*/
 
@@ -4423,7 +4479,7 @@ Th4Scene::Th4Scene(char* Path, bool sky)
 					DWORD index = meshes.size();
 					meshes.push_back(Mesh());
 					meshes[index].AddCollision(collision[i], header.Version);
-					meshes[index].SetFlag(MeshFlags::isVisible, false);
+					meshes[index].SetFlag(MeshFlags::visible, false);
 					collision[i].Name++;
 					meshes[index].SetName(*(Checksum*)&collision[i].Name);
 					}
@@ -4435,7 +4491,7 @@ Th4Scene::Th4Scene(char* Path, bool sky)
 					DWORD index = meshes.size();
 					meshes.push_back(Mesh());
 					meshes[index].AddCollision(collision[i], header.Version);
-					meshes[index].SetFlag(MeshFlags::isVisible, false);
+					meshes[index].SetFlag(MeshFlags::visible, false);
 					meshes[index].SetName(*(Checksum*)&collision[i].Name);
 				}
 			}
@@ -4574,7 +4630,7 @@ Th4Scene::Th4Scene(char* Path, bool sky)
 					sprintf(Name, "%s_Coll", meshes[i].GetName().GetString());
 					meshes.push_back(Mesh());
 					Mesh& mesh = meshes.back();
-					mesh.SetFlag(MeshFlags::isVisible, false);
+					mesh.SetFlag(MeshFlags::visible, false);
 					meshes[i].MoveCollision(mesh);
 					mesh.SetName(Checksum(Name));
 					for (DWORD j = 0; j < KnownScripts.size(); j++)

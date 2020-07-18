@@ -1211,49 +1211,72 @@ void Th3Mesh::Export(FILE* const __restrict f)
 	if (collPolyCount != 0)
 	{
 		WriteChunkHeader(f, 0x11D, collisionSize);
-		WriteDWORD(f, (DWORD)numLeafs);
-		fwrite(&collPolyCount, 4, 1, f);
-		DWORD numNodes = CollNodes.size();
-		if (numNodes > 0xFFFE)
-			MessageBox(0, 0, 0, 0);
-
-		if (numNodes)
+		if (!movable())
 		{
-			WORD totalFaces = 0;
-			for (DWORD i = 0; i < numNodes; i++)
+			WriteDWORD(f, (DWORD)numLeafs);
+			fwrite(&collPolyCount, 4, 1, f);
+			DWORD numNodes = CollNodes.size();
+			if (numNodes > 0xFFFE)
+				MessageBox(0, "Too many nodes...", 0, 0);
+
+			if (numNodes)
 			{
-				if (CollNodes[i].type == 2)//branch
+				WORD totalFaces = 0;
+				for (DWORD i = 0; i < numNodes; i++)
 				{
-					TreeNodez* left = &CollNodes[CollNodes[i].right];
-					TreeNodez* right = &CollNodes[CollNodes[i].left];
+					if (CollNodes[i].type == 2)//branch
+					{
+						TreeNodez* left = &CollNodes[CollNodes[i].right];
+						TreeNodez* right = &CollNodes[CollNodes[i].left];
 
-					if (left <= &CollNodes[i] || right <= &CollNodes[i])
-						MessageBox(0, 0, 0, 0);
+						if (left <= &CollNodes[i] || right <= &CollNodes[i])
+							MessageBox(0, 0, 0, 0);
 
-					fwrite(&left->type, 1, 1, f);
-					fwrite(&right->type, 1, 1, f);
+						fwrite(&left->type, 1, 1, f);
+						fwrite(&right->type, 1, 1, f);
 
-					fwrite(&CollNodes[i].axis, 2, 1, f);
+						fwrite(&CollNodes[i].axis, 2, 1, f);
 
-					fwrite(&left->index, 2, 1, f);
-					fwrite(&right->index, 2, 1, f);
+						fwrite(&left->index, 2, 1, f);
+						fwrite(&right->index, 2, 1, f);
 
-					fwrite((BYTE*)(&left->bbox.Max.x) + CollNodes[i].axis, 4, 1, f);//hack to write float x if axis = 0 y if axis = 4 z if axis = 8
-					fwrite((BYTE*)(&right->bbox.Min.x) + CollNodes[i].axis, 4, 1, f);
+						fwrite((BYTE*)(&left->bbox.Max.x) + CollNodes[i].axis, 4, 1, f);//hack to write float x if axis = 0 y if axis = 4 z if axis = 8
+						fwrite((BYTE*)(&right->bbox.Min.x) + CollNodes[i].axis, 4, 1, f);
+					}
+				}
+				for (DWORD i = 0; i < numNodes; i++)
+				{
+					if (CollNodes[i].type == 1)//leaf
+					{
+						WORD numFacess = (WORD)CollNodes[i].faces.size();
+						fwrite(&totalFaces, 2, 1, f);
+						fwrite(&numFacess, 2, 1, f);
+						totalFaces += numFacess;
+
+					}
+				}
+
+				for (DWORD i = 0; i < numNodes; i++)
+				{
+					if (CollNodes[i].type == 1)//leaf
+					{
+						WORD numFacess = (WORD)CollNodes[i].faces.size();
+						for (WORD j = 0; j < numFacess; j++)
+						{
+							fwrite(&CollNodes[i].faces[j], 4, 1, f);
+						}
+
+					}
 				}
 			}
-			for (DWORD i = 0; i < numNodes; i++)
-			{
-				if (CollNodes[i].type == 1)//leaf
-				{
-					WORD numFacess = (WORD)CollNodes[i].faces.size();
-					fwrite(&totalFaces, 2, 1, f);
-					fwrite(&numFacess, 2, 1, f);
-					totalFaces += numFacess;
-
-				}
-			}
-
+		}
+		else
+		{
+			DWORD numNodes = CollNodes.size();
+			WriteDWORD(f, 1);
+			WriteDWORD(f, collPolyCount);
+			WriteWORD(f, 0);
+			WriteWORD(f, collPolyCount);
 			for (DWORD i = 0; i < numNodes; i++)
 			{
 				if (CollNodes[i].type == 1)//leaf
@@ -2184,7 +2207,7 @@ void Th3Scene::ProcessTDXFile(DWORD ptr, DWORD eof)
 					DWORD index = meshes.size();
 					meshes.push_back(Mesh());
 					meshes[index].AddCollision(collision[i], header.Version);
-					meshes[index].SetFlag(MeshFlags::isVisible, false);
+					meshes[index].SetFlag(MeshFlags::visible, false);
 					meshes[index].SetName(*(Checksum*)&collision[i].Name);
 				}
 			}
@@ -2245,7 +2268,7 @@ Th3Scene::Th3Scene(Scene* const __restrict scene)
 	for(DWORD i=0; i<scene->GetNumMeshes(); i++)
 	{
 	Mesh* tmpMesh = scene->GetMesh(i);
-	if(!tmpMesh->IsTransparent())
+	if(!tmpMesh->transparent())
 	opaqueCount++;
 	}
 
@@ -2257,7 +2280,7 @@ Th3Scene::Th3Scene(Scene* const __restrict scene)
 	for(DWORD i=0; i<scene->GetNumMeshes(); i++)
 	{
 	Mesh* tmpMesh = scene->GetMesh(i);
-	if(tmpMesh->IsTransparent())
+	if(tmpMesh->transparent())
 	{
 	sortedMeshes[alphaIndex] = tmpMesh;
 	alphaIndex++;
@@ -2277,7 +2300,7 @@ Th3Scene::Th3Scene(Scene* const __restrict scene)
 		//Mesh* tmpMesh = sortedMeshes[i];
 		DWORD index = meshes.size();
 
-		if (tmpMesh->GetNumSplits() != 0 && !tmpMesh->IsDeleted())
+		if (tmpMesh->GetNumSplits() != 0 && !tmpMesh->deleted())
 		{
 			meshes.push_back(Th3Mesh(tmpMesh, scene->GetBlendMode()));
 			printf("mesh %d ", index);
@@ -2287,7 +2310,7 @@ Th3Scene::Th3Scene(Scene* const __restrict scene)
 			meshes[index].SetSize();
 			printf("DONE\n");
 		}
-		else if (!tmpMesh->IsDeleted())
+		else if (!tmpMesh->deleted())
 		{
 			meshes.push_back(Th3Mesh(tmpMesh, scene->GetBlendMode(), false));
 			numPolygons += meshes[index].Polygons.size();
@@ -2465,7 +2488,7 @@ void Scene::SaveScene(const char* const __restrict path)
 		for (DWORD i = 0; i < numMeshes; i++)
 		{
 			Mesh* mesh = &meshes[i];
-			if (!mesh->IsDeleted())
+			if (!mesh->deleted())
 			{
 				DWORD pMesh = (DWORD)mesh + 16;
 				fwrite((void*)pMesh, 32, 1, f);
@@ -3758,7 +3781,7 @@ void Scene::ExportScn(const char* const __restrict path)
 	DWORD numMeshes = 0;
 	for (DWORD i = 0; i < GetNumMeshes(); i++)
 	{
-		if (!meshes[i].IsDeleted() && meshes[i].GetNumSplits())
+		if (!meshes[i].deleted() && meshes[i].GetNumSplits())
 			numMeshes++;
 	}
 
@@ -3766,7 +3789,7 @@ void Scene::ExportScn(const char* const __restrict path)
 	for (DWORD i = 0; i < GetNumMeshes(); i++)
 	{
 		Mesh* mesh = &meshes[i];
-		if (!mesh->IsDeleted() && mesh->GetNumSplits())
+		if (!mesh->deleted() && mesh->GetNumSplits())
 		{
 			WriteDWORD(f, mesh->GetName().checksum);
 			WriteDWORD(f, 0xFFFFFFFF);
@@ -4045,7 +4068,7 @@ void Scene::ExportScn(const char* const __restrict path)
 	{
 		Mesh* mesh = GetMesh(i);
 		Collision* col = mesh->GetCollision();
-		if (!mesh->IsDeleted() && col && col->GetNumVertices() && col->GetNumVertices())
+		if (!mesh->deleted() && col && col->GetNumVertices() && col->GetNumVertices())
 		{
 			numMeshes++;
 			numFaces += col->GetNumFaces();
@@ -4068,7 +4091,7 @@ void Scene::ExportScn(const char* const __restrict path)
 	{
 		Mesh* mesh = GetMesh(i);
 		Collision* col = mesh->GetCollision();
-		if (!mesh->IsDeleted() && col && col->GetNumVertices())
+		if (!mesh->deleted() && col && col->GetNumVertices())
 		{
 			WriteDWORD(f, mesh->GetName().checksum);
 			WriteWORD(f, 0); // _flags
@@ -4105,7 +4128,7 @@ void Scene::ExportScn(const char* const __restrict path)
 	{
 		Mesh* mesh = GetMesh(i);
 		Collision* col = mesh->GetCollision();
-		if (!mesh->IsDeleted() && col && col->GetNumVertices())
+		if (!mesh->deleted() && col && col->GetNumVertices())
 		{
 			for (DWORD j = 0; j < col->GetNumVertices(); j++)
 			{
@@ -4119,7 +4142,7 @@ void Scene::ExportScn(const char* const __restrict path)
 	{
 		Mesh* mesh = GetMesh(i);
 		Collision* col = mesh->GetCollision();
-		if (!mesh->IsDeleted() && col && col->GetNumVertices())
+		if (!mesh->deleted() && col && col->GetNumVertices())
 		{
 			for (DWORD j = 0; j < col->GetNumVertices(); j++)
 			{
@@ -4139,7 +4162,7 @@ void Scene::ExportScn(const char* const __restrict path)
 	{
 		Mesh* mesh = GetMesh(i);
 		Collision* col = mesh->GetCollision();
-		if (!mesh->IsDeleted() && col && col->GetNumVertices())
+		if (!mesh->deleted() && col && col->GetNumVertices())
 		{
 			for (DWORD j = 0; j < col->GetNumFaces(); j++)
 			{
@@ -4157,7 +4180,7 @@ void Scene::ExportScn(const char* const __restrict path)
 	{
 		Mesh* mesh = GetMesh(i);
 		Collision* col = mesh->GetCollision();
-		if (!mesh->IsDeleted() && col && col->GetNumVertices())
+		if (!mesh->deleted() && col && col->GetNumVertices())
 		{
 			for (DWORD j = 0; j < col->GetNumFaces(); j++)
 				fputc(0, f);
@@ -4180,7 +4203,7 @@ void Scene::ExportScn(const char* const __restrict path)
 	{
 		Mesh* mesh = GetMesh(i);
 		Collision* col = mesh->GetCollision();
-		if (!mesh->IsDeleted() && col && col->GetNumVertices())
+		if (!mesh->deleted() && col && col->GetNumVertices())
 		{
 			WriteWORD(f, 0x3);
 			WriteWORD(f, col->GetNumFaces() * 3);
@@ -4193,7 +4216,7 @@ void Scene::ExportScn(const char* const __restrict path)
 	{
 		Mesh* mesh = GetMesh(i);
 		Collision* col = mesh->GetCollision();
-		if (!mesh->IsDeleted() && col && col->GetNumVertices())
+		if (!mesh->deleted() && col && col->GetNumVertices())
 		{
 			for (DWORD j = 0; j < col->GetNumFaces(); j++)
 			{
@@ -4259,7 +4282,7 @@ void Scene::ExportScn(const char* const __restrict path)
 					if (nodes[i].Name.checksum == GetMesh(j)->GetName().checksum)
 					{
 						found = true;
-						if (GetMesh(j)->IsDeleted() || GetMesh(j)->GetNumVertices() == 0)
+						if (GetMesh(j)->deleted() || GetMesh(j)->GetNumVertices() == 0)
 							MessageBox(0, "??!", "", 0);
 						break;
 					}
@@ -4728,7 +4751,7 @@ void Scene::sort()
 	/*DWORD opaqueCount = 0;
 	for (DWORD i = 0; i<meshes.size(); i++)
 	{
-	  if (!meshes[i].IsTransparent())
+	  if (!meshes[i].transparent())
 		opaqueCount++;
 	}
 
@@ -4738,7 +4761,7 @@ void Scene::sort()
 	memcpy(meshes, &this->meshes.front(), this->meshes.size()*sizeof(Mesh));
 	for (DWORD i = 0; i<this->meshes.size(); i++)
 	{
-	  if (this->meshes[i].IsTransparent())
+	  if (this->meshes[i].transparent())
 	  {
 		meshes[alphaIndex].drawOrder = this->meshes[i].GetDrawOrder();
 		//meshes[alphaIndex].mesh = std::move(this->meshes[i]);
@@ -4765,7 +4788,7 @@ void Scene::sort()
 	std::sort(this->meshes.begin(), this->meshes.end());
 	for (DWORD i = 0; i < this->meshes.size(); i++)
 	{
-		if (this->meshes[i].IsVisible())
+		if (this->meshes[i].visible())
 		{
 			this->meshes[i].sort();
 			meshes[i].OptimizeVerts();
@@ -4803,7 +4826,7 @@ void Scene::SortMeshes()
 	DWORD opaqueCount = 0;
 	for (DWORD i = 0; i < meshes.size(); i++)
 	{
-		if (!meshes[i].IsTransparent())
+		if (!meshes[i].transparent())
 			opaqueCount++;
 	}
 
@@ -4813,7 +4836,7 @@ void Scene::SortMeshes()
 	memcpy(meshes, &this->meshes.front(), this->meshes.size() * sizeof(Mesh));
 	for (DWORD i = 0; i < this->meshes.size(); i++)
 	{
-		if (this->meshes[i].IsTransparent())
+		if (this->meshes[i].transparent())
 		{
 			meshes[alphaIndex] = this->meshes[i];
 			alphaIndex++;
@@ -5187,7 +5210,7 @@ void Scene::ReleaseBuffers()
 {
 	for (DWORD i = 0; i < meshes.size(); i++)
 	{
-		if (meshes[i].flags & MeshFlags::isVisible)
+		if (meshes[i].flags & MeshFlags::visible)
 			meshes[i].ReleaseBuffers();
 	}
 	if (skyDome)
@@ -5198,7 +5221,7 @@ void Scene::CreateBuffers(IDirect3DDevice9Ex* const __restrict Device, const DWO
 {
 	for (DWORD i = 0; i < meshes.size(); i++)
 	{
-		if (meshes[i].flags & MeshFlags::isVisible)
+		if (meshes[i].flags & MeshFlags::visible)
 			meshes[i].CreateBuffers(Device, fvf);
 	}
 	if (skyDome)
@@ -5252,7 +5275,7 @@ __declspec (noalias) bool Scene::GetHitPoint(const Ray& __restrict ray, Collisio
 			/*using namespace Concurrency;
 			parallel_for((UINT)0, numMeshes, [&](UINT i)*/
 		{
-			if (meshes[i].IsVisible())
+			if (meshes[i].visible())
 				meshes[i].GetHitPoint(ray, closestHit);
 		}//);
 	}
@@ -5264,7 +5287,7 @@ __declspec (noalias) bool Scene::GetHitPoint(const Ray& __restrict ray, Collisio
 			/*using namespace Concurrency;
 			parallel_for((UINT)0, numMeshes, [&](UINT i)*/
 		{
-			if (!meshes[i].IsDeleted())
+			if (!meshes[i].deleted())
 			{
 				const Collision* __restrict const collision = meshes[i].GetCollision();
 				if (collision)
@@ -5290,7 +5313,7 @@ __declspec (noalias)DWORD Scene::GetState(const Ray& __restrict ray, D3DXVECTOR3
 	//#pragma omp parallel for
 	for (DWORD i = 0; i < numMeshes; i++)
 	{
-		if (!meshes[i].IsDeleted())
+		if (!meshes[i].deleted())
 		{
 			const Collision* __restrict const collision = meshes[i].GetCollision();
 			if (collision)
@@ -5327,7 +5350,7 @@ __declspec (noalias) bool Scene::AboveSurface(const Ray& __restrict ray) const
 	//#pragma omp parallel for
 	for (DWORD i = 0; i < numMeshes; i++)
 	{
-		if (!meshes[i].IsDeleted())
+		if (!meshes[i].deleted())
 		{
 			const Collision* __restrict const collision = meshes[i].GetCollision();
 			if (collision)
@@ -5366,7 +5389,7 @@ DWORD Scene::Collide(const Ray& __restrict ray, const Ray& __restrict downRay, D
 	//#pragma omp parallel for default(shared) schedule(dynamic)
 	for (int i = 0; i < numMeshes; i++)
 	{
-		if (!meshes[i].IsDeleted())
+		if (!meshes[i].deleted())
 		{
 			const Collision* __restrict const collision = meshes[i].GetCollision();
 			if (collision)
@@ -5497,7 +5520,7 @@ DWORD Scene::Collide(const Ray& __restrict ray) const//, D3DXVECTOR3 & __restric
 	//#pragma omp parallel for default(shared) schedule(dynamic)
 	for (int i = 0; i < numMeshes; i++)
 	{
-		if (!meshes[i].IsDeleted())
+		if (!meshes[i].deleted())
 		{
 			const Collision* __restrict const collision = meshes[i].GetCollision();
 			if (collision)
@@ -5647,7 +5670,7 @@ __declspec (noalias) bool Scene::CastRay(const Ray& __restrict ray, CollisionRes
 
 	for (DWORD i = 0; i < numMeshes; i++)
 	{
-		if (!meshes[i].IsDeleted())
+		if (!meshes[i].deleted())
 		{
 			const Collision* __restrict const collision = meshes[i].GetCollision();
 			if (collision)
@@ -5669,7 +5692,7 @@ __declspec (noalias) bool Scene::Intersect(const Ray& __restrict ray, CollisionR
 			/*using namespace Concurrency;
 			parallel_for((UINT)0, numMeshes, [&](UINT i)*/
 		{
-			if (meshes[i].IsVisible())
+			if (meshes[i].visible())
 				meshes[i].Intersect(ray, closestHit);
 		}//);
 	}
@@ -5681,7 +5704,7 @@ __declspec (noalias) bool Scene::Intersect(const Ray& __restrict ray, CollisionR
 			/*using namespace Concurrency;
 			parallel_for((UINT)0, numMeshes, [&](UINT i)*/
 		{
-			if (!meshes[i].IsDeleted())
+			if (!meshes[i].deleted())
 			{
 				const Collision* __restrict const collision = meshes[i].GetCollision();
 				if (collision)
@@ -5707,7 +5730,7 @@ bool Scene::Intersect(const D3DXVECTOR3* const __restrict rayOrigin, const D3DXV
 	{
 		for (DWORD i = 0; i < meshNum; i++)
 		{
-			if (!meshes[i].IsDeleted() && /*meshes[i].Intersect(rayOrigin,rayDirection) &&*/ meshes[i].PickCollision(rayOrigin, rayDirection, outDistance, outTriangleIndex))
+			if (!meshes[i].deleted() && /*meshes[i].Intersect(rayOrigin,rayDirection) &&*/ meshes[i].PickCollision(rayOrigin, rayDirection, outDistance, outTriangleIndex))
 			{
 				if (closestIntersect >= *outDistance || !intersect)
 				{
@@ -5724,7 +5747,7 @@ bool Scene::Intersect(const D3DXVECTOR3* const __restrict rayOrigin, const D3DXV
 	{
 		for (DWORD i = 0; i < meshNum; i++)
 		{
-			if (meshes[i].IsVisible() && /*meshes[i].Intersect(rayOrigin,rayDirection) &&*/ meshes[i].PickMesh(rayOrigin, rayDirection, outDistance, outMatIndex, outTriangleIndex))
+			if (meshes[i].visible() && /*meshes[i].Intersect(rayOrigin,rayDirection) &&*/ meshes[i].PickMesh(rayOrigin, rayDirection, outDistance, outMatIndex, outTriangleIndex))
 			{
 				if (closestIntersect >= *outDistance || !intersect)
 				{
@@ -5764,7 +5787,7 @@ void Scene::RenderShaded(IDirect3DDevice9Ex* const __restrict Device)
 		DWORD meshNum = meshes.size();
 		for (DWORD i = 0; i < meshNum; i++)
 		{
-			if (!meshes[i].IsDeleted())
+			if (!meshes[i].deleted())
 				meshes[i].RenderCollision();
 		}
 
@@ -5774,7 +5797,7 @@ void Scene::RenderShaded(IDirect3DDevice9Ex* const __restrict Device)
 
 		for (DWORD i = 0; i < meshNum; i++)
 		{
-			if (!meshes[i].IsDeleted())
+			if (!meshes[i].deleted())
 				meshes[i].RenderCollision(meshes[i].IsSelected());
 		}
 
@@ -5792,7 +5815,7 @@ void Scene::RenderShaded(IDirect3DDevice9Ex* const __restrict Device)
 
 		for (DWORD i = 0; i < meshNum; i++)
 		{
-			if (meshes[i].IsVisible())
+			if (meshes[i].visible())
 				meshes[i].RenderShaded();
 		}
 	}
@@ -5804,7 +5827,7 @@ void Scene::RenderNoTrans(IDirect3DDevice9Ex* const __restrict Device)
 
 	for (DWORD i = 0; i < meshNum; i++)
 	{
-		if (meshes[i].IsVisible())
+		if (meshes[i].visible())
 			meshes[i].Render(&matList);
 	}
 }
@@ -5831,7 +5854,7 @@ void Scene::Render(IDirect3DDevice9Ex* const __restrict Device)
 	Dev->SetRenderState(D3DRS_ALPHAREF, 128);
 	for (DWORD i = 0; i < meshNum; i++)
 	{
-		if (meshes[i].IsVisible() && !meshes[i].IsTransparent())
+		if (meshes[i].visible() && !meshes[i].transparent())
 			meshes[i].Render0(&matList);
 	}
 
@@ -5841,7 +5864,7 @@ void Scene::Render(IDirect3DDevice9Ex* const __restrict Device)
 
 	for (DWORD i = 0; i < meshNum; i++)
 	{
-		if (meshes[i].IsVisible() && meshes[i].IsTransparent())
+		if (meshes[i].visible() && meshes[i].transparent())
 			meshes[i].Render2(&matList);
 	}
 
@@ -5852,7 +5875,7 @@ void Scene::Render(IDirect3DDevice9Ex* const __restrict Device)
 	Device->SetTexture(0,0);
 	for(DWORD i=0; i<meshNum; i++)
 	{
-	if(meshes[i].IsVisible())
+	if(meshes[i].visible())
 	meshes[i].Render0(Device, &matList);
 	}
 	Device->SetRenderState(D3DRS_SLOPESCALEDEPTHBIAS, 0);

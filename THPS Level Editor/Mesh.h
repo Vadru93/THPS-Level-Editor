@@ -17,10 +17,10 @@
 
 const enum MeshFlags
 {
-  isVisible=1,
-  isTransparent=2,
-  undefined=4,
-  isDeleted=8,
+  visible=1,
+  transparent=2,
+  movable=4,
+  deleted=8,
 };
 
 
@@ -957,13 +957,12 @@ public:
   {
     verts=NULL;
     //node=NULL;
-    flags=0;
-    flags |= MeshFlags::isVisible;
+    flags = MeshFlags::visible;
     //collision = NULL;
-    /*flags[MeshFlags::isTransparent]=false;
-    flags[MeshFlags::isDeleted]=false;
+    /*flags[MeshFlags::transparent]=false;
+    flags[MeshFlags::deleted]=false;
     flags[MeshFlags::undefined]=false;
-    flags[MeshFlags::isVisible]=true;*/
+    flags[MeshFlags::visible]=true;*/
     //flags[MeshFlags::bPicked]=false;
   }
 
@@ -1067,27 +1066,27 @@ public:
     //return collision.GetNumFaces();
   }
 
-  __forceinline bool IsVisible() const
+  __forceinline bool visible() const
   {
-    return flags & MeshFlags::isVisible;//GetFlag(MeshFlags::isVisible);
+    return flags & MeshFlags::visible;//GetFlag(MeshFlags::visible);
   }
 
-  __forceinline bool IsDeleted() const
+  __forceinline bool deleted() const
   {
-    return flags & MeshFlags::isDeleted;//GetFlag(MeshFlags::isDeleted);
+    return flags & MeshFlags::deleted;//GetFlag(MeshFlags::deleted);
   }
 
-  __forceinline bool IsTransparent() const
+  __forceinline bool transparent() const
   {
-    return flags & MeshFlags::isTransparent;//GetFlag(MeshFlags::isTransparent);
+    return flags & MeshFlags::transparent;//GetFlag(MeshFlags::transparent);
   }
 
   void SetVisible(bool state)
   {
     if (state)
-      flags |= MeshFlags::isVisible;
+      flags |= MeshFlags::visible;
     else
-      flags &= ~MeshFlags::isVisible;
+      flags &= ~MeshFlags::visible;
   }
 
   void Resize(DWORD size)
@@ -1195,14 +1194,14 @@ public:
 
   bool operator <(const Mesh & other) const
   {
-    if (!this->IsTransparent())
+    if (!this->transparent())
       return true;
-    if (!this->IsVisible())
+    if (!this->visible())
       return true;
-    if (!other.IsVisible())
+    if (!other.visible())
       return true;
     return this->GetDrawOrder() < other.GetDrawOrder();
-  /*if(!flags[MeshFlags::isTransparent])
+  /*if(!flags[MeshFlags::transparent])
   return false;
 
   D3DXVECTOR3 cameraPos = camera->pos();
@@ -1754,7 +1753,7 @@ public:
         if(blendValue==1)
         {
           if (vertices[i].colour.a<128)
-            flags |= MeshFlags::isTransparent;
+            flags |= MeshFlags::transparent;
           this->vertices[i].colour.r *=0.5f;///= 2.5f;
           this->vertices[i].colour.g *=0.5f;///= 2.5f;
           this->vertices[i].colour.b *=0.5f;///= 2.5f;
@@ -1832,8 +1831,13 @@ public:
 
   void sort()
   {
-    if(!this->IsDeleted() && matSplits.size())
+    if(!this->deleted() && matSplits.size())
       std::sort(matSplits.begin(), matSplits.end());
+  }
+
+  bool movable()
+  {
+      return flags & MeshFlags::movable;
   }
 
   __declspec (noalias) void AddMatSplit(MaterialSplit* const __restrict split, MaterialList* const __restrict matList,const bool indexed = false, const bool exporting = false, bool th3=false)
@@ -1850,7 +1854,7 @@ public:
       {
         //for(DWORD i=0; i<tmpMat->GetNumTextures(); i++)
         if(tmpMat->transparent)
-          flags |= MeshFlags::isTransparent;
+          flags |= MeshFlags::transparent;
       }
     }
 

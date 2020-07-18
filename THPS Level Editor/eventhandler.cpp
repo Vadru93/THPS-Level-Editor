@@ -58,8 +58,8 @@ void UndoEvent(const BYTE direction)
     case Event::eDelete:
       for (DWORD i = 0; i < events[currentEvent].data.size(); i++)
       {
-        ((Mesh*)events[currentEvent].data[i])->SetFlag(MeshFlags::isDeleted, false);
-        ((Mesh*)events[currentEvent].data[i])->SetFlag(MeshFlags::isVisible, true);
+        ((Mesh*)events[currentEvent].data[i])->SetFlag(MeshFlags::deleted, false);
+        ((Mesh*)events[currentEvent].data[i])->SetFlag(MeshFlags::visible, true);
         selectedObjects.push_back(SelectedObject(((Mesh*)events[currentEvent].data[i]), false));
       }
       break;
@@ -517,7 +517,7 @@ void AddSelection(const BYTE direction)
 
       /*DWORD lastSelectionSize = selectedObjects.size();
       for(DWORD i=0; i<lastSelectionSize; i++)
-      selectedObjects[i].mesh->ToggleFlag(MeshFlags::isVisible);*/
+      selectedObjects[i].mesh->ToggleFlag(MeshFlags::visible);*/
       if (selectionMode == SELECTBYOBJECT)
       {
         DWORD meshIndex;
@@ -610,7 +610,7 @@ void AddSelection(const BYTE direction)
       else
         SelectNode();
       /*for(DWORD i=0; i<lastSelectionSize; i++)
-      selectedObjects[i].mesh->ToggleFlag(MeshFlags::isVisible);*/
+      selectedObjects[i].mesh->ToggleFlag(MeshFlags::visible);*/
       heldCntrl = true;
       extern bool forceRedraw;
       if (!forceRedraw)
@@ -1476,14 +1476,14 @@ void UpdateAndRender()
           {
           if(!scene->GetMesh(i)->IsSelected())
           {
-          scene->GetMesh(i)->SetFlag(MeshFlags::isVisible,false);
-          scene->GetMesh(i)->SetFlag(MeshFlags::isDeleted,true);
+          scene->GetMesh(i)->SetFlag(MeshFlags::visible,false);
+          scene->GetMesh(i)->SetFlag(MeshFlags::deleted,true);
           }
           }*/
           for (DWORD i = 0; i < selected; i++)
           {
-            selectedObjects[i].mesh->SetFlag(MeshFlags::isVisible, false);
-            selectedObjects[i].mesh->SetFlag(MeshFlags::isDeleted, true);
+            selectedObjects[i].mesh->SetFlag(MeshFlags::visible, false);
+            selectedObjects[i].mesh->SetFlag(MeshFlags::deleted, true);
           }
           events.push_back(Event(Event::eDelete, selectedObjects));
           selectedObjects.clear();
@@ -1513,7 +1513,7 @@ void UpdateAndRender()
     {
     MessageBox(0,0,0,0);
     selectedObjects.push_back(selectedVertex.mesh);
-    selectedVertex.mesh->SetFlag(MeshFlags::isVisible, false);
+    selectedVertex.mesh->SetFlag(MeshFlags::visible, false);
     selectedVertex.vertex->x=0;
     }
     }
@@ -1608,14 +1608,14 @@ void Update(const DWORD dt)
         {
         if(!scene->GetMesh(i)->IsSelected())
         {
-        scene->GetMesh(i)->SetFlag(MeshFlags::isVisible,false);
-        scene->GetMesh(i)->SetFlag(MeshFlags::isDeleted,true);
+        scene->GetMesh(i)->SetFlag(MeshFlags::visible,false);
+        scene->GetMesh(i)->SetFlag(MeshFlags::deleted,true);
         }
         }*/
         for (DWORD i = 0; i < selected; i++)
         {
-          selectedObjects[i].mesh->SetFlag(MeshFlags::isVisible, false);
-          selectedObjects[i].mesh->SetFlag(MeshFlags::isDeleted, true);
+          selectedObjects[i].mesh->SetFlag(MeshFlags::visible, false);
+          selectedObjects[i].mesh->SetFlag(MeshFlags::deleted, true);
         }
         events.push_back(Event(Event::eDelete, selectedObjects));
         selectedObjects.clear();
@@ -1641,7 +1641,7 @@ void Update(const DWORD dt)
   {
   MessageBox(0,0,0,0);
   selectedObjects.push_back(selectedVertex.mesh);
-  selectedVertex.mesh->SetFlag(MeshFlags::isVisible, false);
+  selectedVertex.mesh->SetFlag(MeshFlags::visible, false);
   selectedVertex.vertex->x=0;
   }
   }

@@ -2403,7 +2403,7 @@ __declspec (noalias) void KnownScript::Execute(const Node* __restrict node, cons
           if (mesh->GetName().checksum == nodeName)
           {
             mesh->SetVisible(false);
-            mesh->SetFlag(MeshFlags::isDeleted, true);
+            mesh->SetFlag(MeshFlags::deleted, true);
             break;
           }
         }
@@ -2423,7 +2423,7 @@ __declspec (noalias) void KnownScript::Execute(const Node* __restrict node, cons
           if (mesh->GetName().checksum == nodeName)
           {
             mesh->SetVisible(false);
-            mesh->SetFlag(MeshFlags::isDeleted, true);
+            mesh->SetFlag(MeshFlags::deleted, true);
             break;
           }
         }
@@ -3793,12 +3793,12 @@ qbTable:
                 {
                     movedMesh = true;
                     fprintf(stdout, "moving GameObj %s\n", meshes[j].GetName().GetString2());
-                    meshes[j].UnSetFlag(MeshFlags::isVisible);
-                    meshes[j].SetFlag(MeshFlags::isDeleted);
+                    meshes[j].UnSetFlag(MeshFlags::visible);
+                    meshes[j].SetFlag(MeshFlags::deleted);
                     CloneMesh(&meshes[j]);
                     Mesh &mesh = meshes.back();
-                    mesh.SetFlag(MeshFlags::isVisible);
-                    mesh.UnSetFlag(MeshFlags::isDeleted);
+                    mesh.SetFlag(MeshFlags::visible);
+                    mesh.UnSetFlag(MeshFlags::deleted);
                     D3DXVECTOR3 angle = *(D3DXVECTOR3*)&nodes[i].Angles;
                     /*angle.y*=-1;
                     angle.y+=D3DX_PI;
@@ -3823,7 +3823,7 @@ qbTable:
       }
       else if(nodes[i].Class.checksum == Checksums::LevelObject)// || nodes[i].Class.checksum == Checksums::LevelGeometry)
       {
-        nodes[i].Class.checksum = EnvironmentObject::GetClass();
+        nodes[i].Class.checksum = Checksums::GameObject;
         for(DWORD j=0, numMeshes = meshes.size(); j<numMeshes; j++)
         {
           if(meshes[j].GetName().checksum == nodes[i].Name.checksum)
@@ -3832,12 +3832,12 @@ qbTable:
             /*if(center.x == 0 && center.y == 0 && center.z == 0)
             {
             MessageBox(0,nodes[i].Name.GetString(),"moving GameObj",0);*/
-            meshes[j].UnSetFlag(MeshFlags::isVisible);
-            meshes[j].SetFlag(MeshFlags::isDeleted);
+            meshes[j].UnSetFlag(MeshFlags::visible);
+            meshes[j].SetFlag(MeshFlags::deleted);
             CloneMesh(&meshes[j]);
             Mesh &mesh = meshes.back();
-            mesh.SetFlag(MeshFlags::isVisible);
-            mesh.UnSetFlag(MeshFlags::isDeleted);
+            mesh.SetFlag(MeshFlags::visible);
+            mesh.UnSetFlag(MeshFlags::deleted);
             D3DXVECTOR3 angle = *(D3DXVECTOR3*)&nodes[i].Angles;
             // angle.y*=-1;
             //angle.y+=D3DX_PI;
@@ -3883,9 +3883,13 @@ qbTable:
     }
     else
     {
-      if(nodes[i].Class.checksum == Checksums::LevelObject || nodes[i].Class.checksum == Checksums::LevelGeometry)
+      if(nodes[i].Class.checksum == Checksums::LevelGeometry)
       {
         nodes[i].Class = EnvironmentObject::GetClass();
+      }
+      else if (nodes[i].Class.checksum == Checksums::LevelObject)
+      {
+          nodes[i].Class.checksum = Checksums::GameObject;
       }
       else if(nodes[i].Class.checksum != EnvironmentObject::GetClass() && nodes[i].Class.checksum != RailNode::GetClass() && nodes[i].Class.checksum != Restart::GetClass())// && nodes[i].Class.checksum != Checksum("Waypoint").checksum)
       {
@@ -3897,8 +3901,8 @@ qbTable:
       if(mesh)
       {
         fprintf(stdout, "Deleting Mesh %s\n", mesh->Name.GetString2());
-        mesh->SetFlag(MeshFlags::isDeleted);
-        mesh->UnSetFlag(MeshFlags::isVisible);
+        mesh->SetFlag(MeshFlags::deleted);
+        mesh->UnSetFlag(MeshFlags::visible);
       }
       /*DeleteNode(i);
       i--;*/
@@ -3958,8 +3962,10 @@ qbTable:
           }
           else
           {
-              if (compressedNodes[i].Class.checksum == Checksums::LevelObject || compressedNodes[i].Class.checksum == Checksums::LevelGeometry)
+              if (compressedNodes[i].Class.checksum == Checksums::LevelGeometry)
                   compressedNodes[i].Class = Checksum("EnvironmentObject");
+              else if (compressedNodes[i].Class.checksum == Checksums::LevelObject)
+                  compressedNodes[i].Class.checksum = Checksums::GameObject;
           }
       }
   }
@@ -4060,6 +4066,7 @@ __declspec (noalias) void Th4Scene::LoadProSkaterNodeArray(register const BYTE c
   bool ifs[32];
   signed char ifCounter=-1;
   DWORD lastIf=0;
+  const BYTE* __restrict startOfFile = pFile;
 
   while(true)
   {
@@ -4329,8 +4336,10 @@ dne:
       //MessageBox(0,"script",script->name.GetString(),0);
       break;
     case 0x24:
-      if(!script->size)
-        KnownScripts.pop_back();
+        if (script && !script->size)
+            KnownScripts.pop_back();
+        else if (!script)
+            printf("End Function found without begin function.. @ location: %p\n", pFile- startOfFile);
       script=NULL;
       break;
     case 4:
@@ -4339,7 +4348,7 @@ dne:
         nodesDone=true;
       else if(ident==0)
       {
-        //MessageBox(0,"added node", node->Name.GetString(), 0);
+        printf("added node %s", node->Name.GetString());
         node = NULL;
       }
       break;
@@ -4502,12 +4511,12 @@ qbTable:
       D3DXVECTOR3 center = meshes[j].GetCenter();
       if(center.x == 0 && center.y == 0 && center.z == 0)
       {
-      meshes[j].UnSetFlag(MeshFlags::isVisible);
-      meshes[j].SetFlag(MeshFlags::isDeleted);
+      meshes[j].UnSetFlag(MeshFlags::visible);
+      meshes[j].SetFlag(MeshFlags::deleted);
       CloneMesh(&meshes[j]);
       Mesh &mesh = meshes.back();
-      mesh.SetFlag(MeshFlags::isVisible);
-      mesh.UnSetFlag(MeshFlags::isDeleted);
+      mesh.SetFlag(MeshFlags::visible);
+      mesh.UnSetFlag(MeshFlags::deleted);
       mesh.SetPosition((D3DXVECTOR3*)&nodes[i].Position, (D3DXVECTOR3*)&nodes[i].Angles);
       }
       break;
@@ -4567,7 +4576,7 @@ qbTable:
             }
             break;
           default:
-            nodes[i].Class = Checksum("EnvironmentObject");
+            nodes[i].Class = Checksum("GameObject");
             for(DWORD j=0, numMeshes = meshes.size(); j<numMeshes; j++)
             {
               if(meshes[j].GetName().checksum == nodes[i].Name.checksum)
@@ -4576,12 +4585,12 @@ qbTable:
                 /*if(center.x == 0 && center.y == 0 && center.z == 0)
                 {
                 MessageBox(0,nodes[i].Name.GetString(),"moving GameObj",0);*/
-                meshes[j].UnSetFlag(MeshFlags::isVisible);
-                meshes[j].SetFlag(MeshFlags::isDeleted);
+                meshes[j].UnSetFlag(MeshFlags::visible);
+                meshes[j].SetFlag(MeshFlags::deleted);
                 CloneMesh(&meshes[j]);
                 Mesh &mesh = meshes.back();
-                mesh.SetFlag(MeshFlags::isVisible);
-                mesh.UnSetFlag(MeshFlags::isDeleted);
+                mesh.SetFlag(MeshFlags::visible);
+                mesh.UnSetFlag(MeshFlags::deleted);
                 D3DXVECTOR3 angle = *(D3DXVECTOR3*)&nodes[i].Angles;
                 // angle.y*=-1;
                 //  angle.y+=D3DX_PI;
@@ -4603,36 +4612,25 @@ qbTable:
             break;
         }
       }
-      else if(nodes[i].Class.checksum == Checksums::LevelObject || nodes[i].Class.checksum == Checksums::LevelGeometry)
+      else if(nodes[i].Class.checksum == Checksums::LevelObject)
       {
-        nodes[i].Class = Checksum("EnvironmentObject");
+        nodes[i].Class = Checksum("GameObject");
         for(DWORD j=0, numMeshes = meshes.size(); j<numMeshes; j++)
         {
           if(meshes[j].GetName().checksum == nodes[i].Name.checksum)
           {
             D3DXVECTOR3 center = meshes[j].GetCenter();
-            if(center.x == 0 && center.y == 0 && center.z == 0)
-            {
-            //MessageBox(0,nodes[i].Name.GetString(),"moving GameObj",0);
-            meshes[j].UnSetFlag(MeshFlags::isVisible);
-            meshes[j].SetFlag(MeshFlags::isDeleted);
+
+            meshes[j].UnSetFlag(MeshFlags::visible);
+            meshes[j].SetFlag(MeshFlags::deleted);
             CloneMesh(&meshes[j]);
             Mesh &mesh = meshes.back();
-            mesh.SetFlag(MeshFlags::isVisible);
-            mesh.UnSetFlag(MeshFlags::isDeleted);
+            mesh.SetFlag(MeshFlags::visible);
+            mesh.UnSetFlag(MeshFlags::deleted);
             D3DXVECTOR3 angle = *(D3DXVECTOR3*)&nodes[i].Angles;
-            // angle.y*=-1;
-            //  angle.y+=D3DX_PI;
-            //angle.x+=D3DX_PI;
+
             mesh.SetPosition((D3DXVECTOR3*)&nodes[i].Position, &angle);
-            /*char Name[256] = "";
-            sprintf(Name, "%s_Coll", mesh.GetName().GetString());
-            DWORD tst = Checksum(Name).checksum;
 
-            for (DWORD k = 0; k < numMeshes; k++)
-            {
-
-            }*/
             for(DWORD k=0; k<extraLayerMeshes.size(); k++)
             {
               if(extraLayerMeshes[k].name.checksum == nodes[i].Name.checksum)
@@ -4640,15 +4638,55 @@ qbTable:
                 extraLayerMeshes[k].SetPosition((D3DXVECTOR3*)&nodes[i].Position, &angle);
               }
             }
-             }
-            /*else
-            MessageBox(0,nodes[i].Name.GetString(),"NOT moving GameObj",0);*/
             break;
           }
         }
       }
-      else if(nodes[i].Class.checksum == Checksums::LevelGeometry)
-        nodes[i].Class = Checksum("EnvironmentObject");
+      else if (nodes[i].Class.checksum == Checksums::LevelGeometry)
+      {
+          nodes[i].Class = Checksum("EnvironmentObject");
+          for (DWORD j = 0, numMeshes = meshes.size(); j < numMeshes; j++)
+          {
+              if (meshes[j].GetName().checksum == nodes[i].Name.checksum)
+              {
+                  D3DXVECTOR3 center = meshes[j].GetCenter();
+                  if (center.x == 0 && center.y == 0 && center.z == 0)
+                  {
+                      nodes[i].Class = Checksum("GameObject");
+                      //MessageBox(0,nodes[i].Name.GetString(),"moving GameObj",0);
+                      meshes[j].UnSetFlag(MeshFlags::visible);
+                      meshes[j].SetFlag(MeshFlags::deleted);
+                      CloneMesh(&meshes[j]);
+                      Mesh& mesh = meshes.back();
+                      mesh.SetFlag(MeshFlags::visible);
+                      mesh.UnSetFlag(MeshFlags::deleted);
+                      D3DXVECTOR3 angle = *(D3DXVECTOR3*)&nodes[i].Angles;
+                      // angle.y*=-1;
+                      //  angle.y+=D3DX_PI;
+                      //angle.x+=D3DX_PI;
+                      mesh.SetPosition((D3DXVECTOR3*)&nodes[i].Position, &angle);
+                      /*char Name[256] = "";
+                      sprintf(Name, "%s_Coll", mesh.GetName().GetString());
+                      DWORD tst = Checksum(Name).checksum;
+
+                      for (DWORD k = 0; k < numMeshes; k++)
+                      {
+
+                      }*/
+                      for (DWORD k = 0; k < extraLayerMeshes.size(); k++)
+                      {
+                          if (extraLayerMeshes[k].name.checksum == nodes[i].Name.checksum)
+                          {
+                              extraLayerMeshes[k].SetPosition((D3DXVECTOR3*)&nodes[i].Position, &angle);
+                          }
+                      }
+                  }
+                  /*else
+                  MessageBox(0,nodes[i].Name.GetString(),"NOT moving GameObj",0);*/
+                  break;
+              }
+          }
+      }
       else if(nodes[i].Class.checksum == RailNode::GetClass())
       {
         if(!nodes[i].CreatedAtStart || nodes[i].AbsentInNetGames)
@@ -4688,8 +4726,8 @@ qbTable:
       Mesh* mesh = GetMesh(nodes[i].Name);
       if(mesh)
       {
-        mesh->SetFlag(MeshFlags::isDeleted);
-        mesh->UnSetFlag(MeshFlags::isVisible);
+        mesh->SetFlag(MeshFlags::deleted);
+        mesh->UnSetFlag(MeshFlags::visible);
       }
       /*DeleteNode(i);
       i--;*/

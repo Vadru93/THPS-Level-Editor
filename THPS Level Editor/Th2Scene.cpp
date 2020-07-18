@@ -33,8 +33,8 @@ char levelName[25] = "";
 struct Th2Gap
 {
 public:
-  const WORD id;
-  const char text[34];
+	const WORD id;
+	const char text[34];
 };
 
 Th2Gap Th2AirGaps[] = { { 0x044C, "70FT" }, { 0x044D, "80FT" }, { 0x44E, "90FT" }, { 0x0451, "INTO THE HELI" }, { 0x0BB8, "OVER THE GATE" }, { 0x0BB9, "OVER THE CROSSBAR" }, { 0x0BBC, "FREAKIN' HUGE HIP" }, { 0x0BBD, "DUMPSTER POP" }, { 0x0BBE, "TABLE POP" }, { 0x0BBF, "2 THE BOX" }, { 0x0BC0, "OVER THE TABLE" }, { 0x0BC3, "BOX 2 BOX ACTION" }, { 0x0BC5, "HUMPTEY HUMPS!!!" }, { 0x0BC6, "SHORTY DUMPSTER POP" }, { 0x0BC7, "SHORTY TABLE POP" }, { 0x0BCA, "OVER THE LIL' 4" }, { 0x0BCB, "UP THE LIL' 4" }, { 0x0BCC, "BIG OL' STANKY GAP" }, { 0x0BCD, "WATER UP LE BACKSIDE" }, { 0x0BCE, "BIG MOUTH GAP" }, { 0x0BCF, "UP!" }, { 0x0BD0, "UP!!" }, { 0x0BD1, "AND AWAY!!!" }, { 0x0CE4, "LEAP OF FAITH!!!" }, { 0x0CE5, "CARLSBAD GAP" }, { 0x0CE6, "DROP OUT ROOF GAP!" }, { 0x0CE7, "CRAZY ROOF GAP!!" }, { 0x0CE8, "TC'S ROOF GAP" }, { 0x0CE9, "SUICIDAL ROOF GAP!!!" }, { 0x0CEA, "AWNING HOP" }, { 0x0CEB, "TABLE TRANSFER" }, { 0x0CEE, "2 DA ROOF!!!" }, { 0x0CFE, "HUGE TRANSFER!!!" }, { 0x0CF0, "MAD SKEELZ ROOF GAP!!!" }, { 0x0CF1, "OVERHANG AIR" }, { 0x0CF2, "BALCONY 2 AWNING!!!" }, { 0x0CF3, "ARE YOU SERIUS?!!" }, { 0x0CF4, "OVER THE WALL..." }, { 0x0CF5, "AND DOWN THE BANK!" }, { 0x0CF6, "CARLSBAD 11 SET" }, { 0x0CF7, "POINTS!!!" }, { 0x0E10, "MUSKA'S GAP" }, { 0x0E11, "TABLE POP" }, { 0x0E12, "TIGHT LANDING TRANSFER" }, { 0x0E13, "VB! HUGE TRANSFER!!!" }, { 0x0E14, "CAKE TRANSFER" }, { 0x0E15, "WEST SIDE TRANSFER" }, { 0x0E18, "BIG DOUBLE 5 SET" }, { 0x0E19, "VB! PIT TRANSFER" }, { 0x0E1A, "MASSIVE 20 SET!" }, { 0x0E1B, "WEE LIL' ROOF GAP" }, { 0x0E1C, "NICE MID SIZE ROOF GAP" }, { 0x0E1D, "SIIIIICK ROOF GAP!!!" }, { 0x0E1E, "SHORTY PLANTER POP" }, { 0x0E1F, "PLANTER POP" }, { 0x0E20, "ROOF 2 RAMP" }, { 0x0E21, "RAMP 2 ROOF" }, { 0x0E22, "HUGE ROOF 2 RAMP" }, { 0x0E23, "HUGE RAMP 2 ROOF" }, { 0x0E24, "VB SKINNY TRANSFER" }, { 0x0E25, "FATTY TRANSFER" }, { 0x0E26, "UP!" }, { 0x0E27, "UP!!" }, { 0x0E28, "AND AWAY!!!" }, { 0x0E29, "VB! LEDGE TRANSFER" }, { 0x0E2A, "CANYON JUMP" }, { 0x0E2B, "UPHILL CANYON JUMP" }, { 0x0E2C, "LIL' VENT GAP" }, { 0x0E2D, "BIG VENT GAP" }, { 0x0E2E, "VENT 2 ROOF GAP" }, { 0x0E2F, "LEDGE 9 SET" }, { 0x0FA0, "DROPPING IN ON TONY" }, { 0x0FA1, "UP 2 COMBI" }, { 0x0FA2, "DOWN 2 TONYS ISLAND" }, { 0x0FA3, "GUTTER 2 SAN DIEGUITO ROOF" }, { 0x0FA4, "ZIG GAP" }, { 0x0FA5, "ZAG GAP" }, { 0x0FA6, "WUSSY SNAKE GAP" }, { 0x0FA7, "REVERSE ZIG GAP" }, { 0x0FA8, "REVERSE ZAG GAP" }, { 0x0FA9, "REVERSE WUSSY SNAKE GAP" }, { 0x0FAA, "ISLE OF TONY 2 SADLANDS" }, { 0x0FAB, "SADLANDS PATCH GAP" }, { 0x0FAC, "HOUSE OF TONY 2 SADLANDS" }, { 0x0FAD, "SAN DIEGUITO HALL 2 SADLANDS" }, { 0x0FAE, "SAN DIEGUITO WINDOW 2 SADLANDS" }, { 0x0FAF, "TIGHT LANDING" }, { 0x0FB0, "SAN DIEGUITO TEN SET" }, { 0x0FB1, "BIG FAT GRASSY GAP" }, { 0x0FB2, "GRASSY GAP" }, { 0x0FB3, "FEED ME!!!" }, { 0x0FB4, "NORTHWEST SNAKE GAP" }, { 0x0FB5, "NORTHEAST SNAKE GAP" }, { 0x0FB6, "SOUTHERN SNAKE GAP" }, { 0x0FB7, "WEAK SAUCE ZIG GAP" }, { 0x0FB8, "WEAK SAUCE ZAG GAP" }, { 0x0FB9, "WEAK SAUCE WUSSY SNAKE GAP" }, { 0x0FBA, "PLATFORM GAP" }, { 0x0FBB, "AIRS HOLE" }, { 0x0FBC, "SADLANDS UP 2 ISLE OF TONY" }, { 0x0FBD, "OVER THE DOME" }, { 0x0FBE, "CLEARING THE SWINGS" }, { 0x0FBF, "JUMPIN DA HUB" }, { 0x0FC0, "TUNNEL OF LUVIN" }, { 0x0FC3, "BLOWIN IT OUT THE HOLE!" }, { 0x0FC4, "PIT O DOOM!!!" }, { 0x0FC7, "SADLANDS 2 SAN DIEGUITO HALL" }, { 0x0FC8, "THE HOLY CRAIL" }, { 0x1194, "LAUNCHIN ON UP" }, { 0x1195, "LAUNCHIN THE PIPE" }, { 0x1196, "TIGHT GAP" }, { 0x1197, "PLAT GAP" }, { 0x1198, "WUSSY ROLLIN GAP" }, { 0x1199, "ROLLIN GAP" }, { 0x119A, "BIG ENCHILADA MAMA" }, { 0x119B, "JUMP IN DA HUMPS" }, { 0x119D, "AIR TORO" }, { 0x119E, "GATE GAP" }, { 0x0834, "HP TO BOWL" }, { 0x0835, "BOWL TO HP" }, { 0x0836, "BULLET BOWL HOP" }, { 0x0837, "OVER THE DECK" }, { 0x0838, "DAAAAAY TRIPPER" }, { 0x0839, "GIMME GAP REDUX" }, { 0x083A, "SODEE POP GAP" }, { 0x083C, "CUT THE CORNER" }, { 0x083D, "HIGH STICKER" }, { 0x0840, "RAILING HOP" }, { 0x0841, "OVER THE BRIDGE" }, { 0x0842, "OVER THE WALL" }, { 0x0843, "SHOOT THE GAP" }, { 0x0845, "NO KIDDING AROUND" }, { 0x0846, "STAIRSET" }, { 0x0847, "HEXBOX GAP" }, { 0x084F, "HIGH JUMPER" }, { 0x5781, "PIGEON PUDDIN' GAP" }, { 0x578D, "RAMP TO PARK GAP" }, { 0x578E, "RAMP TO STATUE SHORTY GAP" }, { 0x578F, "PUNCER WAS HERE" }, { 0x5792, "AWNING AIR" }, { 0x5793, "KICK IT" }, { 0x5799, "TAKE IT TO THE BRIDGE" }, { 0x579B, "OVER THE ROAD" }, { 0x579D, "BIG AIR OUT OF THE BANKS" }, { 0x579F, "OVER THE BANKS BARRIER" }, { 0x57A5, "PILLAR AIR" }, { 0x57A7, "ROCK IT AIR" }, { 0x09C4, "THPS FOUNTAIN GAP" }, { 0x09C5, "CHILLIN' ON THE BALCONY" }, { 0x09C6, "STAIR SET" }, { 0x09C7, "UP THE SMALL STEP SET" }, { 0x09C8, "BENCH GAP" }, { 0x09C9, "PHILLYSIDE HP TRANSFER" }, { 0x09CE, "WORLDS MOST OBVIOUS GAP" }, { 0x09CF, "PHILLYSIDE HOP" }, { 0x09D0, "POST OLLIE" }, { 0x09D1, "EASY POST OLLIE" }, { 0x09D2, "STATUE HOP" }, { 0x09D3, "PILLAR FIGHT" }, { 0x0A8D, "HALFPIPE HANGTIME" }, { 0x0A8E, "HALFPIPE GRIND" }, { 0x0A8F, "ROLLIN GAP" }, { 0x0A92, "CHOPPER HOP" }, { 0x0A95, "WINGTIP HANGTIME" }, { 0x0A96, "SKYCRANE HANGTIME" }, { 0x0A98, "FLYIN HIGH" }, { 0x0A99, "AIR OVER THE DOOR" }, { 0x0AA1, "ITS COLD UP HERE" } };
@@ -54,11 +54,11 @@ DWORD gapScore = 0;
 struct Th2xGap
 {
 public:
-  const WORD type;
-  const WORD unk;//some type?
-  const WORD id;
-  const WORD score;
-  const char text[39];
+	const WORD type;
+	const WORD unk;//some type?
+	const WORD id;
+	const WORD score;
+	const char text[39];
 };
 
 Th2xGap Th2xGaps[] = {
@@ -870,168 +870,168 @@ Th2xGap Th2xGaps[] = {
 
 DWORD GetGapType(WORD id, char* outText)
 {
-  for (DWORD i = 0; i < sizeof(Th2XAirGaps) / sizeof(Th2Gap); i++)
-  {
-    if ((WORD)Th2XAirGaps[i].id == id)
-    {
-      DWORD j = 0;
-      while (Th2XAirGaps[i].text[j])
-      {
-        outText[j] = Th2XAirGaps[i].text[j];
-        j++;
-      }
-      outText[j] = Th2XAirGaps[i].text[j];
-      outText[j + 1] = '\0';
-      return 1;
-    }
-  }
-  for (DWORD i = 0; i < sizeof(Th2AirGaps) / sizeof(Th2Gap); i++)
-  {
-    if ((WORD)Th2AirGaps[i].id == id)
-    {
-      DWORD j = 0;
-      while (Th2AirGaps[i].text[j])
-      {
-        outText[j] = Th2AirGaps[i].text[j];
-        j++;
-      }
-      outText[j] = Th2AirGaps[i].text[j];
-      outText[j + 1] = '\0';
-      return 1;
-    }
-  }
+	for (DWORD i = 0; i < sizeof(Th2XAirGaps) / sizeof(Th2Gap); i++)
+	{
+		if ((WORD)Th2XAirGaps[i].id == id)
+		{
+			DWORD j = 0;
+			while (Th2XAirGaps[i].text[j])
+			{
+				outText[j] = Th2XAirGaps[i].text[j];
+				j++;
+			}
+			outText[j] = Th2XAirGaps[i].text[j];
+			outText[j + 1] = '\0';
+			return 1;
+		}
+	}
+	for (DWORD i = 0; i < sizeof(Th2AirGaps) / sizeof(Th2Gap); i++)
+	{
+		if ((WORD)Th2AirGaps[i].id == id)
+		{
+			DWORD j = 0;
+			while (Th2AirGaps[i].text[j])
+			{
+				outText[j] = Th2AirGaps[i].text[j];
+				j++;
+			}
+			outText[j] = Th2AirGaps[i].text[j];
+			outText[j + 1] = '\0';
+			return 1;
+		}
+	}
 
-  for (DWORD i = 0; i < sizeof(Th2xGrindGaps) / sizeof(Th2Gap); i++)
-  {
-    if ((WORD)Th2xGrindGaps[i].id == id)
-    {
-      DWORD j = 0;
-      while (Th2xGrindGaps[i].text[j])
-      {
-        outText[j] = Th2xGrindGaps[i].text[j];
-        j++;
-      }
-      outText[j] = Th2xGrindGaps[i].text[j];
-      outText[j + 1] = '\0';
-      return 2;
-    }
-  }
-  for (DWORD i = 0; i < sizeof(Th2GrindGaps) / sizeof(Th2Gap); i++)
-  {
-    if ((WORD)Th2GrindGaps[i].id == id)
-    {
-      DWORD j = 0;
-      while (Th2GrindGaps[i].text[j])
-      {
-        outText[j] = Th2GrindGaps[i].text[j];
-        j++;
-      }
-      outText[j] = Th2GrindGaps[i].text[j];
-      outText[j + 1] = '\0';
-      return 2;
-    }
-  }
+	for (DWORD i = 0; i < sizeof(Th2xGrindGaps) / sizeof(Th2Gap); i++)
+	{
+		if ((WORD)Th2xGrindGaps[i].id == id)
+		{
+			DWORD j = 0;
+			while (Th2xGrindGaps[i].text[j])
+			{
+				outText[j] = Th2xGrindGaps[i].text[j];
+				j++;
+			}
+			outText[j] = Th2xGrindGaps[i].text[j];
+			outText[j + 1] = '\0';
+			return 2;
+		}
+	}
+	for (DWORD i = 0; i < sizeof(Th2GrindGaps) / sizeof(Th2Gap); i++)
+	{
+		if ((WORD)Th2GrindGaps[i].id == id)
+		{
+			DWORD j = 0;
+			while (Th2GrindGaps[i].text[j])
+			{
+				outText[j] = Th2GrindGaps[i].text[j];
+				j++;
+			}
+			outText[j] = Th2GrindGaps[i].text[j];
+			outText[j + 1] = '\0';
+			return 2;
+		}
+	}
 
-  for (DWORD i = 0; i < sizeof(Th2LipGaps) / sizeof(Th2Gap); i++)
-  {
-    if ((WORD)Th2LipGaps[i].id == id)
-    {
-      DWORD j = 0;
-      while (Th2LipGaps[i].text[j])
-      {
-        outText[j] = Th2LipGaps[i].text[j];
-        j++;
-      }
-      outText[j] = Th2LipGaps[i].text[j];
-      outText[j + 1] = '\0';
-      return 3;
-    }
-  }
+	for (DWORD i = 0; i < sizeof(Th2LipGaps) / sizeof(Th2Gap); i++)
+	{
+		if ((WORD)Th2LipGaps[i].id == id)
+		{
+			DWORD j = 0;
+			while (Th2LipGaps[i].text[j])
+			{
+				outText[j] = Th2LipGaps[i].text[j];
+				j++;
+			}
+			outText[j] = Th2LipGaps[i].text[j];
+			outText[j + 1] = '\0';
+			return 3;
+		}
+	}
 
-  for (DWORD i = 0; i < sizeof(Th2ManualGaps) / sizeof(Th2Gap); i++)
-  {
-    if ((WORD)Th2ManualGaps[i].id == id)
-    {
-      DWORD j = 0;
-      while (Th2ManualGaps[i].text[j])
-      {
-        outText[j] = Th2ManualGaps[i].text[j];
-        j++;
-      }
-      outText[j] = Th2ManualGaps[i].text[j];
-      outText[j + 1] = '\0';
-      return 4;
-    }
-  }
+	for (DWORD i = 0; i < sizeof(Th2ManualGaps) / sizeof(Th2Gap); i++)
+	{
+		if ((WORD)Th2ManualGaps[i].id == id)
+		{
+			DWORD j = 0;
+			while (Th2ManualGaps[i].text[j])
+			{
+				outText[j] = Th2ManualGaps[i].text[j];
+				j++;
+			}
+			outText[j] = Th2ManualGaps[i].text[j];
+			outText[j + 1] = '\0';
+			return 4;
+		}
+	}
 
-  for (DWORD i = 0; i < sizeof(Th2XOtherGaps) / sizeof(Th2Gap); i++)
-  {
-    if ((WORD)Th2XOtherGaps[i].id == id)
-    {
-      DWORD j = 0;
-      while (Th2XOtherGaps[i].text[j])
-      {
-        outText[j] = Th2XOtherGaps[i].text[j];
-        j++;
-      }
-      outText[j] = Th2XOtherGaps[i].text[j];
-      outText[j + 1] = '\0';
-      return 5;
-    }
-  }
+	for (DWORD i = 0; i < sizeof(Th2XOtherGaps) / sizeof(Th2Gap); i++)
+	{
+		if ((WORD)Th2XOtherGaps[i].id == id)
+		{
+			DWORD j = 0;
+			while (Th2XOtherGaps[i].text[j])
+			{
+				outText[j] = Th2XOtherGaps[i].text[j];
+				j++;
+			}
+			outText[j] = Th2XOtherGaps[i].text[j];
+			outText[j + 1] = '\0';
+			return 5;
+		}
+	}
 
-  if (id == 0x5785) MessageBox(0, "returning 0", NULL, 0); return 0;
+	if (id == 0x5785) MessageBox(0, "returning 0", NULL, 0); return 0;
 }
 
 DWORD epicIndex = 0xFFFFFFFF;
 
 struct MaterialInfo
 {
-  DWORD checksum;
-  DWORD matIndex;
+	DWORD checksum;
+	DWORD matIndex;
 
-  MaterialInfo(DWORD name, DWORD index)
-  {
-    checksum = name;
-    matIndex = index;
-  };
+	MaterialInfo(DWORD name, DWORD index)
+	{
+		checksum = name;
+		matIndex = index;
+	};
 };
 
 struct XboxVertex
 {
-  float x;
-  float y;
-  float z;
-  float xn;
-  float yn;
-  float zn;
-  DWORD RGBX;
-  float u;
-  float v;
+	float x;
+	float y;
+	float z;
+	float xn;
+	float yn;
+	float zn;
+	DWORD RGBX;
+	float u;
+	float v;
 };
 
 struct ObjInfo
 {
-  DWORD checksum;
-  DWORD matIndex;
-  DWORD numVertices;
-  XboxVertex* vertices;
-  DWORD numIndices;
-  WORD* indices;
-  BYTE flags;
-  bool added;
+	DWORD checksum;
+	DWORD matIndex;
+	DWORD numVertices;
+	XboxVertex* vertices;
+	DWORD numIndices;
+	WORD* indices;
+	BYTE flags;
+	bool added;
 
-  ObjInfo(DWORD chc, DWORD id, DWORD numVerts, DWORD verts, DWORD numInd, DWORD ind, BYTE flags)
-  {
-    checksum = chc;
-    matIndex = id;
-    numVertices = numVerts;
-    vertices = (XboxVertex*)verts;
-    numIndices = numInd;
-    indices = (WORD*)ind;
-    this->flags = flags;
-    added = false;
-  }
+	ObjInfo(DWORD chc, DWORD id, DWORD numVerts, DWORD verts, DWORD numInd, DWORD ind, BYTE flags)
+	{
+		checksum = chc;
+		matIndex = id;
+		numVertices = numVerts;
+		vertices = (XboxVertex*)verts;
+		numIndices = numInd;
+		indices = (WORD*)ind;
+		this->flags = flags;
+		added = false;
+	}
 };
 
 vector<MaterialInfo> matInfo;
@@ -1039,793 +1039,793 @@ vector<ObjInfo> objInfo;
 
 void Th2Scene::ProcessXBOXMaterials(DWORD ptr, bool sky)
 {
-  DWORD index;
-  DWORD checksum;
-  DWORD pFile = ptr;
-  ptr += 8;
+	DWORD index;
+	DWORD checksum;
+	DWORD pFile = ptr;
+	ptr += 8;
 
-  DWORD numObjects = ((DWORD*)ptr)[0];
-  ptr += 4;
+	DWORD numObjects = ((DWORD*)ptr)[0];
+	ptr += 4;
 
-  Texture texture;
-  ZeroMemory(&texture, sizeof(Texture));
-  if (sky)
-  {
-    texture.vAddress = D3DTADDRESS_WRAP;
-    texture.uAddress = D3DTADDRESS_WRAP;
-  }
-  else
-  {
-    texture.vAddress = D3DTADDRESS_WRAP;
-    texture.uAddress = D3DTADDRESS_WRAP;
-  }
-  texture.SetBlendMode(20);
-  for (DWORD i = 0; i < numObjects; i++)
-  {
-    DWORD pObject = pFile + ((DWORD*)ptr)[0];
-    ptr += 4;
-    DWORD size = ((DWORD*)ptr)[0];
-    ptr += 4;
-    pObject += 4;
-    checksum = ((DWORD*)pObject)[0];
-    pObject += 16;
-    BYTE flags = ((BYTE*)pObject)[0];
-    pObject += 8;
-    char* chc = (char*)pObject;
+	Texture texture;
+	ZeroMemory(&texture, sizeof(Texture));
+	if (sky)
+	{
+		texture.vAddress = D3DTADDRESS_WRAP;
+		texture.uAddress = D3DTADDRESS_WRAP;
+	}
+	else
+	{
+		texture.vAddress = D3DTADDRESS_WRAP;
+		texture.uAddress = D3DTADDRESS_WRAP;
+	}
+	texture.SetBlendMode(20);
+	for (DWORD i = 0; i < numObjects; i++)
+	{
+		DWORD pObject = pFile + ((DWORD*)ptr)[0];
+		ptr += 4;
+		DWORD size = ((DWORD*)ptr)[0];
+		ptr += 4;
+		pObject += 4;
+		checksum = ((DWORD*)pObject)[0];
+		pObject += 16;
+		BYTE flags = ((BYTE*)pObject)[0];
+		pObject += 8;
+		char* chc = (char*)pObject;
 
-    if (!(*(Checksum*)&checksum).GetString())
-      Scripts.push_back((Script(checksum, chc)));
-    pObject += 92;
+		if (!(*(Checksum*)&checksum).GetString())
+			Scripts.push_back((Script(checksum, chc)));
+		pObject += 92;
 
-    DWORD numMaterials = ((DWORD*)pObject)[0];
-    DWORD numVertices = ((DWORD*)pObject)[1];
-    DWORD numIndices = ((DWORD*)pObject)[2];
-    pObject += 16;
-
-
-    pObject += 64;//material name
-
-    char* name = (char*)pObject;//texture name
-    pObject += 64;
-    DWORD id = ((DWORD*)pObject)[0];
-    if (id == 0)
-    {
-      sprintf(chc, "%s_%s", (*(Checksum*)&checksum).GetString(), name);
-      id = Checksum(chc).checksum;
-    }
-
-    pObject += 24;
-
-    matInfo.push_back((MaterialInfo(checksum, id)));
+		DWORD numMaterials = ((DWORD*)pObject)[0];
+		DWORD numVertices = ((DWORD*)pObject)[1];
+		DWORD numIndices = ((DWORD*)pObject)[2];
+		pObject += 16;
 
 
-    if (!matList.GetMaterial(Checksum(id)))
-    {
-      Material material = Material();//Material* material = new Material();
-      material.SetMatId(id);
-      material.Reserve(1);
-      //materials[i] = (Material*)malloc(sizeof(Material));
-      //materials[i]->SetMatId(((DWORD*)ptr)[0]);
-      //material->drawOrder = (float)i;
-      material.drawOrder = 0.0f;
-      material.transparent = false;
-      //material.SetMatId(id);
-      texture.SetId(Checksum(name));
-      texture.CreateTexture();
-      if (texture.IsTransparent())
-      {
-        material.transparent = true;
-        material.drawOrder = 1501.0f;
-      }
-      else
-        material.transparent = false;
-      material.AddTexture2(&texture);
-      AddMaterial(&material);
-      //free(materials[i]);
-      //delete material;
-    }
+		pObject += 64;//material name
 
-    for (DWORD j = 1; j < numMaterials; j++)
-    {
-      pObject += 64;
+		char* name = (char*)pObject;//texture name
+		pObject += 64;
+		DWORD id = ((DWORD*)pObject)[0];
+		if (id == 0)
+		{
+			sprintf(chc, "%s_%s", (*(Checksum*)&checksum).GetString(), name);
+			id = Checksum(chc).checksum;
+		}
 
-      char* name = (char*)pObject;
-      pObject += 64;
-      DWORD id = ((DWORD*)pObject)[0];
-      pObject += 24;
+		pObject += 24;
 
-      if (!matList.GetMaterial(Checksum(id)))
-      {
-        Material material = Material();//Material* material = new Material();
-        material.SetMatId(i);
-        material.Reserve(1);
-        //materials[i] = (Material*)malloc(sizeof(Material));
-        //materials[i]->SetMatId(((DWORD*)ptr)[0]);
-        //material->drawOrder = (float)i;
-        material.drawOrder = 0.0f;
-        material.transparent = false;
-        material.SetMatId(id);
-        texture.SetId(Checksum(name));
-        texture.CreateTexture();
-        if (texture.IsTransparent())
-        {
-          material.transparent = true;
-          material.drawOrder = 1501.0f;
-        }
-        else
-          material.transparent = false;
-        material.AddTexture2(&texture);
-        AddMaterial(&material);
-      }
-    }
-    objInfo.push_back(ObjInfo(checksum, id, numVertices, pObject, numIndices, pObject + numVertices*sizeof(XboxVertex), flags));
-  }
-  Material material;
-  material.transparent = true;
-  material.SetMatId(Checksum("NO-MATERIAL").checksum);
-  material.Reserve(1);
-  texture.SetId(Checksum("NO-TEXTURE").checksum);
-  material.AddTexture2(&texture);
-  epicIndex = matList.GetNumMaterials();
-  matList.AddMaterial(&material);
+		matInfo.push_back((MaterialInfo(checksum, id)));
+
+
+		if (!matList.GetMaterial(Checksum(id)))
+		{
+			Material material = Material();//Material* material = new Material();
+			material.SetMatId(id);
+			material.Reserve(1);
+			//materials[i] = (Material*)malloc(sizeof(Material));
+			//materials[i]->SetMatId(((DWORD*)ptr)[0]);
+			//material->drawOrder = (float)i;
+			material.drawOrder = 0.0f;
+			material.transparent = false;
+			//material.SetMatId(id);
+			texture.SetId(Checksum(name));
+			texture.CreateTexture();
+			if (texture.transparent())
+			{
+				material.transparent = true;
+				material.drawOrder = 1501.0f;
+			}
+			else
+				material.transparent = false;
+			material.AddTexture2(&texture);
+			AddMaterial(&material);
+			//free(materials[i]);
+			//delete material;
+		}
+
+		for (DWORD j = 1; j < numMaterials; j++)
+		{
+			pObject += 64;
+
+			char* name = (char*)pObject;
+			pObject += 64;
+			DWORD id = ((DWORD*)pObject)[0];
+			pObject += 24;
+
+			if (!matList.GetMaterial(Checksum(id)))
+			{
+				Material material = Material();//Material* material = new Material();
+				material.SetMatId(i);
+				material.Reserve(1);
+				//materials[i] = (Material*)malloc(sizeof(Material));
+				//materials[i]->SetMatId(((DWORD*)ptr)[0]);
+				//material->drawOrder = (float)i;
+				material.drawOrder = 0.0f;
+				material.transparent = false;
+				material.SetMatId(id);
+				texture.SetId(Checksum(name));
+				texture.CreateTexture();
+				if (texture.transparent())
+				{
+					material.transparent = true;
+					material.drawOrder = 1501.0f;
+				}
+				else
+					material.transparent = false;
+				material.AddTexture2(&texture);
+				AddMaterial(&material);
+			}
+		}
+		objInfo.push_back(ObjInfo(checksum, id, numVertices, pObject, numIndices, pObject + numVertices * sizeof(XboxVertex), flags));
+	}
+	Material material;
+	material.transparent = true;
+	material.SetMatId(Checksum("NO-MATERIAL").checksum);
+	material.Reserve(1);
+	texture.SetId(Checksum("NO-TEXTURE").checksum);
+	material.AddTexture2(&texture);
+	epicIndex = matList.GetNumMaterials();
+	matList.AddMaterial(&material);
 }
 
 void Th2Scene::ProcessMaterials(DWORD ptr, DWORD numMeshes, DWORD* meshNames, bool sky)
 {
-  /*ptr+=4;
-  DWORD numRGBs = ((DWORD*)ptr)[0];
-  ptr+=4;
-  ptr+= numRGBs;*/
+	/*ptr+=4;
+	DWORD numRGBs = ((DWORD*)ptr)[0];
+	ptr+=4;
+	ptr+= numRGBs;*/
 
-  DWORD tmpByte = ((DWORD*)ptr)[0];
-  while (tmpByte == 6 || tmpByte == 7 || tmpByte == 10)
-  {
-    printf("tmpByte1 %08X\n", tmpByte);
-    ptr += 4;
-    tmpByte = ((DWORD*)ptr)[0];
-    printf("tmpByte2 %08X\n", tmpByte);
-    ptr += 4;
-    ptr += tmpByte;
-    tmpByte = ((DWORD*)ptr)[0];
-    printf("tmpByte3 %08X\n", tmpByte);
-  }
+	DWORD tmpByte = ((DWORD*)ptr)[0];
+	while (tmpByte == 6 || tmpByte == 7 || tmpByte == 10)
+	{
+		printf("tmpByte1 %08X\n", tmpByte);
+		ptr += 4;
+		tmpByte = ((DWORD*)ptr)[0];
+		printf("tmpByte2 %08X\n", tmpByte);
+		ptr += 4;
+		ptr += tmpByte;
+		tmpByte = ((DWORD*)ptr)[0];
+		printf("tmpByte3 %08X\n", tmpByte);
+	}
 
-  /*while(((DWORD*)ptr)[0]==0xFFFFFFFF)
-  {*/
-  printf("tmpByteCore %08X\n", tmpByte);
-  if (tmpByte == 0xFFFFFFFF)
-    ptr += 4;
-  //}
-  for (DWORD i = 0; i < numMeshes; i++)
-  {
-    meshNames[i] = ((DWORD*)ptr)[0];
-    ptr += 4;
-  }
-  printf("numMatPtr %08X\n", ptr);
-  /*DWORD numMaterials = ((DWORD*)ptr)[0];
-  printf("numMat %d\n",numMaterials);
-  ptr+=4;
+	/*while(((DWORD*)ptr)[0]==0xFFFFFFFF)
+	{*/
+	printf("tmpByteCore %08X\n", tmpByte);
+	if (tmpByte == 0xFFFFFFFF)
+		ptr += 4;
+	//}
+	for (DWORD i = 0; i < numMeshes; i++)
+	{
+		meshNames[i] = ((DWORD*)ptr)[0];
+		ptr += 4;
+	}
+	printf("numMatPtr %08X\n", ptr);
+	/*DWORD numMaterials = ((DWORD*)ptr)[0];
+	printf("numMat %d\n",numMaterials);
+	ptr+=4;
 
-  //Material** materials = new Material*[numMaterials];
-  Texture texture;
-  ZeroMemory(&texture,sizeof(Texture));
-  if(sky)
-  {
-  texture.vAddress = D3DTADDRESS_WRAP;
-  texture.uAddress = D3DTADDRESS_WRAP;
-  }
-  else
-  {
-  texture.vAddress = D3DTADDRESS_WRAP;
-  texture.uAddress = D3DTADDRESS_WRAP;
-  }
-  texture.blendMode = 20;
-  for(DWORD i=0; i<numMaterials; i++)
-  {
-  Material* material = new Material();
-  //materials[i] = (Material*)malloc(sizeof(Material));
-  //materials[i]->SetMatId(((DWORD*)ptr)[0]);
-  //material->drawOrder = (float)i;
-  material->drawOrder = 0.0f;
-  material->transparent[0] = false;
-  material->SetMatId(((DWORD*)ptr)[0]);
-  /*Texture* texture = new Texture();
-  ZeroMemory(texture,sizeof(Texture));
-  texture->vAddress = D3DTADDRESS_WRAP;
-  texture->uAddress = D3DTADDRESS_WRAP;
-  texture->blendMode = 20;*/
+	//Material** materials = new Material*[numMaterials];
+	Texture texture;
+	ZeroMemory(&texture,sizeof(Texture));
+	if(sky)
+	{
+	texture.vAddress = D3DTADDRESS_WRAP;
+	texture.uAddress = D3DTADDRESS_WRAP;
+	}
+	else
+	{
+	texture.vAddress = D3DTADDRESS_WRAP;
+	texture.uAddress = D3DTADDRESS_WRAP;
+	}
+	texture.blendMode = 20;
+	for(DWORD i=0; i<numMaterials; i++)
+	{
+	Material* material = new Material();
+	//materials[i] = (Material*)malloc(sizeof(Material));
+	//materials[i]->SetMatId(((DWORD*)ptr)[0]);
+	//material->drawOrder = (float)i;
+	material->drawOrder = 0.0f;
+	material->transparent[0] = false;
+	material->SetMatId(((DWORD*)ptr)[0]);
+	/*Texture* texture = new Texture();
+	ZeroMemory(texture,sizeof(Texture));
+	texture->vAddress = D3DTADDRESS_WRAP;
+	texture->uAddress = D3DTADDRESS_WRAP;
+	texture->blendMode = 20;*/
 
-  /*texture.SetId(((DWORD*)ptr)[0]);
-  ptr+=4;
-  texture.CreateTexture();
-  //texture->CreateTexture();
-  if(texture.IsTransparent())
-  material->transparent[0]=true;
-  else
-  material->transparent[0]=false;
-  material->AddTexture(&texture);
-  AddMaterial(material);
-  //free(materials[i]);
-  delete material;
-  }^*/
+	/*texture.SetId(((DWORD*)ptr)[0]);
+	ptr+=4;
+	texture.CreateTexture();
+	//texture->CreateTexture();
+	if(texture.transparent())
+	material->transparent[0]=true;
+	else
+	material->transparent[0]=false;
+	material->AddTexture(&texture);
+	AddMaterial(material);
+	//free(materials[i]);
+	delete material;
+	}^*/
 }
 
 static Colour LevelData[16777216];
 
 void Th2Scene::ProcessXBOXTextures(DWORD ptr, bool sky)
 {
-  bool merging = false;
-  DWORD pFile = ptr;
-  ptr += 8;
-  DWORD pImage = pFile + ((DWORD*)ptr)[0];
-  ptr += 4;
-  DWORD numTextures = ((DWORD*)ptr)[0];
-  if (!texFiles.numFiles)
-  {
-    texFiles.numFiles = numTextures + 6;
-    texFiles.fileNames = new char*[numTextures + 6];
-    static char imageName[MAX_PATH] = "";
-    GetEnvironmentVariable("TEMP", imageName, MAX_PATH);
-    DWORD pName = strlen(imageName);
-    imageName[pName] = '\\';
-    pName++;
-    imageName[pName] = 'D';
-    pName++;
-    imageName[pName] = '_';
-    pName++;
-    imageName[pName] = 'l';
-    pName++;
-    imageName[pName] = 'o';
-    pName++;
-    imageName[pName] = 'g';
-    pName++;
-    imageName[pName] = 'o';
-    pName++;
-    imageName[pName] = '0';
-    imageName[pName + 1] = '1';
-    imageName[pName + 2] = '.';
-    imageName[pName + 3] = 't';
-    imageName[pName + 4] = 'g';
-    imageName[pName + 5] = 'a';
-    texFiles.fileNames[numTextures] = new char[strlen(imageName) + 1];
-    memcpy(texFiles.fileNames[numTextures], imageName, strlen(imageName) + 1);
-    imageName[pName] = '1';
-    texFiles.fileNames[numTextures + 1] = new char[strlen(imageName) + 1];
-    memcpy(texFiles.fileNames[numTextures + 1], imageName, strlen(imageName) + 1);
-    imageName[pName] = '2';
-    texFiles.fileNames[numTextures + 2] = new char[strlen(imageName) + 1];
-    memcpy(texFiles.fileNames[numTextures + 2], imageName, strlen(imageName) + 1);
-    imageName[pName + 1] = '2';
-    imageName[pName] = '0';
-    texFiles.fileNames[numTextures + 3] = new char[strlen(imageName) + 1];
-    memcpy(texFiles.fileNames[numTextures + 3], imageName, strlen(imageName) + 1);
-    imageName[pName] = '1';
-    texFiles.fileNames[numTextures + 4] = new char[strlen(imageName) + 1];
-    memcpy(texFiles.fileNames[numTextures + 4], imageName, strlen(imageName) + 1);
-    imageName[pName] = '2';
-    texFiles.fileNames[numTextures + 5] = new char[strlen(imageName) + 1];
-    memcpy(texFiles.fileNames[numTextures + 5], imageName, strlen(imageName) + 1);
-  }
-  else
-  {
-    merging = true;
-    char** temp = (char**)realloc(texFiles.fileNames, (texFiles.numFiles + numTextures) * 4);
-    if (temp)
-      texFiles.fileNames = temp;
-    else
-      return;
-  }
-  ptr += 4;
-  static char imageName[MAX_PATH] = "";
-  GetEnvironmentVariable("TEMP", imageName, MAX_PATH);
-  DWORD pName = strlen(imageName);
-  imageName[pName] = '\\';
-  pName++;
+	bool merging = false;
+	DWORD pFile = ptr;
+	ptr += 8;
+	DWORD pImage = pFile + ((DWORD*)ptr)[0];
+	ptr += 4;
+	DWORD numTextures = ((DWORD*)ptr)[0];
+	if (!texFiles.numFiles)
+	{
+		texFiles.numFiles = numTextures + 6;
+		texFiles.fileNames = new char* [numTextures + 6];
+		static char imageName[MAX_PATH] = "";
+		GetEnvironmentVariable("TEMP", imageName, MAX_PATH);
+		DWORD pName = strlen(imageName);
+		imageName[pName] = '\\';
+		pName++;
+		imageName[pName] = 'D';
+		pName++;
+		imageName[pName] = '_';
+		pName++;
+		imageName[pName] = 'l';
+		pName++;
+		imageName[pName] = 'o';
+		pName++;
+		imageName[pName] = 'g';
+		pName++;
+		imageName[pName] = 'o';
+		pName++;
+		imageName[pName] = '0';
+		imageName[pName + 1] = '1';
+		imageName[pName + 2] = '.';
+		imageName[pName + 3] = 't';
+		imageName[pName + 4] = 'g';
+		imageName[pName + 5] = 'a';
+		texFiles.fileNames[numTextures] = new char[strlen(imageName) + 1];
+		memcpy(texFiles.fileNames[numTextures], imageName, strlen(imageName) + 1);
+		imageName[pName] = '1';
+		texFiles.fileNames[numTextures + 1] = new char[strlen(imageName) + 1];
+		memcpy(texFiles.fileNames[numTextures + 1], imageName, strlen(imageName) + 1);
+		imageName[pName] = '2';
+		texFiles.fileNames[numTextures + 2] = new char[strlen(imageName) + 1];
+		memcpy(texFiles.fileNames[numTextures + 2], imageName, strlen(imageName) + 1);
+		imageName[pName + 1] = '2';
+		imageName[pName] = '0';
+		texFiles.fileNames[numTextures + 3] = new char[strlen(imageName) + 1];
+		memcpy(texFiles.fileNames[numTextures + 3], imageName, strlen(imageName) + 1);
+		imageName[pName] = '1';
+		texFiles.fileNames[numTextures + 4] = new char[strlen(imageName) + 1];
+		memcpy(texFiles.fileNames[numTextures + 4], imageName, strlen(imageName) + 1);
+		imageName[pName] = '2';
+		texFiles.fileNames[numTextures + 5] = new char[strlen(imageName) + 1];
+		memcpy(texFiles.fileNames[numTextures + 5], imageName, strlen(imageName) + 1);
+	}
+	else
+	{
+		merging = true;
+		char** temp = (char**)realloc(texFiles.fileNames, (texFiles.numFiles + numTextures) * 4);
+		if (temp)
+			texFiles.fileNames = temp;
+		else
+			return;
+	}
+	ptr += 4;
+	static char imageName[MAX_PATH] = "";
+	GetEnvironmentVariable("TEMP", imageName, MAX_PATH);
+	DWORD pName = strlen(imageName);
+	imageName[pName] = '\\';
+	pName++;
 
-  TGAHEADER tgaHeader = { 0 };
-  tgaHeader.bitsPerPixel = 32;
-  tgaHeader.imageDescriptor = 32;
-  tgaHeader.dataTypeCode = 2;
-  unsigned char tgaFooterExt[8] = { 0 };
-  char tgaFooterTag[17] = "TRUEVISION-XFILE";
+	TGAHEADER tgaHeader = { 0 };
+	tgaHeader.bitsPerPixel = 32;
+	tgaHeader.imageDescriptor = 32;
+	tgaHeader.dataTypeCode = 2;
+	unsigned char tgaFooterExt[8] = { 0 };
+	char tgaFooterTag[17] = "TRUEVISION-XFILE";
 
-  for (DWORD i = 0; i < numTextures; i++)
-  {
-    DWORD pImageData = pImage + ((DWORD*)ptr)[0];
-    BYTE* imageData = (BYTE*)(pImageData);
-    pImageData += sizeof(DDS_HEADER);
-    ptr += 4;
-    DWORD size = ((DWORD*)ptr)[0];
-    ptr += 4;
-    char* name = (char*)ptr;
-    DWORD len = strlen(name);
-    /*if(!merging && len && strstr(name, "D_logo"))
-    {
-    texFiles.fileNames[i] = NULL;
-    continue;
-    }*/
-    name[len - 1] = 'a';
-    name[len - 2] = 'g';
-    name[len - 3] = 't';
-    strcpy(&imageName[pName], name);
-    if (!merging)
-      texFiles.fileNames[i] = new char[strlen(imageName) + 1];
-    else
-      texFiles.fileNames[i + texFiles.numFiles] = new char[strlen(imageName) + 1];
+	for (DWORD i = 0; i < numTextures; i++)
+	{
+		DWORD pImageData = pImage + ((DWORD*)ptr)[0];
+		BYTE* imageData = (BYTE*)(pImageData);
+		pImageData += sizeof(DDS_HEADER);
+		ptr += 4;
+		DWORD size = ((DWORD*)ptr)[0];
+		ptr += 4;
+		char* name = (char*)ptr;
+		DWORD len = strlen(name);
+		/*if(!merging && len && strstr(name, "D_logo"))
+		{
+		texFiles.fileNames[i] = NULL;
+		continue;
+		}*/
+		name[len - 1] = 'a';
+		name[len - 2] = 'g';
+		name[len - 3] = 't';
+		strcpy(&imageName[pName], name);
+		if (!merging)
+			texFiles.fileNames[i] = new char[strlen(imageName) + 1];
+		else
+			texFiles.fileNames[i + texFiles.numFiles] = new char[strlen(imageName) + 1];
 
-    if (!merging)
-      memcpy(texFiles.fileNames[i], imageName, strlen(imageName) + 1);
-    else
-      memcpy(texFiles.fileNames[i + texFiles.numFiles], imageName, strlen(imageName) + 1);
-    ptr += 256;
+		if (!merging)
+			memcpy(texFiles.fileNames[i], imageName, strlen(imageName) + 1);
+		else
+			memcpy(texFiles.fileNames[i + texFiles.numFiles], imageName, strlen(imageName) + 1);
+		ptr += 256;
 
-    DDS_HEADER* header = (DDS_HEADER*)imageData;
+		DDS_HEADER* header = (DDS_HEADER*)imageData;
 
-    tgaHeader.width = header->width;
-    tgaHeader.height = header->height;
+		tgaHeader.width = header->width;
+		tgaHeader.height = header->height;
 
-    FILE*f = fopen(imageName, "wb");
-    fwrite(&tgaHeader, sizeof(TGAHEADER), 1, f);
-    DWORD imageSize = header->width*header->height * 4;//*/
+		FILE* f = fopen(imageName, "wb");
+		fwrite(&tgaHeader, sizeof(TGAHEADER), 1, f);
+		DWORD imageSize = header->width * header->height * 4;//*/
 
-    if (header->pixelFormat[1] & 0x4)
-    {
-      /*FILE*f = fopen(imageName,"wb");
-      fwrite(&tgaHeader,sizeof(TGAHEADER),1,f);*/
-      DWORD imageSize = header->width*header->height * 4;
-      //BYTE* levelData = new BYTE[imageSize];
-      DecompressDXT((BYTE*)pImageData, header->imageSize, header->width, header->height, LevelData, (((header->pixelFormat[2] & 0xFF000000) >> 24) - 0x30));
-      if (sky)
-      {
-        for (DWORD j = 0; j < header->width*header->height; j++)
-        {
-          if (LevelData[j].a == 0xFF)
-            LevelData[j].a = 0xFE;
-        }
-      }
-      fwrite(LevelData, imageSize, 1, f);
-      /*fwrite(&tgaFooterExt,sizeof(tgaFooterExt),1,f);
-      fwrite(&tgaFooterTag,sizeof(tgaFooterTag),1,f);
-      fputc(0x2E, f);
-      fputc(0x00, f);
-      fclose(f);*/
-      //delete [] levelData;
-    }
-    else
-    {
-      DWORD bytesPerPixel = header->imageSize / header->width / header->height;
-      bool usingAlpha = header->pixelFormat[1] & 0x2;
+		if (header->pixelFormat[1] & 0x4)
+		{
+			/*FILE*f = fopen(imageName,"wb");
+			fwrite(&tgaHeader,sizeof(TGAHEADER),1,f);*/
+			DWORD imageSize = header->width * header->height * 4;
+			//BYTE* levelData = new BYTE[imageSize];
+			DecompressDXT((BYTE*)pImageData, header->imageSize, header->width, header->height, LevelData, (((header->pixelFormat[2] & 0xFF000000) >> 24) - 0x30));
+			if (sky)
+			{
+				for (DWORD j = 0; j < header->width * header->height; j++)
+				{
+					if (LevelData[j].a == 0xFF)
+						LevelData[j].a = 0xFE;
+				}
+			}
+			fwrite(LevelData, imageSize, 1, f);
+			/*fwrite(&tgaFooterExt,sizeof(tgaFooterExt),1,f);
+			fwrite(&tgaFooterTag,sizeof(tgaFooterTag),1,f);
+			fputc(0x2E, f);
+			fputc(0x00, f);
+			fclose(f);*/
+			//delete [] levelData;
+		}
+		else
+		{
+			DWORD bytesPerPixel = header->imageSize / header->width / header->height;
+			bool usingAlpha = header->pixelFormat[1] & 0x2;
 
-      if (bytesPerPixel == 4)
-      {
-        //MessageBox(0,"sure this is 32 bit?",imageName,0);
-        fwrite((void*)pImageData, imageSize, 1, f);
-      }
-      else if (bytesPerPixel == 2)
-      {
-        DWORD numPixels = imageSize / 4;
-        //Colour* levelData = new Colour[numPixels];
-        //MessageBox(0,"sure this is 16 bit?",imageName,0);
-        if (usingAlpha)
-        {
-          for (DWORD j = 0; j < numPixels; j++)
-          {
-            BYTE r = ((BYTE)((((WORD*)pImageData)[j] & 0x003E) >> 1));
-            BYTE g = ((BYTE)((((WORD*)pImageData)[j] & 0x7C0) >> 6));
-            BYTE b = ((BYTE)((((WORD*)pImageData)[j] & 0xF800) >> 12));
-            BYTE a = ((BYTE)((((WORD*)pImageData)[j] & 0x1)));
-            LevelData[j].r = (r << 3) | (r >> 2);
-            LevelData[j].g = (g << 3) | (g >> 2);
-            LevelData[j].b = (b << 3) | (b >> 2);
-            if (a)
-              sky ? LevelData[j].a = 254 : LevelData[j].a = 255;
-            else
-              LevelData[j].a = 0;
-          }
-        }
-        else
-        {
-          for (DWORD j = 0; j < numPixels; j++)
-          {
-            BYTE r = (BYTE)(((WORD*)pImageData)[j] & 0x001F);
-            BYTE g = ((BYTE)((((WORD*)pImageData)[j] & 0x7E0) >> 5));
-            BYTE b = ((BYTE)((((WORD*)pImageData)[j] & 0xF800) >> 11));
-            LevelData[j].r = (r << 3) | (r >> 2);
-            LevelData[j].g = (g << 2) | (g >> 4);
-            LevelData[j].b = (b << 3) | (b >> 2);
-            if (sky)
-              LevelData[j].a = 254;
-            else
-              LevelData[j].a = 255;
-          }
-        }
-        fwrite(LevelData, imageSize, 1, f);
-        //delete [] levelData;
-      }
-      else if (bytesPerPixel == 1)
-        MessageBox(0, "1", 0, 0);
-      else
-        MessageBox(0, "unknown", 0, 0);
+			if (bytesPerPixel == 4)
+			{
+				//MessageBox(0,"sure this is 32 bit?",imageName,0);
+				fwrite((void*)pImageData, imageSize, 1, f);
+			}
+			else if (bytesPerPixel == 2)
+			{
+				DWORD numPixels = imageSize / 4;
+				//Colour* levelData = new Colour[numPixels];
+				//MessageBox(0,"sure this is 16 bit?",imageName,0);
+				if (usingAlpha)
+				{
+					for (DWORD j = 0; j < numPixels; j++)
+					{
+						BYTE r = ((BYTE)((((WORD*)pImageData)[j] & 0x003E) >> 1));
+						BYTE g = ((BYTE)((((WORD*)pImageData)[j] & 0x7C0) >> 6));
+						BYTE b = ((BYTE)((((WORD*)pImageData)[j] & 0xF800) >> 12));
+						BYTE a = ((BYTE)((((WORD*)pImageData)[j] & 0x1)));
+						LevelData[j].r = (r << 3) | (r >> 2);
+						LevelData[j].g = (g << 3) | (g >> 2);
+						LevelData[j].b = (b << 3) | (b >> 2);
+						if (a)
+							sky ? LevelData[j].a = 254 : LevelData[j].a = 255;
+						else
+							LevelData[j].a = 0;
+					}
+				}
+				else
+				{
+					for (DWORD j = 0; j < numPixels; j++)
+					{
+						BYTE r = (BYTE)(((WORD*)pImageData)[j] & 0x001F);
+						BYTE g = ((BYTE)((((WORD*)pImageData)[j] & 0x7E0) >> 5));
+						BYTE b = ((BYTE)((((WORD*)pImageData)[j] & 0xF800) >> 11));
+						LevelData[j].r = (r << 3) | (r >> 2);
+						LevelData[j].g = (g << 2) | (g >> 4);
+						LevelData[j].b = (b << 3) | (b >> 2);
+						if (sky)
+							LevelData[j].a = 254;
+						else
+							LevelData[j].a = 255;
+					}
+				}
+				fwrite(LevelData, imageSize, 1, f);
+				//delete [] levelData;
+			}
+			else if (bytesPerPixel == 1)
+				MessageBox(0, "1", 0, 0);
+			else
+				MessageBox(0, "unknown", 0, 0);
 
-      //MessageBox(0,"wtf this texture is not compressed","wawwiee",0);
-      //levelData = (pImageData;
-    }//*/
+			//MessageBox(0,"wtf this texture is not compressed","wawwiee",0);
+			//levelData = (pImageData;
+		}//*/
 
 
-    fwrite(&tgaFooterExt, sizeof(tgaFooterExt), 1, f);
-    fwrite(&tgaFooterTag, sizeof(tgaFooterTag), 1, f);
-    fputc(0x2E, f);
-    fputc(0x00, f);
-    fclose(f);//*/
-    /*name[len-1] = 's';
-    name[len-2] = 'd';
-    name[len-3] = 'd';
-    strcpy(&imageName[pName],name);
-    f = fopen(imageName,"wb");
-    fwrite(imageData,size,1,f);
-    fclose(f);*/
+		fwrite(&tgaFooterExt, sizeof(tgaFooterExt), 1, f);
+		fwrite(&tgaFooterTag, sizeof(tgaFooterTag), 1, f);
+		fputc(0x2E, f);
+		fputc(0x00, f);
+		fclose(f);//*/
+		/*name[len-1] = 's';
+		name[len-2] = 'd';
+		name[len-3] = 'd';
+		strcpy(&imageName[pName],name);
+		f = fopen(imageName,"wb");
+		fwrite(imageData,size,1,f);
+		fclose(f);*/
 
-  }
-  if (merging)
-    texFiles.numFiles += numTextures;
-  else
-  {
-    HRSRC resource = FindResource(NULL, MAKEINTRESOURCE(2055), RT_RCDATA);
-    if (resource != NULL)
-    {
-      HGLOBAL resourceData = LoadResource(NULL, resource);
-      if (resourceData != NULL)
-      {
-        void* pFile = LockResource(resourceData);
-        if (pFile != NULL)
-        {
-          FILE* f = fopen(texFiles.fileNames[texFiles.numFiles - 3], "w+b");
-          if (f)
-          {
-            fwrite(pFile, SizeofResource(NULL, resource), 1, f);
-            fclose(f);
-          }
-          f = fopen(texFiles.fileNames[texFiles.numFiles - 6], "w+b");
-          if (f)
-          {
-            fwrite(pFile, SizeofResource(NULL, resource), 1, f);
-            fclose(f);
-          }
-        }
-      }
-      //CloseHandle(resource);
-    }
-    resource = FindResource(NULL, MAKEINTRESOURCE(2056), RT_RCDATA);
-    if (resource != NULL)
-    {
-      HGLOBAL resourceData = LoadResource(NULL, resource);
-      if (resourceData != NULL)
-      {
-        void* pFile = LockResource(resourceData);
-        if (pFile != NULL)
-        {
-          FILE* f = fopen(texFiles.fileNames[texFiles.numFiles - 2], "w+b");
-          if (f)
-          {
-            fwrite(pFile, SizeofResource(NULL, resource), 1, f);
-            fclose(f);
-          }
-          f = fopen(texFiles.fileNames[texFiles.numFiles - 5], "w+b");
-          if (f)
-          {
-            fwrite(pFile, SizeofResource(NULL, resource), 1, f);
-            fclose(f);
-          }
-        }
-      }
-      //CloseHandle(resource);
-    }
-    resource = FindResource(NULL, MAKEINTRESOURCE(2057), RT_RCDATA);
-    if (resource != NULL)
-    {
-      HGLOBAL resourceData = LoadResource(NULL, resource);
-      if (resourceData != NULL)
-      {
-        void* pFile = LockResource(resourceData);
-        if (pFile != NULL)
-        {
-          FILE* f = fopen(texFiles.fileNames[texFiles.numFiles - 1], "w+b");
-          if (f)
-          {
-            fwrite(pFile, SizeofResource(NULL, resource), 1, f);
-            fclose(f);
-          }
-          f = fopen(texFiles.fileNames[texFiles.numFiles - 4], "w+b");
-          if (f)
-          {
-            fwrite(pFile, SizeofResource(NULL, resource), 1, f);
-            fclose(f);
-          }
-        }
-      }
-      //CloseHandle(resource);
-    }
-  }
+	}
+	if (merging)
+		texFiles.numFiles += numTextures;
+	else
+	{
+		HRSRC resource = FindResource(NULL, MAKEINTRESOURCE(2055), RT_RCDATA);
+		if (resource != NULL)
+		{
+			HGLOBAL resourceData = LoadResource(NULL, resource);
+			if (resourceData != NULL)
+			{
+				void* pFile = LockResource(resourceData);
+				if (pFile != NULL)
+				{
+					FILE* f = fopen(texFiles.fileNames[texFiles.numFiles - 3], "w+b");
+					if (f)
+					{
+						fwrite(pFile, SizeofResource(NULL, resource), 1, f);
+						fclose(f);
+					}
+					f = fopen(texFiles.fileNames[texFiles.numFiles - 6], "w+b");
+					if (f)
+					{
+						fwrite(pFile, SizeofResource(NULL, resource), 1, f);
+						fclose(f);
+					}
+				}
+			}
+			//CloseHandle(resource);
+		}
+		resource = FindResource(NULL, MAKEINTRESOURCE(2056), RT_RCDATA);
+		if (resource != NULL)
+		{
+			HGLOBAL resourceData = LoadResource(NULL, resource);
+			if (resourceData != NULL)
+			{
+				void* pFile = LockResource(resourceData);
+				if (pFile != NULL)
+				{
+					FILE* f = fopen(texFiles.fileNames[texFiles.numFiles - 2], "w+b");
+					if (f)
+					{
+						fwrite(pFile, SizeofResource(NULL, resource), 1, f);
+						fclose(f);
+					}
+					f = fopen(texFiles.fileNames[texFiles.numFiles - 5], "w+b");
+					if (f)
+					{
+						fwrite(pFile, SizeofResource(NULL, resource), 1, f);
+						fclose(f);
+					}
+				}
+			}
+			//CloseHandle(resource);
+		}
+		resource = FindResource(NULL, MAKEINTRESOURCE(2057), RT_RCDATA);
+		if (resource != NULL)
+		{
+			HGLOBAL resourceData = LoadResource(NULL, resource);
+			if (resourceData != NULL)
+			{
+				void* pFile = LockResource(resourceData);
+				if (pFile != NULL)
+				{
+					FILE* f = fopen(texFiles.fileNames[texFiles.numFiles - 1], "w+b");
+					if (f)
+					{
+						fwrite(pFile, SizeofResource(NULL, resource), 1, f);
+						fclose(f);
+					}
+					f = fopen(texFiles.fileNames[texFiles.numFiles - 4], "w+b");
+					if (f)
+					{
+						fwrite(pFile, SizeofResource(NULL, resource), 1, f);
+						fclose(f);
+					}
+				}
+			}
+			//CloseHandle(resource);
+		}
+	}
 }
 
 void Th2Scene::ProcessTextures(DWORD ptr, bool sky)
 {
-  bool merging = false;
-  DWORD pFile = ptr;
-  ptr += 20;
-  TGAHEADER tgaHeader = { 0 };
-  char imageName[MAX_PATH] = "";
-  char tmp[25] = "";
-  tgaHeader.bitsPerPixel = 32;
-  tgaHeader.imageDescriptor = 32;
-  tgaHeader.dataTypeCode = 2;
-  unsigned char tgaFooterExt[8] = { 0 };
-  char tgaFooterTag[17] = "TRUEVISION-XFILE";
-  struct Palette
-  {
-    DWORD checksum;
-    WORD* colours;
-  };
+	bool merging = false;
+	DWORD pFile = ptr;
+	ptr += 20;
+	TGAHEADER tgaHeader = { 0 };
+	char imageName[MAX_PATH] = "";
+	char tmp[25] = "";
+	tgaHeader.bitsPerPixel = 32;
+	tgaHeader.imageDescriptor = 32;
+	tgaHeader.dataTypeCode = 2;
+	unsigned char tgaFooterExt[8] = { 0 };
+	char tgaFooterTag[17] = "TRUEVISION-XFILE";
+	struct Palette
+	{
+		DWORD checksum;
+		WORD* colours;
+	};
 
-  struct Th2Texture
-  {
-    DWORD checksum;
-    DWORD pImage;
-  };
+	struct Th2Texture
+	{
+		DWORD checksum;
+		DWORD pImage;
+	};
 
-  DWORD numTextures = ((DWORD*)ptr)[0];
-  ptr += 4;
-  Th2Texture* textures = new Th2Texture[numTextures];
+	DWORD numTextures = ((DWORD*)ptr)[0];
+	ptr += 4;
+	Th2Texture* textures = new Th2Texture[numTextures];
 
-  for (DWORD i = 0; i < numTextures; i++)
-  {
-    textures[i].checksum = ((DWORD*)ptr)[0];
-    textures[i].pImage = 0;
-    ptr += 4;
-  }
+	for (DWORD i = 0; i < numTextures; i++)
+	{
+		textures[i].checksum = ((DWORD*)ptr)[0];
+		textures[i].pImage = 0;
+		ptr += 4;
+	}
 
-  DWORD numSmallPalettes = ((DWORD*)ptr)[0];
-  ptr += 4;
-  Palette* smallPalettes = new Palette[numSmallPalettes];
+	DWORD numSmallPalettes = ((DWORD*)ptr)[0];
+	ptr += 4;
+	Palette* smallPalettes = new Palette[numSmallPalettes];
 
-  for (DWORD i = 0; i < numSmallPalettes; i++)
-  {
-    smallPalettes[i].checksum = ((DWORD*)ptr)[0];
-    ptr += 4;
-    smallPalettes[i].colours = (WORD*)ptr;
-    ptr += 32;
-  }
+	for (DWORD i = 0; i < numSmallPalettes; i++)
+	{
+		smallPalettes[i].checksum = ((DWORD*)ptr)[0];
+		ptr += 4;
+		smallPalettes[i].colours = (WORD*)ptr;
+		ptr += 32;
+	}
 
-  DWORD numBigPalettes = ((DWORD*)ptr)[0];
-  ptr += 4;
-  Palette* bigPalettes = new Palette[numBigPalettes];
-  for (DWORD i = 0; i < numBigPalettes; i++)
-  {
-    bigPalettes[i].checksum = ((DWORD*)ptr)[0];
-    ptr += 4;
-    bigPalettes[i].colours = (WORD*)ptr;
-    ptr += 512;
-  }
+	DWORD numBigPalettes = ((DWORD*)ptr)[0];
+	ptr += 4;
+	Palette* bigPalettes = new Palette[numBigPalettes];
+	for (DWORD i = 0; i < numBigPalettes; i++)
+	{
+		bigPalettes[i].checksum = ((DWORD*)ptr)[0];
+		ptr += 4;
+		bigPalettes[i].colours = (WORD*)ptr;
+		ptr += 512;
+	}
 
-  DWORD numImages = ((DWORD*)ptr)[0];
-  ptr += 4;
-  if (!sky)
-  {
-    if (!texFiles.numFiles)
-    {
-      texFiles.numFiles = numImages;
-      texFiles.fileNames = new char*[numImages];
-    }
-    else
-    {
-      merging = true;
-      char** temp = (char**)realloc(texFiles.fileNames, (texFiles.numFiles + numImages) * 4);
-      if (temp)
-        texFiles.fileNames = temp;
-      else
-        return;
-    }
-  }
-  for (DWORD i = 0; i < numImages; i++)
-  {
-    DWORD pImage = ((DWORD*)ptr)[0] + pFile;
-    ptr += 4;
+	DWORD numImages = ((DWORD*)ptr)[0];
+	ptr += 4;
+	if (!sky)
+	{
+		if (!texFiles.numFiles)
+		{
+			texFiles.numFiles = numImages;
+			texFiles.fileNames = new char* [numImages];
+		}
+		else
+		{
+			merging = true;
+			char** temp = (char**)realloc(texFiles.fileNames, (texFiles.numFiles + numImages) * 4);
+			if (temp)
+				texFiles.fileNames = temp;
+			else
+				return;
+		}
+	}
+	for (DWORD i = 0; i < numImages; i++)
+	{
+		DWORD pImage = ((DWORD*)ptr)[0] + pFile;
+		ptr += 4;
 
-    DWORD imageSize = ((DWORD*)pImage)[1];
-    DWORD paletteCRC = ((DWORD*)pImage)[2];
-    DWORD index = ((DWORD*)pImage)[3];
-    textures[index].pImage = pImage;
-    DWORD paletteIndex = 0;
-    BYTE paletteType = 0;
-    for (DWORD j = 0; j < numSmallPalettes; j++)
-    {
-      if (paletteCRC == smallPalettes[j].checksum)
-      {
-        paletteType = 0;
-        paletteIndex = j;
-        break;
-      }
-    }
-    for (DWORD j = 0; j < numBigPalettes; j++)
-    {
-      if (paletteCRC == bigPalettes[j].checksum)
-      {
-        paletteType = 1;
-        paletteIndex = j;
-        break;
-      }
-    }
-    textures[index].pImage += 16;
-    DWORD width = ((WORD*)textures[index].pImage)[0];
-    DWORD height = ((WORD*)textures[index].pImage)[1];
-    textures[index].pImage += 4;
-    BYTE* levelData = (BYTE*)textures[index].pImage;
-    DWORD dataSize = width*height;
-    Colour* colourData = new Colour[width*height];
-    if (imageSize == 16)
-    {
-      DWORD counter = 0;
-      for (DWORD j = 0; j < dataSize; j += 2)
-      {
-        if (paletteType)
-        {
-          colourData[j + 1].r = (bigPalettes[paletteIndex].colours[(levelData[counter] & 0xF0) >> 4] & 0x7C00) >> 10;
-          colourData[j + 1].r *= 8;
-          colourData[j + 1].g = (bigPalettes[paletteIndex].colours[(levelData[counter] & 0xF0) >> 4] & 0x3E0) >> 5;
-          colourData[j + 1].g *= 8;
-          colourData[j + 1].b = (bigPalettes[paletteIndex].colours[(levelData[counter] & 0xF0) >> 4] & 0x1F);
-          colourData[j + 1].b *= 8;
-          if ((colourData[j + 1].r >= 248 && colourData[j + 1].r <= 255) && colourData[j + 1].g == 0 && (colourData[j + 1].b >= 248 && colourData[j + 1].b <= 255))//248 for truncation errors
-          {
-            colourData[j + 1].a = 0;
-            colourData[j + 1].r = 0;
-            colourData[j + 1].g = 0;
-            colourData[j + 1].b = 0;
-          }
-          /*else if((colourData[j+1].r+colourData[j+1].g+colourData[j+1].b)<135)
-          colourData[j+1].a = (colourData[j+1].r + colourData[j+1].g + colourData[j+1].b)/3;*/
-          else
-            colourData[j + 1].a = 255;
-          colourData[j].r = (bigPalettes[paletteIndex].colours[levelData[counter] & 0x0F] & 0x7C00) >> 10;
-          colourData[j].r *= 8;
-          colourData[j].g = (bigPalettes[paletteIndex].colours[levelData[counter] & 0x0F] & 0x3E0) >> 5;
-          colourData[j].g *= 8;
-          colourData[j].b = bigPalettes[paletteIndex].colours[levelData[counter] & 0x0F] & 0x1F;
-          colourData[j].b *= 8;
-          if ((colourData[j].r >= 248 && colourData[j].r <= 255) && colourData[j].g == 0 && (colourData[j].b >= 248 && colourData[j].b <= 255))//248 for truncation errors
-          {
-            colourData[j].a = 0;
-            colourData[j].r = 0;
-            colourData[j].g = 0;
-            colourData[j].b = 0;
-          }
-          /*else if((colourData[j].r+colourData[j].g+colourData[j].b)<135)
-          colourData[j].a = (colourData[j].r + colourData[j].g + colourData[j].b)/3;*/
-          else
-            colourData[j].a = 255;
-        }
-        else
-        {
-          colourData[j + 1].r = (smallPalettes[paletteIndex].colours[(levelData[counter] & 0xF0) >> 4] & 0x7C00) >> 10;
-          colourData[j + 1].r *= 8;
-          colourData[j + 1].g = (smallPalettes[paletteIndex].colours[(levelData[counter] & 0xF0) >> 4] & 0x3E0) >> 5;
-          colourData[j + 1].g *= 8;
-          colourData[j + 1].b = smallPalettes[paletteIndex].colours[(levelData[counter] & 0xF0) >> 4] & 0x1F;
-          colourData[j + 1].b *= 8;
-          if ((colourData[j + 1].r >= 248 && colourData[j + 1].r <= 255) && colourData[j + 1].g == 0 && (colourData[j + 1].b >= 248 && colourData[j + 1].b <= 255))//248 for truncation errors
-          {
-            colourData[j + 1].a = 0;
-            colourData[j + 1].r = 0;
-            colourData[j + 1].g = 0;
-            colourData[j + 1].b = 0;
-          }
-          /*else if((colourData[j+1].r+colourData[j+1].g+colourData[j+1].b)<135)
-          colourData[j+1].a = (colourData[j+1].r + colourData[j+1].g + colourData[j+1].b)/3;*/
-          else
-            colourData[j + 1].a = 255;
-          colourData[j].r = (smallPalettes[paletteIndex].colours[levelData[counter] & 0x0F] & 0x7C00) >> 10;
-          colourData[j].r *= 8;
-          colourData[j].g = (smallPalettes[paletteIndex].colours[levelData[counter] & 0x0F] & 0x3E0) >> 5;
-          colourData[j].g *= 8;
-          colourData[j].b = smallPalettes[paletteIndex].colours[levelData[counter] & 0x0F] & 0x1F;
-          colourData[j].b *= 8;
-          if ((colourData[j].r >= 248 && colourData[j].r <= 255) && colourData[j].g == 0 && (colourData[j].b >= 248 && colourData[j].b <= 255))//248 for truncation errors
-          {
-            colourData[j].a = 0;
-            colourData[j].r = 0;
-            colourData[j].g = 0;
-            colourData[j].b = 0;
-          }
-          /*else if((colourData[j].r+colourData[j].g+colourData[j].b)<135)
-          colourData[j].a = (colourData[j].r + colourData[j].g + colourData[j].b)/3;*/
-          else
-            colourData[j].a = 255;
-        }
-        counter++;
-      }
-    }
-    else
-    {
-      for (DWORD j = 0; j < dataSize; j++)
-      {
-        if (paletteType)
-        {
-          colourData[j].r = (bigPalettes[paletteIndex].colours[levelData[j]] & 0x7C00) >> 10;
-          colourData[j].r *= 8;
-          colourData[j].g = (bigPalettes[paletteIndex].colours[levelData[j]] & 0x3E0) >> 5;
-          colourData[j].g *= 8;
-          colourData[j].b = bigPalettes[paletteIndex].colours[levelData[j]] & 0x1F;
-          colourData[j].b *= 8;
-          if ((colourData[j].r >= 248 && colourData[j].r <= 255) && colourData[j].g == 0 && (colourData[j].b >= 248 && colourData[j].b <= 255))//248 for truncation errors
-          {
-            colourData[j].a = 0;
-            colourData[j].r = 0;
-            colourData[j].g = 0;
-            colourData[j].b = 0;
-          }
-          /*else if((colourData[j].r+colourData[j].g+colourData[j].b)<135)
-          colourData[j].a = (colourData[j].r + colourData[j].g + colourData[j].b)/3;*/
-          else
-            colourData[j].a = 255;
-        }
-        else
-        {
-          colourData[j].r = (smallPalettes[paletteIndex].colours[levelData[j]] & 0x7C00) >> 10;
-          colourData[j].r *= 8;
-          colourData[j].g = (smallPalettes[paletteIndex].colours[levelData[j]] & 0x3E0) >> 5;
-          colourData[j].g *= 8;
-          colourData[j].b = smallPalettes[paletteIndex].colours[levelData[j]] & 0x1F;
-          colourData[j].b *= 8;
-          if ((colourData[j].r >= 248 && colourData[j].r <= 255) && colourData[j].g == 0 && (colourData[j].b >= 248 && colourData[j].b <= 255))//248 for truncation errors
-          {
-            colourData[j].a = 0;
-            colourData[j].r = 0;
-            colourData[j].g = 0;
-            colourData[j].b = 0;
-          }
-          /*else if((colourData[j].r+colourData[j].g+colourData[j].b)<135)
-          colourData[j].a = (colourData[j].r + colourData[j].g + colourData[j].b)/3;*/
-          else
-            colourData[j].a = 255;
-        }
-      }
-    }
-    tgaHeader.width = (short)width;
-    tgaHeader.height = (short)height;
-    GetEnvironmentVariable("TEMP", imageName, MAX_PATH);
-    sprintf(tmp, "\\%08X.tga", textures[index].checksum);
-    strcat(imageName, tmp);
-    if (!sky)
-    {
-      if (!merging)
-        texFiles.fileNames[i] = new char[strlen(imageName) + 1];
-      else
-        texFiles.fileNames[i + texFiles.numFiles] = new char[strlen(imageName) + 1];
+		DWORD imageSize = ((DWORD*)pImage)[1];
+		DWORD paletteCRC = ((DWORD*)pImage)[2];
+		DWORD index = ((DWORD*)pImage)[3];
+		textures[index].pImage = pImage;
+		DWORD paletteIndex = 0;
+		BYTE paletteType = 0;
+		for (DWORD j = 0; j < numSmallPalettes; j++)
+		{
+			if (paletteCRC == smallPalettes[j].checksum)
+			{
+				paletteType = 0;
+				paletteIndex = j;
+				break;
+			}
+		}
+		for (DWORD j = 0; j < numBigPalettes; j++)
+		{
+			if (paletteCRC == bigPalettes[j].checksum)
+			{
+				paletteType = 1;
+				paletteIndex = j;
+				break;
+			}
+		}
+		textures[index].pImage += 16;
+		DWORD width = ((WORD*)textures[index].pImage)[0];
+		DWORD height = ((WORD*)textures[index].pImage)[1];
+		textures[index].pImage += 4;
+		BYTE* levelData = (BYTE*)textures[index].pImage;
+		DWORD dataSize = width * height;
+		Colour* colourData = new Colour[width * height];
+		if (imageSize == 16)
+		{
+			DWORD counter = 0;
+			for (DWORD j = 0; j < dataSize; j += 2)
+			{
+				if (paletteType)
+				{
+					colourData[j + 1].r = (bigPalettes[paletteIndex].colours[(levelData[counter] & 0xF0) >> 4] & 0x7C00) >> 10;
+					colourData[j + 1].r *= 8;
+					colourData[j + 1].g = (bigPalettes[paletteIndex].colours[(levelData[counter] & 0xF0) >> 4] & 0x3E0) >> 5;
+					colourData[j + 1].g *= 8;
+					colourData[j + 1].b = (bigPalettes[paletteIndex].colours[(levelData[counter] & 0xF0) >> 4] & 0x1F);
+					colourData[j + 1].b *= 8;
+					if ((colourData[j + 1].r >= 248 && colourData[j + 1].r <= 255) && colourData[j + 1].g == 0 && (colourData[j + 1].b >= 248 && colourData[j + 1].b <= 255))//248 for truncation errors
+					{
+						colourData[j + 1].a = 0;
+						colourData[j + 1].r = 0;
+						colourData[j + 1].g = 0;
+						colourData[j + 1].b = 0;
+					}
+					/*else if((colourData[j+1].r+colourData[j+1].g+colourData[j+1].b)<135)
+					colourData[j+1].a = (colourData[j+1].r + colourData[j+1].g + colourData[j+1].b)/3;*/
+					else
+						colourData[j + 1].a = 255;
+					colourData[j].r = (bigPalettes[paletteIndex].colours[levelData[counter] & 0x0F] & 0x7C00) >> 10;
+					colourData[j].r *= 8;
+					colourData[j].g = (bigPalettes[paletteIndex].colours[levelData[counter] & 0x0F] & 0x3E0) >> 5;
+					colourData[j].g *= 8;
+					colourData[j].b = bigPalettes[paletteIndex].colours[levelData[counter] & 0x0F] & 0x1F;
+					colourData[j].b *= 8;
+					if ((colourData[j].r >= 248 && colourData[j].r <= 255) && colourData[j].g == 0 && (colourData[j].b >= 248 && colourData[j].b <= 255))//248 for truncation errors
+					{
+						colourData[j].a = 0;
+						colourData[j].r = 0;
+						colourData[j].g = 0;
+						colourData[j].b = 0;
+					}
+					/*else if((colourData[j].r+colourData[j].g+colourData[j].b)<135)
+					colourData[j].a = (colourData[j].r + colourData[j].g + colourData[j].b)/3;*/
+					else
+						colourData[j].a = 255;
+				}
+				else
+				{
+					colourData[j + 1].r = (smallPalettes[paletteIndex].colours[(levelData[counter] & 0xF0) >> 4] & 0x7C00) >> 10;
+					colourData[j + 1].r *= 8;
+					colourData[j + 1].g = (smallPalettes[paletteIndex].colours[(levelData[counter] & 0xF0) >> 4] & 0x3E0) >> 5;
+					colourData[j + 1].g *= 8;
+					colourData[j + 1].b = smallPalettes[paletteIndex].colours[(levelData[counter] & 0xF0) >> 4] & 0x1F;
+					colourData[j + 1].b *= 8;
+					if ((colourData[j + 1].r >= 248 && colourData[j + 1].r <= 255) && colourData[j + 1].g == 0 && (colourData[j + 1].b >= 248 && colourData[j + 1].b <= 255))//248 for truncation errors
+					{
+						colourData[j + 1].a = 0;
+						colourData[j + 1].r = 0;
+						colourData[j + 1].g = 0;
+						colourData[j + 1].b = 0;
+					}
+					/*else if((colourData[j+1].r+colourData[j+1].g+colourData[j+1].b)<135)
+					colourData[j+1].a = (colourData[j+1].r + colourData[j+1].g + colourData[j+1].b)/3;*/
+					else
+						colourData[j + 1].a = 255;
+					colourData[j].r = (smallPalettes[paletteIndex].colours[levelData[counter] & 0x0F] & 0x7C00) >> 10;
+					colourData[j].r *= 8;
+					colourData[j].g = (smallPalettes[paletteIndex].colours[levelData[counter] & 0x0F] & 0x3E0) >> 5;
+					colourData[j].g *= 8;
+					colourData[j].b = smallPalettes[paletteIndex].colours[levelData[counter] & 0x0F] & 0x1F;
+					colourData[j].b *= 8;
+					if ((colourData[j].r >= 248 && colourData[j].r <= 255) && colourData[j].g == 0 && (colourData[j].b >= 248 && colourData[j].b <= 255))//248 for truncation errors
+					{
+						colourData[j].a = 0;
+						colourData[j].r = 0;
+						colourData[j].g = 0;
+						colourData[j].b = 0;
+					}
+					/*else if((colourData[j].r+colourData[j].g+colourData[j].b)<135)
+					colourData[j].a = (colourData[j].r + colourData[j].g + colourData[j].b)/3;*/
+					else
+						colourData[j].a = 255;
+				}
+				counter++;
+			}
+		}
+		else
+		{
+			for (DWORD j = 0; j < dataSize; j++)
+			{
+				if (paletteType)
+				{
+					colourData[j].r = (bigPalettes[paletteIndex].colours[levelData[j]] & 0x7C00) >> 10;
+					colourData[j].r *= 8;
+					colourData[j].g = (bigPalettes[paletteIndex].colours[levelData[j]] & 0x3E0) >> 5;
+					colourData[j].g *= 8;
+					colourData[j].b = bigPalettes[paletteIndex].colours[levelData[j]] & 0x1F;
+					colourData[j].b *= 8;
+					if ((colourData[j].r >= 248 && colourData[j].r <= 255) && colourData[j].g == 0 && (colourData[j].b >= 248 && colourData[j].b <= 255))//248 for truncation errors
+					{
+						colourData[j].a = 0;
+						colourData[j].r = 0;
+						colourData[j].g = 0;
+						colourData[j].b = 0;
+					}
+					/*else if((colourData[j].r+colourData[j].g+colourData[j].b)<135)
+					colourData[j].a = (colourData[j].r + colourData[j].g + colourData[j].b)/3;*/
+					else
+						colourData[j].a = 255;
+				}
+				else
+				{
+					colourData[j].r = (smallPalettes[paletteIndex].colours[levelData[j]] & 0x7C00) >> 10;
+					colourData[j].r *= 8;
+					colourData[j].g = (smallPalettes[paletteIndex].colours[levelData[j]] & 0x3E0) >> 5;
+					colourData[j].g *= 8;
+					colourData[j].b = smallPalettes[paletteIndex].colours[levelData[j]] & 0x1F;
+					colourData[j].b *= 8;
+					if ((colourData[j].r >= 248 && colourData[j].r <= 255) && colourData[j].g == 0 && (colourData[j].b >= 248 && colourData[j].b <= 255))//248 for truncation errors
+					{
+						colourData[j].a = 0;
+						colourData[j].r = 0;
+						colourData[j].g = 0;
+						colourData[j].b = 0;
+					}
+					/*else if((colourData[j].r+colourData[j].g+colourData[j].b)<135)
+					colourData[j].a = (colourData[j].r + colourData[j].g + colourData[j].b)/3;*/
+					else
+						colourData[j].a = 255;
+				}
+			}
+		}
+		tgaHeader.width = (short)width;
+		tgaHeader.height = (short)height;
+		GetEnvironmentVariable("TEMP", imageName, MAX_PATH);
+		sprintf(tmp, "\\%08X.tga", textures[index].checksum);
+		strcat(imageName, tmp);
+		if (!sky)
+		{
+			if (!merging)
+				texFiles.fileNames[i] = new char[strlen(imageName) + 1];
+			else
+				texFiles.fileNames[i + texFiles.numFiles] = new char[strlen(imageName) + 1];
 
-      if (!merging)
-        memcpy(texFiles.fileNames[i], imageName, strlen(imageName) + 1);
-      else
-        memcpy(texFiles.fileNames[i + texFiles.numFiles], imageName, strlen(imageName) + 1);
-    }
+			if (!merging)
+				memcpy(texFiles.fileNames[i], imageName, strlen(imageName) + 1);
+			else
+				memcpy(texFiles.fileNames[i + texFiles.numFiles], imageName, strlen(imageName) + 1);
+		}
 
-    FILE*f = fopen(imageName, "wb");
-    fwrite(&tgaHeader, sizeof(TGAHEADER), 1, f);
-    fwrite(colourData, dataSize * 4, 1, f);
+		FILE* f = fopen(imageName, "wb");
+		fwrite(&tgaHeader, sizeof(TGAHEADER), 1, f);
+		fwrite(colourData, dataSize * 4, 1, f);
 
-    fwrite(&tgaFooterExt, sizeof(tgaFooterExt), 1, f);
-    fwrite(&tgaFooterTag, sizeof(tgaFooterTag), 1, f);
-    fputc(0x2E, f);
-    fputc(0x00, f);
+		fwrite(&tgaFooterExt, sizeof(tgaFooterExt), 1, f);
+		fwrite(&tgaFooterTag, sizeof(tgaFooterTag), 1, f);
+		fputc(0x2E, f);
+		fputc(0x00, f);
 
-    fclose(f);
-    delete[] colourData;
-  }
-  delete[] textures;
-  delete[] bigPalettes;
-  delete[] smallPalettes;
+		fclose(f);
+		delete[] colourData;
+	}
+	delete[] textures;
+	delete[] bigPalettes;
+	delete[] smallPalettes;
 
-  if (merging)
-    texFiles.numFiles += numImages;
+	if (merging)
+		texFiles.numFiles += numImages;
 }
 
 /*void Th2Scene::Grassify(Mesh* mesh, DWORD grassSplit)
@@ -1847,25 +1847,25 @@ for(DWORD i=0; i<matSplit.Indices.size(); i++)
 
 void Scene::ProcessTRG(BYTE* pFile, DWORD size)
 {
-  DWORD ptr = (DWORD)pFile;
-  ptr += 8;
+	DWORD ptr = (DWORD)pFile;
+	ptr += 8;
 
-  DWORD numNodes = ((DWORD*)ptr)[0];
-  ptr += 4;
+	DWORD numNodes = ((DWORD*)ptr)[0];
+	ptr += 4;
 
-  Node** nodes = new Node*[numNodes];
-  this->nodes.reserve(numNodes + numNodes >> 1);
-  DWORD meshIndex = 0, railCount = 0, restartIndex = 0, gapIndex = 0, gapType = 0;
-  Checksum name, EndId;
-  DWORD trg = 0;
-  bool found = false;
-  WORD numLinks;
-  SimpleVertex position, angle;
-  Th2FixedVert* vert;
-  static char chc[128] = "";
-  WORD* links = NULL;
-  Mesh* mesh = NULL;
-  vector <Node> dummy;
+	Node** nodes = new Node * [numNodes];
+	this->nodes.reserve(numNodes + numNodes >> 1);
+	DWORD meshIndex = 0, railCount = 0, restartIndex = 0, gapIndex = 0, gapType = 0;
+	Checksum name, EndId;
+	DWORD trg = 0;
+	bool found = false;
+	WORD numLinks;
+	SimpleVertex position, angle;
+	Th2FixedVert* vert;
+	static char chc[128] = "";
+	WORD* links = NULL;
+	Mesh* mesh = NULL;
+	vector <Node> dummy;
 #define BADDY 0x1
 #define CRATE 0x2
 #define POINT 0x3
@@ -1888,3495 +1888,3514 @@ void Scene::ProcessTRG(BYTE* pFile, DWORD size)
 #define SCRIPTPOINT 0x3E8
 #define CAMERAPATH 0x3E9
 
-  //DWORD shatter = 0;
-
-  DWORD* startTable = (DWORD*)ptr;
-
-  for (DWORD i = 0; i < numNodes; i++)
-  {
-    DWORD offset = ((DWORD*)ptr)[0];
-    DWORD nodeSize;
-    KnownScript* script = NULL, *parentScript = NULL;;
-    if (i == numNodes - 1)
-      nodeSize = size - offset;
-    else
-      nodeSize = ((DWORD*)ptr)[1] - offset;
-    DWORD node = (DWORD)pFile + offset;
-    ptr += 4;
-
-    switch (((WORD*)node)[0])
-    {
-    case CRATE:
-      node += 2;
-      numLinks = ((WORD*)node)[0];
-      node += 2;
-      links = (WORD*)node;
-      /*for (DWORD j = 0; j < numLinks; j++)
-      node += 2;*/
-      node += numLinks * 2;
-      SizeDiff = nodeSize - (2 + 2 + 2 * (DWORD)numLinks + 4);
-
-      //brute check
-      if (SizeDiff == 2 || ((DWORD)node - (DWORD)pFile) % 4 != 0)
-        //diff = 2? read wild zero!
-      {
-          if (*(WORD*)node != 0)
-          {
-              char msg[256] = "";
-              sprintf(msg, "Type: CRATE %X", (DWORD)node - (DWORD)pFile);
-              MessageBox(0, "what?", msg, 0);
-          }
-        node += 2;
-      }
-      else if (*(WORD*)node == 0)
-          //make sure diff is 0, else alert
-      {
-          sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
-          char msg[256] = "";
-          sprintf(msg, "Type: CRATE %X", (DWORD)node - (DWORD)pFile);
-          MessageBox(0, chc, msg, 0);
-      }
-      /*if (links[numLinks] == 0)
-      node += 2;*/
-      DWORD shatter;
-      name.checksum = ((DWORD*)node)[0];
-      found = false;
-      DWORD j;
-      if ((mesh = GetMesh(name, j)))
-      {
-        found = true;
-        char* Name;
-        if ((Name = name.GetString()) == NULL)
-        {
-          sprintf(chc, "Mesh%d", j);
-          Scripts.push_back((Script(name.checksum, chc)));
-        }
-        else
-          strcpy(chc, Name);
-
-        this->nodes.push_back(std::move(EnvironmentObject(name, numLinks, links, true)));
-        //mesh->node = &this->nodes.back();
-        this->nodes.back().SetPosition(this->meshes[j].GetCenter());
-        //this->meshes[j].node->SetPosition(this->meshes[j].GetCenter());
-
-        /*strcat(chc, "_shatter");
-        shatter = Checksum(chc).checksum;
-        triggers.push_back(*(Checksum*)&shatter);
-        this->nodes.back().SetTrigger(shatter);
-        memcpy(&ShatterScript[12], &name, 4);
-        memcpy(&ShatterScript[49], &name, 4);
-        KnownScripts.push_back((KnownScript(*(Checksum*)&shatter, (void*)ShatterScript, 125)));*/
-        break;
-      }
-      if (!found)
-      {
-        if (dummy.size())
-        {
-          this->nodes.push_back(dummy.back());
-          this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
-          //GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
-          dummy.pop_back();
-        }
-        else
-        {
-          sprintf(chc, "DummyNode%d", meshIndex);
-          name = Checksum(chc);
-          this->nodes.push_back(std::move(EnvironmentObject(name, numLinks, links)));
-          meshIndex++;
-        }
-      }
-      break;
-    case 0x0E:
-    case 0x0C:
-      node += 2;
-      numLinks = ((WORD*)node)[0];
-      node += 2;
-      links = (WORD*)node;
-      /*for (DWORD j = 0; j < numLinks; j++)
-      node += 2;*/
-      node += numLinks * 2;
-      SizeDiff = nodeSize - (2 + 2 + 2 * (DWORD)numLinks + 6);
-
-      //brute check
-      if (SizeDiff == 2 || SizeDiff == 32 || ((DWORD)node - (DWORD)pFile) % 4 != 0)// || SizeDiff % 4 != 0)
-        //diff = 2? read wild zero!
-      {
-          if (*(WORD*)node != 0)
-          {
-              sprintf(chc, "what? nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
-              char msg[256] = "";
-              sprintf(msg, "Type: TRICKOB %X", (DWORD)node - (DWORD)pFile);
-              MessageBox(0, chc, msg, 0);
-          }
-        node += 2;
-      }
-      else if (*(WORD*)node == 0)
-        //make sure diff is 0, else alert
-      {
-        sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
-        char msg[256] = "";
-        sprintf(msg, "Type: TRICKOB %X", (DWORD)node - (DWORD)pFile);
-        MessageBox(0, chc, msg, 0);
-      }
-      /*if (links[numLinks] == 0)
-      node += 2;*/
-
-      name.checksum = ((DWORD*)node)[0];
-      found = false;
-      if ((mesh = GetMesh(name, j)))
-      {
-        /*found = false;
-        for(DWORD k=0; k<this->nodes.size(); k++)
-        {
-        if(name.checksum==this->nodes[k].Name.checksum)
-        found=true;
-        }
-        if(!found)
-        {*/
-        if (!name.GetString())
-        {
-          sprintf(chc, "Mesh%d", j);
-          Scripts.push_back((Script(name.checksum, chc)));
-        }
-        found = true;
-        this->nodes.push_back(std::move(EnvironmentObject(name, numLinks, links, true, true)));
-        this->nodes.back().SetPosition(this->meshes[j].GetCenter());
-        //mesh->node = &this->nodes.back();
-        //this->meshes[j].node = &this->nodes.back();
-        //this->meshes[j].node->SetPosition(this->meshes[j].GetCenter());
-        /*if(this->meshes[j].shatterObject)
-        {
-        strcat(chc,"_shatter");
-
-        shatter = Checksum(chc).checksum;
-        triggers.push_back(*(Checksum*)&shatter);
-        memcpy(&ShatterScript[27],&name,4);
-        memcpy(&ShatterScript[48],&name,4);
-        KnownScripts.push_back(KnownScript(*(Checksum*)&shatter, (void*)ShatterScript, 123));
-        }*/
-        /* }
-        else
-        {
-        found=false;
-        sprintf(chc,"DummyNode%d",meshIndex);
-        name = Checksum(chc);25
-        }*/
-        break;
-      }
-      if (!found)
-      {
-        if (dummy.size())
-        {
-          this->nodes.push_back(dummy.back());
-          this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
-          //GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
-          dummy.pop_back();
-        }
-        else
-        {
-          sprintf(chc, "DummyNode%d", meshIndex);
-          name = Checksum(chc);
-          this->nodes.push_back(std::move(EnvironmentObject(name, numLinks, links)));
-          meshIndex++;
-        }
-      }
-      break;
-
-    case BADDY:
-      node += 2;
-      nodeSize -= 2;
-      sprintf(chc, "node%uscript", i);
-      KnownScripts.push_back(KnownScript(chc, NULL, 0));
-      triggers.push_back(Checksum(chc));
-
-      if (((WORD*)node)[0] == 0x192 && skyDome)
-      {
-        node += 4;
-        nodeSize -= 4;
-        numLinks = ((WORD*)node)[0];
-        node += numLinks * 2 + 6;
-        nodeSize -= numLinks * 2 + 6;
-
-        SizeDiff = nodeSize;
-
-        //brute check
-        if (SizeDiff == 2 || ((DWORD)node - (DWORD)pFile) % 4 != 0)// || SizeDiff % 4 != 0)
-            //diff = 2? read wild zero!
-        {
-            if (*(WORD*)node != 0)
-            {
-                sprintf(chc, "what? nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
-                char msg[256] = "";
-                sprintf(msg, "Type: TRICKOB %X", (DWORD)node - (DWORD)pFile);
-                MessageBox(0, chc, msg, 0);
-            }
-            node += 2;
-            nodeSize -= 2;
-        }
-        else if (*(WORD*)node == 0)
-            //make sure diff is 0, else alert
-        {
-            sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
-            char msg[256] = "";
-            sprintf(msg, "Type: TRICKOB %X", (DWORD)node - (DWORD)pFile);
-            MessageBox(0, chc, msg, 0);
-        }
-        /*if (((WORD*)node)[0] == 0x0000)
-        {
-          
-        }*/
-        vert = (Th2FixedVert*)node;
-        node += 12;
-        nodeSize -= 12;
-
-        //thps2 level is flipped on x, y axis and -z cause editor and later games flip z axis
-        position.x = -(float)vert->x / 2.833f;
-        position.y = -(float)vert->y / 2.833f;
-        position.z = -(float)vert->z / 2.833f;
-
-
-        //full circle is 4096(divider for Th2FixedVert) since level is flipped need - on all axes but y needs to be rotated 180 degree after.
-        angle.x = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)node)[0] - 2048.0f));
-        angle.y = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)node)[1] - 2048.0f)) + D3DX_PI;
-        angle.z = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)node)[2] - 2048.0f));
-        node += 6;
-        nodeSize -= 6;
-        found = false;
-        while (nodeSize)
-        {
-          if (((WORD*)node)[0] == 0x212F)
-          {
-            node += 2;
-            found = true;
-            break;
-          }
-          node++;
-          nodeSize--;
-        }
-        if (found)
-        {
-          if (((WORD*)node)[0] == 0x0000)
-            node += 2;
-          name.checksum = ((DWORD*)node)[0];
-          found = false;
-
-          if (!skyDome->MoveObject(this, name, position, angle))
-          {
-            DWORD j;
-            if ((mesh = GetMesh(name, j)))
-            {
-              found = true;
-              CloneMesh(mesh);
-              //meshes.erase(meshes.begin()+j);
-              this->meshes.back().Move(position, angle);
-              sprintf(chc, "%s_%04X", name.GetString(), i);
-              //MessageBox(0, chc,chc,0);
-              name.checksum += i;
-              Scripts.push_back((Script(name.checksum, chc)));
-              this->meshes.back().SetName(name);
-            }
-          }
-          else
-            found = true;
-          if (found)
-          {
-            this->nodes.push_back((EnvironmentObject(name, 0, 0, true)));
-            this->nodes.back().SetPosition(this->meshes.back().GetCenter());
-            //this->meshes.back().node = &this->nodes.back();
-            //this->meshes.back().node->SetPosition(this->meshes.back().GetCenter());
-          }
-          else
-          {
-            if (dummy.size())
-            {
-              this->nodes.push_back(dummy.back());
-              this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
-              //GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
-              dummy.pop_back();
-            }
-            else
-            {
-              sprintf(chc, "DummyNode%d", meshIndex);
-              name = Checksum(chc);
-              this->nodes.push_back((EnvironmentObject(name, 0, 0)));
-              meshIndex++;
-            }
-          }
-        }
-        else
-        {
-          if (dummy.size())
-          {
-            this->nodes.push_back(dummy.back());
-            this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
-            //GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
-            dummy.pop_back();
-          }
-          else
-          {
-            sprintf(chc, "DummyNode%d", meshIndex);
-            name = Checksum(chc);
-            this->nodes.push_back((EnvironmentObject(name, 0, 0)));
-            meshIndex++;
-          }
-        }
-      }
-      else
-      {
-        if (dummy.size())
-        {
-          this->nodes.push_back(dummy.back());
-          this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
-          //GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
-          dummy.pop_back();
-        }
-        else
-        {
-          sprintf(chc, "DummyNode%d", meshIndex);
-          name = Checksum(chc);
-          this->nodes.push_back((EnvironmentObject(name, 0, 0)));
-          meshIndex++;
-        }
-      }
-      break;
-    case RESTART:
-      node += 2;
-      DWORD zize;
-      zize = nodeSize;
-      nodeSize -= 2;
-      numLinks = ((WORD*)node)[0];
-      node += 2;
-      nodeSize -= 2;
-      sprintf(chc, "RestartNode%d", restartIndex);
-      name = Checksum(chc);
-      links = (WORD*)node;
-      /*for (DWORD j = 0; j < numLinks; j++)
-      {
-      node += 2;
-      nodeSize -= 2;
-      }*/
-      node += 2 * numLinks;
-      nodeSize -= 2 * numLinks;
-      SizeDiff = nodeSize;
-
-      //brute check
-      if (SizeDiff == 2 || ((DWORD)node - (DWORD)pFile) % 4 != 0)
-          //diff = 2? read wild zero!
-      {
-          if (*(WORD*)node != 0)
-          {
-              sprintf(chc, "what? nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
-              char msg[256] = "";
-              sprintf(msg, "Type: RESTART %X", (DWORD)node - (DWORD)pFile);
-              MessageBox(0, chc, msg, 0);
-          }
-          node += 2;
-          nodeSize -= 2;
-      }
-      else if (*(WORD*)node == 0)
-          //make sure diff is 0, else alert
-      {
-          sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
-          char msg[256] = "";
-          sprintf(msg, "Type: Restart %X", (DWORD)node - (DWORD)pFile);
-          MessageBox(0, chc, msg, 0);
-      }
-      /*if (links[numLinks] == 0)
-        node += 2;*/
-
-      vert = (Th2FixedVert*)node;
-      node += 12;
-      nodeSize -= 12;
-      //thps2 level is flipped on x, y axis and -z cause editor and later games flip z axis
-      position.x = -(float)vert->x / 2.833f;
-      position.y = -(float)vert->y / 2.833f;
-      position.z = -(float)vert->z / 2.833f;
-
-      //0.003069460
-      //0.0030679615
-      //0.0015339807
-
-
-      //full circle is 4096(divider for Th2FixedVert) since level is flipped need - on all axes but y needs to be rotated 180 degree after.
-      angle.x = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)node)[0] - 2048.0f));
-      angle.y = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)node)[1] - 2048.0f)) + D3DX_PI;//180 degree
-      angle.z = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)node)[2] - 2048.0f));
-      node += 6;
-      nodeSize -= 6;
-
-      this->nodes.push_back(std::move(Restart(position, angle, name, (char*)node, numLinks, links)));
-      for (DWORD j = 0; j < nodeSize; j++)
-      {
-        char* test = (char*)node;
-        if (stricmp(levelName, test) == 0)
-          break;
-        else
-          node++;
-      }
-      node -= 12;
-      crc = ((DWORD*)node)[0];
-      if (crc != skyCRC && skyDome && skyDome->GetMesh(*(Checksum*)&crc))
-        skyCRC = crc;
-
-      restartIndex++;
-      break;
-    case POWERUP:
-      /*if(numPowerups<9)
-      {*/
-      node += 2;
-      DWORD type;
-      type = ((WORD*)node)[0];
-      if (type == 15)
-      {
-        node += 2;
-        numLinks = ((WORD*)node)[0];
-        node += 2;
-        links = (WORD*)node;
-        /*for (DWORD j = 0; j < numLinks; j++)
-        node += 2;*/
-        node += 2 * numLinks;
-        SizeDiff = nodeSize - (2 + 2 + 2 + 2 * (DWORD)numLinks + 4 * 3 + 2 + 2 + 2 + 2);
-
-        //brute check
-        if (SizeDiff == 2)
-          //diff = 2? read wild zero!
-        {
-            if (*(WORD*)node != 0)
-            {
-                char msg[256] = "";
-                sprintf(msg, "Type: POWERUP %X", (DWORD)node - (DWORD)pFile);
-                MessageBox(0, "what?", msg, 0);
-            }
-          node += 2;
-        }
-        else if (*(WORD*)node == 0)
-            //make sure diff is 0, else alert
-        {
-            sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
-            char msg[256] = "";
-            sprintf(msg, "Type: POWERUP %X", (DWORD)node - (DWORD)pFile);
-            MessageBox(0, chc, msg, 0);
-        }
-        /*if (links[numLinks] == 0)
-        node += 2;*/
-
-        vert = (Th2FixedVert*)node;
-
-        position.x = -(float)vert->x / 2.833f;
-        position.y = -(float)vert->y / 2.833f;
-        position.z = -(float)vert->z / 2.833f;
-        position.y -= 10.0f;
-
-        this->nodes.push_back((GenericNode(Checksum("TRG_ZONE_KEY"), position, GenericNode::Types::ZONE_KEY)));
-      }
-      else if (type == 4 || type == 6 || type == 5 || type == 10 || type == 16)
-      {
-        numPowerups++;
-        sprintf(chc, "TRG_Crown0%d", numPowerups);
-        node += 2;
-        numLinks = ((WORD*)node)[0];
-        node += 2;
-        links = (WORD*)node;
-        /*for (DWORD j = 0; j < numLinks; j++)
-        node += 2;*/
-        node += 2 * numLinks;
-        SizeDiff = nodeSize - (2 + 2 + 2 + 2 * (DWORD)numLinks + 4 * 3 + 2 + 2 + 2 + 2);
-
-        //brute check
-        if (SizeDiff == 2)
-          //diff = 2? read wild zero!
-        {
-            if (*(WORD*)node != 0)
-            {
-                char msg[256] = "";
-                sprintf(msg, "Type: POWERUP %X", (DWORD)node - (DWORD)pFile);
-                MessageBox(0, "what?", msg, 0);
-            }
-          node += 2;
-        }
-        else if (*(WORD*)node == 0)
-            //make sure diff is 0, else alert
-        {
-            sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
-            char msg[256] = "";
-            sprintf(msg, "Type: POWERUP %X", (DWORD)node - (DWORD)pFile);
-            MessageBox(0, chc, msg, 0);
-        }
-        /*if (links[numLinks] == 0)
-        node += 2;*/
-
-        vert = (Th2FixedVert*)node;
-
-        position.x = -(float)vert->x / 2.833f;
-        position.y = -(float)vert->y / 2.833f;
-        position.z = -(float)vert->z / 2.833f;
-        position.y -= 10.0f;
-
-        this->nodes.push_back((GenericNode(Checksum(chc), position, GenericNode::Types::Crown)));
-      }
-      else if (numPowerups == 5)
-      {
-        numPowerups++;
-        sprintf(chc, "TRG_Crown0%d", numPowerups);
-        node += 2;
-        numLinks = ((WORD*)node)[0];
-        node += 2;
-        links = (WORD*)node;
-        /*for (DWORD j = 0; j < numLinks; j++)
-        node += 2;*/
-        node += 2 * numLinks;
-        SizeDiff = nodeSize - (2 + 2 + 2 + 2 * (DWORD)numLinks + 4 * 3 + 2 + 2 + 2 + 2);
-
-        //brute check
-        if (SizeDiff == 2)
-          //diff = 2? read wild zero!
-        {
-            if (*(WORD*)node != 0)
-            {
-                char msg[256] = "";
-                sprintf(msg, "Type: POWERUP %X", (DWORD)node - (DWORD)pFile);
-                MessageBox(0, "what?", msg, 0);
-            }
-          node += 2;
-        }
-        else if (*(WORD*)node == 0)
-            //make sure diff is 0, else alert
-        {
-            sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
-            char msg[256] = "";
-            sprintf(msg, "Type: POWERUP %X", (DWORD)node - (DWORD)pFile);
-            MessageBox(0, chc, msg, 0);
-        }
-        /*if (links[numLinks] == 0)
-        node += 2;*/
-
-        vert = (Th2FixedVert*)node;
-
-        position.x = -(float)vert->x / 2.833f;
-        position.y = -(float)vert->y / 2.833f;
-        position.z = -(float)vert->z / 2.833f;
-        position.y -= 10.0f;
-
-        this->nodes.push_back((GenericNode(Checksum(chc), position, GenericNode::Types::Crown)));
-      }
-      //numPowerups++;
-
-      /*if(numPowerups==0)
-      {
-      this->nodes.push_back(GenericNode(Checksum("TRG_ZONE_KEY"), position, GenericNode::Types::ZONE_KEY));
-      }
-      else if(numPowerups==1)
-      {
-      this->nodes.push_back(GenericNode(Checksum("TRG_CTF_Team1"), position, GenericNode::Types::CTF_1));
-      }
-      else if(numPowerups==5)
-      {
-      this->nodes.push_back(GenericNode(Checksum("TRG_CTF_Team02"), position, GenericNode::Types::CTF_2));
-      }
-      else if(numPowerups<5)
-      {
-      sprintf(chc, "TRG_Crown0%d", numPowerups-1);
-      this->nodes.push_back(GenericNode(Checksum(chc), position, GenericNode::Types::Crown));
-      }
-      else
-      {
-      sprintf(chc, "TRG_Crown0%d", numPowerups-2);
-      this->nodes.push_back(GenericNode(Checksum(chc), position, GenericNode::Types::Crown));
-      }
-      numPowerups++;*/
-      // }
-      else
-      {
-        if (dummy.size())
-        {
-          this->nodes.push_back(dummy.back());
-          this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
-          //GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
-          dummy.pop_back();
-        }
-        else
-        {
-          sprintf(chc, "DummyNode%d", meshIndex);
-          name = Checksum(chc);
-          this->nodes.push_back((EnvironmentObject(name, 0, 0)));
-          meshIndex++;
-        }
-      }
-      break;
-    case COMMANDPOINT:
-    {
-                       //shatter = 0;
-                       DWORD endNode;
-                       endNode = node + nodeSize;
-                       node += 2;
-                       numLinks = ((WORD*)node)[0];
-                       node += 2;
-                       links = (WORD*)node;
-                       /*for (DWORD j = 0; j < numLinks; j++)
-                       node += 2;*/
-                       node += 2 * numLinks;
-                       SizeDiff = nodeSize - (2 + 2 + 2*numLinks);
-
-                       //brute check
-                       if (SizeDiff == 2 || ((DWORD)node - (DWORD)pFile) % 4 != 0)
-                           //diff = 2? read wild zero!
-                       {
-                           if (*(WORD*)node != 0)
-                           {
-                               sprintf(chc, "what? nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
-                               char msg[256] = "";
-                               sprintf(msg, "Type: COMMAND %X", ((DWORD)node - (DWORD)pFile));
-                               MessageBox(0, chc, msg, 0);
-                           }
-                           node += 2;
-                       }
-                       else if (*(WORD*)node == 0 && *(DWORD*)node != 0)
-                           //make sure diff is 0, else alert
-                       {
-                           sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
-                           char msg[256] = "";
-                           sprintf(msg, "Type: COMMAND %X", (DWORD)node - (DWORD)pFile);
-                           MessageBox(0, chc, msg, 0);
-                       }
-                       /*if (links[numLinks] == 0)
-                         node += 2;*/
-                       name.checksum = ((DWORD*)node)[0];
-                       trg = name.checksum;
-                       node += 4;
-                       found = false;
-
-                       if ((mesh = GetMesh(name, j)))
-                       {
-                         if (!name.GetString())
-                         {
-                           sprintf(chc, "Mesh%d", j);
-                           Scripts.push_back((Script(name.checksum, chc)));
-                         }
-                         found = true;
-
-                         Node* startNode;
-                         startNode = GetNode(name);
-                         if (startNode == NULL)
-                         {
-                           for (DWORD k = 0; k < dummy.size(); k++)
-                           {
-                             if (dummy[k].Name.checksum == name.checksum)
-                             {
-                               startNode = &dummy[k];
-                               break;
-                             }
-                           }
-                         }
-
-                         if (startNode == NULL)
-                         {
-                           this->nodes.push_back(EnvironmentObject(name, numLinks, links, true));
-                           this->nodes.back().SetPosition(mesh->GetCenter());
-                           startNode = &this->nodes.back();
-                         }
-                         else
-                         {
-                           sprintf(chc, "DummyNode%d", meshIndex);
-                           this->nodes.push_back(std::move(EnvironmentObject(Checksum(chc), numLinks, links)));
-                           meshIndex++;
-                         }
-                         sprintf(chc, "node%u_trigger", this->nodes.size());
-                         shatter = Checksum(chc).checksum;
-                         KnownScript* parentScript = GetScript(shatter);
-                         if (parentScript == NULL)
-                         {
-                           triggers.push_back(*(Checksum*)&shatter);
-                           KnownScripts.push_back(KnownScript(shatter, NULL, 0));
-                           parentScript = &KnownScripts.back();
-                         }
-                         else if (startNode->Trigger.checksum && startNode->Trigger.checksum != shatter && !parentScript->Contains(startNode->Trigger.checksum))
-                         {
-                           parentScript->Script(startNode->Trigger);
-                           parentScript->EndScript();
-                         }
-                         if (startNode->Trigger.checksum==0)
-                           startNode->SetTrigger(shatter);
-
-
-                         for (DWORD j = 0; j < numLinks; j++)
-                         {
-                           DWORD link = (DWORD)pFile + startTable[links[j]];
-                           switch (*(BYTE*)link)
-                           {
-                           case COMMANDPOINT:
-                             sprintf(chc, "node%u_trigger", links[j] + 1);
-                             shatter = Checksum(chc).checksum;
-                             if (!parentScript->Contains(shatter))
-                             {
-                               parentScript->Script(shatter);
-                               parentScript->Script("Caller");
-                               parentScript->Append(0x7);
-                               parentScript->Script(trg);
-                               parentScript->EndScript();
-                             }
-                             break;
-                           }
-                         }
-
-                         bool first;
-                         first = true;
-
-                         short command;
-                         command = *(short*)node;
-
-                         while (command != -1 && node < endNode)
-                         {
-                           command = *(short*)node;
-                           node += 2;
-
-                           switch (command)
-                           {
-
-                           case 126:
-                           case 127:
-                           case 128:
-                           case 2:
-                           case 140:
-                           case 142:
-                           case 178:
-                             while (*(BYTE*)node != 0)
-                               node++;
-                             node++;
-                             break;
-
-                           case 158:
-                           case 149:
-                           case 4:
-                           case 5:
-                           case 10:
-                             break;
-
-                           case 3://call links
-                             for (DWORD j = 0; j < numLinks; j++)
-                             {
-                               DWORD link = (DWORD)pFile + startTable[links[j]];
-                               switch (*(BYTE*)link)
-                               {
-                               case BADDY:
-                                 sprintf(chc, "node%uscript", links[j]);
-                                 shatter = Checksum(chc).checksum;
-                                 if (!parentScript->Contains(shatter))
-                                 {
-                                   parentScript->Script(shatter);
-                                   parentScript->EndScript();
-                                 }
-
-                                 break;
-                               }
-                             }
-                             break;
-
-                             /*case 11://kill
-                             scr = GetScript(startNode->Trigger.checksum);
-                             if (scr)
-                             {
-                             scr->Script("Kill");
-                             scr->Script("Name");
-                             scr->Append(0x7);
-                             scr->Script(trg);
-                             scr->EndScript();
-                             }
-                             else
-                             {
-                             KnownScripts.push_back(KnownScript(startNode->Trigger.checksum, NULL, 0));
-                             KnownScript & script = KnownScripts.back();
-                             script.Script("Kill");
-                             script.Script("Name");
-                             script.Append(0x7);
-                             script.Script(trg);
-                             script.EndScript();
-                             }
-                             break;*/
-                           case 11:
-                           case 12://shatter//kill
-                             sprintf(chc, "%s_Crate_Shatter", (*(Checksum*)&trg).GetString());
-                             shatter = Checksum(chc).checksum;
-
-                             script = GetScript(shatter);
-                             if (script == NULL)
-                             {
-                               parentScript->Script(shatter);
-                               parentScript->EndScript();
-                               name = parentScript->name;
-                               triggers.push_back(shatter);
-                               KnownScripts.push_back(KnownScript(shatter, NULL, 0));
-                               script = &KnownScripts.back();
-                               parentScript = GetScript(name.checksum);
-                             }
-                             else if (!parentScript->Contains(shatter))
-                             {
-                               parentScript->Script(shatter);
-                               parentScript->EndScript();
-                             }
-
-                             script->Script("Kill");
-                             script->Script("Name");
-                             script->Append(0x7);
-                             script->Script(trg);
-                             script->EndScript();
-
-                             for (DWORD j = 0; j < numLinks; j++)
-                             {
-                               DWORD link = (DWORD)pFile + startTable[links[j]];
-                               DWORD nodeSize2;
-                               nodeSize2 = startTable[links[j] + 1] - startTable[links[j]];
-                               switch (*(BYTE*)link)
-                               {
-                               case CRATE:
-                                 link += 2;
-                                 WORD numLinks2;
-                                 numLinks2 = ((WORD*)link)[0];
-                                 link += 2;
-
-                                 link += numLinks2 * 2;
-                                 SizeDiff = nodeSize2 - (2 + 2 + 2 * (DWORD)numLinks2 + 4);
-
-                                 //brute check
-                                 if (SizeDiff == 2 || ((DWORD)link - (DWORD)pFile) % 4 != 0)
-                                   //diff = 2? read wild zero!
-                                 {
-                                     if (*(WORD*)link != 0)
-                                     {
-                                         sprintf(chc, "what? nodeSize %u SizeDiff %u", nodeSize2, SizeDiff);
-                                         char msg[256] = "";
-                                         sprintf(msg, "Type: CRATE %X", ((DWORD)link - (DWORD)pFile));
-                                         MessageBox(0, chc, msg, 0);
-                                     }
-                                   link += 2;
-                                 }
-                                 else if (*(WORD*)link == 0)
-                                     //make sure diff is 0, else alert
-                                 {
-                                     sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
-                                     char msg[256] = "";
-                                     sprintf(msg, "Type: CRATE %X", (DWORD)node - (DWORD)pFile);
-                                     MessageBox(0, chc, msg, 0);
-                                 }
-
-                                 script->Script("ShatterAndDie");
-                                 script->Script("Name");
-                                 script->Append(0x7);
-                                 script->Script(((DWORD*)link)[0]);
-                                 script->EndScript();
-                               }
-                             }
-                             break;
-
-                           case 152://sk3_killskater  
-                             /*scr = GetScript(startNode->Trigger.checksum);
-                             if (scr)
-                             {
-                             scr->Script("SK3_Killskater");
-                             scr->EndScript();
-                             }
-                             else
-                             {
-                             KnownScripts.push_back(KnownScript(startNode->Trigger.checksum, NULL, 0));
-                             startNode->SetTrigger(Checksum(chc).checksum);
-                             triggers.push_back(startNode->Trigger.checksum);
-                             KnownScript & script = KnownScripts.back();
-                             script.Script("SK3_Killskater");
-                             script.EndScript();
-                             }*/
-                             parentScript->Script("sk3_killskater");
-                             parentScript->EndScript();
-                             break;
-
-                           case 203:
-                           case 204:
-                           case 157:
-                           case 131:
-                           case 132:
-                           case 134:
-                           case 147:
-                           case 166:
-                           case 169:
-                           case 13: node += 2; break;
-
-                           case 104: node += 6; break;
-
-                           case 171:
-                             if (((WORD*)node)[0] == 0)
-                             {
-                               if (((WORD*)node)[1] == 0)
-                               {
-                                 if (((WORD*)node)[2] == 0)
-                                 {
-                                   node += 2;
-                                 }
-                               }
-                               else
-                               {
-                                 node += 2;
-                               }
-                             }
-
-                             node += 10;
-                             break;
-
-                             //visibility in box was my headache before, by i think i figured it ouy
-                           case 141:
-                             node += 4;
-
-                             //=========================WARNING: wild zero
-                             //have to implement another wild zero check 
-                             WORD buf;
-                             buf = *(WORD*)node;
-                             if (buf == 0) node += 2;
-
-                             //looping through boxes
-                             buf = *(WORD*)node;
-                             node += 2;
-
-                             while (buf != 0xFF && node < endNode) //i have no idea what happens if there are no boxes at all.
-                               //in theory this should work if they always denote the end of box list as 0xFF.
-                               //not sure if it's even possible, but who knows.
-                             {
-                               node += 22;
-
-                               //read potential end of box list for the next iteration
-                               buf = *(WORD*)node;
-                               node += 2;
-                             }
-                             break;
-
-                           case 202:
-                           case 200: node += 4; break;
-
-                           case 0x00C9:
-                             gapType = 0;
-
-                             sprintf(chc, "GapID%d", gapIndex);
-                             gapIndex++;
-                             Checksum gapId = Checksum(chc);
-
-                             if (first)
-                             {
-                               first = false;
-                               node += 2;
-                             }
-
-                             WORD id = ((WORD*)(node + 4))[0];
-                             //gapType=0;
-                             for (DWORD j = 0; j < 803; j++)
-                             {
-                               if (id == Th2xGaps[j].id)
-                               {
-                                 sprintf(chc, "%s_StartGap", (*(Checksum*)&trg).GetString());
-                                 shatter = Checksum(chc).checksum;
-                                 script = GetScript(shatter);
-                                 if (script == NULL)
-                                 {
-                                   triggers.push_back(shatter);
-                                   parentScript->Script(shatter);
-                                   parentScript->EndScript();
-                                   if (parentScript->name.checksum == 0x7FEC1479)
-                                     MessageBox(0, name.GetString2(), "WTF2", 0);
-                                   name = parentScript->name;
-                                   KnownScripts.push_back(KnownScript(shatter, NULL, 0));
-                                   script = &KnownScripts.back();
-                                   parentScript = GetScript(name.checksum);
-                                 }
-                                 else if (!parentScript->Contains(shatter))
-                                 {
-                                   parentScript->Script(shatter);
-                                   parentScript->EndScript();
-                                   if (parentScript->name.checksum == 0x7FEC1479)
-                                     MessageBox(0, name.GetString2(), "WTF3", 0);
-                                 }
-
-                                 switch (Th2xGaps[j].type)
-                                 {
-                                 case 0x5:
-                                   memcpy(&EndGap[12], &gapId, 4);
-                                   memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
-                                   strcpy((char*)&EndGap[27], Th2xGaps[j].text);
-                                   script->Script("StartGap");
-                                   script->Script("GapID");
-                                   script->Append(0x07);
-                                   script->Script(gapId);
-                                   script->Script("FLAGS");
-                                   script->Append(0x07);
-                                   script->Append(0x05);
-                                   script->Script("PURE_LIP");
-                                   script->Append(0x06);
-                                   script->EndScript();
-                                   break;
-                                 case 0x11://air
-                                 case 0x13:
-                                 case 0x8:
-                                 case 0x17:
-                                   memcpy(&EndGap[12], &gapId, 4);
-                                   memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
-                                   strcpy((char*)&EndGap[27], Th2xGaps[j].text);
-                                   script->Script("StartGap");
-                                   script->Script("GapID");
-                                   script->Append(0x07);
-                                   script->Script(gapId);
-                                   script->Script("FLAGS");
-                                   script->Append(0x07);
-                                   script->Append(0x05);
-                                   script->Script("PURE_AIR");
-                                   script->Append(0x06);
-                                   script->EndScript();
-                                   break;
-                                 case 0x19://grind
-                                 case 0x22:
-                                   gapType = 2;
-                                   memcpy(&EndGapWithLoop[29], &gapId, 4);
-                                   memcpy(&EndGapWithLoop[120], &Th2xGaps[j].score, 2);
-                                   strcpy((char*)&EndGapWithLoop[57], Th2xGaps[j].text);
-                                   sprintf(chc, "StartedGap%d", gapIndex - 1);
-                                   EndId = Checksum(chc);
-                                   globals.push_back(EndId);
-                                   memcpy(&IsTrue[7], &EndId, 4);
-                                   memcpy(&IsTrue[22], &EndId, 4);
-                                   memcpy(&IsTrue[49], &EndId, 4);
-                                   script->Append(IsTrue, sizeof(IsTrue));
-                                   script->Script("StartGap");
-                                   script->Script("GapID");
-                                   script->Append(0x07);
-                                   script->Script(gapId);
-                                   script->Script("FLAGS");
-                                   script->Append(0x07);
-                                   script->Append(0x05);
-                                   script->Script("CANCEL_GROUND");
-                                   script->Script("CANCEL_MANUAL");
-                                   script->Script("REQUIRE_RAIL");
-                                   script->Append(0x06);
-                                   script->EndScript();
-                                   script->Append(EndIF, sizeof(EndIF));
-                                   break;
-                                 case 0x33://wall
-                                   memcpy(&EndGap[12], &gapId, 4);
-                                   memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
-                                   strcpy((char*)&EndGap[27], Th2xGaps[j].text);
-                                   script->Script("StartGap");
-                                   script->Script("GapID");
-                                   script->Append(0x07);
-                                   script->Script(gapId);
-                                   script->Script("FLAGS");
-                                   script->Append(0x07);
-                                   script->Append(0x05);
-                                   script->Script("PURE_WALL");
-                                   script->Append(0x06);
-                                   script->EndScript();
-                                   break;
-                                 case 0x47:
-                                 case 0x1://manual can ollie
-                                   memcpy(&EndGap[12], &gapId, 4);
-                                   memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
-                                   strcpy((char*)&EndGap[27], Th2xGaps[j].text);
-                                   script->Script("StartGap");
-                                   script->Script("GapID");
-                                   script->Append(0x07);
-                                   script->Script(gapId);
-                                   script->Script("FLAGS");
-                                   script->Append(0x07);
-                                   script->Append(0x05);
-                                   script->Script("REQUIRE_MANUAL");
-                                   script->Script("CANCEL_GROUND");
-                                   script->Script("CANCEL_WALL");
-                                   script->Script("CANCEL_RAIL");
-                                   script->Append(0x06);
-                                   script->EndScript();
-                                   break;
-                                 case 0x27://manual can't ollie
-                                   memcpy(&EndGap[12], &gapId, 4);
-                                   memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
-                                   strcpy((char*)&EndGap[27], Th2xGaps[j].text);
-                                   script->Script("StartGap");
-                                   script->Script("GapID");
-                                   script->Append(0x07);
-                                   script->Script(gapId);
-                                   script->Script("FLAGS");
-                                   script->Append(0x07);
-                                   script->Append(0x05);
-                                   script->Script("PURE_MANUAL");
-                                   script->Append(0x06);
-                                   script->EndScript();
-                                   break;
-                                 case 0x2://ground
-                                   memcpy(&EndGap[12], &gapId, 4);
-                                   memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
-                                   strcpy((char*)&EndGap[27], Th2xGaps[j].text);
-                                   script->Script("StartGap");
-                                   script->Script("GapID");
-                                   script->Append(0x07);
-                                   script->Script(gapId);
-                                   script->Script("FLAGS");
-                                   script->Append(0x07);
-                                   script->Append(0x05);
-                                   script->Script("PURE_GROUND");
-                                   script->Append(0x06);
-                                   script->EndScript();
-                                   break;
-                                 default:
-                                   memcpy(&EndGap[12], &gapId, 4);
-                                   memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
-                                   strcpy((char*)&EndGap[27], Th2xGaps[j].text);
-                                   script->Script("StartGap");
-                                   script->Script("GapID");
-                                   script->Append(0x07);
-                                   script->Script(gapId);
-                                   script->Script("FLAGS");
-                                   script->Append(0x07);
-                                   script->Append(0x05);
-                                   script->Script("PURE_AIR");
-                                   script->Append(0x06);
-                                   script->EndScript();
-                                   break;
-                                 }
-                                 break;
-                               }
-                             }
-
-                             name.checksum = ((DWORD*)node)[0];
-                             if (name.checksum == 0x7FEC1479)
-                               MessageBox(0, name.GetString2(), "Y", 0);
-                             node += 6;
-                             if ((mesh = GetMesh(name, j)))
-                             {
-                               if (name.checksum == 0x7FEC1479)
-                                 MessageBox(0, name.GetString2(), "gotmesh", 0);
-                               Node* meshNode = GetNode(name);
-                               if (meshNode == NULL)
-                               {
-                                 for (DWORD k = 0; k < dummy.size(); k++)
-                                 {
-                                   if (dummy[k].Name.checksum == name.checksum)
-                                   {
-                                     meshNode = &dummy[k];
-                                     break;
-                                   }
-                                 }
-                               }
-                               if (meshNode == NULL)
-                               {
-                                 if (name.checksum == 0x7FEC1479)
-                                   MessageBox(0, name.GetString2(), "nonode", 0);
-                                 if (!name.GetString())
-                                 {
-                                   sprintf(chc, "Mesh%d", j);
-                                   Scripts.push_back(Script(name.checksum, chc));
-                                 }
-
-                                 sprintf(chc, "%s_EndGap", name.GetString());
-                                 shatter = Checksum(chc).checksum;
-                                 dummy.push_back(EnvironmentObject(name, 0, 0, true));
-                                 dummy.back().SetTrigger(shatter);
-                                 KnownScript* script = GetScript(shatter);
-                                 if (script)
-                                 {
-                                   if (name.checksum == 0x7FEC1479)
-                                     MessageBox(0, name.GetString2(), "alreadyscripted", 0);
-                                   if (gapType == 2)
-                                   {
-                                     sprintf(chc, "EndGapId%d", gapIndex - 1);
-                                     gapId = Checksum(chc);
-                                     memcpy(&SpawnEndGapWithLoop[6], &gapId, 4);
-                                     script->Append(SpawnEndGapWithLoop, sizeof(SpawnEndGapWithLoop));
-                                     triggers.push_back(*(Checksum*)&gapId);
-                                     //sprintf(chc,"StartedGap%d",gapIndex-1);
-                                     memcpy(&EndGapWithLoop[151], &EndId, 4);
-                                     name = parentScript->name;
-                                     KnownScripts.push_back(KnownScript(*(Checksum*)&gapId, (void*)EndGapWithLoop, sizeof(EndGapWithLoop)));
-                                     parentScript = GetScript(name.checksum);
-                                   }
-                                   else
-                                     script->Append(EndGap, sizeof(EndGap));
-                                 }
-                                 else
-                                 {
-                                   if (name.checksum == 0x7FEC1479)
-                                     MessageBox(0, name.GetString2(), chc, 0);
-                                   name = parentScript->name;
-                                   triggers.push_back(*(Checksum*)&shatter);
-                                   if (gapType == 2)
-                                   {
-                                     sprintf(chc, "EndGapId%d", gapIndex - 1);
-                                     gapId = Checksum(chc);
-                                     memcpy(&SpawnEndGapWithLoop[6], &gapId, 4);
-                                     KnownScripts.push_back(KnownScript(*(Checksum*)&shatter, (void*)SpawnEndGapWithLoop, sizeof(SpawnEndGapWithLoop)));
-                                     triggers.push_back(*(Checksum*)&gapId);
-                                     //sprintf(chc,"StartedGap%d",gapIndex-1);
-                                     memcpy(&EndGapWithLoop[151], &EndId, 4);
-                                     KnownScripts.push_back(KnownScript(*(Checksum*)&gapId, (void*)EndGapWithLoop, sizeof(EndGapWithLoop)));
-                                   }
-                                   else
-                                     KnownScripts.push_back(KnownScript(*(Checksum*)&shatter, (void*)EndGap, sizeof(EndGap)));
-                                   parentScript = GetScript(name.checksum);
-                                 }
-                               }
-                               else
-                               {
-                                 if (name.checksum == 0x7FEC1479)
-                                   MessageBox(0, name.GetString2(), "node", 0);
-                                 name = parentScript->name;
-                                 KnownScript* script = GetScript(meshNode->Trigger.checksum);
-
-                                 if (script)
-                                 {
-                                   if (name.checksum == 0x7FEC1479)
-                                     MessageBox(0, name.GetString2(), "alreadyscripted", 0);
-                                   if (gapType == 2)
-                                   {
-                                     sprintf(chc, "EndGapId%d", gapIndex - 1);
-                                     gapId = Checksum(chc);
-                                     memcpy(&SpawnEndGapWithLoop[6], &gapId, 4);
-                                     script->Append(SpawnEndGapWithLoop, sizeof(SpawnEndGapWithLoop));//AppendScript(meshNode->Trigger, sizeof(SpawnEndGapWithLoop), sizeof(SpawnEndGapWithLoop), SpawnEndGapWithLoop);
-                                     triggers.push_back(*(Checksum*)&gapId);
-                                     //sprintf(chc,"StartedGap%d",gapIndex-2);
-                                     memcpy(&EndGapWithLoop[151], &EndId, 4);
-                                     KnownScripts.push_back(KnownScript(*(Checksum*)&gapId, (void*)EndGapWithLoop, sizeof(EndGapWithLoop)));
-                                   }
-                                   else
-                                   {
-                                     script->Append(EndGap, sizeof(EndGap));//AppendScript(meshNode->Trigger, sizeof(EndGap), sizeof(EndGap), EndGap);
-                                   }
-                                 }
-                                 else
-                                 {
-                                   if (name.checksum == 0x7FEC1479)
-                                     MessageBox(0, name.GetString2(), "noscript", 0);
-                                   sprintf(chc, "%s_EndGap", name.GetString());
-                                   shatter = Checksum(chc).checksum;
-                                   meshNode->Trigger.checksum = shatter;
-                                   triggers.push_back(chc);
-                                   if (gapType == 2)
-                                   {
-                                     sprintf(chc, "EndGapId%d", gapIndex - 1);
-                                     gapId = Checksum(chc);
-                                     memcpy(&SpawnEndGapWithLoop[6], &gapId, 4);
-                                     KnownScripts.push_back(KnownScript(*(Checksum*)&shatter, SpawnEndGapWithLoop, sizeof(SpawnEndGapWithLoop)));
-                                     triggers.push_back(*(Checksum*)&gapId);
-                                     //sprintf(chc,"StartedGap%d",gapIndex-2);
-                                     memcpy(&EndGapWithLoop[151], &EndId, 4);
-                                     KnownScripts.push_back(KnownScript(*(Checksum*)&gapId, (void*)EndGapWithLoop, sizeof(EndGapWithLoop)));
-                                   }
-                                   else
-                                   {
-                                     KnownScripts.push_back(KnownScript(*(Checksum*)&shatter, EndGap, sizeof(EndGap)));
-                                   }
-                                 }
-                                 parentScript = GetScript(name.checksum);
-                               }
-                             }
-                             break;
-                           }
-                         }
-
-
-                         //this->meshes[j].node = &this->nodes.back();
-                         //this->meshes[j].node->SetPosition(this->meshes[j].GetCenter());
-                         /*if(this->meshes[j].shatterObject)
-                         {
-                         strcat(chc,"_shatter");
-
-                         shatter = Checksum(chc).checksum;
-                         triggers.push_back(*(Checksum*)&shatter);
-                         memcpy(&ShatterScript[27],&name,4);
-                         memcpy(&ShatterScript[48],&name,4);
-                         KnownScripts.push_back(KnownScript(*(Checksum*)&shatter, (void*)ShatterScript, 123));
-                         }*/
-                         /* }
-                         else
-                         {
-                         found=false;
-                         sprintf(chc,"DummyNode%d",meshIndex);
-                         name = Checksum(chc);
-                         }*/
-                         break;
-                       }
-                       else if (!found)
-                       {
-                         if (dummy.size())
-                         {
-                           this->nodes.push_back(dummy.back());
-                           this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
-                           //GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
-                           dummy.pop_back();
-                         }
-                         else
-                         {
-                           sprintf(chc, "DummyNode%d", meshIndex);
-                           name = Checksum(chc);
-                           this->nodes.push_back(std::move(EnvironmentObject(name, numLinks, links)));
-                           meshIndex++;
-                         }
-
-
-                         sprintf(chc, "node%u_trigger", this->nodes.size());
-                         shatter = Checksum(chc).checksum;
-                         KnownScript* parentScript = GetScript(shatter);
-                         if (parentScript == NULL)
-                         {
-                           triggers.push_back(*(Checksum*)&shatter);
-                           KnownScripts.push_back(KnownScript(shatter, NULL, 0));
-                           parentScript = &KnownScripts.back();
-                         }
-
-                         for (DWORD j = 0; j < numLinks; j++)
-                         {
-                           DWORD link = (DWORD)pFile + startTable[links[j]];
-                           switch (*(BYTE*)link)
-                           {
-                           case COMMANDPOINT:
-                             sprintf(chc, "node%u_trigger", links[j] + 1);
-                             shatter = Checksum(chc).checksum;
-
-                             if (!parentScript->Contains(shatter))
-                             {
-                               /*if (GetScript(shatter) == NULL)
-                               {
-                               triggers.push_back(*(Checksum*)&shatter);
-                               KnownScripts.push_back(KnownScript(shatter, NULL, 0));
-                               }*/
-                               parentScript->Script(shatter);
-                               parentScript->Script("Caller");
-                               parentScript->Append(0x7);
-                               parentScript->Append(0x2D);
-                               parentScript->Script("Caller");
-                               parentScript->EndScript();
-                             }
-                             break;
-                           }
-                         }
-
-                         bool first;
-                         first = true;
-
-                         short command;
-                         command = *(short*)node;
-
-                         while (command != -1 && node < endNode)
-                         {
-                           command = *(short*)node;
-                           node += 2;
-
-                           switch (command)
-                           {
-
-                           case 126:
-                           case 127:
-                           case 128:
-                           case 2:
-                           case 140:
-                           case 142:
-                           case 178:
-                             while (*(BYTE*)node != 0)
-                               node++;
-                             node++;
-                             break;
-
-                           case 158:
-                           case 149:
-                           case 4:
-                           case 5:
-                           case 10:
-                             break;
-
-                           case 3://call links
-                             for (DWORD j = 0; j < numLinks; j++)
-                             {
-                               DWORD link = (DWORD)pFile + startTable[links[j]];
-                               switch (*(BYTE*)link)
-                               {
-                               case BADDY:
-                                 sprintf(chc, "node%uscript", links[j]);
-                                 shatter = Checksum(chc).checksum;
-                                 if (!parentScript->Contains(shatter))
-                                 {
-                                   parentScript->Script(shatter);
-                                   parentScript->EndScript();
-                                 }
-
-                                 break;
-                               }
-                             }
-                             break;
-
-                           case 11:
-                           case 12://shatter//kill
-                             /*if (!parentScript->Contains(Checksum("Caller").checksum))
-                             {*/
-                             parentScript->Script("Kill");
-                             parentScript->Script("Name");
-                             parentScript->Append(0x7);
-                             parentScript->Append(0x2D);
-                             parentScript->Script("Caller");
-                             parentScript->EndScript();
-
-                             for (DWORD j = 0; j < numLinks; j++)
-                             {
-                               DWORD link = (DWORD)pFile + startTable[links[j]];
-                               DWORD nodeSize2;
-                               nodeSize2 = startTable[links[j] + 1] - startTable[links[j]];
-                               switch (*(BYTE*)link)
-                               {
-                               case CRATE:
-                                 link += 2;
-                                 WORD numLinks2;
-                                 numLinks2 = ((WORD*)link)[0];
-                                 link += 2;
-
-                                 link += numLinks2 * 2;
-                                 SizeDiff = nodeSize2 - (2 + 2 + 2 * (DWORD)numLinks2 + 4);
-
-                                 //brute check
-                                 if (SizeDiff == 2 || ((DWORD)link - (DWORD)pFile) % 4 != 0)
-                                   //diff = 2? read wild zero!
-                                 {
-                                     if (*(WORD*)link != 0)
-                                     {
-                                         char msg[256] = "";
-                                         sprintf(msg, "Type: CRATE %X", (DWORD)link - (DWORD)pFile);
-                                         MessageBox(0, "what?", msg, 0);
-                                     }
-                                   link += 2;
-                                 }
-                                 else if (*(WORD*)link == 0)
-                                     //make sure diff is 0, else alert
-                                 {
-                                     sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
-                                     char msg[256] = "";
-                                     sprintf(msg, "Type: CRATE %X", (DWORD)node - (DWORD)pFile);
-                                     MessageBox(0, chc, msg, 0);
-                                 }
-                                 parentScript->Script("ShatterAndDie");
-                                 parentScript->Script("Name");
-                                 parentScript->Append(0x7);
-                                 parentScript->Script(((DWORD*)link)[0]);
-                                 parentScript->EndScript();
-                               }
-                             }
-                             //}
-                             break;
-
-                           case 152://sk3_killskater  
-                             parentScript->Script("sk3_killskater");
-                             parentScript->EndScript();
-                             break;
-
-                           case 203:
-                           case 204:
-                           case 157:
-                           case 131:
-                           case 132:
-                           case 134:
-                           case 147:
-                           case 166:
-                           case 169:
-                           case 13: node += 2; break;
-
-                           case 104: node += 6; break;
-
-                           case 171:
-                             if (((WORD*)node)[0] == 0)
-                             {
-                               if (((WORD*)node)[1] == 0)
-                               {
-                                 if (((WORD*)node)[2] == 0)
-                                 {
-                                   node += 2;
-                                 }
-                               }
-                               else
-                               {
-                                 node += 2;
-                               }
-                             }
-
-                             node += 10;
-                             break;
-
-                             //visibility in box was my headache before, by i think i figured it ouy
-                           case 141:
-                             node += 4;
-
-                             //=========================WARNING: wild zero
-                             //have to implement another wild zero check 
-                             WORD buf;
-                             buf = *(WORD*)node;
-                             node += 2;
-                             if (buf != 0) node -= 2;
-
-                             //looping through boxes
-                             buf = *(WORD*)node;
-                             node += 2;
-
-                             while (buf != 0xFF && node < endNode) //i have no idea what happens if there are no boxes at all.
-                               //in theory this should work if they always denote the end of box list as 0xFF.
-                               //not sure if it's even possible, but who knows.
-                             {
-                               node += 22;
-
-                               //read potential end of box list for the next iteration
-                               buf = *(WORD*)node;
-                               node += 2;
-                             }
-                             break;
-
-                           case 202:
-                           case 200: node += 4; break;
-
-                           case 0x00C9:
-                             if (first)
-                             {
-                               first = false;
-                               node += 2;
-                             }
-
-                             node += 6;
-                             break;
-                           }
-                         }
-                       }
-                       break;
-    }
-    case RAILPOINT:
-    case RAILDEF:
-      node += 2;
-      numLinks = ((WORD*)node)[0];
-      node += 2;
-      links = (WORD*)node;
-      /*for (DWORD j = 0; j < numLinks; j++)
-      node += 2;*/
-      node += numLinks * 2;
-
-      SizeDiff = nodeSize - (2 + 2 + 2 * (DWORD)numLinks + 4 * 3 + 2 + 2);
-
-      //brute check
-      if (SizeDiff == 2)
-        //diff = 2? read wild zero!
-      {
-          if (*(WORD*)node != 0)
-          {
-              sprintf(chc, "what? nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
-              char msg[256] = "";
-              sprintf(msg, "Type: RAIL %X", (DWORD)node - (DWORD)pFile);
-              MessageBox(0, chc, msg, 0);
-          }
-        node += 2;
-      }
-      else if (*(WORD*)node == 0)
-          //make sure diff is 0, else alert
-      {
-          sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
-          char msg[256] = "";
-          sprintf(msg, "Type: RAIL %X", (DWORD)node - (DWORD)pFile);
-          MessageBox(0, chc, msg, 0);
-      }
-      /*if (links[numLinks] == 0)
-      node += 2;*/
-
-      vert = (Th2FixedVert*)node;
-      //thps2 level is flipped on x, y axis and -z cause editor and later games flip z axis
-      position.x = -(float)vert->x / 2.833f;
-      position.y = -(float)vert->y / 2.833f;
-      position.z = -(float)vert->z / 2.833f;
-      angle.x = 0.0f;
-      angle.y = 0.0f;
-      angle.z = 0.0f;
-
-      sprintf(chc, "RailNode%d", railCount);
-      name = Checksum(chc);
-
-      this->nodes.push_back(std::move(RailNode(position, angle, name, numLinks, links)));
-      node += 12;
-      if (((WORD*)node)[0] == 0)
-        this->nodes.back().TerrainType = Checksum("TERRAIN_CONCSMOOTH");
-      else if (((WORD*)node)[0] == 1)
-        this->nodes.back().TerrainType = Checksum("TERRAIN_METALSMOOTH");
-      else if (((WORD*)node)[0] == 2)
-        this->nodes.back().TerrainType = Checksum("TERRAIN_WOOD");
-      railCount++;
-      break;
-    default:
-      if (dummy.size())
-      {
-        this->nodes.push_back(dummy.back());
-        this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
-        //GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
-        dummy.pop_back();
-      }
-      else
-      {
-        sprintf(chc, "DummyNode%d", meshIndex);
-        name = Checksum(chc);
-        this->nodes.push_back(EnvironmentObject(name, 0, 0));
-        meshIndex++;
-      }
-      break;
-    }
-  }
-  //this->nodes.push_back(Restart());
-
-  triggers.push_back(Checksum("SetTh2Physics"));
-  Checksum("PlaySound");
-  Checksum("area");
-  Checksum("variance");
-  Checksum("vel_x");
-  Checksum("vel_y");
-  Checksum("vel_z");
-  Checksum("spread");
-  Checksum("glasspane2x");
-  Checksum("StartGap");
-  Checksum("EndGap");
-  Checksum("GapID");
-  Checksum("Score");
-  Checksum("FLAGS");
-  Checksum("text");
-  Checksum("CANCEL_GROUND");
-  Checksum("waitonegameframe");
-  Checksum("REQUIRE_RAIL");
-  Checksum("OnRail");
-  Checksum("Obj_SpawnScript");
-  Checksum("IsTrue");
-  Checksum("Name");
-  KnownScripts.push_back(KnownScript(Checksum("SetTh2Physics"), (void*)SetTh2Physics, 21));
-  MessageBox(0, "Done", "", 0);
-  if (GetScript("SetTh2Physics"))
-    MessageBox(0, "Yes", "", 0);
-
-
-  delete[] pFile;
-  delete[] nodes;
-
-  for (DWORD i = 0, numDummies = dummy.size(); i < numDummies; i++)
-  {
-    this->nodes.push_back(dummy[i]);
-    this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
-    //GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
-  }
-  dummy.clear();
+	//DWORD shatter = 0;
+
+	DWORD* startTable = (DWORD*)ptr;
+
+	for (DWORD i = 0; i < numNodes; i++)
+	{
+		DWORD offset = ((DWORD*)ptr)[0];
+		DWORD nodeSize;
+		KnownScript* script = NULL, * parentScript = NULL;;
+		if (i == numNodes - 1)
+			nodeSize = size - offset;
+		else
+			nodeSize = ((DWORD*)ptr)[1] - offset;
+		DWORD node = (DWORD)pFile + offset;
+		ptr += 4;
+
+		switch (((WORD*)node)[0])
+		{
+		case CRATE:
+			node += 2;
+			numLinks = ((WORD*)node)[0];
+			node += 2;
+			links = (WORD*)node;
+			/*for (DWORD j = 0; j < numLinks; j++)
+			node += 2;*/
+			node += numLinks * 2;
+			SizeDiff = nodeSize - (2 + 2 + 2 * (DWORD)numLinks + 4);
+
+			//brute check
+			if (SizeDiff == 2 || ((DWORD)node - (DWORD)pFile) % 4 != 0)
+				//diff = 2? read wild zero!
+			{
+				if (*(WORD*)node != 0)
+				{
+					char msg[256] = "";
+					sprintf(msg, "Type: CRATE %X", (DWORD)node - (DWORD)pFile);
+					MessageBox(0, "what?", msg, 0);
+				}
+				node += 2;
+			}
+			else if (*(WORD*)node == 0)
+				//make sure diff is 0, else alert
+			{
+				sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
+				char msg[256] = "";
+				sprintf(msg, "Type: CRATE %X", (DWORD)node - (DWORD)pFile);
+				MessageBox(0, chc, msg, 0);
+			}
+			/*if (links[numLinks] == 0)
+			node += 2;*/
+			DWORD shatter;
+			name.checksum = ((DWORD*)node)[0];
+			found = false;
+			DWORD j;
+			if ((mesh = GetMesh(name, j)))
+			{
+				found = true;
+				char* Name;
+				if ((Name = name.GetString()) == NULL)
+				{
+					sprintf(chc, "Mesh%d", j);
+					Scripts.push_back((Script(name.checksum, chc)));
+				}
+				else
+					strcpy(chc, Name);
+
+				this->nodes.push_back(std::move(EnvironmentObject(name, numLinks, links, true)));
+				//mesh->node = &this->nodes.back();
+				this->nodes.back().SetPosition(this->meshes[j].GetCenter());
+				//this->meshes[j].node->SetPosition(this->meshes[j].GetCenter());
+
+				/*strcat(chc, "_shatter");
+				shatter = Checksum(chc).checksum;
+				triggers.push_back(*(Checksum*)&shatter);
+				this->nodes.back().SetTrigger(shatter);
+				memcpy(&ShatterScript[12], &name, 4);
+				memcpy(&ShatterScript[49], &name, 4);
+				KnownScripts.push_back((KnownScript(*(Checksum*)&shatter, (void*)ShatterScript, 125)));*/
+				break;
+			}
+			if (!found)
+			{
+				if (dummy.size())
+				{
+					this->nodes.push_back(dummy.back());
+					this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
+					//GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
+					dummy.pop_back();
+				}
+				else
+				{
+					sprintf(chc, "DummyNode%d", meshIndex);
+					name = Checksum(chc);
+					this->nodes.push_back(std::move(EnvironmentObject(name, numLinks, links)));
+					meshIndex++;
+				}
+			}
+			break;
+		case 0x0E:
+		case 0x0C:
+			node += 2;
+			numLinks = ((WORD*)node)[0];
+			node += 2;
+			links = (WORD*)node;
+			/*for (DWORD j = 0; j < numLinks; j++)
+			node += 2;*/
+			node += numLinks * 2;
+			SizeDiff = nodeSize - (2 + 2 + 2 * (DWORD)numLinks + 6);
+
+			//brute check
+			if (SizeDiff == 2 || SizeDiff == 32 || ((DWORD)node - (DWORD)pFile) % 4 != 0)// || SizeDiff % 4 != 0)
+			  //diff = 2? read wild zero!
+			{
+				if (*(WORD*)node != 0)
+				{
+					sprintf(chc, "what? nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
+					char msg[256] = "";
+					sprintf(msg, "Type: TRICKOB %X", (DWORD)node - (DWORD)pFile);
+					MessageBox(0, chc, msg, 0);
+				}
+				node += 2;
+			}
+			else if (*(WORD*)node == 0)
+				//make sure diff is 0, else alert
+			{
+				sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
+				char msg[256] = "";
+				sprintf(msg, "Type: TRICKOB %X", (DWORD)node - (DWORD)pFile);
+				MessageBox(0, chc, msg, 0);
+			}
+			/*if (links[numLinks] == 0)
+			node += 2;*/
+
+			name.checksum = ((DWORD*)node)[0];
+			found = false;
+			if ((mesh = GetMesh(name, j)))
+			{
+				/*found = false;
+				for(DWORD k=0; k<this->nodes.size(); k++)
+				{
+				if(name.checksum==this->nodes[k].Name.checksum)
+				found=true;
+				}
+				if(!found)
+				{*/
+				if (!name.GetString())
+				{
+					sprintf(chc, "Mesh%d", j);
+					Scripts.push_back((Script(name.checksum, chc)));
+				}
+				found = true;
+				this->nodes.push_back(std::move(EnvironmentObject(name, numLinks, links, true, true)));
+				this->nodes.back().SetPosition(this->meshes[j].GetCenter());
+				//mesh->node = &this->nodes.back();
+				//this->meshes[j].node = &this->nodes.back();
+				//this->meshes[j].node->SetPosition(this->meshes[j].GetCenter());
+				/*if(this->meshes[j].shatterObject)
+				{
+				strcat(chc,"_shatter");
+
+				shatter = Checksum(chc).checksum;
+				triggers.push_back(*(Checksum*)&shatter);
+				memcpy(&ShatterScript[27],&name,4);
+				memcpy(&ShatterScript[48],&name,4);
+				KnownScripts.push_back(KnownScript(*(Checksum*)&shatter, (void*)ShatterScript, 123));
+				}*/
+				/* }
+				else
+				{
+				found=false;
+				sprintf(chc,"DummyNode%d",meshIndex);
+				name = Checksum(chc);25
+				}*/
+				break;
+			}
+			if (!found)
+			{
+				if (dummy.size())
+				{
+					this->nodes.push_back(dummy.back());
+					this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
+					//GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
+					dummy.pop_back();
+				}
+				else
+				{
+					sprintf(chc, "DummyNode%d", meshIndex);
+					name = Checksum(chc);
+					this->nodes.push_back(std::move(EnvironmentObject(name, numLinks, links)));
+					meshIndex++;
+				}
+			}
+			break;
+
+		case BADDY:
+#define Platform 402
+#define V_MODEL 0x212F
+#define	V_ANGULAR_VELOCITY  0x2127
+
+			node += 2;
+			nodeSize -= 2;
+			sprintf(chc, "node%uscript", i);
+			KnownScripts.push_back(KnownScript(chc, NULL, 0));
+			triggers.push_back(Checksum(chc));
+
+			if (skyDome)
+			{
+				if (((WORD*)node)[0] == Platform)
+				{
+					node += 4;//skip priority
+					nodeSize -= 4;
+					numLinks = ((WORD*)node)[0];
+					node += numLinks * 2 + 6;
+					nodeSize -= numLinks * 2 + 6;
+
+					SizeDiff = nodeSize;
+
+					//brute check
+					if (SizeDiff == 2 || ((DWORD)node - (DWORD)pFile) % 4 != 0)// || SizeDiff % 4 != 0)
+						//diff = 2? read wild zero!
+					{
+						if (*(WORD*)node != 0)
+						{
+							sprintf(chc, "what? nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
+							char msg[256] = "";
+							sprintf(msg, "Type: TRICKOB %X", (DWORD)node - (DWORD)pFile);
+							MessageBox(0, chc, msg, 0);
+						}
+						node += 2;
+						nodeSize -= 2;
+					}
+					else if (*(WORD*)node == 0)
+						//make sure diff is 0, else alert
+					{
+						sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
+						char msg[256] = "";
+						sprintf(msg, "Type: TRICKOB %X", (DWORD)node - (DWORD)pFile);
+						MessageBox(0, chc, msg, 0);
+					}
+					/*if (((WORD*)node)[0] == 0x0000)
+					{
+
+					}*/
+					vert = (Th2FixedVert*)node;
+					node += 12;
+					nodeSize -= 12;
+
+					//thps2 level is flipped on x, y axis and -z cause editor and later games flip z axis
+					position.x = -(float)vert->x / 2.833f;
+					position.y = -(float)vert->y / 2.833f;
+					position.z = -(float)vert->z / 2.833f;
+
+
+					//full circle is 4096(divider for Th2FixedVert) since level is flipped need - on all axes but y needs to be rotated 180 degree after.
+					angle.x = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)node)[0] - 2048.0f));
+					angle.y = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)node)[1] - 2048.0f)) + D3DX_PI;
+					angle.z = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)node)[2] - 2048.0f));
+					node += 6;
+					nodeSize -= 6;
+					found = false;
+					/*char dummyScript[256] = "";
+					sprintf(dummyScript, "DummyScript%u", i);
+					KnownScripts.push_back(KnownScript(Checksum(dummyScript, NULL, 0)));
+					triggers.push_back(Checksum(dummyScript));
+					script = KnownScripts.back();*/
+					while (nodeSize)
+					{
+						switch (((WORD*)node)[0])
+						{
+
+
+						case V_ANGULAR_VELOCITY:
+							node += 2;
+							nodeSize -= 8;
+							break;
+						case V_MODEL:
+							node += 2;
+							nodeSize -= 6;
+							if (((WORD*)node)[0] == 0x0000)
+							{
+								MessageBox(0, "maybe bad idea?", "", 0);
+								node += 2;
+								nodeSize -= 2;
+							}
+							name.checksum = ((DWORD*)node)[0];
+							node += 4;
+							found = false;
+							if (!skyDome->MoveObject(this, name, position, angle))
+							{
+								DWORD j;
+								if ((mesh = GetMesh(name, j)))
+								{
+									found = true;
+									CloneMesh(mesh);
+									//meshes.erase(meshes.begin()+j);
+									this->meshes.back().Move(position, angle);
+									sprintf(chc, "%s_%04X", name.GetString(), i);
+									//MessageBox(0, chc,chc,0);
+									name.checksum += i;
+									Scripts.push_back((Script(name.checksum, chc)));
+									this->meshes.back().SetName(name);
+								}
+							}
+							else
+								found = true;
+							if (found)
+							{
+								this->nodes.push_back((EnvironmentObject(name, 0, 0, true)));
+								this->nodes.back().SetPosition(this->meshes.back().GetCenter());
+								//this->meshes.back().node = &this->nodes.back();
+								//this->meshes.back().node->SetPosition(this->meshes.back().GetCenter());
+							}
+							else
+							{
+								if (dummy.size())
+								{
+									this->nodes.push_back(dummy.back());
+									this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
+									//GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
+									dummy.pop_back();
+								}
+								else
+								{
+									sprintf(chc, "DummyNode%d", meshIndex);
+									name = Checksum(chc);
+									this->nodes.push_back((EnvironmentObject(name, 0, 0)));
+									meshIndex++;
+								}
+							}
+							break;
+						}
+					}
+					break;
+				}
+				else
+				{
+					if (dummy.size())
+					{
+						this->nodes.push_back(dummy.back());
+						this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
+						//GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
+						dummy.pop_back();
+					}
+					else
+					{
+						sprintf(chc, "DummyNode%d", meshIndex);
+						name = Checksum(chc);
+						this->nodes.push_back((EnvironmentObject(name, 0, 0)));
+						meshIndex++;
+					}
+				}
+			}
+			else
+			{
+				if (dummy.size())
+				{
+					this->nodes.push_back(dummy.back());
+					this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
+					//GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
+					dummy.pop_back();
+				}
+				else
+				{
+					sprintf(chc, "DummyNode%d", meshIndex);
+					name = Checksum(chc);
+					this->nodes.push_back((EnvironmentObject(name, 0, 0)));
+					meshIndex++;
+				}
+			}
+			break;
+		case RESTART:
+			node += 2;
+			DWORD zize;
+			zize = nodeSize;
+			nodeSize -= 2;
+			numLinks = ((WORD*)node)[0];
+			node += 2;
+			nodeSize -= 2;
+			sprintf(chc, "RestartNode%d", restartIndex);
+			name = Checksum(chc);
+			links = (WORD*)node;
+			/*for (DWORD j = 0; j < numLinks; j++)
+			{
+			node += 2;
+			nodeSize -= 2;
+			}*/
+			node += 2 * numLinks;
+			nodeSize -= 2 * numLinks;
+			SizeDiff = nodeSize;
+
+			//brute check
+			if (SizeDiff == 2 || ((DWORD)node - (DWORD)pFile) % 4 != 0)
+				//diff = 2? read wild zero!
+			{
+				if (*(WORD*)node != 0)
+				{
+					sprintf(chc, "what? nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
+					char msg[256] = "";
+					sprintf(msg, "Type: RESTART %X", (DWORD)node - (DWORD)pFile);
+					MessageBox(0, chc, msg, 0);
+				}
+				node += 2;
+				nodeSize -= 2;
+			}
+			else if (*(WORD*)node == 0)
+				//make sure diff is 0, else alert
+			{
+				sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
+				char msg[256] = "";
+				sprintf(msg, "Type: Restart %X", (DWORD)node - (DWORD)pFile);
+				MessageBox(0, chc, msg, 0);
+			}
+			/*if (links[numLinks] == 0)
+			  node += 2;*/
+
+			vert = (Th2FixedVert*)node;
+			node += 12;
+			nodeSize -= 12;
+			//thps2 level is flipped on x, y axis and -z cause editor and later games flip z axis
+			position.x = -(float)vert->x / 2.833f;
+			position.y = -(float)vert->y / 2.833f;
+			position.z = -(float)vert->z / 2.833f;
+
+			//0.003069460
+			//0.0030679615
+			//0.0015339807
+
+
+			//full circle is 4096(divider for Th2FixedVert) since level is flipped need - on all axes but y needs to be rotated 180 degree after.
+			angle.x = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)node)[0] - 2048.0f));
+			angle.y = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)node)[1] - 2048.0f)) + D3DX_PI;//180 degree
+			angle.z = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)node)[2] - 2048.0f));
+			node += 6;
+			nodeSize -= 6;
+
+			this->nodes.push_back(std::move(Restart(position, angle, name, (char*)node, numLinks, links)));
+			for (DWORD j = 0; j < nodeSize; j++)
+			{
+				char* test = (char*)node;
+				if (stricmp(levelName, test) == 0)
+					break;
+				else
+					node++;
+			}
+			node -= 12;
+			crc = ((DWORD*)node)[0];
+			if (crc != skyCRC && skyDome && skyDome->GetMesh(*(Checksum*)&crc))
+				skyCRC = crc;
+
+			restartIndex++;
+			break;
+		case POWERUP:
+			/*if(numPowerups<9)
+			{*/
+			node += 2;
+			DWORD type;
+			type = ((WORD*)node)[0];
+			if (type == 15)
+			{
+				node += 2;
+				numLinks = ((WORD*)node)[0];
+				node += 2;
+				links = (WORD*)node;
+				/*for (DWORD j = 0; j < numLinks; j++)
+				node += 2;*/
+				node += 2 * numLinks;
+				SizeDiff = nodeSize - (2 + 2 + 2 + 2 * (DWORD)numLinks + 4 * 3 + 2 + 2 + 2 + 2);
+
+				//brute check
+				if (SizeDiff == 2)
+					//diff = 2? read wild zero!
+				{
+					if (*(WORD*)node != 0)
+					{
+						char msg[256] = "";
+						sprintf(msg, "Type: POWERUP %X", (DWORD)node - (DWORD)pFile);
+						MessageBox(0, "what?", msg, 0);
+					}
+					node += 2;
+				}
+				else if (*(WORD*)node == 0)
+					//make sure diff is 0, else alert
+				{
+					sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
+					char msg[256] = "";
+					sprintf(msg, "Type: POWERUP %X", (DWORD)node - (DWORD)pFile);
+					MessageBox(0, chc, msg, 0);
+				}
+				/*if (links[numLinks] == 0)
+				node += 2;*/
+
+				vert = (Th2FixedVert*)node;
+
+				position.x = -(float)vert->x / 2.833f;
+				position.y = -(float)vert->y / 2.833f;
+				position.z = -(float)vert->z / 2.833f;
+				position.y -= 10.0f;
+
+				this->nodes.push_back((GenericNode(Checksum("TRG_ZONE_KEY"), position, GenericNode::Types::ZONE_KEY)));
+			}
+			else if (type == 4 || type == 6 || type == 5 || type == 10 || type == 16)
+			{
+				numPowerups++;
+				sprintf(chc, "TRG_Crown0%d", numPowerups);
+				node += 2;
+				numLinks = ((WORD*)node)[0];
+				node += 2;
+				links = (WORD*)node;
+				/*for (DWORD j = 0; j < numLinks; j++)
+				node += 2;*/
+				node += 2 * numLinks;
+				SizeDiff = nodeSize - (2 + 2 + 2 + 2 * (DWORD)numLinks + 4 * 3 + 2 + 2 + 2 + 2);
+
+				//brute check
+				if (SizeDiff == 2)
+					//diff = 2? read wild zero!
+				{
+					if (*(WORD*)node != 0)
+					{
+						char msg[256] = "";
+						sprintf(msg, "Type: POWERUP %X", (DWORD)node - (DWORD)pFile);
+						MessageBox(0, "what?", msg, 0);
+					}
+					node += 2;
+				}
+				else if (*(WORD*)node == 0)
+					//make sure diff is 0, else alert
+				{
+					sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
+					char msg[256] = "";
+					sprintf(msg, "Type: POWERUP %X", (DWORD)node - (DWORD)pFile);
+					MessageBox(0, chc, msg, 0);
+				}
+				/*if (links[numLinks] == 0)
+				node += 2;*/
+
+				vert = (Th2FixedVert*)node;
+
+				position.x = -(float)vert->x / 2.833f;
+				position.y = -(float)vert->y / 2.833f;
+				position.z = -(float)vert->z / 2.833f;
+				position.y -= 10.0f;
+
+				this->nodes.push_back((GenericNode(Checksum(chc), position, GenericNode::Types::Crown)));
+			}
+			else if (numPowerups == 5)
+			{
+				numPowerups++;
+				sprintf(chc, "TRG_Crown0%d", numPowerups);
+				node += 2;
+				numLinks = ((WORD*)node)[0];
+				node += 2;
+				links = (WORD*)node;
+				/*for (DWORD j = 0; j < numLinks; j++)
+				node += 2;*/
+				node += 2 * numLinks;
+				SizeDiff = nodeSize - (2 + 2 + 2 + 2 * (DWORD)numLinks + 4 * 3 + 2 + 2 + 2 + 2);
+
+				//brute check
+				if (SizeDiff == 2)
+					//diff = 2? read wild zero!
+				{
+					if (*(WORD*)node != 0)
+					{
+						char msg[256] = "";
+						sprintf(msg, "Type: POWERUP %X", (DWORD)node - (DWORD)pFile);
+						MessageBox(0, "what?", msg, 0);
+					}
+					node += 2;
+				}
+				else if (*(WORD*)node == 0)
+					//make sure diff is 0, else alert
+				{
+					sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
+					char msg[256] = "";
+					sprintf(msg, "Type: POWERUP %X", (DWORD)node - (DWORD)pFile);
+					MessageBox(0, chc, msg, 0);
+				}
+				/*if (links[numLinks] == 0)
+				node += 2;*/
+
+				vert = (Th2FixedVert*)node;
+
+				position.x = -(float)vert->x / 2.833f;
+				position.y = -(float)vert->y / 2.833f;
+				position.z = -(float)vert->z / 2.833f;
+				position.y -= 10.0f;
+
+				this->nodes.push_back((GenericNode(Checksum(chc), position, GenericNode::Types::Crown)));
+			}
+			//numPowerups++;
+
+			/*if(numPowerups==0)
+			{
+			this->nodes.push_back(GenericNode(Checksum("TRG_ZONE_KEY"), position, GenericNode::Types::ZONE_KEY));
+			}
+			else if(numPowerups==1)
+			{
+			this->nodes.push_back(GenericNode(Checksum("TRG_CTF_Team1"), position, GenericNode::Types::CTF_1));
+			}
+			else if(numPowerups==5)
+			{
+			this->nodes.push_back(GenericNode(Checksum("TRG_CTF_Team02"), position, GenericNode::Types::CTF_2));
+			}
+			else if(numPowerups<5)
+			{
+			sprintf(chc, "TRG_Crown0%d", numPowerups-1);
+			this->nodes.push_back(GenericNode(Checksum(chc), position, GenericNode::Types::Crown));
+			}
+			else
+			{
+			sprintf(chc, "TRG_Crown0%d", numPowerups-2);
+			this->nodes.push_back(GenericNode(Checksum(chc), position, GenericNode::Types::Crown));
+			}
+			numPowerups++;*/
+			// }
+			else
+			{
+				if (dummy.size())
+				{
+					this->nodes.push_back(dummy.back());
+					this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
+					//GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
+					dummy.pop_back();
+				}
+				else
+				{
+					sprintf(chc, "DummyNode%d", meshIndex);
+					name = Checksum(chc);
+					this->nodes.push_back((EnvironmentObject(name, 0, 0)));
+					meshIndex++;
+				}
+			}
+			break;
+		case COMMANDPOINT:
+		{
+			//shatter = 0;
+			DWORD endNode;
+			endNode = node + nodeSize;
+			node += 2;
+			numLinks = ((WORD*)node)[0];
+			node += 2;
+			links = (WORD*)node;
+			/*for (DWORD j = 0; j < numLinks; j++)
+			node += 2;*/
+			node += 2 * numLinks;
+			SizeDiff = nodeSize - (2 + 2 + 2 * numLinks);
+
+			//brute check
+			if (SizeDiff == 2 || ((DWORD)node - (DWORD)pFile) % 4 != 0)
+				//diff = 2? read wild zero!
+			{
+				if (*(WORD*)node != 0)
+				{
+					sprintf(chc, "what? nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
+					char msg[256] = "";
+					sprintf(msg, "Type: COMMAND %X", ((DWORD)node - (DWORD)pFile));
+					MessageBox(0, chc, msg, 0);
+				}
+				node += 2;
+			}
+			else if (*(WORD*)node == 0 && *(DWORD*)node != 0)
+				//make sure diff is 0, else alert
+			{
+				sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
+				char msg[256] = "";
+				sprintf(msg, "Type: COMMAND %X", (DWORD)node - (DWORD)pFile);
+				MessageBox(0, chc, msg, 0);
+			}
+			/*if (links[numLinks] == 0)
+			  node += 2;*/
+			name.checksum = ((DWORD*)node)[0];
+			trg = name.checksum;
+			node += 4;
+			found = false;
+
+			if ((mesh = GetMesh(name, j)))
+			{
+				if (!name.GetString())
+				{
+					sprintf(chc, "Mesh%d", j);
+					Scripts.push_back((Script(name.checksum, chc)));
+				}
+				found = true;
+
+				Node* startNode;
+				startNode = GetNode(name);
+				if (startNode == NULL)
+				{
+					for (DWORD k = 0; k < dummy.size(); k++)
+					{
+						if (dummy[k].Name.checksum == name.checksum)
+						{
+							startNode = &dummy[k];
+							break;
+						}
+					}
+				}
+
+				if (startNode == NULL)
+				{
+					this->nodes.push_back(EnvironmentObject(name, numLinks, links, true));
+					this->nodes.back().SetPosition(mesh->GetCenter());
+					startNode = &this->nodes.back();
+				}
+				else
+				{
+					sprintf(chc, "DummyNode%d", meshIndex);
+					this->nodes.push_back(std::move(EnvironmentObject(Checksum(chc), numLinks, links)));
+					meshIndex++;
+				}
+				sprintf(chc, "node%u_trigger", this->nodes.size());
+				shatter = Checksum(chc).checksum;
+				KnownScript* parentScript = GetScript(shatter);
+				if (parentScript == NULL)
+				{
+					triggers.push_back(*(Checksum*)&shatter);
+					KnownScripts.push_back(KnownScript(shatter, NULL, 0));
+					parentScript = &KnownScripts.back();
+				}
+				else if (startNode->Trigger.checksum && startNode->Trigger.checksum != shatter && !parentScript->Contains(startNode->Trigger.checksum))
+				{
+					parentScript->Script(startNode->Trigger);
+					parentScript->EndScript();
+				}
+				if (startNode->Trigger.checksum == 0)
+					startNode->SetTrigger(shatter);
+
+
+				for (DWORD j = 0; j < numLinks; j++)
+				{
+					DWORD link = (DWORD)pFile + startTable[links[j]];
+					switch (*(BYTE*)link)
+					{
+					case COMMANDPOINT:
+						sprintf(chc, "node%u_trigger", links[j] + 1);
+						shatter = Checksum(chc).checksum;
+						if (!parentScript->Contains(shatter))
+						{
+							parentScript->Script(shatter);
+							parentScript->Script("Caller");
+							parentScript->Append(0x7);
+							parentScript->Script(trg);
+							parentScript->EndScript();
+						}
+						break;
+					}
+				}
+
+				bool first;
+				first = true;
+
+				short command;
+				command = *(short*)node;
+
+				while (command != -1 && node < endNode)
+				{
+					command = *(short*)node;
+					node += 2;
+
+					switch (command)
+					{
+
+					case 126:
+					case 127:
+					case 128:
+					case 2:
+					case 140:
+					case 142:
+					case 178:
+						while (*(BYTE*)node != 0)
+							node++;
+						node++;
+						break;
+
+					case 158:
+					case 149:
+					case 4:
+					case 5:
+					case 10:
+						break;
+
+					case 3://call links
+						for (DWORD j = 0; j < numLinks; j++)
+						{
+							DWORD link = (DWORD)pFile + startTable[links[j]];
+							switch (*(BYTE*)link)
+							{
+							case BADDY:
+								sprintf(chc, "node%uscript", links[j]);
+								shatter = Checksum(chc).checksum;
+								if (!parentScript->Contains(shatter))
+								{
+									parentScript->Script(shatter);
+									parentScript->EndScript();
+								}
+
+								break;
+							}
+						}
+						break;
+
+						/*case 11://kill
+						scr = GetScript(startNode->Trigger.checksum);
+						if (scr)
+						{
+						scr->Script("Kill");
+						scr->Script("Name");
+						scr->Append(0x7);
+						scr->Script(trg);
+						scr->EndScript();
+						}
+						else
+						{
+						KnownScripts.push_back(KnownScript(startNode->Trigger.checksum, NULL, 0));
+						KnownScript & script = KnownScripts.back();
+						script.Script("Kill");
+						script.Script("Name");
+						script.Append(0x7);
+						script.Script(trg);
+						script.EndScript();
+						}
+						break;*/
+					case 11:
+					case 12://shatter//kill
+						sprintf(chc, "%s_Crate_Shatter", (*(Checksum*)&trg).GetString());
+						shatter = Checksum(chc).checksum;
+
+						script = GetScript(shatter);
+						if (script == NULL)
+						{
+							parentScript->Script(shatter);
+							parentScript->EndScript();
+							name = parentScript->name;
+							triggers.push_back(shatter);
+							KnownScripts.push_back(KnownScript(shatter, NULL, 0));
+							script = &KnownScripts.back();
+							parentScript = GetScript(name.checksum);
+						}
+						else if (!parentScript->Contains(shatter))
+						{
+							parentScript->Script(shatter);
+							parentScript->EndScript();
+						}
+
+						script->Script("Kill");
+						script->Script("Name");
+						script->Append(0x7);
+						script->Script(trg);
+						script->EndScript();
+
+						for (DWORD j = 0; j < numLinks; j++)
+						{
+							DWORD link = (DWORD)pFile + startTable[links[j]];
+							DWORD nodeSize2;
+							nodeSize2 = startTable[links[j] + 1] - startTable[links[j]];
+							switch (*(BYTE*)link)
+							{
+							case CRATE:
+								link += 2;
+								WORD numLinks2;
+								numLinks2 = ((WORD*)link)[0];
+								link += 2;
+
+								link += numLinks2 * 2;
+								SizeDiff = nodeSize2 - (2 + 2 + 2 * (DWORD)numLinks2 + 4);
+
+								//brute check
+								if (SizeDiff == 2 || ((DWORD)link - (DWORD)pFile) % 4 != 0)
+									//diff = 2? read wild zero!
+								{
+									if (*(WORD*)link != 0)
+									{
+										sprintf(chc, "what? nodeSize %u SizeDiff %u", nodeSize2, SizeDiff);
+										char msg[256] = "";
+										sprintf(msg, "Type: CRATE %X", ((DWORD)link - (DWORD)pFile));
+										MessageBox(0, chc, msg, 0);
+									}
+									link += 2;
+								}
+								else if (*(WORD*)link == 0)
+									//make sure diff is 0, else alert
+								{
+									sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
+									char msg[256] = "";
+									sprintf(msg, "Type: CRATE %X", (DWORD)node - (DWORD)pFile);
+									MessageBox(0, chc, msg, 0);
+								}
+
+								script->Script("ShatterAndDie");
+								script->Script("Name");
+								script->Append(0x7);
+								script->Script(((DWORD*)link)[0]);
+								script->EndScript();
+							}
+						}
+						break;
+
+					case 152://sk3_killskater  
+					  /*scr = GetScript(startNode->Trigger.checksum);
+					  if (scr)
+					  {
+					  scr->Script("SK3_Killskater");
+					  scr->EndScript();
+					  }
+					  else
+					  {
+					  KnownScripts.push_back(KnownScript(startNode->Trigger.checksum, NULL, 0));
+					  startNode->SetTrigger(Checksum(chc).checksum);
+					  triggers.push_back(startNode->Trigger.checksum);
+					  KnownScript & script = KnownScripts.back();
+					  script.Script("SK3_Killskater");
+					  script.EndScript();
+					  }*/
+						parentScript->Script("sk3_killskater");
+						parentScript->EndScript();
+						break;
+
+					case 203:
+					case 204:
+					case 157:
+					case 131:
+					case 132:
+					case 134:
+					case 147:
+					case 166:
+					case 169:
+					case 13: node += 2; break;
+
+					case 104: node += 6; break;
+
+					case 171:
+						if (((WORD*)node)[0] == 0)
+						{
+							if (((WORD*)node)[1] == 0)
+							{
+								if (((WORD*)node)[2] == 0)
+								{
+									node += 2;
+								}
+							}
+							else
+							{
+								node += 2;
+							}
+						}
+
+						node += 10;
+						break;
+
+						//visibility in box was my headache before, by i think i figured it ouy
+					case 141:
+						node += 4;
+
+						//=========================WARNING: wild zero
+						//have to implement another wild zero check 
+						WORD buf;
+						buf = *(WORD*)node;
+						if (buf == 0) node += 2;
+
+						//looping through boxes
+						buf = *(WORD*)node;
+						node += 2;
+
+						while (buf != 0xFF && node < endNode) //i have no idea what happens if there are no boxes at all.
+						  //in theory this should work if they always denote the end of box list as 0xFF.
+						  //not sure if it's even possible, but who knows.
+						{
+							node += 22;
+
+							//read potential end of box list for the next iteration
+							buf = *(WORD*)node;
+							node += 2;
+						}
+						break;
+
+					case 202:
+					case 200: node += 4; break;
+
+					case 0x00C9:
+						gapType = 0;
+
+						sprintf(chc, "GapID%d", gapIndex);
+						gapIndex++;
+						Checksum gapId = Checksum(chc);
+
+						if (first)
+						{
+							first = false;
+							node += 2;
+						}
+
+						WORD id = ((WORD*)(node + 4))[0];
+						//gapType=0;
+						for (DWORD j = 0; j < 803; j++)
+						{
+							if (id == Th2xGaps[j].id)
+							{
+								sprintf(chc, "%s_StartGap", (*(Checksum*)&trg).GetString());
+								shatter = Checksum(chc).checksum;
+								script = GetScript(shatter);
+								if (script == NULL)
+								{
+									triggers.push_back(shatter);
+									parentScript->Script(shatter);
+									parentScript->EndScript();
+									if (parentScript->name.checksum == 0x7FEC1479)
+										MessageBox(0, name.GetString2(), "WTF2", 0);
+									name = parentScript->name;
+									KnownScripts.push_back(KnownScript(shatter, NULL, 0));
+									script = &KnownScripts.back();
+									parentScript = GetScript(name.checksum);
+								}
+								else if (!parentScript->Contains(shatter))
+								{
+									parentScript->Script(shatter);
+									parentScript->EndScript();
+									if (parentScript->name.checksum == 0x7FEC1479)
+										MessageBox(0, name.GetString2(), "WTF3", 0);
+								}
+
+								switch (Th2xGaps[j].type)
+								{
+								case 0x5:
+									memcpy(&EndGap[12], &gapId, 4);
+									memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
+									strcpy((char*)&EndGap[27], Th2xGaps[j].text);
+									script->Script("StartGap");
+									script->Script("GapID");
+									script->Append(0x07);
+									script->Script(gapId);
+									script->Script("FLAGS");
+									script->Append(0x07);
+									script->Append(0x05);
+									script->Script("PURE_LIP");
+									script->Append(0x06);
+									script->EndScript();
+									break;
+								case 0x11://air
+								case 0x13:
+								case 0x8:
+								case 0x17:
+									memcpy(&EndGap[12], &gapId, 4);
+									memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
+									strcpy((char*)&EndGap[27], Th2xGaps[j].text);
+									script->Script("StartGap");
+									script->Script("GapID");
+									script->Append(0x07);
+									script->Script(gapId);
+									script->Script("FLAGS");
+									script->Append(0x07);
+									script->Append(0x05);
+									script->Script("PURE_AIR");
+									script->Append(0x06);
+									script->EndScript();
+									break;
+								case 0x19://grind
+								case 0x22:
+									gapType = 2;
+									memcpy(&EndGapWithLoop[29], &gapId, 4);
+									memcpy(&EndGapWithLoop[120], &Th2xGaps[j].score, 2);
+									strcpy((char*)&EndGapWithLoop[57], Th2xGaps[j].text);
+									sprintf(chc, "StartedGap%d", gapIndex - 1);
+									EndId = Checksum(chc);
+									globals.push_back(EndId);
+									memcpy(&IsTrue[7], &EndId, 4);
+									memcpy(&IsTrue[22], &EndId, 4);
+									memcpy(&IsTrue[49], &EndId, 4);
+									script->Append(IsTrue, sizeof(IsTrue));
+									script->Script("StartGap");
+									script->Script("GapID");
+									script->Append(0x07);
+									script->Script(gapId);
+									script->Script("FLAGS");
+									script->Append(0x07);
+									script->Append(0x05);
+									script->Script("CANCEL_GROUND");
+									script->Script("CANCEL_MANUAL");
+									script->Script("REQUIRE_RAIL");
+									script->Append(0x06);
+									script->EndScript();
+									script->Append(EndIF, sizeof(EndIF));
+									break;
+								case 0x33://wall
+									memcpy(&EndGap[12], &gapId, 4);
+									memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
+									strcpy((char*)&EndGap[27], Th2xGaps[j].text);
+									script->Script("StartGap");
+									script->Script("GapID");
+									script->Append(0x07);
+									script->Script(gapId);
+									script->Script("FLAGS");
+									script->Append(0x07);
+									script->Append(0x05);
+									script->Script("PURE_WALL");
+									script->Append(0x06);
+									script->EndScript();
+									break;
+								case 0x47:
+								case 0x1://manual can ollie
+									memcpy(&EndGap[12], &gapId, 4);
+									memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
+									strcpy((char*)&EndGap[27], Th2xGaps[j].text);
+									script->Script("StartGap");
+									script->Script("GapID");
+									script->Append(0x07);
+									script->Script(gapId);
+									script->Script("FLAGS");
+									script->Append(0x07);
+									script->Append(0x05);
+									script->Script("REQUIRE_MANUAL");
+									script->Script("CANCEL_GROUND");
+									script->Script("CANCEL_WALL");
+									script->Script("CANCEL_RAIL");
+									script->Append(0x06);
+									script->EndScript();
+									break;
+								case 0x27://manual can't ollie
+									memcpy(&EndGap[12], &gapId, 4);
+									memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
+									strcpy((char*)&EndGap[27], Th2xGaps[j].text);
+									script->Script("StartGap");
+									script->Script("GapID");
+									script->Append(0x07);
+									script->Script(gapId);
+									script->Script("FLAGS");
+									script->Append(0x07);
+									script->Append(0x05);
+									script->Script("PURE_MANUAL");
+									script->Append(0x06);
+									script->EndScript();
+									break;
+								case 0x2://ground
+									memcpy(&EndGap[12], &gapId, 4);
+									memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
+									strcpy((char*)&EndGap[27], Th2xGaps[j].text);
+									script->Script("StartGap");
+									script->Script("GapID");
+									script->Append(0x07);
+									script->Script(gapId);
+									script->Script("FLAGS");
+									script->Append(0x07);
+									script->Append(0x05);
+									script->Script("PURE_GROUND");
+									script->Append(0x06);
+									script->EndScript();
+									break;
+								default:
+									memcpy(&EndGap[12], &gapId, 4);
+									memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
+									strcpy((char*)&EndGap[27], Th2xGaps[j].text);
+									script->Script("StartGap");
+									script->Script("GapID");
+									script->Append(0x07);
+									script->Script(gapId);
+									script->Script("FLAGS");
+									script->Append(0x07);
+									script->Append(0x05);
+									script->Script("PURE_AIR");
+									script->Append(0x06);
+									script->EndScript();
+									break;
+								}
+								break;
+							}
+						}
+
+						name.checksum = ((DWORD*)node)[0];
+						if (name.checksum == 0x7FEC1479)
+							MessageBox(0, name.GetString2(), "Y", 0);
+						node += 6;
+						if ((mesh = GetMesh(name, j)))
+						{
+							if (name.checksum == 0x7FEC1479)
+								MessageBox(0, name.GetString2(), "gotmesh", 0);
+							Node* meshNode = GetNode(name);
+							if (meshNode == NULL)
+							{
+								for (DWORD k = 0; k < dummy.size(); k++)
+								{
+									if (dummy[k].Name.checksum == name.checksum)
+									{
+										meshNode = &dummy[k];
+										break;
+									}
+								}
+							}
+							if (meshNode == NULL)
+							{
+								if (name.checksum == 0x7FEC1479)
+									MessageBox(0, name.GetString2(), "nonode", 0);
+								if (!name.GetString())
+								{
+									sprintf(chc, "Mesh%d", j);
+									Scripts.push_back(Script(name.checksum, chc));
+								}
+
+								sprintf(chc, "%s_EndGap", name.GetString());
+								shatter = Checksum(chc).checksum;
+								dummy.push_back(EnvironmentObject(name, 0, 0, true));
+								dummy.back().SetTrigger(shatter);
+								KnownScript* script = GetScript(shatter);
+								if (script)
+								{
+									if (name.checksum == 0x7FEC1479)
+										MessageBox(0, name.GetString2(), "alreadyscripted", 0);
+									if (gapType == 2)
+									{
+										sprintf(chc, "EndGapId%d", gapIndex - 1);
+										gapId = Checksum(chc);
+										memcpy(&SpawnEndGapWithLoop[6], &gapId, 4);
+										script->Append(SpawnEndGapWithLoop, sizeof(SpawnEndGapWithLoop));
+										triggers.push_back(*(Checksum*)&gapId);
+										//sprintf(chc,"StartedGap%d",gapIndex-1);
+										memcpy(&EndGapWithLoop[151], &EndId, 4);
+										name = parentScript->name;
+										KnownScripts.push_back(KnownScript(*(Checksum*)&gapId, (void*)EndGapWithLoop, sizeof(EndGapWithLoop)));
+										parentScript = GetScript(name.checksum);
+									}
+									else
+										script->Append(EndGap, sizeof(EndGap));
+								}
+								else
+								{
+									if (name.checksum == 0x7FEC1479)
+										MessageBox(0, name.GetString2(), chc, 0);
+									name = parentScript->name;
+									triggers.push_back(*(Checksum*)&shatter);
+									if (gapType == 2)
+									{
+										sprintf(chc, "EndGapId%d", gapIndex - 1);
+										gapId = Checksum(chc);
+										memcpy(&SpawnEndGapWithLoop[6], &gapId, 4);
+										KnownScripts.push_back(KnownScript(*(Checksum*)&shatter, (void*)SpawnEndGapWithLoop, sizeof(SpawnEndGapWithLoop)));
+										triggers.push_back(*(Checksum*)&gapId);
+										//sprintf(chc,"StartedGap%d",gapIndex-1);
+										memcpy(&EndGapWithLoop[151], &EndId, 4);
+										KnownScripts.push_back(KnownScript(*(Checksum*)&gapId, (void*)EndGapWithLoop, sizeof(EndGapWithLoop)));
+									}
+									else
+										KnownScripts.push_back(KnownScript(*(Checksum*)&shatter, (void*)EndGap, sizeof(EndGap)));
+									parentScript = GetScript(name.checksum);
+								}
+							}
+							else
+							{
+								if (name.checksum == 0x7FEC1479)
+									MessageBox(0, name.GetString2(), "node", 0);
+								name = parentScript->name;
+								KnownScript* script = GetScript(meshNode->Trigger.checksum);
+
+								if (script)
+								{
+									if (name.checksum == 0x7FEC1479)
+										MessageBox(0, name.GetString2(), "alreadyscripted", 0);
+									if (gapType == 2)
+									{
+										sprintf(chc, "EndGapId%d", gapIndex - 1);
+										gapId = Checksum(chc);
+										memcpy(&SpawnEndGapWithLoop[6], &gapId, 4);
+										script->Append(SpawnEndGapWithLoop, sizeof(SpawnEndGapWithLoop));//AppendScript(meshNode->Trigger, sizeof(SpawnEndGapWithLoop), sizeof(SpawnEndGapWithLoop), SpawnEndGapWithLoop);
+										triggers.push_back(*(Checksum*)&gapId);
+										//sprintf(chc,"StartedGap%d",gapIndex-2);
+										memcpy(&EndGapWithLoop[151], &EndId, 4);
+										KnownScripts.push_back(KnownScript(*(Checksum*)&gapId, (void*)EndGapWithLoop, sizeof(EndGapWithLoop)));
+									}
+									else
+									{
+										script->Append(EndGap, sizeof(EndGap));//AppendScript(meshNode->Trigger, sizeof(EndGap), sizeof(EndGap), EndGap);
+									}
+								}
+								else
+								{
+									if (name.checksum == 0x7FEC1479)
+										MessageBox(0, name.GetString2(), "noscript", 0);
+									sprintf(chc, "%s_EndGap", name.GetString());
+									shatter = Checksum(chc).checksum;
+									meshNode->Trigger.checksum = shatter;
+									triggers.push_back(chc);
+									if (gapType == 2)
+									{
+										sprintf(chc, "EndGapId%d", gapIndex - 1);
+										gapId = Checksum(chc);
+										memcpy(&SpawnEndGapWithLoop[6], &gapId, 4);
+										KnownScripts.push_back(KnownScript(*(Checksum*)&shatter, SpawnEndGapWithLoop, sizeof(SpawnEndGapWithLoop)));
+										triggers.push_back(*(Checksum*)&gapId);
+										//sprintf(chc,"StartedGap%d",gapIndex-2);
+										memcpy(&EndGapWithLoop[151], &EndId, 4);
+										KnownScripts.push_back(KnownScript(*(Checksum*)&gapId, (void*)EndGapWithLoop, sizeof(EndGapWithLoop)));
+									}
+									else
+									{
+										KnownScripts.push_back(KnownScript(*(Checksum*)&shatter, EndGap, sizeof(EndGap)));
+									}
+								}
+								parentScript = GetScript(name.checksum);
+							}
+						}
+						break;
+					}
+				}
+
+
+				//this->meshes[j].node = &this->nodes.back();
+				//this->meshes[j].node->SetPosition(this->meshes[j].GetCenter());
+				/*if(this->meshes[j].shatterObject)
+				{
+				strcat(chc,"_shatter");
+
+				shatter = Checksum(chc).checksum;
+				triggers.push_back(*(Checksum*)&shatter);
+				memcpy(&ShatterScript[27],&name,4);
+				memcpy(&ShatterScript[48],&name,4);
+				KnownScripts.push_back(KnownScript(*(Checksum*)&shatter, (void*)ShatterScript, 123));
+				}*/
+				/* }
+				else
+				{
+				found=false;
+				sprintf(chc,"DummyNode%d",meshIndex);
+				name = Checksum(chc);
+				}*/
+				break;
+			}
+			else if (!found)
+			{
+				if (dummy.size())
+				{
+					this->nodes.push_back(dummy.back());
+					this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
+					//GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
+					dummy.pop_back();
+				}
+				else
+				{
+					sprintf(chc, "DummyNode%d", meshIndex);
+					name = Checksum(chc);
+					this->nodes.push_back(std::move(EnvironmentObject(name, numLinks, links)));
+					meshIndex++;
+				}
+
+
+				sprintf(chc, "node%u_trigger", this->nodes.size());
+				shatter = Checksum(chc).checksum;
+				KnownScript* parentScript = GetScript(shatter);
+				if (parentScript == NULL)
+				{
+					triggers.push_back(*(Checksum*)&shatter);
+					KnownScripts.push_back(KnownScript(shatter, NULL, 0));
+					parentScript = &KnownScripts.back();
+				}
+
+				for (DWORD j = 0; j < numLinks; j++)
+				{
+					DWORD link = (DWORD)pFile + startTable[links[j]];
+					switch (*(BYTE*)link)
+					{
+					case COMMANDPOINT:
+						sprintf(chc, "node%u_trigger", links[j] + 1);
+						shatter = Checksum(chc).checksum;
+
+						if (!parentScript->Contains(shatter))
+						{
+							/*if (GetScript(shatter) == NULL)
+							{
+							triggers.push_back(*(Checksum*)&shatter);
+							KnownScripts.push_back(KnownScript(shatter, NULL, 0));
+							}*/
+							parentScript->Script(shatter);
+							parentScript->Script("Caller");
+							parentScript->Append(0x7);
+							parentScript->Append(0x2D);
+							parentScript->Script("Caller");
+							parentScript->EndScript();
+						}
+						break;
+					}
+				}
+
+				bool first;
+				first = true;
+
+				short command;
+				command = *(short*)node;
+
+				while (command != -1 && node < endNode)
+				{
+					command = *(short*)node;
+					node += 2;
+
+					switch (command)
+					{
+
+					case 126:
+					case 127:
+					case 128:
+					case 2:
+					case 140:
+					case 142:
+					case 178:
+						while (*(BYTE*)node != 0)
+							node++;
+						node++;
+						break;
+
+					case 158:
+					case 149:
+					case 4:
+					case 5:
+					case 10:
+						break;
+
+					case 3://call links
+						for (DWORD j = 0; j < numLinks; j++)
+						{
+							DWORD link = (DWORD)pFile + startTable[links[j]];
+							switch (*(BYTE*)link)
+							{
+							case BADDY:
+								sprintf(chc, "node%uscript", links[j]);
+								shatter = Checksum(chc).checksum;
+								if (!parentScript->Contains(shatter))
+								{
+									parentScript->Script(shatter);
+									parentScript->EndScript();
+								}
+
+								break;
+							}
+						}
+						break;
+
+					case 11:
+					case 12://shatter//kill
+					  /*if (!parentScript->Contains(Checksum("Caller").checksum))
+					  {*/
+						parentScript->Script("Kill");
+						parentScript->Script("Name");
+						parentScript->Append(0x7);
+						parentScript->Append(0x2D);
+						parentScript->Script("Caller");
+						parentScript->EndScript();
+
+						for (DWORD j = 0; j < numLinks; j++)
+						{
+							DWORD link = (DWORD)pFile + startTable[links[j]];
+							DWORD nodeSize2;
+							nodeSize2 = startTable[links[j] + 1] - startTable[links[j]];
+							switch (*(BYTE*)link)
+							{
+							case CRATE:
+								link += 2;
+								WORD numLinks2;
+								numLinks2 = ((WORD*)link)[0];
+								link += 2;
+
+								link += numLinks2 * 2;
+								SizeDiff = nodeSize2 - (2 + 2 + 2 * (DWORD)numLinks2 + 4);
+
+								//brute check
+								if (SizeDiff == 2 || ((DWORD)link - (DWORD)pFile) % 4 != 0)
+									//diff = 2? read wild zero!
+								{
+									if (*(WORD*)link != 0)
+									{
+										char msg[256] = "";
+										sprintf(msg, "Type: CRATE %X", (DWORD)link - (DWORD)pFile);
+										MessageBox(0, "what?", msg, 0);
+									}
+									link += 2;
+								}
+								else if (*(WORD*)link == 0)
+									//make sure diff is 0, else alert
+								{
+									sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
+									char msg[256] = "";
+									sprintf(msg, "Type: CRATE %X", (DWORD)node - (DWORD)pFile);
+									MessageBox(0, chc, msg, 0);
+								}
+								parentScript->Script("ShatterAndDie");
+								parentScript->Script("Name");
+								parentScript->Append(0x7);
+								parentScript->Script(((DWORD*)link)[0]);
+								parentScript->EndScript();
+							}
+						}
+						//}
+						break;
+
+					case 152://sk3_killskater  
+						parentScript->Script("sk3_killskater");
+						parentScript->EndScript();
+						break;
+
+					case 203:
+					case 204:
+					case 157:
+					case 131:
+					case 132:
+					case 134:
+					case 147:
+					case 166:
+					case 169:
+					case 13: node += 2; break;
+
+					case 104: node += 6; break;
+
+					case 171:
+						if (((WORD*)node)[0] == 0)
+						{
+							if (((WORD*)node)[1] == 0)
+							{
+								if (((WORD*)node)[2] == 0)
+								{
+									node += 2;
+								}
+							}
+							else
+							{
+								node += 2;
+							}
+						}
+
+						node += 10;
+						break;
+
+						//visibility in box was my headache before, by i think i figured it ouy
+					case 141:
+						node += 4;
+
+						//=========================WARNING: wild zero
+						//have to implement another wild zero check 
+						WORD buf;
+						buf = *(WORD*)node;
+						node += 2;
+						if (buf != 0) node -= 2;
+
+						//looping through boxes
+						buf = *(WORD*)node;
+						node += 2;
+
+						while (buf != 0xFF && node < endNode) //i have no idea what happens if there are no boxes at all.
+						  //in theory this should work if they always denote the end of box list as 0xFF.
+						  //not sure if it's even possible, but who knows.
+						{
+							node += 22;
+
+							//read potential end of box list for the next iteration
+							buf = *(WORD*)node;
+							node += 2;
+						}
+						break;
+
+					case 202:
+					case 200: node += 4; break;
+
+					case 0x00C9:
+						if (first)
+						{
+							first = false;
+							node += 2;
+						}
+
+						node += 6;
+						break;
+					}
+				}
+			}
+			break;
+		}
+		case RAILPOINT:
+		case RAILDEF:
+			node += 2;
+			numLinks = ((WORD*)node)[0];
+			node += 2;
+			links = (WORD*)node;
+			/*for (DWORD j = 0; j < numLinks; j++)
+			node += 2;*/
+			node += numLinks * 2;
+
+			SizeDiff = nodeSize - (2 + 2 + 2 * (DWORD)numLinks + 4 * 3 + 2 + 2);
+
+			//brute check
+			if (SizeDiff == 2)
+				//diff = 2? read wild zero!
+			{
+				if (*(WORD*)node != 0)
+				{
+					sprintf(chc, "what? nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
+					char msg[256] = "";
+					sprintf(msg, "Type: RAIL %X", (DWORD)node - (DWORD)pFile);
+					MessageBox(0, chc, msg, 0);
+				}
+				node += 2;
+			}
+			else if (*(WORD*)node == 0)
+				//make sure diff is 0, else alert
+			{
+				sprintf(chc, "what?:Zero nodeSize %u SizeDiff %u", nodeSize, SizeDiff);
+				char msg[256] = "";
+				sprintf(msg, "Type: RAIL %X", (DWORD)node - (DWORD)pFile);
+				MessageBox(0, chc, msg, 0);
+			}
+			/*if (links[numLinks] == 0)
+			node += 2;*/
+
+			vert = (Th2FixedVert*)node;
+			//thps2 level is flipped on x, y axis and -z cause editor and later games flip z axis
+			position.x = -(float)vert->x / 2.833f;
+			position.y = -(float)vert->y / 2.833f;
+			position.z = -(float)vert->z / 2.833f;
+			angle.x = 0.0f;
+			angle.y = 0.0f;
+			angle.z = 0.0f;
+
+			sprintf(chc, "RailNode%d", railCount);
+			name = Checksum(chc);
+
+			this->nodes.push_back(std::move(RailNode(position, angle, name, numLinks, links)));
+			node += 12;
+			if (((WORD*)node)[0] == 0)
+				this->nodes.back().TerrainType = Checksum("TERRAIN_CONCSMOOTH");
+			else if (((WORD*)node)[0] == 1)
+				this->nodes.back().TerrainType = Checksum("TERRAIN_METALSMOOTH");
+			else if (((WORD*)node)[0] == 2)
+				this->nodes.back().TerrainType = Checksum("TERRAIN_WOOD");
+			railCount++;
+			break;
+		default:
+			if (dummy.size())
+			{
+				this->nodes.push_back(dummy.back());
+				this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
+				//GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
+				dummy.pop_back();
+			}
+			else
+			{
+				sprintf(chc, "DummyNode%d", meshIndex);
+				name = Checksum(chc);
+				this->nodes.push_back(EnvironmentObject(name, 0, 0));
+				meshIndex++;
+			}
+			break;
+		}
+	}
+	//this->nodes.push_back(Restart());
+
+	triggers.push_back(Checksum("SetTh2Physics"));
+	Checksum("PlaySound");
+	Checksum("area");
+	Checksum("variance");
+	Checksum("vel_x");
+	Checksum("vel_y");
+	Checksum("vel_z");
+	Checksum("spread");
+	Checksum("glasspane2x");
+	Checksum("StartGap");
+	Checksum("EndGap");
+	Checksum("GapID");
+	Checksum("Score");
+	Checksum("FLAGS");
+	Checksum("text");
+	Checksum("CANCEL_GROUND");
+	Checksum("waitonegameframe");
+	Checksum("REQUIRE_RAIL");
+	Checksum("OnRail");
+	Checksum("Obj_SpawnScript");
+	Checksum("IsTrue");
+	Checksum("Name");
+	KnownScripts.push_back(KnownScript(Checksum("SetTh2Physics"), (void*)SetTh2Physics, 21));
+	MessageBox(0, "Done", "", 0);
+	if (GetScript("SetTh2Physics"))
+		MessageBox(0, "Yes", "", 0);
+
+
+	delete[] pFile;
+	delete[] nodes;
+
+	for (DWORD i = 0, numDummies = dummy.size(); i < numDummies; i++)
+	{
+		this->nodes.push_back(dummy[i]);
+		this->nodes.back().SetPosition(GetMesh(this->nodes.back().Name)->GetCenter());
+		//GetMesh(this->nodes.back().Name)->node = &this->nodes.back();
+	}
+	dummy.clear();
 }
 
 Th2Scene::Th2Scene(char* Path, bool sky)
 {
 #pragma pack(push)
 #pragma pack(1)
-  struct Quad
-  {
-    union
-    {
-      BYTE flag;
-      DWORD flags;
-    };
-    BYTE a;
-    BYTE b;
-    BYTE c;
-    BYTE d;
-    BYTE index[4];
-    WORD faceIndex;
-    WORD collFlags;
-    DWORD matIndex;
-    union
-    {
-      signed short uv[8];
-      signed char signedUV[8];
-    };
-    //signed char u[4];
-    //signed char v[4];
-    DWORD zero;
-  };
+	struct Quad
+	{
+		union
+		{
+			BYTE flag;
+			DWORD flags;
+		};
+		BYTE a;
+		BYTE b;
+		BYTE c;
+		BYTE d;
+		BYTE index[4];
+		WORD faceIndex;
+		WORD collFlags;
+		DWORD matIndex;
+		union
+		{
+			signed short uv[8];
+			signed char signedUV[8];
+		};
+		//signed char u[4];
+		//signed char v[4];
+		DWORD zero;
+	};
 
-  struct Th2Mesh
-  {
-    WORD type;
-    WORD numVertices;
-    WORD numCollision;
-    WORD numQuads;
-    DWORD flags;
-    Th2Vertex* vertices;
-    DWORD* collisions;
-    Quad** tristrip;
-    DWORD unknown;
-  };
+	struct Th2Mesh
+	{
+		WORD type;
+		WORD numVertices;
+		WORD numCollision;
+		WORD numQuads;
+		DWORD flags;
+		Th2Vertex* vertices;
+		DWORD* collisions;
+		Quad** tristrip;
+		DWORD unknown;
+	};
 #pragma pack(pop)
-  ZeroMemory(name, MAX_PATH);
-  SetName(Path); blendValue = 2;
-  cullMode = D3DCULL_CW;
-  Checksum("change");
-  Checksum("Wall_Non_Skatable_Angle");
-
-  BYTE*pFile = NULL;
-  DWORD size = 0, ptr = 0;
-
-  char path[256] = "";
-  memcpy(path, Path, strlen(Path) + 1);
-  DWORD len = strlen(Path);
-
-  FILE*f;
-  /*if(sky)
-  {
-  Texture texture;
-  ZeroMemory(&texture,sizeof(Texture));
-  texture.blendMode = 20;
-  texture.vAddress = D3DTADDRESS_WRAP;
-  texture.uAddress = D3DTADDRESS_WRAP;
-  for(DWORD i=0; i<globalMaterialList->GetNumMaterials(); i++)
-  {
-  Material* material = new Material();
-  Material* tmpMat = globalMaterialList->GetMaterial(i);
-  DWORD id = tmpMat->GetMatId();
-  material->SetMatId(id);
-  Texture* tmpTexture = tmpMat->GetTexture(0);
-  material->drawOrder = 0.0f;
-  material->transparent[0] = false;
-  id = tmpTexture->GetTexId();
-  texture.SetId(id);
-  texture.CreateTexture();
-  if(texture.IsTransparent())
-  material->transparent[0]=true;
-  else
-  material->transparent[0]=false;
-  material->AddTexture(&texture);
-  AddMaterial(material);
-  //free(materials[i]);
-  delete material;
-  }
-  }
-  else
-  {*/
-  path[len - 3] = 'D';
-  path[len - 2] = 'D';
-  path[len - 1] = 'X';
-  /*path[len-4] = '_';
-  path[len-3] = 'L';
-  path[len-2] = '.';
-  path[len-1] = 'p';
-  path[len+0] = 's';
-  path[len+1] = 'x';^*/
-
-  f = fopen(path, "rb");
-  if (f)
-  {
-    fseek(f, 0, SEEK_END);
-
-    size = ftell(f);
-
-    pFile = new BYTE[size];
-
-    fseek(f, 0, SEEK_SET);
-    fread(pFile, size, 1, f);
-    fclose(f);
-
-    ProcessXBOXTextures((DWORD)(pFile), sky);
-
-    delete[] pFile;
-  }
-
-  path[len - 1] = 'M';
-
-  f = fopen(path, "rb");
-  BYTE* xbox = NULL;
-  if (f)
-  {
-    fseek(f, 0, SEEK_END);
-
-    size = ftell(f);
-
-    pFile = new BYTE[size];
-
-    fseek(f, 0, SEEK_SET);
-    fread(pFile, size, 1, f);
-    fclose(f);
-
-    ProcessXBOXMaterials((DWORD)(pFile), sky);
-    xbox = pFile;
-    //delete [] pFile;
-  }
-  // }
-  path[len - 4] = '_';
-  path[len - 3] = 'L';
-  path[len - 2] = '.';
-  path[len - 1] = 'p';
-  path[len + 0] = 's';
-  path[len + 1] = 'x';
-
-  f = fopen(Path, "rb");
-  if (f)
-  {
-    fseek(f, 0, SEEK_END);
-
-    size = ftell(f);
-
-    pFile = new BYTE[size];
-
-    fseek(f, 0, SEEK_SET);
-    fread(pFile, size, 1, f);
-    fclose(f);
-    _fcloseall();
-
-    ptr = (DWORD)(pFile);
-    ptr += 4;
-
-    DWORD rgbOffset = ((DWORD*)ptr)[0];
-    DWORD numObjects = ((DWORD*)ptr)[1];
-    ptr += 8;
-
-    Th2FixedVert** positions = new Th2FixedVert*[numObjects + 1];
-    positions[numObjects] = &Th2FixedVert();
-    /*positions[numObjects].y = 0;
-    positions[numObjects].z = 0;*/
-    //DWORD* meshFlags = new DWORD[numObjects];
-    WORD* meshIndices = new WORD[numObjects];
-
-    for (DWORD i = 0; i < numObjects; i++)
-    {
-      ptr += 4;
-      positions[i] = ((Th2FixedVert*)ptr);
-      ptr += 18;
-      meshIndices[i] = ((WORD*)ptr)[0];
-      /*ptr+=2;
-      meshFlags[i] = ((DWORD*)ptr)[0];
-      ptr+=12;*/
-      ptr += 14;
-      //ptr+=32;
-    }
-
-    DWORD numMeshes = ((DWORD*)ptr)[0];
-    this->meshes.reserve(numMeshes);
-    SetProgressbarMaximum(numMeshes);
-
-    DWORD* meshNames = new DWORD[numMeshes];
-    // if(!sky)
-    DWORD pRGB = rgbOffset + (DWORD)pFile;
-    pRGB += 4;
-    DWORD numRGBs = ((DWORD*)pRGB)[0];
-    pRGB += 4;
-    pRGB += numRGBs;
-
-    if (pRGB < ((DWORD)pFile + size))
-      ProcessMaterials(pRGB, numMeshes, meshNames, sky);
-    else
-    {
-      for (DWORD i = 0; i < numMeshes; i++)
-      {
-        meshNames[i] = i + 0xABEBCE;
-      }
-    }
-
-    ptr += 4; Th2Mesh** meshes = new Th2Mesh*[numMeshes];
-    for (DWORD i = 0; i < numMeshes; i++)
-    {
-      DWORD offset = ((DWORD*)ptr)[0];
-      ptr += 4;
-      meshes[i] = (Th2Mesh*)((DWORD)pFile + offset);
-    }
-
-    Colour** colours;
-    DWORD numGrassMeshes = 0;
-    TexCoord* texCoords;
-    FaceInfo faceInfo;
-    vector <Face> extraFaces;
-    vector <Th2Vertex> vertices;
-    const DWORD numInfo = matInfo.size();
-
-    for (DWORD i = 0; i < numMeshes; i++)
-    {
-      IncreasProgressbar();
-      Mesh* mesh = new Mesh();
-      mesh->InitCollision();
-
-      Checksum name;
-      name.checksum = meshNames[i];
-      mesh->SetName(name);
-      Th2Vertex* vertex1 = (Th2Vertex*)((DWORD)meshes[i] + 12);
-      Th2Vertex* vertex2 = (Th2Vertex*)((DWORD)meshes[i] + 18);
-      mesh->center.x = (((float)vertex1->x + (float)vertex1->y) / 2.0f) / 2.833f;
-      mesh->center.y = (((float)vertex1->z + (float)vertex2->x) / 2.0f) / 2.833f;
-      mesh->center.z = (((float)vertex2->y + (float)vertex2->z) / 2.0f) / 2.833f;
-      //Th2Vertex* vertx2 = (Th2Vertex*)((DWORD)meshes[i] + 12);
-      meshes[i]->vertices = (Th2Vertex*)((DWORD)meshes[i] + 28);
-      vertices.assign(meshes[i]->vertices, meshes[i]->vertices + meshes[i]->numVertices);
-
-      colours = new Colour*[meshes[i]->numVertices + meshes[i]->numVertices*meshes[i]->numQuads];
-      //Colour** tmpColours = new Colour*[meshes[i]->numVertices];
-      texCoords = new TexCoord[meshes[i]->numVertices + meshes[i]->numVertices*meshes[i]->numQuads];
-      ZeroMemory(texCoords, sizeof(TexCoord)*(meshes[i]->numVertices + meshes[i]->numVertices*meshes[i]->numQuads));
-      ZeroMemory(colours, 4 * (meshes[i]->numVertices + meshes[i]->numVertices*meshes[i]->numQuads));//zeroymemory here so that if colour is not initialized later can ignore it if(colours[i]==NULL)
-
-      meshes[i]->collisions = (DWORD*)((DWORD)meshes[i]->vertices + sizeof(Th2Vertex)*meshes[i]->numVertices);
-      ptr = (DWORD)meshes[i]->collisions + 8 * meshes[i]->numCollision;
-      meshes[i]->tristrip = new Quad*[meshes[i]->numQuads];
-      MaterialSplit* matSplit = new MaterialSplit[meshes[i]->numQuads];
-      DWORD splitCount = 0;
-      bool first = true;
-      ObjInfo* ddmObj = NULL;
-      bool gotMat = false;
-
-      for (DWORD j = 0; j < meshes[i]->numQuads; j++)
-      {
-        meshes[i]->tristrip[j] = (Quad*)ptr;
-        char test[256] = "";
-        sprintf(test, "%X %X", &meshes[i]->tristrip[j]->matIndex, ptr);
-        MessageBox(0, test, test, 0);
-
-        /*if(meshes[i]->tristrip[j]->a < meshes[i]->numVertices && meshes[i]->tristrip[j]->b  < meshes[i]->numVertices && meshes[i]->tristrip[j]->c  < meshes[i]->numVertices)
-        {*/
-        /*if(meshes[i]->tristrip[j]->collFlags & 0x2)
-        mesh->SetFlag(MeshFlags::isVisible, false);*/
-
-        if (!((GetBit(meshes[i]->tristrip[j]->flags, 7) && !GetBit(meshes[i]->tristrip[j]->flags, 6))/* ||  meshes[i]->tristrip[j]->collFlags & 0x2*/))
-        {
-          DWORD a = (DWORD)meshes[i]->tristrip[j]->a;
-          DWORD b = (DWORD)meshes[i]->tristrip[j]->b;
-          DWORD c = (DWORD)meshes[i]->tristrip[j]->c;
-          DWORD d = (DWORD)meshes[i]->tristrip[j]->d;
-
-          Material* tmpMat = NULL;
-
-          if (((GetBit(meshes[i]->tristrip[j]->flag, 0) || GetBit(meshes[i]->tristrip[j]->flag, 3) || GetBit(meshes[i]->tristrip[j]->flag, 1)) && meshes[i]->tristrip[j]->flag != 128 && meshes[i]->tristrip[j]->flag != 0x90 && meshes[i]->tristrip[j]->flag != 0 && meshes[i]->tristrip[j]->flag != 0x10 && (meshes[i]->tristrip[j]->flags & 0xFF0000) != 0x100000))//if(GetBit(meshes[i]->tristrip[j]->flags,0)/* || GetBit(meshes[i]->tristrip[j]->flags,1)*/)//meshes[i]->tristrip[j]->flag != 128 && meshes[i]->tristrip[j]->flag != 0x90 && meshes[i]->tristrip[j]->flag != 0 && meshes[i]->tristrip[j]->flag != 0x10)
-          {
-            float u1 = (float)texCoords[a].u;
-            float v1 = (float)texCoords[a].v;
-            float u2 = (float)texCoords[b].u;
-            float v2 = (float)texCoords[b].v;
-            float u3 = (float)texCoords[c].u;
-            float v3 = (float)texCoords[c].v;
-            float u4 = (float)texCoords[d].u;
-            float v4 = (float)texCoords[d].v;
-
-            float uv[8];
-            Colour* colourA = NULL;
-            Colour* colourB = NULL;
-            Colour* colourC = NULL;
-            Colour* colourD = NULL;
-
-            tmpMat = matList.GetMaterial(meshes[i]->tristrip[j]->matIndex, &meshes[i]->tristrip[j]->matIndex);
-            if (tmpMat == NULL && numInfo)
-            {
-              DWORD k;
-              for (k = 0; k < numInfo; k++)
-              {
-                if (matInfo[k].checksum == meshNames[i])
-                {
-                  meshes[i]->tristrip[j]->matIndex = matInfo[k].matIndex;
-                  tmpMat = matList.GetMaterial(meshes[i]->tristrip[j]->matIndex, &meshes[i]->tristrip[j]->matIndex);
-                  break;
-                }
-              }
-            }
-
-            if (tmpMat == NULL)
-            {
-              MessageBox(0, "epic", "", 0);
-              meshes[i]->tristrip[j]->matIndex = epicIndex;
-              tmpMat = matList.GetMaterial(epicIndex);
-            }
-            if (tmpMat)
-            {
-              uv[0] = (float)(meshes[i]->tristrip[j]->uv[0]) / (512.0f);
-              uv[2] = (float)(meshes[i]->tristrip[j]->uv[1]) / (512.0f);
-              uv[4] = (float)(meshes[i]->tristrip[j]->uv[2]) / (512.0f);
-              uv[6] = (float)(meshes[i]->tristrip[j]->uv[3]) / (512.0f);
-
-              uv[1] = (float)(meshes[i]->tristrip[j]->uv[4]) / (512.0f);
-              uv[3] = (float)(meshes[i]->tristrip[j]->uv[5]) / (512.0f);
-              uv[5] = (float)(meshes[i]->tristrip[j]->uv[6]) / (512.0f);
-              uv[7] = (float)(meshes[i]->tristrip[j]->uv[7]) / (512.0f);
-
-              if (meshes[i]->tristrip[j]->flags & 0x800)
-              {
-                if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
-                {
-                  colourA = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[0] * 4));
-                  colourA->a = 155;
-                  colourB = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[1] * 4));
-                  colourB->a = 155;
-                  colourC = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[2] * 4));
-                  colourC->a = 155;
-                }
-                else
-                {
-                  colourA = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[0] * 4);
-                  colourB = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[1] * 4);
-                  colourC = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[2] * 4);
-                }
-
-                if (!GetBit(meshes[i]->tristrip[j]->flag, 4))
-                {
-                  if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
-                  {
-                    colourD = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[3] * 4));
-                    colourD->a = 155;
-                  }
-                  else
-                    colourD = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[3] * 4);
-                }
-              }
-              else
-              {
-                DWORD* color = (DWORD*)&meshes[i]->tristrip[j]->index;
-                if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
-                {
-                  ((Colour*)color)->a = 154;
-                }
-                colourA = (Colour*)color;
-                colourB = (Colour*)color;
-                colourC = (Colour*)color;
-
-                if (!GetBit(meshes[i]->tristrip[j]->flag, 4))
-                  colourD = (Colour*)color;
-              }
-
-              if (((colours[c] && (*colours[c] != *colourC || (texCoords[c].u != uv[4] || texCoords[c].v != uv[5]))) || ((((!GetBit(meshes[i]->tristrip[j]->flags, 4) && colours[d]) && (*colours[d] != *colourD || (texCoords[d].u != uv[6] || texCoords[d].v != uv[7])))))))
-              {
-                Th2Vertex vertex;
-
-                vertex = meshes[i]->vertices[c];
-                c = vertices.size();
-                vertices.push_back(vertex);
-                if (!GetBit(meshes[i]->tristrip[j]->flags, 4))
-                {
-                  vertex = meshes[i]->vertices[d];
-                  d = c + 1;
-                  vertices.push_back(vertex);
-                }
-
-                if (GetBit(meshes[i]->tristrip[j]->flags, 1) && ((colours[a] && (*colours[a] != *colourA || (texCoords[a].u != uv[0] || texCoords[a].v != uv[1]))) || ((colours[b] && (*colours[b] != *colourB || (texCoords[b].u != uv[2] || texCoords[b].v != uv[3]))))))//GetBit(meshes[i]->tristrip[j]->flags,1))
-                {
-                  vertex = meshes[i]->vertices[a];
-                  a = vertices.size();
-                  vertices.push_back(vertex);
-                  vertex = meshes[i]->vertices[b];
-                  b = a + 1;
-                  vertices.push_back(vertex);
-                }
-              }
-              else if (GetBit(meshes[i]->tristrip[j]->flags, 1) && ((colours[a] && (*colours[a] != *colourA || (texCoords[a].u != uv[0] || texCoords[a].v != uv[1]))) || ((colours[b] && (*colours[b] != *colourB || (texCoords[b].u != uv[2] || texCoords[b].v != uv[3]))))))
-              {
-                Th2Vertex vertex;
-
-                vertex = meshes[i]->vertices[a];
-                a = vertices.size();
-                vertices.push_back(vertex);
-                vertex = meshes[i]->vertices[b];
-                b = a + 1;
-                vertices.push_back(vertex);
-              }
-
-              if (!GetBit(meshes[i]->tristrip[j]->flags, 4))
-              {
-                if (colours[d] && colours[d]->a == 155)
-                  delete colours[d];
-                colours[d] = colourD;
-                texCoords[d].u = uv[6];
-                texCoords[d].v = uv[7];
-              }
-              if (GetBit(meshes[i]->tristrip[j]->flags, 1))
-              {
-                if (colours[a] && colours[a]->a == 155)
-                  delete colours[a];
-                if (colours[b] && colours[b]->a == 155)
-                  delete colours[b];
-                if (colours[c] && colours[c]->a == 155)
-                  delete colours[c];
-                colours[a] = colourA;
-                colours[b] = colourB;
-                colours[c] = colourC;
-                texCoords[a].u = uv[0];
-                texCoords[a].v = uv[1];
-                texCoords[b].u = uv[2];
-                texCoords[b].v = uv[3];
-                texCoords[c].u = uv[4];
-                texCoords[c].v = uv[5];
-              }
-              else if (colourA)
-              {
-                colours[a] = colourA;
-                colours[b] = colourB;
-                colours[c] = colourC;
-              }
-            }
-            else
-            {
-              MessageBox(0, "no mat", "", 0);
-              if (meshes[i]->tristrip[j]->flags & 0x800)
-              {
-                if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
-                {
-                  colourA = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[0] * 4));
-                  colourA->a = 155;
-                  colourB = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[1] * 4));
-                  colourB->a = 155;
-                  colourC = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[2] * 4));
-                  colourC->a = 155;
-                }
-                else
-                {
-                  colourA = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[0] * 4);
-                  colourB = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[1] * 4);
-                  colourC = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[2] * 4);
-                }
-
-                if (colours[a] && *colours[a] != *colourA)
-                {
-                  Th2Vertex vertex;
-
-                  vertex = meshes[i]->vertices[a];
-                  a = vertices.size();
-                  vertices.push_back(vertex);
-                }
-                colours[a] = colourA;
-                if (colours[b] && *colours[b] != *colourB)
-                {
-                  Th2Vertex vertex;
-
-                  vertex = meshes[i]->vertices[b];
-                  b = vertices.size();
-                  vertices.push_back(vertex);
-                }
-                colours[b] = colourB;
-                if (colours[c] && *colours[c] != *colourC)
-                {
-                  Th2Vertex vertex;
-
-                  vertex = meshes[i]->vertices[c];
-                  c = vertices.size();
-                  vertices.push_back(vertex);
-                }
-                colours[c] = colourC;
-
-                if (!GetBit(meshes[i]->tristrip[j]->flag, 4))
-                {
-                  if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
-                  {
-                    colourD = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[3] * 4));
-                    colourD->a = 155;
-                  }
-                  else
-                    colourD = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[3] * 4);
-
-                  if (colours[d] && *colours[d] != *colourD)
-                  {
-                    Th2Vertex vertex;
-
-                    vertex = meshes[i]->vertices[d];
-                    d = vertices.size();
-                    vertices.push_back(vertex);
-                  }
-                  colours[d] = colourD;
-                }
-              }
-              else
-              {
-                DWORD* color = (DWORD*)&meshes[i]->tristrip[j]->index;
-                if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
-                {
-                  ((Colour*)color)->a = 154;
-                }
-                colourA = (Colour*)color;
-                colourB = (Colour*)color;
-                colourC = (Colour*)color;
-
-                if (colours[a] && *colours[a] != *colourA)
-                {
-                  Th2Vertex vertex;
-
-                  vertex = meshes[i]->vertices[a];
-                  a = vertices.size();
-                  vertices.push_back(vertex);
-                }
-                colours[a] = colourA;
-                if (colours[b] && *colours[b] != *colourB)
-                {
-                  Th2Vertex vertex;
-
-                  vertex = meshes[i]->vertices[b];
-                  b = vertices.size();
-                  vertices.push_back(vertex);
-                }
-                colours[b] = colourB;
-                if (colours[c] && *colours[c] != *colourC)
-                {
-                  Th2Vertex vertex;
-
-                  vertex = meshes[i]->vertices[c];
-                  c = vertices.size();
-                  vertices.push_back(vertex);
-                }
-                colours[c] = colourC;
-
-                if (!GetBit(meshes[i]->tristrip[j]->flag, 4))
-                {
-                  colourD = (Colour*)color;
-                  if (colours[d] && *colours[d] != *colourD)
-                  {
-                    Th2Vertex vertex;
-
-                    vertex = meshes[i]->vertices[d];
-                    d = vertices.size();
-                    vertices.push_back(vertex);
-                  }
-                  colours[d] = colourD;
-                }
-              }
-            }
-            gotMat = true;
-          }
-          else
-          {
-            if (!gotMat)
-            {
-              for (DWORD k = 0; k < objInfo.size(); k++)
-              {
-                if (meshNames[i] == objInfo[k].checksum)
-                {
-                  ddmObj = &objInfo[k];
-                  break;
-                }
-              }
-            }
-
-
-            Colour* colourA = NULL;
-            Colour* colourB = NULL;
-            Colour* colourC = NULL;
-            Colour* colourD = NULL;
-
-            if (meshes[i]->tristrip[j]->flags & 0x800)
-            {
-              if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
-              {
-                colourA = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[0] * 4));
-                colourA->a = 155;
-                colourB = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[1] * 4));
-                colourB->a = 155;
-                colourC = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[2] * 4));
-                colourC->a = 155;
-              }
-              else
-              {
-                colourA = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[0] * 4);
-                colourB = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[1] * 4);
-                colourC = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[2] * 4);
-              }
-
-              if (!GetBit(meshes[i]->tristrip[j]->flag, 4))
-              {
-                if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
-                {
-                  colourD = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[3] * 4));
-                  colourD->a = 155;
-                }
-                else
-                  colourD = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[3] * 4);
-              }
-            }
-            else
-            {
-              DWORD* color = (DWORD*)&meshes[i]->tristrip[j]->index;
-              if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
-              {
-                ((Colour*)color)->a = 154;
-              }
-              colourA = (Colour*)color;
-              colourB = (Colour*)color;
-              colourC = (Colour*)color;
-
-              if (!GetBit(meshes[i]->tristrip[j]->flag, 4))
-                colourD = (Colour*)color;
-            }
-
-            if (((colours[c] && (*colours[c] != *colourC)) || ((((!GetBit(meshes[i]->tristrip[j]->flags, 4) && colours[d]) && (*colours[d] != *colourD))))))
-            {
-              Th2Vertex vertex;
-
-              vertex = meshes[i]->vertices[c];
-              c = vertices.size();
-              vertices.push_back(vertex);
-              if (!GetBit(meshes[i]->tristrip[j]->flags, 4))
-              {
-                vertex = meshes[i]->vertices[d];
-                d = c + 1;
-                vertices.push_back(vertex);
-              }
-
-              if (GetBit(meshes[i]->tristrip[j]->flags, 1) && ((colours[a] && (*colours[a] != *colourA)) || ((colours[b] && (*colours[b] != *colourB)))))//GetBit(meshes[i]->tristrip[j]->flags,1))
-              {
-                vertex = meshes[i]->vertices[a];
-                a = vertices.size();
-                vertices.push_back(vertex);
-                vertex = meshes[i]->vertices[b];
-                b = a + 1;
-                vertices.push_back(vertex);
-              }
-            }
-            else if (GetBit(meshes[i]->tristrip[j]->flags, 1) && ((colours[a] && (*colours[a] != *colourA)) || ((colours[b] && (*colours[b] != *colourB)))))
-            {
-              Th2Vertex vertex;
-
-              vertex = meshes[i]->vertices[a];
-              a = vertices.size();
-              vertices.push_back(vertex);
-              vertex = meshes[i]->vertices[b];
-              b = a + 1;
-              vertices.push_back(vertex);
-            }
-
-            if (!GetBit(meshes[i]->tristrip[j]->flags, 4))
-            {
-              if (colours[d] && colours[d]->a == 155)
-                delete colours[d];
-              colours[d] = colourD;
-            }
-            if (GetBit(meshes[i]->tristrip[j]->flags, 1))
-            {
-              if (colours[a] && colours[a]->a == 155)
-                delete colours[a];
-              if (colours[b] && colours[b]->a == 155)
-                delete colours[b];
-              if (colours[c] && colours[c]->a == 155)
-                delete colours[c];
-              colours[a] = colourA;
-              colours[b] = colourB;
-              colours[c] = colourC;
-            }
-            else if (colourA)
-            {
-              colours[a] = colourA;
-              colours[b] = colourB;
-              colours[c] = colourC;
-            }
-          }
-          if (first)
-          {
-            first = false;
-            matSplit[0].matId = meshes[i]->tristrip[0]->matIndex;
-          }
-          else if (matSplit[splitCount].matId == meshes[i]->tristrip[j]->matIndex)
-          {
-            matSplit[splitCount].Indices.push_back((WORD)b);
-          }
-          else
-          {
-            matSplit[splitCount].Indices.pop_back();
-            matSplit[splitCount].Indices.pop_back();
-            matSplit[splitCount].Indices.pop_back();
-            matSplit[splitCount].Indices.pop_back();
-            matSplit[splitCount].numIndices = matSplit[splitCount].Indices.size();
-            splitCount++;
-            matSplit[splitCount].matId = meshes[i]->tristrip[j]->matIndex;
-          }
-
-          matSplit[splitCount].Indices.push_back((WORD)b);
-          matSplit[splitCount].Indices.push_back((WORD)a);
-          matSplit[splitCount].Indices.push_back((WORD)c);
-
-          faceInfo.flags = 0x0001;
-          faceInfo.flags |= 0x0200;
-
-          if (GetBit(meshes[i]->tristrip[j]->collFlags, 8))
-          {
-
-            if (!GetBit(meshes[i]->tristrip[j]->collFlags, 7))
-            {
-              faceInfo.flags = 0x0005;
-            }
-            else
-            {
-              faceInfo.flags = 0x0003;
-            }
-            if (meshes[i]->tristrip[j]->collFlags & 0x0400)
-              faceInfo.flags |= 0x0400;
-            faceInfo.flags |= 0x0100;
-          }
-          if (GetBit(meshes[i]->tristrip[j]->collFlags, 5))
-          {
-            faceInfo.flags |= 0x0009;
-            faceInfo.flags &= ~0x0002;
-          }
-          else if (GetBit(meshes[i]->tristrip[j]->collFlags, 6) && !GetBit(meshes[i]->tristrip[j]->collFlags, 8))
-          {
-            faceInfo.flags |= 0x0018;
-            faceInfo.flags &= ~0x0001;
-            faceInfo.flags &= ~0x0002;
-            //faceInfo.flags = 0x0510;
-          }
-          else if (GetBit(meshes[i]->tristrip[j]->collFlags, 1))
-          {
-            faceInfo.flags &= ~0x0001;
-            faceInfo.flags |= 0x0050;
-          }
-          else if (GetBit(meshes[i]->tristrip[j]->collFlags, 0))
-          {
-            faceInfo.flags = 0x0510;
-          }
-          if (GetBit(meshes[i]->tristrip[j]->collFlags, 3))
-          {
-            faceInfo.flags |= 0x0040;
-          }
-          mesh->AddFace(b, a, c, &faceInfo);
-
-          if (j != meshes[i]->numQuads - 1 || !GetBit(meshes[i]->tristrip[j]->flags, 4))
-          {
-            matSplit[splitCount].Indices.push_back((WORD)c);
-            matSplit[splitCount].Indices.push_back(0);
-            matSplit[splitCount].Indices.push_back(0);
-            matSplit[splitCount].Indices.push_back(0);
-          }
-
-          if (!GetBit(meshes[i]->tristrip[j]->flag, 4))
-          {
-            mesh->AddFace(b, c, d, &faceInfo);
-            matSplit[splitCount].Indices.push_back((WORD)b);
-            matSplit[splitCount].Indices.push_back((WORD)b);
-            matSplit[splitCount].Indices.push_back((WORD)c);
-            matSplit[splitCount].Indices.push_back((WORD)d);
-            if (j != meshes[i]->numQuads - 1)
-            {
-              matSplit[splitCount].Indices.push_back((WORD)d);
-              matSplit[splitCount].Indices.push_back(0);
-              matSplit[splitCount].Indices.push_back(0);
-              matSplit[splitCount].Indices.push_back(0);
-            }
-          }
-          matSplit[splitCount].numIndices = matSplit[splitCount].Indices.size();
-
-          if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
-          {
-            mesh->SetFlag(MeshFlags::isTransparent, true);
-
-            if (tmpMat)
-            {
-              tmpMat->transparent = true;
-              tmpMat->drawOrder = 1501.0f;
-            }
-          }
-
-
-
-        }
-        else
-        {
-          DWORD a = (DWORD)meshes[i]->tristrip[j]->a;
-          DWORD b = (DWORD)meshes[i]->tristrip[j]->b;
-          DWORD c = (DWORD)meshes[i]->tristrip[j]->c;
-          DWORD d = (DWORD)meshes[i]->tristrip[j]->d;
-          faceInfo.flags = 0x0501;
-
-          if (GetBit(meshes[i]->tristrip[j]->collFlags, 8))
-          {
-
-            if (!GetBit(meshes[i]->tristrip[j]->collFlags, 7))
-            {
-              faceInfo.flags |= 0x0005;
-            }
-            else
-            {
-              faceInfo.flags |= 0x0003;
-            }
-          }
-          if (GetBit(meshes[i]->tristrip[j]->collFlags, 5))
-          {
-            faceInfo.flags |= 0x0009;
-            faceInfo.flags &= ~0x0002;
-          }
-          else if (GetBit(meshes[i]->tristrip[j]->collFlags, 6) && !GetBit(meshes[i]->tristrip[j]->collFlags, 8))
-          {
-            faceInfo.flags |= 0x0018;
-            faceInfo.flags &= ~0x0001;
-            faceInfo.flags &= ~0x0002;
-          }
-          else if (GetBit(meshes[i]->tristrip[j]->collFlags, 1))
-          {
-            faceInfo.flags &= ~0x0001;
-            faceInfo.flags |= 0x0050;
-          }
-          else if (GetBit(meshes[i]->tristrip[j]->collFlags, 0) && !GetBit(meshes[i]->tristrip[j]->collFlags, 4) && !GetBit(meshes[i]->tristrip[j]->collFlags, 5))
-          {
-            faceInfo.flags = 0x0510;
-          }
-          if (GetBit(meshes[i]->tristrip[j]->collFlags, 3))
-          {
-            faceInfo.flags |= 0x0040;
-          }
-          extraFaces.push_back((Face(&SimpleFace(b, a, c), &faceInfo)));
-
-          if (!GetBit(meshes[i]->tristrip[j]->flag, 4))
-          {
-            extraFaces.push_back((Face(&SimpleFace(b, c, d), &faceInfo)));
-          }
-        }
-        ptr += 16;
-        if ((GetBit(meshes[i]->tristrip[j]->flag, 0) || GetBit(meshes[i]->tristrip[j]->flag, 3) || GetBit(meshes[i]->tristrip[j]->flag, 1)) && meshes[i]->tristrip[j]->flag != 128 && meshes[i]->tristrip[j]->flag != 0x90 && meshes[i]->tristrip[j]->flag != 0 && meshes[i]->tristrip[j]->flag != 0x10 && (meshes[i]->tristrip[j]->flags & 0xFF0000) != 0x100000)//if(GetBit(meshes[i]->tristrip[j]->flag, 0))//if(meshes[i]->tristrip[j]->flag != 128 && meshes[i]->tristrip[j]->flag != 0x90 && meshes[i]->tristrip[j]->flag != 0 && meshes[i]->tristrip[j]->flag != 0x10 && (meshes[i]->tristrip[j]->flags & 0xFF0000) != 0x100000)
-        {
-          ptr += 4;
-          if (GetBit(meshes[i]->tristrip[j]->flags, 0))
-            ptr += 8;
-          if (GetBit(meshes[i]->tristrip[j]->flags, 1))
-            ptr += 8;
-          if (GetBit(meshes[i]->tristrip[j]->flags, 3))
-            ptr += 8;
-          if (GetBit(meshes[i]->tristrip[j]->flags, 5))
-            ptr += 4;
-        }
-      }
-      DWORD ddmIndex = 0;
-      if (!ddmObj)
-      {
-        /*if (meshes[i]->numVertices > 256)
-        {*/
-        for (DWORD j = 0; j < objInfo.size(); j++)
-        {
-          if (objInfo[j].checksum == meshNames[i])
-          {
-            ddmObj = &objInfo[j];
-            ddmIndex = j;
-            break;
-            // goto doch;
-          }
-        }
-        //}
-        //goto inte;
-      }
-      //Mesh* grassMesh = NULL;
-
-      if (ddmObj)
-      {
-        /*if (ddmObj->flags)
-        {
-        grassMesh = new Mesh(*mesh);
-        char name[128];
-        sprintf(name, "3DGrassMesh%u", numGrassMeshes);
-        numGrassMeshes++;
-        grassMesh->SetName(name);
-        grassMesh->Clear(CLEARFLAGS_KEEPVERTICES);
-        DWORD grassLayers = grass->grassLayers;
-        if (grassLayers > 5)
-        grassLayers = 5;
-        float grassHeight = grass->grassHeight;
-
-        float heightOffset = grassHeight / grassLayers;
-
-        for (DWORD layer = 0; layer < grassLayers; layer++)
-        {
-
-        DWORD vertCount = grassMesh->GetNumVertices();
-        MaterialSplit newSplit = matSplit;
-        char material_name[64];
-        sprintf(material_name, "Grass-Grass_Layer%u", layer);
-        Checksum chc = GenerateCaseSensChecksum(material_name);
-        Material* mat = matList.GetMaterial(*(DWORD*)&chc, &id);
-        if (mat)
-        {
-        newSplit.matId = id;
-        mat->transparent = true;
-        mat->drawOrder = 18010.0f + (float)layer;
-        }
-        WORD* alreadyExported = new WORD[matSplit.Indices.size()];
-        DWORD* newIndx = new DWORD[matSplit.Indices.size()];
-        for (DWORD k = 0; k < matSplit.Indices.size(); k++)
-        {
-        //newSplit.Indices[i]+=vertCount;
-        for (DWORD l = 0; l < k; l++)
-        {
-        if (alreadyExported[l] == matSplit.Indices[k])
-        {
-        alreadyExported[l] = 0xFFFF;
-        newSplit.Indices[k] = newIndx[l];
-        continue;
-        }
-        }
-        newIndx[k] = grassMesh->GetNumVertices();
-        newSplit.Indices[k] = newIndx[k];
-        alreadyExported[k] = matSplit.Indices[k];
-        Vertex v = grassMesh->GetVertex(matSplit.Indices[k]);
-        v.y += (heightOffset*(float)(layer + 1));//+5.0f);
-        v.tUV[0].u = v.x / 48.0f;
-        v.tUV[0].v = v.z / 48.0f;
-        grassMesh->AddVertex(&v);
-        //Vertex v = mesh->GetVertex(matSplit.Indices[i]);
-        /*v.y+=heightOffset*(layer+1);
-        v.tUV[0].u = v.x/48.0f;
-        v.tUV[0].v = v.z/48.0f;*/
-        /*mesh->AddVertex(&mesh->GetVertex(matSplit.Indices[k]));
-        Vertex & v = mesh->GetVertex(newIndx[k]);
-        v.y+=heightOffset*(float)(layer+1);
-        v.tUV[0].u = v.x/48.0f;
-        v.tUV[0].v = v.z/48.0f;*/
-        /*}
-        delete[] newIndx;
-        delete[] alreadyExported;
-        grassMesh->AddMatSplit(&newSplit, &matList);
-        grassMesh->GetSplit(mesh->GetNumSplits() - 1)->numIndices = grassMesh->GetSplit(mesh->GetNumSplits() - 1)->Indices.size() - 2;
-        }
-        }*/
-        if (ddmObj->added)
-        {
-          for (DWORD j = ddmIndex + 1; j < objInfo.size(); j++)
-          {
-            if (objInfo[j].checksum == meshNames[i])
-            {
-              ddmObj = &objInfo[j];
-              break;
-            }
-          }
-        }
-        ddmObj->added = true;
-      doch:
-        matSplit[0].matId = ddmObj->matIndex;
-        matList.GetMaterial(matSplit[0].matId, &matSplit[0].matId);
-
-        vector<SimpleFace> polygons;
-        matSplit[0].Indices.clear();
-        //DWORD numTris = 0;
-
-        WORD a, b, c;
-
-        for (DWORD j = 0; j < ddmObj->numIndices - 2; j++)
-        {
-          if (j & 1)
-          {
-            a = c;
-            c = ddmObj->indices[j + 2];
-          }
-          else
-          {
-            a = ddmObj->indices[j];
-            b = ddmObj->indices[j + 1];
-            c = ddmObj->indices[j + 2];
-          }
-
-          if (a != b &&  a != c && b != c)
-          {
-            polygons.push_back(SimpleFace(c, b, a));
-            /*polygons.push_back(c);
-            polygons.push_back(b);
-            polygons.push_back(a);
-            numTris++;*/
-          }
-        }
-
-        /*STRIPERCREATE sc;
-        sc.WFaces = &polygons.front();
-        sc.NbFaces = numTris;
-        sc.AskForWords = true;
-        sc.ConnectAllStrips = true;
-        sc.OneSided = true;
-        sc.SGIAlgorithm = true;
-
-        Striper Strip;
-        Strip.Init(sc);
-
-        STRIPERRESULT sr;
-        Strip.Compute(sr);
-        unsigned short* Refs = (unsigned short*)sr.StripRuns;
-        for (DWORD j = 0; j < sr.NbStrips; j++)
-        {
-        unsigned int NbRefs = sr.StripLengths[j];
-        for (DWORD k = 0; k < NbRefs; k++)
-        matSplit[0].Indices.push_back(*Refs++);
-        }*/
-
-        DWORD numTris = polygons.size();
-        DWORD lastIndex = numTris - 1;
-        for (DWORD j = 0; j < numTris; j++)
-        {
-          if (j != 0)
-            matSplit[0].Indices.push_back(polygons[j].a);
-          matSplit[0].Indices.push_back(polygons[j].a);
-          matSplit[0].Indices.push_back(polygons[j].b);
-          matSplit[0].Indices.push_back(polygons[j].c);
-          if (j != lastIndex)
-          {
-            matSplit[0].Indices.push_back(polygons[j].c);
-            matSplit[0].Indices.push_back(0);
-            matSplit[0].Indices.push_back(0);
-            matSplit[0].Indices.push_back(0);
-          }
-        }
-        matSplit[0].numIndices = matSplit[0].Indices.size();
-
-        first = false;
-        splitCount = 0;
-
-        for (DWORD k = 0; k < numObjects; k++)
-        {
-          if (meshIndices[k] == i)
-          {
-            if (vertices.size())
-            {
-              DWORD numVertices = vertices.size();
-              mesh->Reserve(numVertices);
-              mesh->AddVertices(positions[k], &vertices.front(), numVertices, colours, texCoords);
-              Collision* col = mesh->GetCollision();
-              if (col && col->GetNumFaces())
-                col->CopyVertices(mesh->GetVertices(), numVertices, &mesh->GetBBoxX());
-              mesh->ClearVertices();
-            }
-            //mesh->Clear(4);
-            Vertex bboxMin, bboxMax;
-            Vertex vertex;
-            for (DWORD j = 0; j < ddmObj->numVertices; j++)
-            {
-              vertex.colour.a = (*(Colour*)&(ddmObj->vertices[j].RGBX)).a;
-              vertex.x = -(ddmObj->vertices[j].x + ((float)positions[k]->x / 4096.0f)) / 2.833f;
-              vertex.y = -(ddmObj->vertices[j].y + ((float)positions[k]->y / 4096.0f)) / 2.833f;
-              vertex.z = -(ddmObj->vertices[j].z + ((float)positions[k]->z / 4096.0f)) / 2.833f;
-              /*if (j >= vertices.size())
-                mesh->GetCollision()->AddVertex(vertex);*/
-              //vertex.colour = *(Colour*)&ddmObj->vertices[j].RGBX;
-              /*if (colours[j])
-              {
-              vertex.colour.r = (float)colours[j]->b*0.65f;
-              vertex.colour.g = (float)colours[j]->g*0.65f;
-              vertex.colour.b = (float)colours[j]->r*0.65f;
-
-              if (colours[j]->a == 155)
-              {
-              vertex.colour.a = colours[j]->a;
-              delete colours[j];
-              }
-              else if (colours[j]->a == 154)
-              {
-              vertex.colour.a = colours[j]->a;
-              }
-              else
-              vertex.colour.a = 255;
-              colours[j] = NULL;
-              }
-              else
-              {*/
-              vertex.colour.r = (float)(*(Colour*)&(ddmObj->vertices[j].RGBX)).r*0.65f;
-              vertex.colour.g = (float)(*(Colour*)&(ddmObj->vertices[j].RGBX)).g*0.65f;
-              vertex.colour.b = (float)(*(Colour*)&(ddmObj->vertices[j].RGBX)).b*0.65f;
-              //}
-
-              vertex.tUV[0].u = ddmObj->vertices[j].u;
-              vertex.tUV[0].v = ddmObj->vertices[j].v;
-              if (j == 0)
-              {
-                bboxMin = vertex;
-                bboxMax = vertex;
-              }
-              else
-              {
-                if (vertex.x < bboxMin.x)
-                  bboxMin.x = vertex.x;
-                if (vertex.y<bboxMin.y)
-                  bboxMin.y = vertex.y;
-                if (vertex.z<bboxMin.z)
-                  bboxMin.z = vertex.z;
-
-                if (vertex.x>bboxMax.x)
-                  bboxMax.x = vertex.x;
-                if (vertex.y>bboxMax.y)
-                  bboxMax.y = vertex.y;
-                if (vertex.z > bboxMax.z)
-                  bboxMax.z = vertex.z;
-              }
-              mesh->AddVertexSilent(vertex);
-            }
-            mesh->SetBBox(bboxMin, bboxMax);
-            break;
-          }
-        }
-        if (mesh->GetNumVertices() == 0)
-        {
-          if (vertices.size())
-          {
-            DWORD numVertices = vertices.size();
-            mesh->Reserve(numVertices);
-            mesh->AddVertices(positions[numObjects], &vertices.front(), numVertices, colours, texCoords);
-            Collision* col = mesh->GetCollision();
-            if (col && col->GetNumFaces())
-              col->CopyVertices(mesh->GetVertices(), numVertices, &mesh->GetBBoxX());
-            mesh->ClearVertices();
-          }
-          //mesh->Clear(4);
-          Vertex bboxMin, bboxMax;
-          Vertex vertex;
-          for (DWORD j = 0; j < ddmObj->numVertices; j++)
-          {
-            vertex.colour.a = (*(Colour*)&(ddmObj->vertices[j].RGBX)).a;
-            vertex.x = -(ddmObj->vertices[j].x + ((float)positions[numObjects]->x / 4096.0f)) / 2.833f;
-            vertex.y = -(ddmObj->vertices[j].y + ((float)positions[numObjects]->y / 4096.0f)) / 2.833f;
-            vertex.z = -(ddmObj->vertices[j].z + ((float)positions[numObjects]->z / 4096.0f)) / 2.833f;
-            /*if (j >= vertices.size())
-              mesh->GetCollision()->AddVertex(vertex);*/
-            //vertex.colour = *(Colour*)&ddmObj->vertices[j].RGBX;
-            /*if (colours[j])
-            {
-            vertex.colour.r = (float)colours[j]->b*0.65f;
-            vertex.colour.g = (float)colours[j]->g*0.65f;
-            vertex.colour.b = (float)colours[j]->r*0.65f;
-
-
-            if (colours[j]->a == 155)
-            {
-            vertex.colour.a = colours[j]->a;
-            delete colours[j];
-            }
-            else if (colours[j]->a == 154)
-            {
-            vertex.colour.a = colours[j]->a;
-            }
-            else
-            vertex.colour.a = 255;
-            colours[j] = NULL;
-            }
-            else
-            {*/
-            vertex.colour.r = (float)(*(Colour*)&(ddmObj->vertices[j].RGBX)).r*0.65f;
-            vertex.colour.g = (float)(*(Colour*)&(ddmObj->vertices[j].RGBX)).g*0.65f;
-            vertex.colour.b = (float)(*(Colour*)&(ddmObj->vertices[j].RGBX)).b*0.65f;
-            //}
-
-            vertex.tUV[0].u = ddmObj->vertices[j].u;
-            vertex.tUV[0].v = ddmObj->vertices[j].v;
-            if (j == 0)
-            {
-              bboxMin = vertex;
-              bboxMax = vertex;
-            }
-            else
-            {
-              if (vertex.x < bboxMin.x)
-                bboxMin.x = vertex.x;
-              if (vertex.y<bboxMin.y)
-                bboxMin.y = vertex.y;
-              if (vertex.z<bboxMin.z)
-                bboxMin.z = vertex.z;
-
-              if (vertex.x>bboxMax.x)
-                bboxMax.x = vertex.x;
-              if (vertex.y>bboxMax.y)
-                bboxMax.y = vertex.y;
-              if (vertex.z > bboxMax.z)
-                bboxMax.z = vertex.z;
-            }
-            mesh->AddVertexSilent(vertex);
-          }
-          mesh->SetBBox(bboxMin, bboxMax);
-        }
-
-
-      }
-    inte:
-      if (first)
-        mesh->SetFlag(MeshFlags::isVisible, false);
-      else
-        splitCount++;
-      for (DWORD j = 0; j < splitCount; j++)
-      {
-        mesh->AddMatSplit(&matSplit[j], &matList, true);
-      }
-      if (!ddmObj)
-      {
-        for (DWORD j = 0; j < numObjects; j++)
-        {
-          if (meshIndices[j] == i)
-          {
-            DWORD numVertices = vertices.size();
-            mesh->Reserve(numVertices);
-            mesh->AddVertices(positions[j], &vertices.front(), numVertices, colours, texCoords);
-
-
-            /* mesh->origin.x += ((float)positions[j]->x/4096.0f)/2.833f;
-            mesh->origin.x = -mesh->origin.x;
-            mesh->origin.y += ((float)positions[j]->y/4096.0f)/2.833f;
-            mesh->origin.y = -mesh->origin.y;
-            mesh->origin.z += ((float)positions[j]->z/4096.0f)/2.833f;
-            mesh->origin.z = -mesh->origin.z;*/
-
-            /* if(sky)
-            {
-            char megs[256];
-            fprintf(fp,"object %d DWORD(%.3f %.3f) DWORD(%.3f %.3f) DWORD(%.3f %.3f) 1st vertex %.3f %.3f %.3f header translation %.3f %.3f %.3f\n\n\n",i, (float)vertx2->x,(float)vertx2->y,(float)vertx2->z,(float)vertx2->align,(float)vertx->x,(float)vertx->y,(float)meshes[i]->vertices[0].x,(float)meshes[i]->vertices[0].y,(float)meshes[i]->vertices[0].z,(float)positions[j]->x/4096.0f,(float)positions[j]->y/4096.0f,(float)positions[j]->z/4096.0f);
-            }*/
-            break;
-          }
-        }
-        if (mesh->GetNumVertices() == 0)
-        {
-          const DWORD numVertices = vertices.size();
-          mesh->Reserve(numVertices);
-          mesh->AddVertices(positions[numObjects], &vertices.front(), numVertices, colours, texCoords);
-        }
-      }
-
-      for (DWORD j = 0, numExtra = extraFaces.size(); j < numExtra; j++)
-        mesh->AddFace(extraFaces[j]);
-      delete[] matSplit;
-      delete[] colours;
-      delete[] texCoords;
-      delete[] meshes[i]->tristrip;
-      extraFaces.clear();
-      if (mesh)
-      {
-        if (mesh->GetNumVertices())
-        {
-          Collision* pCollision = mesh->GetCollision();
-          /*if (pCollision->GetNumVertices())
-            mesh->Clear(CLEARFLAGS_CLEARCOLLISION);*/
-          /*mesh->CopyVertsToColl();
-          if (pCollision)
-          pCollision->BlendFaceTypes();*/
-        }
-      }
-      AddMesh(mesh);
-      //mesh->DeinitCollision();
-      vertices.clear();
-      delete mesh;
-    }
-    for (DWORD i = 0; i < objInfo.size(); i++)
-    {
-      if (!objInfo[i].added && objInfo[i].numVertices)
-      {
-        Mesh* mesh = new Mesh();
-        mesh->Clear(CLEARFLAGS_CLEARALL);
-        mesh->SetName(objInfo[i].checksum);
-        MaterialSplit matSplit = MaterialSplit();
-
-        matSplit.matId = objInfo[i].matIndex;
-        matList.GetMaterial(matSplit.matId, &matSplit.matId);
-
-        vector<SimpleFace> polygons;
-
-        DWORD numTris = 0;
-
-        WORD a, b, c;
-
-        for (DWORD j = 0; j < objInfo[i].numIndices - 2; j++)
-        {
-          if (j & 1)
-          {
-            a = c;
-            c = objInfo[i].indices[j + 2];
-          }
-          else
-          {
-            a = objInfo[i].indices[j];
-            b = objInfo[i].indices[j + 1];
-            c = objInfo[i].indices[j + 2];
-          }
-
-          if (a != b &&  a != c && b != c)
-          {
-            polygons.push_back(SimpleFace(c, b, a));
-            /*polygons.push_back(c);
-            polygons.push_back(b);
-            polygons.push_back(a);
-            numTris++;*/
-          }
-        }
-        /*STRIPERCREATE sc;
-        sc.WFaces = &polygons.front();
-        sc.NbFaces = numTris;
-        sc.AskForWords = true;
-        sc.ConnectAllStrips = true;
-        sc.OneSided = true;
-        sc.SGIAlgorithm = true;
-
-        Striper Strip;
-        Strip.Init(sc);
-
-        STRIPERRESULT sr;
-        Strip.Compute(sr);
-        unsigned short* Refs = (unsigned short*)sr.StripRuns;
-        for (DWORD j = 0; j < sr.NbStrips; j++)
-        {
-        unsigned int NbRefs = sr.StripLengths[j];
-        for (DWORD k = 0; k < NbRefs; k++)
-        matSplit[0].Indices.push_back(*Refs++);
-        }*/
-        for (DWORD j = 0; j < polygons.size(); j++)
-        {
-          if (j != 0)
-            matSplit.Indices.push_back(polygons[j].a);
-          matSplit.Indices.push_back(polygons[j].a);
-          matSplit.Indices.push_back(polygons[j].b);
-          matSplit.Indices.push_back(polygons[j].c);
-          if (j != polygons.size() - 1)
-          {
-            matSplit.Indices.push_back(polygons[j].c);
-            matSplit.Indices.push_back(0);
-            matSplit.Indices.push_back(0);
-            matSplit.Indices.push_back(0);
-          }
-        }
-        matSplit.numIndices = matSplit.Indices.size();
-
-        for (DWORD k = 0; k < numObjects; k++)
-        {
-          if (meshIndices[k] == i)
-          {
-            //mesh->Clear(4);
-            Vertex bboxMin, bboxMax;
-            Vertex vertex;
-            for (DWORD j = 0; j < objInfo[i].numVertices; j++)
-            {
-              vertex.colour.a = (*(Colour*)&(objInfo[i].vertices[j].RGBX)).a;
-              vertex.x = -(objInfo[i].vertices[j].x + ((float)positions[k]->x / 4096.0f)) / 2.833f;
-              vertex.y = -(objInfo[i].vertices[j].y + ((float)positions[k]->y / 4096.0f)) / 2.833f;
-              vertex.z = -(objInfo[i].vertices[j].z + ((float)positions[k]->z / 4096.0f)) / 2.833f;
-              /*if (j >= vertices.size())
-              mesh->GetCollision()->AddVertex(vertex);*/
-              //vertex.colour = *(Colour*)&ddmObj->vertices[j].RGBX;
-              /*if (colours[j])
-              {
-              vertex.colour.r = (float)colours[j]->b*0.65f;
-              vertex.colour.g = (float)colours[j]->g*0.65f;
-              vertex.colour.b = (float)colours[j]->r*0.65f;
-
-              if (colours[j]->a == 155)
-              {
-              vertex.colour.a = colours[j]->a;
-              delete colours[j];
-              }
-              else if (colours[j]->a == 154)
-              {
-              vertex.colour.a = colours[j]->a;
-              }
-              else
-              vertex.colour.a = 255;
-              colours[j] = NULL;
-              }
-              else
-              {*/
-              vertex.colour.r = (float)(*(Colour*)&(objInfo[i].vertices[j].RGBX)).r*0.65f;
-              vertex.colour.g = (float)(*(Colour*)&(objInfo[i].vertices[j].RGBX)).g*0.65f;
-              vertex.colour.b = (float)(*(Colour*)&(objInfo[i].vertices[j].RGBX)).b*0.65f;
-              //}
-
-              vertex.tUV[0].u = objInfo[i].vertices[j].u;
-              vertex.tUV[0].v = objInfo[i].vertices[j].v;
-              if (j == 0)
-              {
-                bboxMin = vertex;
-                bboxMax = vertex;
-              }
-              else
-              {
-                if (vertex.x < bboxMin.x)
-                  bboxMin.x = vertex.x;
-                if (vertex.y<bboxMin.y)
-                  bboxMin.y = vertex.y;
-                if (vertex.z<bboxMin.z)
-                  bboxMin.z = vertex.z;
-
-                if (vertex.x>bboxMax.x)
-                  bboxMax.x = vertex.x;
-                if (vertex.y>bboxMax.y)
-                  bboxMax.y = vertex.y;
-                if (vertex.z > bboxMax.z)
-                  bboxMax.z = vertex.z;
-              }
-              mesh->AddVertexSilent(vertex);
-            }
-            mesh->SetBBox(bboxMin, bboxMax);
-            break;
-          }
-        }
-        if (mesh->GetNumVertices() == 0)
-        {
-          //mesh->Clear(4);
-          Vertex bboxMin, bboxMax;
-          Vertex vertex;
-          for (DWORD j = 0; j < objInfo[i].numVertices; j++)
-          {
-            vertex.colour.a = (*(Colour*)&(objInfo[i].vertices[j].RGBX)).a;
-            vertex.x = -(objInfo[i].vertices[j].x + ((float)positions[numObjects]->x / 4096.0f)) / 2.833f;
-            vertex.y = -(objInfo[i].vertices[j].y + ((float)positions[numObjects]->y / 4096.0f)) / 2.833f;
-            vertex.z = -(objInfo[i].vertices[j].z + ((float)positions[numObjects]->z / 4096.0f)) / 2.833f;
-            /*if (j >= vertices.size())
-            mesh->GetCollision()->AddVertex(vertex);*/
-            //vertex.colour = *(Colour*)&ddmObj->vertices[j].RGBX;
-            /*if (colours[j])
-            {
-            vertex.colour.r = (float)colours[j]->b*0.65f;
-            vertex.colour.g = (float)colours[j]->g*0.65f;
-            vertex.colour.b = (float)colours[j]->r*0.65f;
-
-
-            if (colours[j]->a == 155)
-            {
-            vertex.colour.a = colours[j]->a;
-            delete colours[j];
-            }
-            else if (colours[j]->a == 154)
-            {
-            vertex.colour.a = colours[j]->a;
-            }
-            else
-            vertex.colour.a = 255;
-            colours[j] = NULL;
-            }
-            else
-            {*/
-            vertex.colour.r = (float)(*(Colour*)&(objInfo[i].vertices[j].RGBX)).r*0.65f;
-            vertex.colour.g = (float)(*(Colour*)&(objInfo[i].vertices[j].RGBX)).g*0.65f;
-            vertex.colour.b = (float)(*(Colour*)&(objInfo[i].vertices[j].RGBX)).b*0.65f;
-            //}
-
-            vertex.tUV[0].u = objInfo[i].vertices[j].u;
-            vertex.tUV[0].v = objInfo[i].vertices[j].v;
-            if (j == 0)
-            {
-              bboxMin = vertex;
-              bboxMax = vertex;
-            }
-            else
-            {
-              if (vertex.x < bboxMin.x)
-                bboxMin.x = vertex.x;
-              if (vertex.y<bboxMin.y)
-                bboxMin.y = vertex.y;
-              if (vertex.z<bboxMin.z)
-                bboxMin.z = vertex.z;
-
-              if (vertex.x>bboxMax.x)
-                bboxMax.x = vertex.x;
-              if (vertex.y>bboxMax.y)
-                bboxMax.y = vertex.y;
-              if (vertex.z > bboxMax.z)
-                bboxMax.z = vertex.z;
-            }
-            mesh->AddVertexSilent(vertex);
-          }
-          mesh->SetBBox(bboxMin, bboxMax);
-        }
-
-        mesh->AddMatSplit(&matSplit, &matList, true);
-        AddMesh(mesh);
-        delete mesh;
-      }
-    }
-    delete[] pFile;
-    delete[] positions;
-    delete[] meshIndices;
-    //delete [] meshFlags;
-    delete[] meshes;
-    delete[] meshNames;
-  }
-  else
-    MessageBox(0, Path, strerror(errno), 0);
-  delete[] xbox;
-  objInfo.clear();
-  matInfo.clear();
-
-  if (sky) { MAX_TEXCOORDS; MAX_TEXCOORDS *= 0x100; Device->SetFVF(D3DFVF_XYZ | D3DFVF_DIFFUSE | MAX_TEXCOORDS); }
-  else
-  {
-    path[strlen(Path) - 3] = 'O';
-
-    f = fopen(path, "rb");
-    if (f)
-    {
-      fclose(f);
-      globalMaterialList = &this->matList;
-      skyDome = new Th2Scene(path, true);
-    }
-    else
-    {
-      MAX_TEXCOORDS *= 0x100; if (Device) Device->SetFVF(D3DFVF_XYZ | D3DFVF_DIFFUSE | MAX_TEXCOORDS);
-    }
-    path[strlen(Path) - 3] = 'T';
-    path[strlen(Path) - 2] = '.';
-    path[strlen(Path) - 1] = 'T';
-    path[strlen(Path) + 0] = 'R';
-    path[strlen(Path) + 1] = 'G';
-
-    f = fopen(path, "rb");
-    if (f)
-    {
-      skyCRC = 0;
-      crc = 0;
-      numPowerups = 0;
-      SizeDiff = 0;
-      sprintf(levelName, "");
-
-      DWORD pos = ((std::string)Path).find_last_of("\\");
-      pos++;
-      DWORD endPos = ((std::string)Path).find(".psx");
-      for (DWORD i = pos; i < endPos; i++)
-      {
-        levelName[i - pos] = Path[i];
-      }
-      fseek(f, 0, SEEK_END);
-      size = ftell(f);
-      pFile = new BYTE[size];
-      fseek(f, 0, SEEK_SET);
-      fread(pFile, size, 1, f);
-      fclose(f);
-
-      ProcessTRG(pFile, size);
-      if (skyDome)
-      {
-        static char chc[128] = "";
-        bool found = false;
-        for (int i = 0; i < skyDome->GetNumMeshes(); i++)
-        {
-          Mesh* mesh = skyDome->GetMesh(i);
-          if (mesh->IsDeleted())
-          {
-            //mesh->DeinitCollision();
-            /*Collision* collision = mesh->GetCollision();
-            if(collision)
-            {
-            delete collision;
-            mesh->DeinitCollision();
-            }*/
-
-            skyDome->EraseMesh(i);
-            i--;
-          }
-          else if (mesh->GetName().checksum == skyCRC)
-          {
-            if (!mesh->GetName().GetString())
-            {
-              sprintf(chc, "SkyMesh%d", i);
-              Scripts.push_back(Script(mesh->GetName().checksum, chc));
-            }
-            found = true;
-            mesh->Center();
-          }
-          else
-          {
-            if (!mesh->GetName().GetString())
-            {
-              sprintf(chc, "SkyMesh%d", i);
-              Scripts.push_back(Script(mesh->GetName().checksum, chc));
-            }
-          }
-        }
-        if (!found && skyDome->GetNumMeshes() == 1)
-          skyDome->GetMesh(0)->Center();
-        else if (skyDome->GetNumMeshes() == 0)
-        {
-          skyDome->matList.ReleaseTextures();
-          delete skyDome;
-          skyDome = NULL;
-        }
-        //skyDome->MoveObjects(this, skyCRC);
-      }
-    }
-
-    //bool found = false;
-    char chc[128] = "";
-
-    for (DWORD i = 0, numMeshes = this->meshes.size(); i < numMeshes; i++)
-    {
-      /*found = false;
-      for(DWORD j=0; j<this->nodes.size(); j++)
-      {
-      if(this->nodes[j].Class.checksum == EnvironmentObject::GetClass() && this->nodes[j].Name.checksum == this->meshes[i].GetName().checksum)
-      {
-      found = true;
-      break;
-      }
-      }
-      if(!found)
-      {
-      Checksum name = this->meshes[i].GetName();
-      if(!name.GetString())
-      {
-      sprintf(chc,"Mesh%d",i);
-      Scripts.push_back(Script(name.checksum, chc));
-      }*/
-      //DWORD shatter=0;
-      /*if(this->meshes[i].shatterObject)
-      {
-      strcat(chc,"_shatter");
-
-      shatter = Checksum(chc).checksum;
-      triggers.push_back(*(Checksum*)&shatter);
-      memcpy(&ShatterScript[27],&name,4);
-      memcpy(&ShatterScript[48],&name,4);
-      KnownScripts.push_back(KnownScript(*(Checksum*)&shatter, (void*)ShatterScript, 123));
-      }*/
-      if (GetNode(meshes[i].GetName()) == NULL)
-      {
-        Checksum name = this->meshes[i].GetName();
-        if (!name.GetString())
-        {
-          sprintf(chc, "Mesh%d", i);
-          Scripts.push_back(Script(name.checksum, chc));
-        }
-        this->nodes.push_back(EnvironmentObject(name, 0, 0, true));
-        this->nodes.back().SetPosition(this->meshes[i].GetCenter());
-        //this->meshes[i].node = &this->nodes.back();
-        //this->meshes[i].node->SetPosition(this->meshes[i].GetCenter());
-      }
-      else if (!this->meshes[i].GetName().GetString())
-      {
-        sprintf(chc, "Mesh%d", i);
-        Scripts.push_back(Script(this->meshes[i].GetName().checksum, chc));
-      }
-      //this->meshes[i].node->SetPosition(this->meshes[i].GetCenter());
-    }
-
-    //FixNodes();
-
-    for (DWORD i = 0, numNodes = this->nodes.size(); i < numNodes; i++)
-    {
-      if (this->nodes[i].TrickObject)
-      {
-        if (!this->nodes[i].Cluster.checksum)
-        {
-          this->nodes[i].Cluster = this->nodes[i].Name;
-          this->nodes[i].ApplyCluster(&this->nodes[0]);
-          //}
-
-          /*for (DWORD j = 0; j < nodes[i].Links.size(); j++)
-          {
-          Node & link = this->nodes[this->nodes[i].Links[j]];
-          if (!link.Cluster.checksum && (link.Class.checksum == EnvironmentObject::GetClass() || link.Class.checksum == RailNode::GetClass()))
-          {
-          link.TrickObject = true;
-          link.Cluster = this->nodes[i].Cluster;
-          if (link.Links.size())
-          {
-          DWORD X = 0;
-          Node & link2 = nodes[link.Links[X]];
-          while (!link2.Cluster.checksum && (link2.Class.checksum == EnvironmentObject::GetClass() || link2.Class.checksum == RailNode::GetClass()))
-          {
-          if (X<link.Links.size())
-          X++;
-          else
-
-          }
-          }
-          for (DWORD k = 0; k < link.Links.size(); k++)
-          {
-          if (!nodes[link.Links[k]].Cluster.checksum && (nodes[link.Links[k]].Class.checksum == EnvironmentObject::GetClass() || nodes[link.Links[k]].Class.checksum == RailNode::GetClass()))
-          nodes[link.Links[k]].Cluster = link.Cluster;
-          }
-          }
-          }*/
-        }
-      }
-      /*else if(this->nodes[i].Class.checksum==EnvironmentObject::GetClass())
-      {
-      if(!this->nodes[i].Trigger.checksum && !GetMesh(this->nodes[i].Name))
-      {
-      DeleteNode(i);
-      i--;
-      numNodes--;
-      }
-      }*/
-    }
-
-    for (DWORD i = 0, numNodes = this->nodes.size(); i < numNodes; i++)
-    {
-      if (!this->nodes[i].Cluster.checksum && this->nodes[i].Class.checksum == RailNode::GetClass())
-      {
-
-        for (DWORD j = 0; j < this->nodes[i].Links.size(); j++)
-        {
-
-          Node & link = this->nodes[this->nodes[i].Links[j]];
-
-          if (link.TrickObject && link.Class.checksum == EnvironmentObject::GetClass())
-          {
-            this->nodes[i].TrickObject = true;
-            if (link.Cluster.checksum)
-            {
-              this->nodes[i].Cluster = link.Cluster;
-              this->nodes[i].ApplyCluster(&nodes[0]);
-            }
-            else if (this->nodes[i].Cluster.checksum)
-            {
-              MessageBox(0, "impossible", "", 0);
-              link.Cluster = this->nodes[i].Cluster;
-
-
-              Mesh* tmpMesh = GetMesh(this->nodes[i].Cluster);
-
-              if (tmpMesh)
-              {
-                //tmpMesh->rails.push_back(Rail(&this->nodes[i]));
-
-                this->nodes[i].ApplyCluster(&nodes[0]);
-                for (DWORD k = 0; k < this->nodes[i].Links.size(); k++)
-                {
-                  Node & meshLink = this->nodes[this->nodes[i].Links[k]];
-                  if (meshLink.Class.checksum == RailNode::GetClass())
-                  {
-                    meshLink.Cluster = this->nodes[i].Cluster;
-                    // tmpMesh->rails.back().nodes.push_back(&this->nodes[this->nodes[i].Links[k]]);
-                  }
-                }
-              }
-            }
-            else
-            {
-              MessageBox(0, "impossible2", "", 0);
-              this->nodes[i].Cluster = link.Name;
-              Mesh* tmpMesh = GetMesh(this->nodes[i].Cluster);
-              link.Cluster = this->nodes[i].Cluster;
-              if (tmpMesh)
-              {
-                //tmpMesh->rails.push_back(Rail(&this->nodes[i]));
-
-                this->nodes[i].ApplyCluster(&nodes[0]);
-                for (DWORD k = 0; k < this->nodes[i].Links.size(); k++)
-                {
-                  Node & meshLink = this->nodes[this->nodes[i].Links[k]];
-                  if (meshLink.Class.checksum == RailNode::GetClass())
-                  {
-                    meshLink.Cluster = this->nodes[i].Cluster;
-                    //tmpMesh->rails.back().nodes.push_back(&this->nodes[this->nodes[i].Links[k]]);
-                  }
-                }
-              }
-            }
-            //break;
-          }
-          else if (this->nodes[i].LinksToTrickOb(&nodes[0], &this->nodes[i].Cluster.checksum))
-          {
-            this->nodes[i].FixObCheck(&this->nodes[i]);
-            this->nodes[i].TrickObject = true;
-            this->nodes[i].ApplyCluster(&nodes[0]);
-          }
-          else
-            this->nodes[i].FixObCheck(&this->nodes[i]);
-        }
-      }
-      else if (this->nodes[i].Class.checksum == RailNode::GetClass())
-      {
-        this->nodes[i].ApplyCluster(&nodes[0]);
-      }
-      else if (this->nodes[i].Class.checksum == EnvironmentObject::GetClass() && this->nodes[i].CreatedAtStart)
-      {
-        if (this->nodes[i].Links.size() && this->nodes[i].LinksTo(0x1806DDF8, &this->nodes[i].Links.front(), &this->nodes.front()))
-          this->nodes[i].Trigger = Checksum("sk3_killskater");
-        else if (this->nodes[i].Trigger.checksum)
-        {
-          this->nodes[i].NetEnabled = true;
-          this->nodes[i].Permanent = true;
-        }
-        this->nodes[i].FixCheck(0x1806DDF8, &nodes.front());
-      }
-    }
-
-    for (DWORD i = 0, numNodes = this->nodes.size(); i < numNodes; i++)
-    {
-      if (this->nodes[i].Cluster.checksum && this->nodes[i].Class.checksum == RailNode::GetClass())
-      {
-        for (DWORD j = 0; j < this->nodes[i].Links.size(); j++)
-        {
-          Node & link = this->nodes[this->nodes[i].Links[j]];
-          //extern const char Env [] = "EnvironmentObject";
-
-
-          if (!link.Cluster.checksum && link.Class.checksum == RailNode::GetClass())
-          {
-            link.Cluster = this->nodes[i].Cluster;
-            link.TrickObject = true;
-          }
-        }
-      }
-    }
-    //CenterScene();
-  }
+	ZeroMemory(name, MAX_PATH);
+	SetName(Path); blendValue = 2;
+	cullMode = D3DCULL_CW;
+	Checksum("change");
+	Checksum("Wall_Non_Skatable_Angle");
+
+	BYTE* pFile = NULL;
+	DWORD size = 0, ptr = 0;
+
+	char path[256] = "";
+	memcpy(path, Path, strlen(Path) + 1);
+	DWORD len = strlen(Path);
+
+	FILE* f;
+	/*if(sky)
+	{
+	Texture texture;
+	ZeroMemory(&texture,sizeof(Texture));
+	texture.blendMode = 20;
+	texture.vAddress = D3DTADDRESS_WRAP;
+	texture.uAddress = D3DTADDRESS_WRAP;
+	for(DWORD i=0; i<globalMaterialList->GetNumMaterials(); i++)
+	{
+	Material* material = new Material();
+	Material* tmpMat = globalMaterialList->GetMaterial(i);
+	DWORD id = tmpMat->GetMatId();
+	material->SetMatId(id);
+	Texture* tmpTexture = tmpMat->GetTexture(0);
+	material->drawOrder = 0.0f;
+	material->transparent[0] = false;
+	id = tmpTexture->GetTexId();
+	texture.SetId(id);
+	texture.CreateTexture();
+	if(texture.transparent())
+	material->transparent[0]=true;
+	else
+	material->transparent[0]=false;
+	material->AddTexture(&texture);
+	AddMaterial(material);
+	//free(materials[i]);
+	delete material;
+	}
+	}
+	else
+	{*/
+	path[len - 3] = 'D';
+	path[len - 2] = 'D';
+	path[len - 1] = 'X';
+	/*path[len-4] = '_';
+	path[len-3] = 'L';
+	path[len-2] = '.';
+	path[len-1] = 'p';
+	path[len+0] = 's';
+	path[len+1] = 'x';^*/
+
+	f = fopen(path, "rb");
+	if (f)
+	{
+		fseek(f, 0, SEEK_END);
+
+		size = ftell(f);
+
+		pFile = new BYTE[size];
+
+		fseek(f, 0, SEEK_SET);
+		fread(pFile, size, 1, f);
+		fclose(f);
+
+		ProcessXBOXTextures((DWORD)(pFile), sky);
+
+		delete[] pFile;
+	}
+
+	path[len - 1] = 'M';
+
+	f = fopen(path, "rb");
+	BYTE* xbox = NULL;
+	if (f)
+	{
+		fseek(f, 0, SEEK_END);
+
+		size = ftell(f);
+
+		pFile = new BYTE[size];
+
+		fseek(f, 0, SEEK_SET);
+		fread(pFile, size, 1, f);
+		fclose(f);
+
+		ProcessXBOXMaterials((DWORD)(pFile), sky);
+		xbox = pFile;
+		//delete [] pFile;
+	}
+	// }
+	path[len - 4] = '_';
+	path[len - 3] = 'L';
+	path[len - 2] = '.';
+	path[len - 1] = 'p';
+	path[len + 0] = 's';
+	path[len + 1] = 'x';
+
+	f = fopen(Path, "rb");
+	if (f)
+	{
+		fseek(f, 0, SEEK_END);
+
+		size = ftell(f);
+
+		pFile = new BYTE[size];
+
+		fseek(f, 0, SEEK_SET);
+		fread(pFile, size, 1, f);
+		fclose(f);
+		_fcloseall();
+
+		ptr = (DWORD)(pFile);
+		ptr += 4;
+
+		DWORD rgbOffset = ((DWORD*)ptr)[0];
+		DWORD numObjects = ((DWORD*)ptr)[1];
+		ptr += 8;
+
+		Th2FixedVert** positions = new Th2FixedVert * [numObjects + 1];
+		positions[numObjects] = &Th2FixedVert();
+		/*positions[numObjects].y = 0;
+		positions[numObjects].z = 0;*/
+		//DWORD* meshFlags = new DWORD[numObjects];
+		WORD* meshIndices = new WORD[numObjects];
+
+		for (DWORD i = 0; i < numObjects; i++)
+		{
+			ptr += 4;
+			positions[i] = ((Th2FixedVert*)ptr);
+			ptr += 18;
+			meshIndices[i] = ((WORD*)ptr)[0];
+			/*ptr+=2;
+			meshFlags[i] = ((DWORD*)ptr)[0];
+			ptr+=12;*/
+			ptr += 14;
+			//ptr+=32;
+		}
+
+		DWORD numMeshes = ((DWORD*)ptr)[0];
+		this->meshes.reserve(numMeshes);
+		SetProgressbarMaximum(numMeshes);
+
+		DWORD* meshNames = new DWORD[numMeshes];
+		// if(!sky)
+		DWORD pRGB = rgbOffset + (DWORD)pFile;
+		pRGB += 4;
+		DWORD numRGBs = ((DWORD*)pRGB)[0];
+		pRGB += 4;
+		pRGB += numRGBs;
+
+		if (pRGB < ((DWORD)pFile + size))
+			ProcessMaterials(pRGB, numMeshes, meshNames, sky);
+		else
+		{
+			for (DWORD i = 0; i < numMeshes; i++)
+			{
+				meshNames[i] = i + 0xABEBCE;
+			}
+		}
+
+		ptr += 4; Th2Mesh** meshes = new Th2Mesh * [numMeshes];
+		for (DWORD i = 0; i < numMeshes; i++)
+		{
+			DWORD offset = ((DWORD*)ptr)[0];
+			ptr += 4;
+			meshes[i] = (Th2Mesh*)((DWORD)pFile + offset);
+		}
+
+		Colour** colours;
+		DWORD numGrassMeshes = 0;
+		TexCoord* texCoords;
+		FaceInfo faceInfo;
+		vector <Face> extraFaces;
+		vector <Th2Vertex> vertices;
+		const DWORD numInfo = matInfo.size();
+
+		for (DWORD i = 0; i < numMeshes; i++)
+		{
+			IncreasProgressbar();
+			Mesh* mesh = new Mesh();
+			mesh->InitCollision();
+
+			Checksum name;
+			name.checksum = meshNames[i];
+			mesh->SetName(name);
+			Th2Vertex* vertex1 = (Th2Vertex*)((DWORD)meshes[i] + 12);
+			Th2Vertex* vertex2 = (Th2Vertex*)((DWORD)meshes[i] + 18);
+			mesh->center.x = (((float)vertex1->x + (float)vertex1->y) / 2.0f) / 2.833f;
+			mesh->center.y = (((float)vertex1->z + (float)vertex2->x) / 2.0f) / 2.833f;
+			mesh->center.z = (((float)vertex2->y + (float)vertex2->z) / 2.0f) / 2.833f;
+			//Th2Vertex* vertx2 = (Th2Vertex*)((DWORD)meshes[i] + 12);
+			meshes[i]->vertices = (Th2Vertex*)((DWORD)meshes[i] + 28);
+			vertices.assign(meshes[i]->vertices, meshes[i]->vertices + meshes[i]->numVertices);
+
+			colours = new Colour * [meshes[i]->numVertices + meshes[i]->numVertices * meshes[i]->numQuads];
+			//Colour** tmpColours = new Colour*[meshes[i]->numVertices];
+			texCoords = new TexCoord[meshes[i]->numVertices + meshes[i]->numVertices * meshes[i]->numQuads];
+			ZeroMemory(texCoords, sizeof(TexCoord) * (meshes[i]->numVertices + meshes[i]->numVertices * meshes[i]->numQuads));
+			ZeroMemory(colours, 4 * (meshes[i]->numVertices + meshes[i]->numVertices * meshes[i]->numQuads));//zeroymemory here so that if colour is not initialized later can ignore it if(colours[i]==NULL)
+
+			meshes[i]->collisions = (DWORD*)((DWORD)meshes[i]->vertices + sizeof(Th2Vertex) * meshes[i]->numVertices);
+			ptr = (DWORD)meshes[i]->collisions + 8 * meshes[i]->numCollision;
+			meshes[i]->tristrip = new Quad * [meshes[i]->numQuads];
+			MaterialSplit* matSplit = new MaterialSplit[meshes[i]->numQuads];
+			DWORD splitCount = 0;
+			bool first = true;
+			ObjInfo* ddmObj = NULL;
+			bool gotMat = false;
+
+			for (DWORD j = 0; j < meshes[i]->numQuads; j++)
+			{
+				meshes[i]->tristrip[j] = (Quad*)ptr;
+				char test[256] = "";
+				sprintf(test, "%X %X", &meshes[i]->tristrip[j]->matIndex, ptr);
+				MessageBox(0, test, test, 0);
+
+				/*if(meshes[i]->tristrip[j]->a < meshes[i]->numVertices && meshes[i]->tristrip[j]->b  < meshes[i]->numVertices && meshes[i]->tristrip[j]->c  < meshes[i]->numVertices)
+				{*/
+				/*if(meshes[i]->tristrip[j]->collFlags & 0x2)
+				mesh->SetFlag(MeshFlags::visible, false);*/
+
+				if (!((GetBit(meshes[i]->tristrip[j]->flags, 7) && !GetBit(meshes[i]->tristrip[j]->flags, 6))/* ||  meshes[i]->tristrip[j]->collFlags & 0x2*/))
+				{
+					DWORD a = (DWORD)meshes[i]->tristrip[j]->a;
+					DWORD b = (DWORD)meshes[i]->tristrip[j]->b;
+					DWORD c = (DWORD)meshes[i]->tristrip[j]->c;
+					DWORD d = (DWORD)meshes[i]->tristrip[j]->d;
+
+					Material* tmpMat = NULL;
+
+					if (((GetBit(meshes[i]->tristrip[j]->flag, 0) || GetBit(meshes[i]->tristrip[j]->flag, 3) || GetBit(meshes[i]->tristrip[j]->flag, 1)) && meshes[i]->tristrip[j]->flag != 128 && meshes[i]->tristrip[j]->flag != 0x90 && meshes[i]->tristrip[j]->flag != 0 && meshes[i]->tristrip[j]->flag != 0x10 && (meshes[i]->tristrip[j]->flags & 0xFF0000) != 0x100000))//if(GetBit(meshes[i]->tristrip[j]->flags,0)/* || GetBit(meshes[i]->tristrip[j]->flags,1)*/)//meshes[i]->tristrip[j]->flag != 128 && meshes[i]->tristrip[j]->flag != 0x90 && meshes[i]->tristrip[j]->flag != 0 && meshes[i]->tristrip[j]->flag != 0x10)
+					{
+						float u1 = (float)texCoords[a].u;
+						float v1 = (float)texCoords[a].v;
+						float u2 = (float)texCoords[b].u;
+						float v2 = (float)texCoords[b].v;
+						float u3 = (float)texCoords[c].u;
+						float v3 = (float)texCoords[c].v;
+						float u4 = (float)texCoords[d].u;
+						float v4 = (float)texCoords[d].v;
+
+						float uv[8];
+						Colour* colourA = NULL;
+						Colour* colourB = NULL;
+						Colour* colourC = NULL;
+						Colour* colourD = NULL;
+
+						tmpMat = matList.GetMaterial(meshes[i]->tristrip[j]->matIndex, &meshes[i]->tristrip[j]->matIndex);
+						if (tmpMat == NULL && numInfo)
+						{
+							DWORD k;
+							for (k = 0; k < numInfo; k++)
+							{
+								if (matInfo[k].checksum == meshNames[i])
+								{
+									meshes[i]->tristrip[j]->matIndex = matInfo[k].matIndex;
+									tmpMat = matList.GetMaterial(meshes[i]->tristrip[j]->matIndex, &meshes[i]->tristrip[j]->matIndex);
+									break;
+								}
+							}
+						}
+
+						if (tmpMat == NULL)
+						{
+							MessageBox(0, "epic", "", 0);
+							meshes[i]->tristrip[j]->matIndex = epicIndex;
+							tmpMat = matList.GetMaterial(epicIndex);
+						}
+						if (tmpMat)
+						{
+							uv[0] = (float)(meshes[i]->tristrip[j]->uv[0]) / (512.0f);
+							uv[2] = (float)(meshes[i]->tristrip[j]->uv[1]) / (512.0f);
+							uv[4] = (float)(meshes[i]->tristrip[j]->uv[2]) / (512.0f);
+							uv[6] = (float)(meshes[i]->tristrip[j]->uv[3]) / (512.0f);
+
+							uv[1] = (float)(meshes[i]->tristrip[j]->uv[4]) / (512.0f);
+							uv[3] = (float)(meshes[i]->tristrip[j]->uv[5]) / (512.0f);
+							uv[5] = (float)(meshes[i]->tristrip[j]->uv[6]) / (512.0f);
+							uv[7] = (float)(meshes[i]->tristrip[j]->uv[7]) / (512.0f);
+
+							if (meshes[i]->tristrip[j]->flags & 0x800)
+							{
+								if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
+								{
+									colourA = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[0] * 4));
+									colourA->a = 155;
+									colourB = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[1] * 4));
+									colourB->a = 155;
+									colourC = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[2] * 4));
+									colourC->a = 155;
+								}
+								else
+								{
+									colourA = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[0] * 4);
+									colourB = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[1] * 4);
+									colourC = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[2] * 4);
+								}
+
+								if (!GetBit(meshes[i]->tristrip[j]->flag, 4))
+								{
+									if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
+									{
+										colourD = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[3] * 4));
+										colourD->a = 155;
+									}
+									else
+										colourD = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[3] * 4);
+								}
+							}
+							else
+							{
+								DWORD* color = (DWORD*)&meshes[i]->tristrip[j]->index;
+								if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
+								{
+									((Colour*)color)->a = 154;
+								}
+								colourA = (Colour*)color;
+								colourB = (Colour*)color;
+								colourC = (Colour*)color;
+
+								if (!GetBit(meshes[i]->tristrip[j]->flag, 4))
+									colourD = (Colour*)color;
+							}
+
+							if (((colours[c] && (*colours[c] != *colourC || (texCoords[c].u != uv[4] || texCoords[c].v != uv[5]))) || ((((!GetBit(meshes[i]->tristrip[j]->flags, 4) && colours[d]) && (*colours[d] != *colourD || (texCoords[d].u != uv[6] || texCoords[d].v != uv[7])))))))
+							{
+								Th2Vertex vertex;
+
+								vertex = meshes[i]->vertices[c];
+								c = vertices.size();
+								vertices.push_back(vertex);
+								if (!GetBit(meshes[i]->tristrip[j]->flags, 4))
+								{
+									vertex = meshes[i]->vertices[d];
+									d = c + 1;
+									vertices.push_back(vertex);
+								}
+
+								if (GetBit(meshes[i]->tristrip[j]->flags, 1) && ((colours[a] && (*colours[a] != *colourA || (texCoords[a].u != uv[0] || texCoords[a].v != uv[1]))) || ((colours[b] && (*colours[b] != *colourB || (texCoords[b].u != uv[2] || texCoords[b].v != uv[3]))))))//GetBit(meshes[i]->tristrip[j]->flags,1))
+								{
+									vertex = meshes[i]->vertices[a];
+									a = vertices.size();
+									vertices.push_back(vertex);
+									vertex = meshes[i]->vertices[b];
+									b = a + 1;
+									vertices.push_back(vertex);
+								}
+							}
+							else if (GetBit(meshes[i]->tristrip[j]->flags, 1) && ((colours[a] && (*colours[a] != *colourA || (texCoords[a].u != uv[0] || texCoords[a].v != uv[1]))) || ((colours[b] && (*colours[b] != *colourB || (texCoords[b].u != uv[2] || texCoords[b].v != uv[3]))))))
+							{
+								Th2Vertex vertex;
+
+								vertex = meshes[i]->vertices[a];
+								a = vertices.size();
+								vertices.push_back(vertex);
+								vertex = meshes[i]->vertices[b];
+								b = a + 1;
+								vertices.push_back(vertex);
+							}
+
+							if (!GetBit(meshes[i]->tristrip[j]->flags, 4))
+							{
+								if (colours[d] && colours[d]->a == 155)
+									delete colours[d];
+								colours[d] = colourD;
+								texCoords[d].u = uv[6];
+								texCoords[d].v = uv[7];
+							}
+							if (GetBit(meshes[i]->tristrip[j]->flags, 1))
+							{
+								if (colours[a] && colours[a]->a == 155)
+									delete colours[a];
+								if (colours[b] && colours[b]->a == 155)
+									delete colours[b];
+								if (colours[c] && colours[c]->a == 155)
+									delete colours[c];
+								colours[a] = colourA;
+								colours[b] = colourB;
+								colours[c] = colourC;
+								texCoords[a].u = uv[0];
+								texCoords[a].v = uv[1];
+								texCoords[b].u = uv[2];
+								texCoords[b].v = uv[3];
+								texCoords[c].u = uv[4];
+								texCoords[c].v = uv[5];
+							}
+							else if (colourA)
+							{
+								colours[a] = colourA;
+								colours[b] = colourB;
+								colours[c] = colourC;
+							}
+						}
+						else
+						{
+							MessageBox(0, "no mat", "", 0);
+							if (meshes[i]->tristrip[j]->flags & 0x800)
+							{
+								if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
+								{
+									colourA = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[0] * 4));
+									colourA->a = 155;
+									colourB = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[1] * 4));
+									colourB->a = 155;
+									colourC = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[2] * 4));
+									colourC->a = 155;
+								}
+								else
+								{
+									colourA = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[0] * 4);
+									colourB = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[1] * 4);
+									colourC = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[2] * 4);
+								}
+
+								if (colours[a] && *colours[a] != *colourA)
+								{
+									Th2Vertex vertex;
+
+									vertex = meshes[i]->vertices[a];
+									a = vertices.size();
+									vertices.push_back(vertex);
+								}
+								colours[a] = colourA;
+								if (colours[b] && *colours[b] != *colourB)
+								{
+									Th2Vertex vertex;
+
+									vertex = meshes[i]->vertices[b];
+									b = vertices.size();
+									vertices.push_back(vertex);
+								}
+								colours[b] = colourB;
+								if (colours[c] && *colours[c] != *colourC)
+								{
+									Th2Vertex vertex;
+
+									vertex = meshes[i]->vertices[c];
+									c = vertices.size();
+									vertices.push_back(vertex);
+								}
+								colours[c] = colourC;
+
+								if (!GetBit(meshes[i]->tristrip[j]->flag, 4))
+								{
+									if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
+									{
+										colourD = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[3] * 4));
+										colourD->a = 155;
+									}
+									else
+										colourD = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[3] * 4);
+
+									if (colours[d] && *colours[d] != *colourD)
+									{
+										Th2Vertex vertex;
+
+										vertex = meshes[i]->vertices[d];
+										d = vertices.size();
+										vertices.push_back(vertex);
+									}
+									colours[d] = colourD;
+								}
+							}
+							else
+							{
+								DWORD* color = (DWORD*)&meshes[i]->tristrip[j]->index;
+								if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
+								{
+									((Colour*)color)->a = 154;
+								}
+								colourA = (Colour*)color;
+								colourB = (Colour*)color;
+								colourC = (Colour*)color;
+
+								if (colours[a] && *colours[a] != *colourA)
+								{
+									Th2Vertex vertex;
+
+									vertex = meshes[i]->vertices[a];
+									a = vertices.size();
+									vertices.push_back(vertex);
+								}
+								colours[a] = colourA;
+								if (colours[b] && *colours[b] != *colourB)
+								{
+									Th2Vertex vertex;
+
+									vertex = meshes[i]->vertices[b];
+									b = vertices.size();
+									vertices.push_back(vertex);
+								}
+								colours[b] = colourB;
+								if (colours[c] && *colours[c] != *colourC)
+								{
+									Th2Vertex vertex;
+
+									vertex = meshes[i]->vertices[c];
+									c = vertices.size();
+									vertices.push_back(vertex);
+								}
+								colours[c] = colourC;
+
+								if (!GetBit(meshes[i]->tristrip[j]->flag, 4))
+								{
+									colourD = (Colour*)color;
+									if (colours[d] && *colours[d] != *colourD)
+									{
+										Th2Vertex vertex;
+
+										vertex = meshes[i]->vertices[d];
+										d = vertices.size();
+										vertices.push_back(vertex);
+									}
+									colours[d] = colourD;
+								}
+							}
+						}
+						gotMat = true;
+					}
+					else
+					{
+						if (!gotMat)
+						{
+							for (DWORD k = 0; k < objInfo.size(); k++)
+							{
+								if (meshNames[i] == objInfo[k].checksum)
+								{
+									ddmObj = &objInfo[k];
+									break;
+								}
+							}
+						}
+
+
+						Colour* colourA = NULL;
+						Colour* colourB = NULL;
+						Colour* colourC = NULL;
+						Colour* colourD = NULL;
+
+						if (meshes[i]->tristrip[j]->flags & 0x800)
+						{
+							if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
+							{
+								colourA = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[0] * 4));
+								colourA->a = 155;
+								colourB = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[1] * 4));
+								colourB->a = 155;
+								colourC = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[2] * 4));
+								colourC->a = 155;
+							}
+							else
+							{
+								colourA = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[0] * 4);
+								colourB = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[1] * 4);
+								colourC = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[2] * 4);
+							}
+
+							if (!GetBit(meshes[i]->tristrip[j]->flag, 4))
+							{
+								if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
+								{
+									colourD = new Colour((Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[3] * 4));
+									colourD->a = 155;
+								}
+								else
+									colourD = (Colour*)((DWORD)pFile + 8 + rgbOffset + (DWORD)meshes[i]->tristrip[j]->index[3] * 4);
+							}
+						}
+						else
+						{
+							DWORD* color = (DWORD*)&meshes[i]->tristrip[j]->index;
+							if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
+							{
+								((Colour*)color)->a = 154;
+							}
+							colourA = (Colour*)color;
+							colourB = (Colour*)color;
+							colourC = (Colour*)color;
+
+							if (!GetBit(meshes[i]->tristrip[j]->flag, 4))
+								colourD = (Colour*)color;
+						}
+
+						if (((colours[c] && (*colours[c] != *colourC)) || ((((!GetBit(meshes[i]->tristrip[j]->flags, 4) && colours[d]) && (*colours[d] != *colourD))))))
+						{
+							Th2Vertex vertex;
+
+							vertex = meshes[i]->vertices[c];
+							c = vertices.size();
+							vertices.push_back(vertex);
+							if (!GetBit(meshes[i]->tristrip[j]->flags, 4))
+							{
+								vertex = meshes[i]->vertices[d];
+								d = c + 1;
+								vertices.push_back(vertex);
+							}
+
+							if (GetBit(meshes[i]->tristrip[j]->flags, 1) && ((colours[a] && (*colours[a] != *colourA)) || ((colours[b] && (*colours[b] != *colourB)))))//GetBit(meshes[i]->tristrip[j]->flags,1))
+							{
+								vertex = meshes[i]->vertices[a];
+								a = vertices.size();
+								vertices.push_back(vertex);
+								vertex = meshes[i]->vertices[b];
+								b = a + 1;
+								vertices.push_back(vertex);
+							}
+						}
+						else if (GetBit(meshes[i]->tristrip[j]->flags, 1) && ((colours[a] && (*colours[a] != *colourA)) || ((colours[b] && (*colours[b] != *colourB)))))
+						{
+							Th2Vertex vertex;
+
+							vertex = meshes[i]->vertices[a];
+							a = vertices.size();
+							vertices.push_back(vertex);
+							vertex = meshes[i]->vertices[b];
+							b = a + 1;
+							vertices.push_back(vertex);
+						}
+
+						if (!GetBit(meshes[i]->tristrip[j]->flags, 4))
+						{
+							if (colours[d] && colours[d]->a == 155)
+								delete colours[d];
+							colours[d] = colourD;
+						}
+						if (GetBit(meshes[i]->tristrip[j]->flags, 1))
+						{
+							if (colours[a] && colours[a]->a == 155)
+								delete colours[a];
+							if (colours[b] && colours[b]->a == 155)
+								delete colours[b];
+							if (colours[c] && colours[c]->a == 155)
+								delete colours[c];
+							colours[a] = colourA;
+							colours[b] = colourB;
+							colours[c] = colourC;
+						}
+						else if (colourA)
+						{
+							colours[a] = colourA;
+							colours[b] = colourB;
+							colours[c] = colourC;
+						}
+					}
+					if (first)
+					{
+						first = false;
+						matSplit[0].matId = meshes[i]->tristrip[0]->matIndex;
+					}
+					else if (matSplit[splitCount].matId == meshes[i]->tristrip[j]->matIndex)
+					{
+						matSplit[splitCount].Indices.push_back((WORD)b);
+					}
+					else
+					{
+						matSplit[splitCount].Indices.pop_back();
+						matSplit[splitCount].Indices.pop_back();
+						matSplit[splitCount].Indices.pop_back();
+						matSplit[splitCount].Indices.pop_back();
+						matSplit[splitCount].numIndices = matSplit[splitCount].Indices.size();
+						splitCount++;
+						matSplit[splitCount].matId = meshes[i]->tristrip[j]->matIndex;
+					}
+
+					matSplit[splitCount].Indices.push_back((WORD)b);
+					matSplit[splitCount].Indices.push_back((WORD)a);
+					matSplit[splitCount].Indices.push_back((WORD)c);
+
+					faceInfo.flags = 0x0001;
+					faceInfo.flags |= 0x0200;
+
+					if (GetBit(meshes[i]->tristrip[j]->collFlags, 8))
+					{
+
+						if (!GetBit(meshes[i]->tristrip[j]->collFlags, 7))
+						{
+							faceInfo.flags = 0x0005;
+						}
+						else
+						{
+							faceInfo.flags = 0x0003;
+						}
+						if (meshes[i]->tristrip[j]->collFlags & 0x0400)
+							faceInfo.flags |= 0x0400;
+						faceInfo.flags |= 0x0100;
+					}
+					if (GetBit(meshes[i]->tristrip[j]->collFlags, 5))
+					{
+						faceInfo.flags |= 0x0009;
+						faceInfo.flags &= ~0x0002;
+					}
+					else if (GetBit(meshes[i]->tristrip[j]->collFlags, 6) && !GetBit(meshes[i]->tristrip[j]->collFlags, 8))
+					{
+						faceInfo.flags |= 0x0018;
+						faceInfo.flags &= ~0x0001;
+						faceInfo.flags &= ~0x0002;
+						//faceInfo.flags = 0x0510;
+					}
+					else if (GetBit(meshes[i]->tristrip[j]->collFlags, 1))
+					{
+						faceInfo.flags &= ~0x0001;
+						faceInfo.flags |= 0x0050;
+					}
+					else if (GetBit(meshes[i]->tristrip[j]->collFlags, 0))
+					{
+						faceInfo.flags = 0x0510;
+					}
+					if (GetBit(meshes[i]->tristrip[j]->collFlags, 3))
+					{
+						faceInfo.flags |= 0x0040;
+					}
+					mesh->AddFace(b, a, c, &faceInfo);
+
+					if (j != meshes[i]->numQuads - 1 || !GetBit(meshes[i]->tristrip[j]->flags, 4))
+					{
+						matSplit[splitCount].Indices.push_back((WORD)c);
+						matSplit[splitCount].Indices.push_back(0);
+						matSplit[splitCount].Indices.push_back(0);
+						matSplit[splitCount].Indices.push_back(0);
+					}
+
+					if (!GetBit(meshes[i]->tristrip[j]->flag, 4))
+					{
+						mesh->AddFace(b, c, d, &faceInfo);
+						matSplit[splitCount].Indices.push_back((WORD)b);
+						matSplit[splitCount].Indices.push_back((WORD)b);
+						matSplit[splitCount].Indices.push_back((WORD)c);
+						matSplit[splitCount].Indices.push_back((WORD)d);
+						if (j != meshes[i]->numQuads - 1)
+						{
+							matSplit[splitCount].Indices.push_back((WORD)d);
+							matSplit[splitCount].Indices.push_back(0);
+							matSplit[splitCount].Indices.push_back(0);
+							matSplit[splitCount].Indices.push_back(0);
+						}
+					}
+					matSplit[splitCount].numIndices = matSplit[splitCount].Indices.size();
+
+					if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
+					{
+						mesh->SetFlag(MeshFlags::transparent, true);
+
+						if (tmpMat)
+						{
+							tmpMat->transparent = true;
+							tmpMat->drawOrder = 1501.0f;
+						}
+					}
+
+
+
+				}
+				else
+				{
+					DWORD a = (DWORD)meshes[i]->tristrip[j]->a;
+					DWORD b = (DWORD)meshes[i]->tristrip[j]->b;
+					DWORD c = (DWORD)meshes[i]->tristrip[j]->c;
+					DWORD d = (DWORD)meshes[i]->tristrip[j]->d;
+					faceInfo.flags = 0x0501;
+
+					if (GetBit(meshes[i]->tristrip[j]->collFlags, 8))
+					{
+
+						if (!GetBit(meshes[i]->tristrip[j]->collFlags, 7))
+						{
+							faceInfo.flags |= 0x0005;
+						}
+						else
+						{
+							faceInfo.flags |= 0x0003;
+						}
+					}
+					if (GetBit(meshes[i]->tristrip[j]->collFlags, 5))
+					{
+						faceInfo.flags |= 0x0009;
+						faceInfo.flags &= ~0x0002;
+					}
+					else if (GetBit(meshes[i]->tristrip[j]->collFlags, 6) && !GetBit(meshes[i]->tristrip[j]->collFlags, 8))
+					{
+						faceInfo.flags |= 0x0018;
+						faceInfo.flags &= ~0x0001;
+						faceInfo.flags &= ~0x0002;
+					}
+					else if (GetBit(meshes[i]->tristrip[j]->collFlags, 1))
+					{
+						faceInfo.flags &= ~0x0001;
+						faceInfo.flags |= 0x0050;
+					}
+					else if (GetBit(meshes[i]->tristrip[j]->collFlags, 0) && !GetBit(meshes[i]->tristrip[j]->collFlags, 4) && !GetBit(meshes[i]->tristrip[j]->collFlags, 5))
+					{
+						faceInfo.flags = 0x0510;
+					}
+					if (GetBit(meshes[i]->tristrip[j]->collFlags, 3))
+					{
+						faceInfo.flags |= 0x0040;
+					}
+					extraFaces.push_back((Face(&SimpleFace(b, a, c), &faceInfo)));
+
+					if (!GetBit(meshes[i]->tristrip[j]->flag, 4))
+					{
+						extraFaces.push_back((Face(&SimpleFace(b, c, d), &faceInfo)));
+					}
+				}
+				ptr += 16;
+				if ((GetBit(meshes[i]->tristrip[j]->flag, 0) || GetBit(meshes[i]->tristrip[j]->flag, 3) || GetBit(meshes[i]->tristrip[j]->flag, 1)) && meshes[i]->tristrip[j]->flag != 128 && meshes[i]->tristrip[j]->flag != 0x90 && meshes[i]->tristrip[j]->flag != 0 && meshes[i]->tristrip[j]->flag != 0x10 && (meshes[i]->tristrip[j]->flags & 0xFF0000) != 0x100000)//if(GetBit(meshes[i]->tristrip[j]->flag, 0))//if(meshes[i]->tristrip[j]->flag != 128 && meshes[i]->tristrip[j]->flag != 0x90 && meshes[i]->tristrip[j]->flag != 0 && meshes[i]->tristrip[j]->flag != 0x10 && (meshes[i]->tristrip[j]->flags & 0xFF0000) != 0x100000)
+				{
+					ptr += 4;
+					if (GetBit(meshes[i]->tristrip[j]->flags, 0))
+						ptr += 8;
+					if (GetBit(meshes[i]->tristrip[j]->flags, 1))
+						ptr += 8;
+					if (GetBit(meshes[i]->tristrip[j]->flags, 3))
+						ptr += 8;
+					if (GetBit(meshes[i]->tristrip[j]->flags, 5))
+						ptr += 4;
+				}
+			}
+			DWORD ddmIndex = 0;
+			if (!ddmObj)
+			{
+				/*if (meshes[i]->numVertices > 256)
+				{*/
+				for (DWORD j = 0; j < objInfo.size(); j++)
+				{
+					if (objInfo[j].checksum == meshNames[i])
+					{
+						ddmObj = &objInfo[j];
+						ddmIndex = j;
+						break;
+						// goto doch;
+					}
+				}
+				//}
+				//goto inte;
+			}
+			//Mesh* grassMesh = NULL;
+
+			if (ddmObj)
+			{
+				/*if (ddmObj->flags)
+				{
+				grassMesh = new Mesh(*mesh);
+				char name[128];
+				sprintf(name, "3DGrassMesh%u", numGrassMeshes);
+				numGrassMeshes++;
+				grassMesh->SetName(name);
+				grassMesh->Clear(CLEARFLAGS_KEEPVERTICES);
+				DWORD grassLayers = grass->grassLayers;
+				if (grassLayers > 5)
+				grassLayers = 5;
+				float grassHeight = grass->grassHeight;
+
+				float heightOffset = grassHeight / grassLayers;
+
+				for (DWORD layer = 0; layer < grassLayers; layer++)
+				{
+
+				DWORD vertCount = grassMesh->GetNumVertices();
+				MaterialSplit newSplit = matSplit;
+				char material_name[64];
+				sprintf(material_name, "Grass-Grass_Layer%u", layer);
+				Checksum chc = GenerateCaseSensChecksum(material_name);
+				Material* mat = matList.GetMaterial(*(DWORD*)&chc, &id);
+				if (mat)
+				{
+				newSplit.matId = id;
+				mat->transparent = true;
+				mat->drawOrder = 18010.0f + (float)layer;
+				}
+				WORD* alreadyExported = new WORD[matSplit.Indices.size()];
+				DWORD* newIndx = new DWORD[matSplit.Indices.size()];
+				for (DWORD k = 0; k < matSplit.Indices.size(); k++)
+				{
+				//newSplit.Indices[i]+=vertCount;
+				for (DWORD l = 0; l < k; l++)
+				{
+				if (alreadyExported[l] == matSplit.Indices[k])
+				{
+				alreadyExported[l] = 0xFFFF;
+				newSplit.Indices[k] = newIndx[l];
+				continue;
+				}
+				}
+				newIndx[k] = grassMesh->GetNumVertices();
+				newSplit.Indices[k] = newIndx[k];
+				alreadyExported[k] = matSplit.Indices[k];
+				Vertex v = grassMesh->GetVertex(matSplit.Indices[k]);
+				v.y += (heightOffset*(float)(layer + 1));//+5.0f);
+				v.tUV[0].u = v.x / 48.0f;
+				v.tUV[0].v = v.z / 48.0f;
+				grassMesh->AddVertex(&v);
+				//Vertex v = mesh->GetVertex(matSplit.Indices[i]);
+				/*v.y+=heightOffset*(layer+1);
+				v.tUV[0].u = v.x/48.0f;
+				v.tUV[0].v = v.z/48.0f;*/
+				/*mesh->AddVertex(&mesh->GetVertex(matSplit.Indices[k]));
+				Vertex & v = mesh->GetVertex(newIndx[k]);
+				v.y+=heightOffset*(float)(layer+1);
+				v.tUV[0].u = v.x/48.0f;
+				v.tUV[0].v = v.z/48.0f;*/
+				/*}
+				delete[] newIndx;
+				delete[] alreadyExported;
+				grassMesh->AddMatSplit(&newSplit, &matList);
+				grassMesh->GetSplit(mesh->GetNumSplits() - 1)->numIndices = grassMesh->GetSplit(mesh->GetNumSplits() - 1)->Indices.size() - 2;
+				}
+				}*/
+				if (ddmObj->added)
+				{
+					for (DWORD j = ddmIndex + 1; j < objInfo.size(); j++)
+					{
+						if (objInfo[j].checksum == meshNames[i])
+						{
+							ddmObj = &objInfo[j];
+							break;
+						}
+					}
+				}
+				ddmObj->added = true;
+			doch:
+				matSplit[0].matId = ddmObj->matIndex;
+				matList.GetMaterial(matSplit[0].matId, &matSplit[0].matId);
+
+				vector<SimpleFace> polygons;
+				matSplit[0].Indices.clear();
+				//DWORD numTris = 0;
+
+				WORD a, b, c;
+
+				for (DWORD j = 0; j < ddmObj->numIndices - 2; j++)
+				{
+					if (j & 1)
+					{
+						a = c;
+						c = ddmObj->indices[j + 2];
+					}
+					else
+					{
+						a = ddmObj->indices[j];
+						b = ddmObj->indices[j + 1];
+						c = ddmObj->indices[j + 2];
+					}
+
+					if (a != b && a != c && b != c)
+					{
+						polygons.push_back(SimpleFace(c, b, a));
+						/*polygons.push_back(c);
+						polygons.push_back(b);
+						polygons.push_back(a);
+						numTris++;*/
+					}
+				}
+
+				/*STRIPERCREATE sc;
+				sc.WFaces = &polygons.front();
+				sc.NbFaces = numTris;
+				sc.AskForWords = true;
+				sc.ConnectAllStrips = true;
+				sc.OneSided = true;
+				sc.SGIAlgorithm = true;
+
+				Striper Strip;
+				Strip.Init(sc);
+
+				STRIPERRESULT sr;
+				Strip.Compute(sr);
+				unsigned short* Refs = (unsigned short*)sr.StripRuns;
+				for (DWORD j = 0; j < sr.NbStrips; j++)
+				{
+				unsigned int NbRefs = sr.StripLengths[j];
+				for (DWORD k = 0; k < NbRefs; k++)
+				matSplit[0].Indices.push_back(*Refs++);
+				}*/
+
+				DWORD numTris = polygons.size();
+				DWORD lastIndex = numTris - 1;
+				for (DWORD j = 0; j < numTris; j++)
+				{
+					if (j != 0)
+						matSplit[0].Indices.push_back(polygons[j].a);
+					matSplit[0].Indices.push_back(polygons[j].a);
+					matSplit[0].Indices.push_back(polygons[j].b);
+					matSplit[0].Indices.push_back(polygons[j].c);
+					if (j != lastIndex)
+					{
+						matSplit[0].Indices.push_back(polygons[j].c);
+						matSplit[0].Indices.push_back(0);
+						matSplit[0].Indices.push_back(0);
+						matSplit[0].Indices.push_back(0);
+					}
+				}
+				matSplit[0].numIndices = matSplit[0].Indices.size();
+
+				first = false;
+				splitCount = 0;
+
+				for (DWORD k = 0; k < numObjects; k++)
+				{
+					if (meshIndices[k] == i)
+					{
+						if (vertices.size())
+						{
+							DWORD numVertices = vertices.size();
+							mesh->Reserve(numVertices);
+							mesh->AddVertices(positions[k], &vertices.front(), numVertices, colours, texCoords);
+							Collision* col = mesh->GetCollision();
+							if (col && col->GetNumFaces())
+								col->CopyVertices(mesh->GetVertices(), numVertices, &mesh->GetBBoxX());
+							mesh->ClearVertices();
+						}
+						//mesh->Clear(4);
+						Vertex bboxMin, bboxMax;
+						Vertex vertex;
+						for (DWORD j = 0; j < ddmObj->numVertices; j++)
+						{
+							vertex.colour.a = (*(Colour*)&(ddmObj->vertices[j].RGBX)).a;
+							vertex.x = -(ddmObj->vertices[j].x + ((float)positions[k]->x / 4096.0f)) / 2.833f;
+							vertex.y = -(ddmObj->vertices[j].y + ((float)positions[k]->y / 4096.0f)) / 2.833f;
+							vertex.z = -(ddmObj->vertices[j].z + ((float)positions[k]->z / 4096.0f)) / 2.833f;
+							/*if (j >= vertices.size())
+							  mesh->GetCollision()->AddVertex(vertex);*/
+							  //vertex.colour = *(Colour*)&ddmObj->vertices[j].RGBX;
+							  /*if (colours[j])
+							  {
+							  vertex.colour.r = (float)colours[j]->b*0.65f;
+							  vertex.colour.g = (float)colours[j]->g*0.65f;
+							  vertex.colour.b = (float)colours[j]->r*0.65f;
+
+							  if (colours[j]->a == 155)
+							  {
+							  vertex.colour.a = colours[j]->a;
+							  delete colours[j];
+							  }
+							  else if (colours[j]->a == 154)
+							  {
+							  vertex.colour.a = colours[j]->a;
+							  }
+							  else
+							  vertex.colour.a = 255;
+							  colours[j] = NULL;
+							  }
+							  else
+							  {*/
+							vertex.colour.r = (float)(*(Colour*)&(ddmObj->vertices[j].RGBX)).r * 0.65f;
+							vertex.colour.g = (float)(*(Colour*)&(ddmObj->vertices[j].RGBX)).g * 0.65f;
+							vertex.colour.b = (float)(*(Colour*)&(ddmObj->vertices[j].RGBX)).b * 0.65f;
+							//}
+
+							vertex.tUV[0].u = ddmObj->vertices[j].u;
+							vertex.tUV[0].v = ddmObj->vertices[j].v;
+							if (j == 0)
+							{
+								bboxMin = vertex;
+								bboxMax = vertex;
+							}
+							else
+							{
+								if (vertex.x < bboxMin.x)
+									bboxMin.x = vertex.x;
+								if (vertex.y < bboxMin.y)
+									bboxMin.y = vertex.y;
+								if (vertex.z < bboxMin.z)
+									bboxMin.z = vertex.z;
+
+								if (vertex.x > bboxMax.x)
+									bboxMax.x = vertex.x;
+								if (vertex.y > bboxMax.y)
+									bboxMax.y = vertex.y;
+								if (vertex.z > bboxMax.z)
+									bboxMax.z = vertex.z;
+							}
+							mesh->AddVertexSilent(vertex);
+						}
+						mesh->SetBBox(bboxMin, bboxMax);
+						break;
+					}
+				}
+				if (mesh->GetNumVertices() == 0)
+				{
+					if (vertices.size())
+					{
+						DWORD numVertices = vertices.size();
+						mesh->Reserve(numVertices);
+						mesh->AddVertices(positions[numObjects], &vertices.front(), numVertices, colours, texCoords);
+						Collision* col = mesh->GetCollision();
+						if (col && col->GetNumFaces())
+							col->CopyVertices(mesh->GetVertices(), numVertices, &mesh->GetBBoxX());
+						mesh->ClearVertices();
+					}
+					//mesh->Clear(4);
+					Vertex bboxMin, bboxMax;
+					Vertex vertex;
+					for (DWORD j = 0; j < ddmObj->numVertices; j++)
+					{
+						vertex.colour.a = (*(Colour*)&(ddmObj->vertices[j].RGBX)).a;
+						vertex.x = -(ddmObj->vertices[j].x + ((float)positions[numObjects]->x / 4096.0f)) / 2.833f;
+						vertex.y = -(ddmObj->vertices[j].y + ((float)positions[numObjects]->y / 4096.0f)) / 2.833f;
+						vertex.z = -(ddmObj->vertices[j].z + ((float)positions[numObjects]->z / 4096.0f)) / 2.833f;
+						/*if (j >= vertices.size())
+						  mesh->GetCollision()->AddVertex(vertex);*/
+						  //vertex.colour = *(Colour*)&ddmObj->vertices[j].RGBX;
+						  /*if (colours[j])
+						  {
+						  vertex.colour.r = (float)colours[j]->b*0.65f;
+						  vertex.colour.g = (float)colours[j]->g*0.65f;
+						  vertex.colour.b = (float)colours[j]->r*0.65f;
+
+
+						  if (colours[j]->a == 155)
+						  {
+						  vertex.colour.a = colours[j]->a;
+						  delete colours[j];
+						  }
+						  else if (colours[j]->a == 154)
+						  {
+						  vertex.colour.a = colours[j]->a;
+						  }
+						  else
+						  vertex.colour.a = 255;
+						  colours[j] = NULL;
+						  }
+						  else
+						  {*/
+						vertex.colour.r = (float)(*(Colour*)&(ddmObj->vertices[j].RGBX)).r * 0.65f;
+						vertex.colour.g = (float)(*(Colour*)&(ddmObj->vertices[j].RGBX)).g * 0.65f;
+						vertex.colour.b = (float)(*(Colour*)&(ddmObj->vertices[j].RGBX)).b * 0.65f;
+						//}
+
+						vertex.tUV[0].u = ddmObj->vertices[j].u;
+						vertex.tUV[0].v = ddmObj->vertices[j].v;
+						if (j == 0)
+						{
+							bboxMin = vertex;
+							bboxMax = vertex;
+						}
+						else
+						{
+							if (vertex.x < bboxMin.x)
+								bboxMin.x = vertex.x;
+							if (vertex.y < bboxMin.y)
+								bboxMin.y = vertex.y;
+							if (vertex.z < bboxMin.z)
+								bboxMin.z = vertex.z;
+
+							if (vertex.x > bboxMax.x)
+								bboxMax.x = vertex.x;
+							if (vertex.y > bboxMax.y)
+								bboxMax.y = vertex.y;
+							if (vertex.z > bboxMax.z)
+								bboxMax.z = vertex.z;
+						}
+						mesh->AddVertexSilent(vertex);
+					}
+					mesh->SetBBox(bboxMin, bboxMax);
+				}
+
+
+			}
+		inte:
+			if (first)
+				mesh->SetFlag(MeshFlags::visible, false);
+			else
+				splitCount++;
+			for (DWORD j = 0; j < splitCount; j++)
+			{
+				mesh->AddMatSplit(&matSplit[j], &matList, true);
+			}
+			if (!ddmObj)
+			{
+				for (DWORD j = 0; j < numObjects; j++)
+				{
+					if (meshIndices[j] == i)
+					{
+						DWORD numVertices = vertices.size();
+						mesh->Reserve(numVertices);
+						mesh->AddVertices(positions[j], &vertices.front(), numVertices, colours, texCoords);
+
+
+						/* mesh->origin.x += ((float)positions[j]->x/4096.0f)/2.833f;
+						mesh->origin.x = -mesh->origin.x;
+						mesh->origin.y += ((float)positions[j]->y/4096.0f)/2.833f;
+						mesh->origin.y = -mesh->origin.y;
+						mesh->origin.z += ((float)positions[j]->z/4096.0f)/2.833f;
+						mesh->origin.z = -mesh->origin.z;*/
+
+						/* if(sky)
+						{
+						char megs[256];
+						fprintf(fp,"object %d DWORD(%.3f %.3f) DWORD(%.3f %.3f) DWORD(%.3f %.3f) 1st vertex %.3f %.3f %.3f header translation %.3f %.3f %.3f\n\n\n",i, (float)vertx2->x,(float)vertx2->y,(float)vertx2->z,(float)vertx2->align,(float)vertx->x,(float)vertx->y,(float)meshes[i]->vertices[0].x,(float)meshes[i]->vertices[0].y,(float)meshes[i]->vertices[0].z,(float)positions[j]->x/4096.0f,(float)positions[j]->y/4096.0f,(float)positions[j]->z/4096.0f);
+						}*/
+						break;
+					}
+				}
+				if (mesh->GetNumVertices() == 0)
+				{
+					const DWORD numVertices = vertices.size();
+					mesh->Reserve(numVertices);
+					mesh->AddVertices(positions[numObjects], &vertices.front(), numVertices, colours, texCoords);
+				}
+			}
+
+			for (DWORD j = 0, numExtra = extraFaces.size(); j < numExtra; j++)
+				mesh->AddFace(extraFaces[j]);
+			delete[] matSplit;
+			delete[] colours;
+			delete[] texCoords;
+			delete[] meshes[i]->tristrip;
+			extraFaces.clear();
+			if (mesh)
+			{
+				if (mesh->GetNumVertices())
+				{
+					Collision* pCollision = mesh->GetCollision();
+					/*if (pCollision->GetNumVertices())
+					  mesh->Clear(CLEARFLAGS_CLEARCOLLISION);*/
+					  /*mesh->CopyVertsToColl();
+					  if (pCollision)
+					  pCollision->BlendFaceTypes();*/
+				}
+			}
+			AddMesh(mesh);
+			//mesh->DeinitCollision();
+			vertices.clear();
+			delete mesh;
+		}
+		for (DWORD i = 0; i < objInfo.size(); i++)
+		{
+			if (!objInfo[i].added && objInfo[i].numVertices)
+			{
+				Mesh* mesh = new Mesh();
+				mesh->Clear(CLEARFLAGS_CLEARALL);
+				mesh->SetName(objInfo[i].checksum);
+				MaterialSplit matSplit = MaterialSplit();
+
+				matSplit.matId = objInfo[i].matIndex;
+				matList.GetMaterial(matSplit.matId, &matSplit.matId);
+
+				vector<SimpleFace> polygons;
+
+				DWORD numTris = 0;
+
+				WORD a, b, c;
+
+				for (DWORD j = 0; j < objInfo[i].numIndices - 2; j++)
+				{
+					if (j & 1)
+					{
+						a = c;
+						c = objInfo[i].indices[j + 2];
+					}
+					else
+					{
+						a = objInfo[i].indices[j];
+						b = objInfo[i].indices[j + 1];
+						c = objInfo[i].indices[j + 2];
+					}
+
+					if (a != b && a != c && b != c)
+					{
+						polygons.push_back(SimpleFace(c, b, a));
+						/*polygons.push_back(c);
+						polygons.push_back(b);
+						polygons.push_back(a);
+						numTris++;*/
+					}
+				}
+				/*STRIPERCREATE sc;
+				sc.WFaces = &polygons.front();
+				sc.NbFaces = numTris;
+				sc.AskForWords = true;
+				sc.ConnectAllStrips = true;
+				sc.OneSided = true;
+				sc.SGIAlgorithm = true;
+
+				Striper Strip;
+				Strip.Init(sc);
+
+				STRIPERRESULT sr;
+				Strip.Compute(sr);
+				unsigned short* Refs = (unsigned short*)sr.StripRuns;
+				for (DWORD j = 0; j < sr.NbStrips; j++)
+				{
+				unsigned int NbRefs = sr.StripLengths[j];
+				for (DWORD k = 0; k < NbRefs; k++)
+				matSplit[0].Indices.push_back(*Refs++);
+				}*/
+				for (DWORD j = 0; j < polygons.size(); j++)
+				{
+					if (j != 0)
+						matSplit.Indices.push_back(polygons[j].a);
+					matSplit.Indices.push_back(polygons[j].a);
+					matSplit.Indices.push_back(polygons[j].b);
+					matSplit.Indices.push_back(polygons[j].c);
+					if (j != polygons.size() - 1)
+					{
+						matSplit.Indices.push_back(polygons[j].c);
+						matSplit.Indices.push_back(0);
+						matSplit.Indices.push_back(0);
+						matSplit.Indices.push_back(0);
+					}
+				}
+				matSplit.numIndices = matSplit.Indices.size();
+
+				for (DWORD k = 0; k < numObjects; k++)
+				{
+					if (meshIndices[k] == i)
+					{
+						//mesh->Clear(4);
+						Vertex bboxMin, bboxMax;
+						Vertex vertex;
+						for (DWORD j = 0; j < objInfo[i].numVertices; j++)
+						{
+							vertex.colour.a = (*(Colour*)&(objInfo[i].vertices[j].RGBX)).a;
+							vertex.x = -(objInfo[i].vertices[j].x + ((float)positions[k]->x / 4096.0f)) / 2.833f;
+							vertex.y = -(objInfo[i].vertices[j].y + ((float)positions[k]->y / 4096.0f)) / 2.833f;
+							vertex.z = -(objInfo[i].vertices[j].z + ((float)positions[k]->z / 4096.0f)) / 2.833f;
+							/*if (j >= vertices.size())
+							mesh->GetCollision()->AddVertex(vertex);*/
+							//vertex.colour = *(Colour*)&ddmObj->vertices[j].RGBX;
+							/*if (colours[j])
+							{
+							vertex.colour.r = (float)colours[j]->b*0.65f;
+							vertex.colour.g = (float)colours[j]->g*0.65f;
+							vertex.colour.b = (float)colours[j]->r*0.65f;
+
+							if (colours[j]->a == 155)
+							{
+							vertex.colour.a = colours[j]->a;
+							delete colours[j];
+							}
+							else if (colours[j]->a == 154)
+							{
+							vertex.colour.a = colours[j]->a;
+							}
+							else
+							vertex.colour.a = 255;
+							colours[j] = NULL;
+							}
+							else
+							{*/
+							vertex.colour.r = (float)(*(Colour*)&(objInfo[i].vertices[j].RGBX)).r * 0.65f;
+							vertex.colour.g = (float)(*(Colour*)&(objInfo[i].vertices[j].RGBX)).g * 0.65f;
+							vertex.colour.b = (float)(*(Colour*)&(objInfo[i].vertices[j].RGBX)).b * 0.65f;
+							//}
+
+							vertex.tUV[0].u = objInfo[i].vertices[j].u;
+							vertex.tUV[0].v = objInfo[i].vertices[j].v;
+							if (j == 0)
+							{
+								bboxMin = vertex;
+								bboxMax = vertex;
+							}
+							else
+							{
+								if (vertex.x < bboxMin.x)
+									bboxMin.x = vertex.x;
+								if (vertex.y < bboxMin.y)
+									bboxMin.y = vertex.y;
+								if (vertex.z < bboxMin.z)
+									bboxMin.z = vertex.z;
+
+								if (vertex.x > bboxMax.x)
+									bboxMax.x = vertex.x;
+								if (vertex.y > bboxMax.y)
+									bboxMax.y = vertex.y;
+								if (vertex.z > bboxMax.z)
+									bboxMax.z = vertex.z;
+							}
+							mesh->AddVertexSilent(vertex);
+						}
+						mesh->SetBBox(bboxMin, bboxMax);
+						break;
+					}
+				}
+				if (mesh->GetNumVertices() == 0)
+				{
+					//mesh->Clear(4);
+					Vertex bboxMin, bboxMax;
+					Vertex vertex;
+					for (DWORD j = 0; j < objInfo[i].numVertices; j++)
+					{
+						vertex.colour.a = (*(Colour*)&(objInfo[i].vertices[j].RGBX)).a;
+						vertex.x = -(objInfo[i].vertices[j].x + ((float)positions[numObjects]->x / 4096.0f)) / 2.833f;
+						vertex.y = -(objInfo[i].vertices[j].y + ((float)positions[numObjects]->y / 4096.0f)) / 2.833f;
+						vertex.z = -(objInfo[i].vertices[j].z + ((float)positions[numObjects]->z / 4096.0f)) / 2.833f;
+						/*if (j >= vertices.size())
+						mesh->GetCollision()->AddVertex(vertex);*/
+						//vertex.colour = *(Colour*)&ddmObj->vertices[j].RGBX;
+						/*if (colours[j])
+						{
+						vertex.colour.r = (float)colours[j]->b*0.65f;
+						vertex.colour.g = (float)colours[j]->g*0.65f;
+						vertex.colour.b = (float)colours[j]->r*0.65f;
+
+
+						if (colours[j]->a == 155)
+						{
+						vertex.colour.a = colours[j]->a;
+						delete colours[j];
+						}
+						else if (colours[j]->a == 154)
+						{
+						vertex.colour.a = colours[j]->a;
+						}
+						else
+						vertex.colour.a = 255;
+						colours[j] = NULL;
+						}
+						else
+						{*/
+						vertex.colour.r = (float)(*(Colour*)&(objInfo[i].vertices[j].RGBX)).r * 0.65f;
+						vertex.colour.g = (float)(*(Colour*)&(objInfo[i].vertices[j].RGBX)).g * 0.65f;
+						vertex.colour.b = (float)(*(Colour*)&(objInfo[i].vertices[j].RGBX)).b * 0.65f;
+						//}
+
+						vertex.tUV[0].u = objInfo[i].vertices[j].u;
+						vertex.tUV[0].v = objInfo[i].vertices[j].v;
+						if (j == 0)
+						{
+							bboxMin = vertex;
+							bboxMax = vertex;
+						}
+						else
+						{
+							if (vertex.x < bboxMin.x)
+								bboxMin.x = vertex.x;
+							if (vertex.y < bboxMin.y)
+								bboxMin.y = vertex.y;
+							if (vertex.z < bboxMin.z)
+								bboxMin.z = vertex.z;
+
+							if (vertex.x > bboxMax.x)
+								bboxMax.x = vertex.x;
+							if (vertex.y > bboxMax.y)
+								bboxMax.y = vertex.y;
+							if (vertex.z > bboxMax.z)
+								bboxMax.z = vertex.z;
+						}
+						mesh->AddVertexSilent(vertex);
+					}
+					mesh->SetBBox(bboxMin, bboxMax);
+				}
+
+				mesh->AddMatSplit(&matSplit, &matList, true);
+				AddMesh(mesh);
+				delete mesh;
+			}
+		}
+		delete[] pFile;
+		delete[] positions;
+		delete[] meshIndices;
+		//delete [] meshFlags;
+		delete[] meshes;
+		delete[] meshNames;
+	}
+	else
+		MessageBox(0, Path, strerror(errno), 0);
+	delete[] xbox;
+	objInfo.clear();
+	matInfo.clear();
+
+	if (sky) { MAX_TEXCOORDS; MAX_TEXCOORDS *= 0x100; Device->SetFVF(D3DFVF_XYZ | D3DFVF_DIFFUSE | MAX_TEXCOORDS); }
+	else
+	{
+		path[strlen(Path) - 3] = 'O';
+
+		f = fopen(path, "rb");
+		if (f)
+		{
+			fclose(f);
+			globalMaterialList = &this->matList;
+			skyDome = new Th2Scene(path, true);
+		}
+		else
+		{
+			MAX_TEXCOORDS *= 0x100; if (Device) Device->SetFVF(D3DFVF_XYZ | D3DFVF_DIFFUSE | MAX_TEXCOORDS);
+		}
+		path[strlen(Path) - 3] = 'T';
+		path[strlen(Path) - 2] = '.';
+		path[strlen(Path) - 1] = 'T';
+		path[strlen(Path) + 0] = 'R';
+		path[strlen(Path) + 1] = 'G';
+
+		f = fopen(path, "rb");
+		if (f)
+		{
+			skyCRC = 0;
+			crc = 0;
+			numPowerups = 0;
+			SizeDiff = 0;
+			sprintf(levelName, "");
+
+			DWORD pos = ((std::string)Path).find_last_of("\\");
+			pos++;
+			DWORD endPos = ((std::string)Path).find(".psx");
+			for (DWORD i = pos; i < endPos; i++)
+			{
+				levelName[i - pos] = Path[i];
+			}
+			fseek(f, 0, SEEK_END);
+			size = ftell(f);
+			pFile = new BYTE[size];
+			fseek(f, 0, SEEK_SET);
+			fread(pFile, size, 1, f);
+			fclose(f);
+
+			ProcessTRG(pFile, size);
+			if (skyDome)
+			{
+				static char chc[128] = "";
+				bool found = false;
+				for (int i = 0; i < skyDome->GetNumMeshes(); i++)
+				{
+					Mesh* mesh = skyDome->GetMesh(i);
+					if (mesh->deleted())
+					{
+						//mesh->DeinitCollision();
+						/*Collision* collision = mesh->GetCollision();
+						if(collision)
+						{
+						delete collision;
+						mesh->DeinitCollision();
+						}*/
+
+						skyDome->EraseMesh(i);
+						i--;
+					}
+					else if (mesh->GetName().checksum == skyCRC)
+					{
+						if (!mesh->GetName().GetString())
+						{
+							sprintf(chc, "SkyMesh%d", i);
+							Scripts.push_back(Script(mesh->GetName().checksum, chc));
+						}
+						found = true;
+						mesh->Center();
+					}
+					else
+					{
+						if (!mesh->GetName().GetString())
+						{
+							sprintf(chc, "SkyMesh%d", i);
+							Scripts.push_back(Script(mesh->GetName().checksum, chc));
+						}
+					}
+				}
+				if (!found && skyDome->GetNumMeshes() == 1)
+					skyDome->GetMesh(0)->Center();
+				else if (skyDome->GetNumMeshes() == 0)
+				{
+					skyDome->matList.ReleaseTextures();
+					delete skyDome;
+					skyDome = NULL;
+				}
+				//skyDome->MoveObjects(this, skyCRC);
+			}
+		}
+
+		//bool found = false;
+		char chc[128] = "";
+
+		for (DWORD i = 0, numMeshes = this->meshes.size(); i < numMeshes; i++)
+		{
+			/*found = false;
+			for(DWORD j=0; j<this->nodes.size(); j++)
+			{
+			if(this->nodes[j].Class.checksum == EnvironmentObject::GetClass() && this->nodes[j].Name.checksum == this->meshes[i].GetName().checksum)
+			{
+			found = true;
+			break;
+			}
+			}
+			if(!found)
+			{
+			Checksum name = this->meshes[i].GetName();
+			if(!name.GetString())
+			{
+			sprintf(chc,"Mesh%d",i);
+			Scripts.push_back(Script(name.checksum, chc));
+			}*/
+			//DWORD shatter=0;
+			/*if(this->meshes[i].shatterObject)
+			{
+			strcat(chc,"_shatter");
+
+			shatter = Checksum(chc).checksum;
+			triggers.push_back(*(Checksum*)&shatter);
+			memcpy(&ShatterScript[27],&name,4);
+			memcpy(&ShatterScript[48],&name,4);
+			KnownScripts.push_back(KnownScript(*(Checksum*)&shatter, (void*)ShatterScript, 123));
+			}*/
+			if (GetNode(meshes[i].GetName()) == NULL)
+			{
+				Checksum name = this->meshes[i].GetName();
+				if (!name.GetString())
+				{
+					sprintf(chc, "Mesh%d", i);
+					Scripts.push_back(Script(name.checksum, chc));
+				}
+				this->nodes.push_back(EnvironmentObject(name, 0, 0, true));
+				this->nodes.back().SetPosition(this->meshes[i].GetCenter());
+				//this->meshes[i].node = &this->nodes.back();
+				//this->meshes[i].node->SetPosition(this->meshes[i].GetCenter());
+			}
+			else if (!this->meshes[i].GetName().GetString())
+			{
+				sprintf(chc, "Mesh%d", i);
+				Scripts.push_back(Script(this->meshes[i].GetName().checksum, chc));
+			}
+			//this->meshes[i].node->SetPosition(this->meshes[i].GetCenter());
+		}
+
+		//FixNodes();
+
+		for (DWORD i = 0, numNodes = this->nodes.size(); i < numNodes; i++)
+		{
+			if (this->nodes[i].TrickObject)
+			{
+				if (!this->nodes[i].Cluster.checksum)
+				{
+					this->nodes[i].Cluster = this->nodes[i].Name;
+					this->nodes[i].ApplyCluster(&this->nodes[0]);
+					//}
+
+					/*for (DWORD j = 0; j < nodes[i].Links.size(); j++)
+					{
+					Node & link = this->nodes[this->nodes[i].Links[j]];
+					if (!link.Cluster.checksum && (link.Class.checksum == EnvironmentObject::GetClass() || link.Class.checksum == RailNode::GetClass()))
+					{
+					link.TrickObject = true;
+					link.Cluster = this->nodes[i].Cluster;
+					if (link.Links.size())
+					{
+					DWORD X = 0;
+					Node & link2 = nodes[link.Links[X]];
+					while (!link2.Cluster.checksum && (link2.Class.checksum == EnvironmentObject::GetClass() || link2.Class.checksum == RailNode::GetClass()))
+					{
+					if (X<link.Links.size())
+					X++;
+					else
+
+					}
+					}
+					for (DWORD k = 0; k < link.Links.size(); k++)
+					{
+					if (!nodes[link.Links[k]].Cluster.checksum && (nodes[link.Links[k]].Class.checksum == EnvironmentObject::GetClass() || nodes[link.Links[k]].Class.checksum == RailNode::GetClass()))
+					nodes[link.Links[k]].Cluster = link.Cluster;
+					}
+					}
+					}*/
+				}
+			}
+			/*else if(this->nodes[i].Class.checksum==EnvironmentObject::GetClass())
+			{
+			if(!this->nodes[i].Trigger.checksum && !GetMesh(this->nodes[i].Name))
+			{
+			DeleteNode(i);
+			i--;
+			numNodes--;
+			}
+			}*/
+		}
+
+		for (DWORD i = 0, numNodes = this->nodes.size(); i < numNodes; i++)
+		{
+			if (!this->nodes[i].Cluster.checksum && this->nodes[i].Class.checksum == RailNode::GetClass())
+			{
+
+				for (DWORD j = 0; j < this->nodes[i].Links.size(); j++)
+				{
+
+					Node& link = this->nodes[this->nodes[i].Links[j]];
+
+					if (link.TrickObject && link.Class.checksum == EnvironmentObject::GetClass())
+					{
+						this->nodes[i].TrickObject = true;
+						if (link.Cluster.checksum)
+						{
+							this->nodes[i].Cluster = link.Cluster;
+							this->nodes[i].ApplyCluster(&nodes[0]);
+						}
+						else if (this->nodes[i].Cluster.checksum)
+						{
+							MessageBox(0, "impossible", "", 0);
+							link.Cluster = this->nodes[i].Cluster;
+
+
+							Mesh* tmpMesh = GetMesh(this->nodes[i].Cluster);
+
+							if (tmpMesh)
+							{
+								//tmpMesh->rails.push_back(Rail(&this->nodes[i]));
+
+								this->nodes[i].ApplyCluster(&nodes[0]);
+								for (DWORD k = 0; k < this->nodes[i].Links.size(); k++)
+								{
+									Node& meshLink = this->nodes[this->nodes[i].Links[k]];
+									if (meshLink.Class.checksum == RailNode::GetClass())
+									{
+										meshLink.Cluster = this->nodes[i].Cluster;
+										// tmpMesh->rails.back().nodes.push_back(&this->nodes[this->nodes[i].Links[k]]);
+									}
+								}
+							}
+						}
+						else
+						{
+							MessageBox(0, "impossible2", "", 0);
+							this->nodes[i].Cluster = link.Name;
+							Mesh* tmpMesh = GetMesh(this->nodes[i].Cluster);
+							link.Cluster = this->nodes[i].Cluster;
+							if (tmpMesh)
+							{
+								//tmpMesh->rails.push_back(Rail(&this->nodes[i]));
+
+								this->nodes[i].ApplyCluster(&nodes[0]);
+								for (DWORD k = 0; k < this->nodes[i].Links.size(); k++)
+								{
+									Node& meshLink = this->nodes[this->nodes[i].Links[k]];
+									if (meshLink.Class.checksum == RailNode::GetClass())
+									{
+										meshLink.Cluster = this->nodes[i].Cluster;
+										//tmpMesh->rails.back().nodes.push_back(&this->nodes[this->nodes[i].Links[k]]);
+									}
+								}
+							}
+						}
+						//break;
+					}
+					else if (this->nodes[i].LinksToTrickOb(&nodes[0], &this->nodes[i].Cluster.checksum))
+					{
+						this->nodes[i].FixObCheck(&this->nodes[i]);
+						this->nodes[i].TrickObject = true;
+						this->nodes[i].ApplyCluster(&nodes[0]);
+					}
+					else
+						this->nodes[i].FixObCheck(&this->nodes[i]);
+				}
+			}
+			else if (this->nodes[i].Class.checksum == RailNode::GetClass())
+			{
+				this->nodes[i].ApplyCluster(&nodes[0]);
+			}
+			else if (this->nodes[i].Class.checksum == EnvironmentObject::GetClass() && this->nodes[i].CreatedAtStart)
+			{
+				if (this->nodes[i].Links.size() && this->nodes[i].LinksTo(0x1806DDF8, &this->nodes[i].Links.front(), &this->nodes.front()))
+					this->nodes[i].Trigger = Checksum("sk3_killskater");
+				else if (this->nodes[i].Trigger.checksum)
+				{
+					this->nodes[i].NetEnabled = true;
+					this->nodes[i].Permanent = true;
+				}
+				this->nodes[i].FixCheck(0x1806DDF8, &nodes.front());
+			}
+		}
+
+		for (DWORD i = 0, numNodes = this->nodes.size(); i < numNodes; i++)
+		{
+			if (this->nodes[i].Cluster.checksum && this->nodes[i].Class.checksum == RailNode::GetClass())
+			{
+				for (DWORD j = 0; j < this->nodes[i].Links.size(); j++)
+				{
+					Node& link = this->nodes[this->nodes[i].Links[j]];
+					//extern const char Env [] = "EnvironmentObject";
+
+
+					if (!link.Cluster.checksum && link.Class.checksum == RailNode::GetClass())
+					{
+						link.Cluster = this->nodes[i].Cluster;
+						link.TrickObject = true;
+					}
+				}
+			}
+		}
+		//CenterScene();
+	}
 }

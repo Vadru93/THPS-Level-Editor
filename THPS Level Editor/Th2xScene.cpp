@@ -274,7 +274,7 @@ void Th2xScene::ProcessMeshes(BYTE* pFile, DWORD size, bool sky)
       /*if(meshes[i]->tristrip[j]->a < meshes[i]->numVertices && meshes[i]->tristrip[j]->b  < meshes[i]->numVertices && meshes[i]->tristrip[j]->c  < meshes[i]->numVertices)
       {*/
       /*if(meshes[i]->tristrip[j]->collFlags & 0x2)
-      mesh->SetFlag(MeshFlags::isVisible, false);*/
+      mesh->SetFlag(MeshFlags::visible, false);*/
 
       if (!((GetBit(meshes[i]->tristrip[j]->flags, 7) && !GetBit(meshes[i]->tristrip[j]->flags, 6))/* ||  meshes[i]->tristrip[j]->collFlags & 0x2*/))
       {
@@ -780,7 +780,7 @@ void Th2xScene::ProcessMeshes(BYTE* pFile, DWORD size, bool sky)
 
         if ((GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)) || (!GetBit(meshes[i]->tristrip[j]->flags, 7) && GetBit(meshes[i]->tristrip[j]->flags, 6)))
         {
-          mesh->SetFlag(MeshFlags::isTransparent, true);
+          mesh->SetFlag(MeshFlags::transparent, true);
 
           if (tmpMat)
           {
@@ -995,7 +995,7 @@ void Th2xScene::ProcessMeshes(BYTE* pFile, DWORD size, bool sky)
     if (ddm == NULL)
     {
       if (first)
-        mesh->SetFlag(MeshFlags::isVisible, false);
+        mesh->SetFlag(MeshFlags::visible, false);
       else
         splitCount++;
 
@@ -1511,7 +1511,7 @@ void Th2xScene::ProcessMaterials(DWORD ptr, DWORD numMeshes, DWORD* meshNames, b
   ptr+=4;
   texture.CreateTexture();
   //texture->CreateTexture();
-  if(texture.IsTransparent())
+  if(texture.transparent())
   material->transparent[0]=true;
   else
   material->transparent[0]=false;
@@ -2244,7 +2244,7 @@ void Th2xScene::LoadDDM(DWORD ptr, bool sky)
 
         texture.SetId(Checksum(materials[j].texture));
         texture.CreateTexture();
-        if (texture.IsTransparent())
+        if (texture.transparent())
         {
           material.transparent = true;
           material.drawOrder += 1501.0f;
@@ -2466,7 +2466,7 @@ Th2xScene::Th2xScene(char* Path, bool sky)
         for (int i = 0; i < skyDome->GetNumMeshes(); i++)
         {
           Mesh* mesh = skyDome->GetMesh(i);
-          if (mesh->IsDeleted())
+          if (mesh->deleted())
           {
             //mesh->DeinitCollision();
             /*Collision* collision = mesh->GetCollision();

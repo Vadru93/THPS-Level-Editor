@@ -232,9 +232,9 @@ __declspec (noalias) void Mesh::Move(const D3DXVECTOR3 *direction, const D3DXVEC
 
 __declspec (noalias) void Mesh::SetPosition(const D3DXVECTOR3 const*__restrict position, const D3DXVECTOR3 const*__restrict angle)
 {
-  //D3DXVECTOR3 center = GetCenter();
-  /**(D3DXVECTOR3*)&bbox.Max = *position+(*(D3DXVECTOR3*)&bbox.Max-center);
-  *(D3DXVECTOR3*)&bbox.Min = *position-(*(D3DXVECTOR3*)&bbox.Min+center);*/
+  D3DXVECTOR3 center = GetCenter();
+  *(D3DXVECTOR3*)&bbox.Max = *position+(*(D3DXVECTOR3*)&bbox.Max-center);
+  *(D3DXVECTOR3*)&bbox.Min = *position-(*(D3DXVECTOR3*)&bbox.Min+center);
   D3DXMATRIX rotation;
   D3DXMATRIX translation;
   D3DXMATRIX result;
@@ -264,7 +264,7 @@ __declspec (noalias) void Mesh::SetPosition(const D3DXVECTOR3 const*__restrict p
 
   for (DWORD i = 0, numVertices = vertices.size(); i < numVertices; i++)
   {
-    //*(D3DXVECTOR3*)&vertices[i]-=center;
+    *(D3DXVECTOR3*)&vertices[i]-=center;
     D3DXVec3TransformCoord((D3DXVECTOR3*)&vertices[i], (D3DXVECTOR3*)&vertices[i], &result);
   }
 

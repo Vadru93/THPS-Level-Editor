@@ -341,7 +341,7 @@ public:
   {
       for (DWORD i = 0; i < meshes.size(); i++)
       {
-          if(!meshes[i].IsDeleted() && meshes[i].IsVisible())
+          if(!meshes[i].deleted() && meshes[i].visible())
             meshes[i].Scale(scale);
       }
   }
@@ -842,7 +842,7 @@ public:
     const vector<Mesh>::iterator end = meshes.end();
     while(it!=end)
     {
-      if(it->flags & isVisible && !(it->flags & isTransparent)) it->Render0(list);
+      if(it->flags & visible && !(it->flags & transparent)) it->Render0(list);
       it++;
     }
   }
@@ -854,7 +854,7 @@ public:
     const vector<Mesh>::iterator end = meshes.end();
     while(it!=end)
     {
-      if(it->flags & (isVisible|isTransparent)) it->Render2(list);
+      if(it->flags & (visible|transparent)) it->Render2(list);
       it++;
     }
   }
@@ -889,7 +889,7 @@ public:
           Material* tmpMat = matList.GetMaterial(matSplit->matId);
           if(tmpMat)
           {
-            if(meshes[i].IsDeleted())
+            if(meshes[i].deleted())
             {
               matSplit->matId = scene->matList.GetMaterialIndex(tmpMat->GetTexture(0)->GetTexId());
             }
@@ -925,10 +925,10 @@ public:
         scene->CloneMesh(&meshes[i]);
         //meshes[i].DeinitCollision();
         scene->meshes.back().Move(position,angle);
-        if(meshes[i].IsDeleted())
+        if(meshes[i].deleted())
         {
           Mesh &mesh = scene->meshes.back();
-          mesh.SetFlag(MeshFlags::isDeleted,false);
+          mesh.SetFlag(MeshFlags::deleted,false);
           sprintf(chc,"%s_%04X",name.GetString(),scene->GetNumMeshes());
           //MessageBox(0,chc,chc,0);
           name.checksum+=scene->GetNumMeshes();
@@ -936,7 +936,7 @@ public:
           mesh.SetName(name);
         }
         else
-          meshes[i].SetFlag(MeshFlags::isDeleted,true);
+          meshes[i].SetFlag(MeshFlags::deleted,true);
         //meshes.erase(meshes.begin()+i);
         return true;
       }
@@ -982,7 +982,7 @@ public:
 
     for (DWORD i = 0; i < numObjects; i++)
     {
-      if (meshes[i].IsVisible())
+      if (meshes[i].visible())
       {
         if (meshes[i].IsFlat(&faceNormal) && meshes[i].NonCollidable() && (meshes[i].GetNumVertices() <= 8 || strstr(meshes[i].GetName().GetString2(), "Shadow")))
         {
@@ -1048,11 +1048,11 @@ public:
 
     for(DWORD i=0; i<numObjects; i++)
     {
-      if(meshes[i].IsVisible() && !meshes[i].IsSelected())
+      if(meshes[i].visible() && !meshes[i].IsSelected())
       {
         for(DWORD j=i+1; j<numObjects; j++)
         {
-          if (meshes[j].IsVisible() && !meshes[j].IsSelected())
+          if (meshes[j].visible() && !meshes[j].IsSelected())
           {
             if((/*meshes[i].FlickersWith(&meshes[j])) || */(meshes[i].GetClosestDistance(&meshes[j], &axis)<0.5f)))///*distance = meshes[i].GetDistanceTo(&meshes[j]))<0.1f || (distance = meshes[i].GetNormalDistanceTo(&meshes[j]))<0.1f*/ || (distance = D3DXVec3Length(&(meshes[i].GetCenter()-meshes[j].GetCenter()))<0.1f))
             {
@@ -1950,8 +1950,10 @@ struct Th3Mesh : Mesh
 
         if (collPolyCount)
         {
-            //collisionSize = (DWORD)collPolyCount*4+4+8;
-            collisionSize = 8 + (DWORD)collPolyCount * 4 + numLeafs * 4 + numBranches * 16;
+            if(movable())
+              collisionSize = (DWORD)collPolyCount*4+4+8;
+            else
+              collisionSize = 8 + (DWORD)collPolyCount * 4 + numLeafs * 4 + numBranches * 16;
             extensionSize += collisionSize + 12;
         }
 

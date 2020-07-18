@@ -97,7 +97,7 @@ __declspec(noalias) void DrawFPSFrame()
   MaterialList* const __restrict matList = globalMaterialList;
   for (DWORD i = 0, numMeshes = numOpaque; i< numMeshes; i++)
   {
-    if (opaqueMeshes[i]->flags & MeshFlags::isVisible)
+    if (opaqueMeshes[i]->flags & MeshFlags::visible)
     {
       BBox bbox = opaqueMeshes[i]->GetBBoxX();
       D3DXVec3Project(&pos, (D3DXVECTOR3*)&bbox.Max, &port, &camera->proj(), &camera->view(), matWorld);
@@ -112,7 +112,7 @@ __declspec(noalias) void DrawFPSFrame()
   Dev->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
   for (DWORD i = 0, numMeshes = numTrans; i< numMeshes; i++)
   {
-    if (transMeshes[i]->flags & MeshFlags::isVisible)
+    if (transMeshes[i]->flags & MeshFlags::visible)
     {
       BBox bbox = transMeshes[i]->GetBBoxX();
       D3DXVec3Project(&pos, (D3DXVECTOR3*)&bbox.Max, &port, &camera->proj(), &camera->view(), matWorld);
@@ -183,7 +183,7 @@ __declspec(noalias) void DrawFrame()
       MaterialList* const __restrict matList = globalMaterialList;
       for(DWORD i=0, numMeshes = numOpaque; i< numMeshes; i++)
       {
-        if (opaqueMeshes[i]->flags & MeshFlags::isVisible)
+        if (opaqueMeshes[i]->flags & MeshFlags::visible)
         {
           BBox bbox = opaqueMeshes[i]->GetBBoxX();
           D3DXVec3Project(&pos, (D3DXVECTOR3*)&bbox.Max, &port, &camera->proj(), &camera->view(), matWorld);
@@ -328,14 +328,14 @@ __declspec(noalias) void DrawFrame()
       for(DWORD i=0, numSel = selectedObjects.size(); i<numSel; i++)
       {
         Mesh * __restrict mesh = selectedObjects[i].mesh;
-        if(!mesh->IsTransparent()) mesh->RenderSelected(matList);
+        if(!mesh->transparent()) mesh->RenderSelected(matList);
       }
       for(DWORD i=0, numSel = selectedMaterials.size(); i<numSel; i++)
       {
         Mesh * __restrict mesh = selectedMaterials[i].mesh;
         Dev->SetStreamSource(0, mesh->verts, 0, sizeof(Vertex));
         MaterialSplit * __restrict split = selectedMaterials[i].split;
-        if(!mesh->IsTransparent()) split->RenderSelected(matList, mesh->GetNumVertices());
+        if(!mesh->transparent()) split->RenderSelected(matList, mesh->GetNumVertices());
       }
       Dev->SetTextureStageState(0, D3DTSS_TEXTURETRANSFORMFLAGS, D3DTTFF_DISABLE);
 
@@ -362,7 +362,7 @@ __declspec(noalias) void DrawFrame()
       Dev->SetRenderState(D3DRS_SRCBLEND,D3DBLEND_SRCALPHA);
       for(DWORD i=0, numMeshes = numTrans; i< numMeshes; i++)
       {
-        if (transMeshes[i]->flags & MeshFlags::isVisible)
+        if (transMeshes[i]->flags & MeshFlags::visible)
         {
           BBox bbox = transMeshes[i]->GetBBoxX();
           D3DXVec3Project(&pos, (D3DXVECTOR3*)&bbox.Max, &port, &camera->proj(), &camera->view(), matWorld);
@@ -376,14 +376,14 @@ __declspec(noalias) void DrawFrame()
       for(DWORD i=0, numSel = selectedObjects.size(); i<numSel; i++)
       {
         Mesh *mesh = selectedObjects[i].mesh;
-        if(mesh->IsTransparent()) mesh->RenderSelected(matList);
+        if(mesh->transparent()) mesh->RenderSelected(matList);
       }
       for(DWORD i=0, numSel = selectedMaterials.size(); i<numSel; i++)
       {
         Mesh * __restrict mesh = selectedMaterials[i].mesh;
         Dev->SetStreamSource(0, mesh->verts, 0, sizeof(Vertex));
         MaterialSplit * __restrict split = selectedMaterials[i].split;
-        if(mesh->IsTransparent()) split->RenderSelected(matList, mesh->GetNumVertices());
+        if(mesh->transparent()) split->RenderSelected(matList, mesh->GetNumVertices());
       }
       Dev->SetTextureStageState(0, D3DTSS_TEXTURETRANSFORMFLAGS, D3DTTFF_DISABLE);
       Dev->SetRenderState(D3DRS_SRCBLEND,D3DBLEND_SRCALPHA);

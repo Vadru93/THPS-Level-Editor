@@ -272,7 +272,7 @@ struct Texture
 
   void CreateTexture();
 
-  inline bool IsTransparent()
+  inline bool transparent()
   {
     TGAHEADER tgaHeader;
 

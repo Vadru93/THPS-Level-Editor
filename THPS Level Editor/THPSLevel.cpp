@@ -1641,6 +1641,7 @@ bool THPSLevel::LoadScene(char* path)
         printf("Whyy???\n");
         scene = new Thug2Scene(path);
     }
+    Checksum("GameObject");
     //sort = true;
   }
   else if (strstr(path, ".psx"))
@@ -2063,7 +2064,7 @@ bool THPSLevel::LoadScene(char* path)
       {
         if (scene->GetMesh(scene->nodes[i].Name))
         {
-          if (scene->GetMesh(scene->nodes[i].Name)->IsDeleted())
+          if (scene->GetMesh(scene->nodes[i].Name)->deleted())
           {
             scene->DeleteNode(i);
             i--;
@@ -2086,11 +2087,11 @@ bool THPSLevel::LoadScene(char* path)
     animations = scene->GetAnimations();
     if (sort)
     {
-      for (DWORD i = 0, numMeshes = scene->GetNumMeshes(); i < numMeshes; i++) { Mesh* tmpMesh = scene->GetMesh(i); /*tmpMesh->Sort();*/ listBox1->Items->Add(gcnew String(tmpMesh->GetName().GetString()) + "[" + i.ToString() + "]"); properties->Add(gcnew MeshProperties(tmpMesh));  if (tmpMesh->IsTransparent() && tmpMesh->flags & MeshFlags::isVisible) numTrans++; else if (tmpMesh->flags & MeshFlags::isVisible) numOpaque++; }
+      for (DWORD i = 0, numMeshes = scene->GetNumMeshes(); i < numMeshes; i++) { Mesh* tmpMesh = scene->GetMesh(i); /*tmpMesh->Sort();*/ listBox1->Items->Add(gcnew String(tmpMesh->GetName().GetString()) + "[" + i.ToString() + "]"); properties->Add(gcnew MeshProperties(tmpMesh));  if (tmpMesh->transparent() && tmpMesh->flags & MeshFlags::visible) numTrans++; else if (tmpMesh->flags & MeshFlags::visible) numOpaque++; }
     }
     else
     {
-      for (DWORD i = 0, numMeshes = scene->GetNumMeshes(); i < numMeshes; i++) { Mesh* tmpMesh = scene->GetMesh(i); /*tmpMesh->Sort();*/ listBox1->Items->Add(gcnew String(tmpMesh->GetName().GetString()) + "[" + i.ToString() + "]"); properties->Add(gcnew MeshProperties(tmpMesh));  if (tmpMesh->IsTransparent() && tmpMesh->flags & MeshFlags::isVisible) numTrans++; else if (tmpMesh->flags & MeshFlags::isVisible) numOpaque++; }
+      for (DWORD i = 0, numMeshes = scene->GetNumMeshes(); i < numMeshes; i++) { Mesh* tmpMesh = scene->GetMesh(i); /*tmpMesh->Sort();*/ listBox1->Items->Add(gcnew String(tmpMesh->GetName().GetString()) + "[" + i.ToString() + "]"); properties->Add(gcnew MeshProperties(tmpMesh));  if (tmpMesh->transparent() && tmpMesh->flags & MeshFlags::visible) numTrans++; else if (tmpMesh->flags & MeshFlags::visible) numOpaque++; }
     }
 
     opaque = new Mesh*[numOpaque];
@@ -2101,11 +2102,11 @@ bool THPSLevel::LoadScene(char* path)
     for (DWORD i = 0, numMeshes = scene->GetNumMeshes(); i < numMeshes; i++)
     {
       Mesh* tmpMesh = scene->GetMesh(i);
-      if (tmpMesh->flags & MeshFlags::isTransparent && tmpMesh->flags & MeshFlags::isVisible)
+      if (tmpMesh->flags & MeshFlags::transparent && tmpMesh->flags & MeshFlags::visible)
       {
         trans[numTrans] = tmpMesh; numTrans++;
       }
-      else if (tmpMesh->flags & MeshFlags::isVisible)
+      else if (tmpMesh->flags & MeshFlags::visible)
       {
         opaque[numOpaque] = tmpMesh; numOpaque++;
       }
@@ -2405,7 +2406,7 @@ bool THPSLevel::LoadState(char* name)
         globalMaterialList = &scene->matList;
         scene->CreateBuffers(Device, D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX0);
 
-        for (DWORD i = 0, numMeshes = scene->GetNumMeshes(); i < numMeshes; i++) { Mesh* tmpMesh = scene->GetMesh(i); listBox1->Items->Add(gcnew String(tmpMesh->GetName().GetString()) + "[" + i.ToString() + "]"); properties->Add(gcnew MeshProperties(tmpMesh));  if (tmpMesh->IsTransparent()) numTrans++; else numOpaque++; }
+        for (DWORD i = 0, numMeshes = scene->GetNumMeshes(); i < numMeshes; i++) { Mesh* tmpMesh = scene->GetMesh(i); listBox1->Items->Add(gcnew String(tmpMesh->GetName().GetString()) + "[" + i.ToString() + "]"); properties->Add(gcnew MeshProperties(tmpMesh));  if (tmpMesh->transparent()) numTrans++; else numOpaque++; }
 
         opaque = new Mesh*[numOpaque];
         numOpaque = 0;
@@ -2415,7 +2416,7 @@ bool THPSLevel::LoadState(char* name)
         for (DWORD i = 0, numMeshes = scene->GetNumMeshes(); i < numMeshes; i++)
         {
           Mesh* tmpMesh = scene->GetMesh(i);
-          if (tmpMesh->flags & MeshFlags::isTransparent)
+          if (tmpMesh->flags & MeshFlags::transparent)
           {
             trans[numTrans] = tmpMesh; numTrans++;
           }
