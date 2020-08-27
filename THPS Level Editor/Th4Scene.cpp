@@ -19,6 +19,7 @@ struct Thug2Vertex
 	Colour color;
 	TexCoord tUV[8];
 };
+#pragma pack(push)
 #pragma pack(1)
 struct Thug2VertexHeader
 {
@@ -28,7 +29,7 @@ struct Thug2VertexHeader
 	WORD numBuffers;
 	DWORD bufferSize;
 };
-#pragma pop(pack)
+#pragma pack(pop)
 void FixBlending(Colour* color, DWORD numPixels, Texture* texture);//fixblendings
 void FixMaterialTHUG(Material* mat, MaterialList& matList, vector<DWORD> & addedTextures, DWORD pass);
 void Thug2Scene::ProcessMeshes(DWORD ptr)
@@ -1925,6 +1926,7 @@ Thug2Scene::Thug2Scene(char* Path, bool sky)
 								triggers.push_back(_node.Trigger);
 								KnownScripts.push_back(KnownScript(_node.Trigger, NULL, 0));
 								KnownScript& _script = KnownScripts.back();
+								MessageBox(0, "Hello1", "", 0);
 								_script.Script(Checksum("MoveObject"));
 								_script.Script(Checksum("Name"));
 								_script.Append(0x7);
@@ -3315,6 +3317,7 @@ ThugScene::ThugScene(char* Path, bool sky)
 								triggers.push_back(_node.Trigger);
 								KnownScripts.push_back(KnownScript(_node.Trigger, NULL, 0));
 								KnownScript& _script = KnownScripts.back();
+								MessageBox(0, "Hello2", "", 0);
 								_script.Script(Checksum("MoveObject"));
 								_script.Script(Checksum("Name"));
 								_script.Append(0x7);
@@ -3804,7 +3807,7 @@ ThugScene::ThugScene(char* Path, bool sky)
 						material.Reserve(1);
 						material.SetMatId(mat->GetMatId() + 1);
 						material.doubled = mat->doubled;
-						material.drawOrder = mat->drawOrder + 1.0f;
+						material.drawOrder = mat->drawOrder + 20000.0f;
 						material.ignoreAlpha = false;
 						//material.alphaMap=true;
 						material.extraLayer = true;
@@ -4128,7 +4131,7 @@ ThugScene::ThugScene(char* Path, bool sky)
 							material.Reserve(1);
 							material.SetMatId(mat->GetMatId() + j + 1);
 							material.doubled = mat->doubled;
-							material.drawOrder = mat->drawOrder + (float)j + 1.0f;
+							material.drawOrder = mat->drawOrder + (float)j*1000.0f + 20000.0f;
 							material.ignoreAlpha = false;
 							//material.alphaMap=true;
 							material.extraLayer = true;
@@ -4560,11 +4563,145 @@ Th4Scene::Th4Scene(char* Path, bool sky)
 						}
 					}
 				}
+				
 				/*KnownScripts.clear();
 				triggers.clear();*/
 				scripts.clear();
 				sounds.clear();
 				delete[] pFile;
+				for (DWORD i = 0, numNodes = nodes.size(); i < numNodes; i++)
+				{
+					if (nodes[i].Class.checksum == EnvironmentObject::GetClass())
+					{
+						if (strlen(nodes[i].Name.GetString2()) > 42)
+						{
+							char name[128] = "";
+
+							sprintf(name, "NodeMesh%u", i);
+							nodes[i].Name.SetString(name);
+						}
+
+						if (GetMesh(nodes[i].Name) == NULL)
+						{
+							bool haveLinks = false;
+							for (DWORD j = 0; j < numNodes; j++)
+							{
+								for (DWORD k = 0; k < nodes[j].Links.size(); k++)
+								{
+									if (nodes[j].Links[k] == i)
+									{
+										haveLinks = true;
+										goto have;
+									}
+								}
+							}
+
+						have:
+							if (!haveLinks)
+							{
+								if (nodes[i].Trigger.checksum)
+								{
+									for (DWORD j = 0; j < numNodes; j++)
+									{
+										if (nodes[i].Trigger.checksum == nodes[j].Trigger.checksum)
+											goto found2;
+									}
+									for (DWORD j = 0; j < KnownScripts.size(); j++)
+									{
+										if (KnownScripts[j].name.checksum == nodes[i].Trigger.checksum)
+										{
+											KnownScripts.erase(KnownScripts.begin() + j);
+											break;
+										}
+									}
+									for (DWORD j = 0; j < triggers.size(); j++)
+									{
+										if (triggers[j].checksum == nodes[i].Trigger.checksum)
+										{
+											triggers.erase(triggers.begin() + j);
+											break;
+										}
+									}
+								}
+							found2:
+								DeleteNode(i);
+								i--;
+								numNodes--;
+								continue;
+							}
+						}
+					}
+					else if (nodes[i].Class.checksum == Checksums::GameObject)
+					{
+						Mesh* mesh = GetMesh(nodes[i].Name);
+						if (mesh)
+						{
+							mesh->SetFlag(MeshFlags::movable);
+							//mesh->UnSetFlag(MeshFlags::visible);
+							nodes.push_back(nodes[i]);
+							char new_name[256] = "";
+							char new_name2[256] = "";
+							sprintf(new_name2, "%s_Trigger", nodes[i].Name.GetString());
+							sprintf(new_name, "%s_GameOb", nodes[i].Name.GetString());
+							//MessageBox(0, new_name, nodes[i].Name.GetString(), 0);
+							Node& _node = nodes.back();
+							/*if (_node.Links.size())
+							{*/
+								_node.AbsentInNetGames = false;
+								_node.Name = Checksum(new_name);
+								if (_node.Trigger.checksum)
+									MessageBox(0, _node.Trigger.GetString(), "", 0);
+								else if (_node.Trigger.checksum != nodes[i].Trigger.checksum)
+									MessageBox(0, "WTF", "", 0);
+								_node.Collision = nodes[i].Name;
+								Checksum("Collision");
+								/*_node.Trigger = Checksum(new_name2);
+								triggers.push_back(_node.Trigger);
+								KnownScripts.push_back(KnownScript(_node.Trigger, NULL, 0));
+								KnownScript& _script = KnownScripts.back();*/
+								/*_script.Script(Checksum("MoveObject"));
+								_script.Script(Checksum("Name"));
+								_script.Append(0x7);
+								_script.Script(nodes[i].Name);
+								_script.Script(Checksum("FollowPathLinked"));*/
+								//_script.EndScript();
+							//}
+								//nodes[i].Trigger = 0;
+							nodes[i].Class.checksum = EnvironmentObject::GetClass();
+							nodes[i].Trigger.checksum = 0;
+							//nodes[i].Name = Checksum(new_name);
+						}
+						/*else
+							MessageBox(0, nodes[i].Name.GetString(), nodes[i].Name.GetString(), 0);*/
+					}
+				}
+				/*if(nodes[i].Trigger.checksum)
+				{
+				DWORD size;
+				const void* pScript = GetScript(nodes[i].Trigger.checksum, &size);
+				if(pScript==NULL || size==0)
+				{
+
+				for(DWORD j=0; j<KnownScripts.size(); j++)
+				{
+				if(KnownScripts[j].name.checksum==nodes[i].Trigger.checksum)
+				{
+				KnownScripts.erase(KnownScripts.begin()+j);
+				break;
+				}
+				}
+				for(DWORD j=0; j<triggers.size(); j++)
+				{
+				if(triggers[j].checksum==nodes[i].Trigger.checksum)
+				{
+				triggers.erase(triggers.begin()+j);
+				break;
+				}
+				}
+				nodes[i].Trigger=0;
+				}
+				}*/
+				//}
 			}
 			sprintf(tmp2, "_Sky\\%s_Skyscn.dat", tmp);
 			//path[pos] = '\\';
@@ -4948,7 +5085,7 @@ Th4Scene::Th4Scene(char* Path, bool sky)
 						material.Reserve(1);
 						material.SetMatId(mat->GetMatId() + 1);
 						material.doubled = mat->doubled;
-						material.drawOrder = mat->drawOrder + 1.0f;
+						material.drawOrder = mat->drawOrder + 20000.0f;
 						material.ignoreAlpha = false;
 						//material.alphaMap=true;
 						material.extraLayer = true;
@@ -5260,7 +5397,7 @@ Th4Scene::Th4Scene(char* Path, bool sky)
 							material.Reserve(1);
 							material.SetMatId(mat->GetMatId() + j + 1);
 							material.doubled = mat->doubled;
-							material.drawOrder = mat->drawOrder + (float)j + 1.0f;
+							material.drawOrder = mat->drawOrder + (float)j*1000.0f + 20000.0f;
 							material.ignoreAlpha = false;
 							//material.alphaMap=true;
 							material.extraLayer = true;

@@ -1,0 +1,3 @@
+C:\Users\Vadru\Documents\Visual Studio 2019\THPS LevelEd\THPS Level Editor\Release\THPS Level Editor.vcxprojAssemblyReference.cache
+C:\Users\Vadru\Documents\Visual Studio 2019\THPS LevelEd\THPS Level Editor\Release\THPSLevelEditor.THPSLevel.resources
+C:\Users\Vadru\Documents\Visual Studio 2019\THPS LevelEd\THPS Level Editor\Release\THPS Level Editor.vcxproj.GenerateResource.cache

@@ -1,5 +1,6 @@
 #ifndef STRUCTS_H
 #define STRUCTS_H
+#pragma unmanaged
 
 #include "Includes.h"
 #include "Checksum.h"
@@ -9,7 +10,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
-#pragma unmanaged
+
 struct Script
 {
   DWORD checksum;
@@ -138,7 +139,9 @@ constexpr uint32_t crc32(const char* str)
     char c = str[idx];
     if (c >= 'A' && c <= 'Z') c += 32;
     if (c == '/') c = '\\';
-    return (crc32<idx - 1>(str) >> 8) ^ checksumTable[(crc32<idx - 1>(str) ^ c) & 0x000000FF];
+    uint32_t previous = crc32<idx - 1>(str); // Computing the previous value only once
+    return (previous >> 8) ^ checksumTable[(previous ^ c) & 0x000000FF];
+    //return (crc32<idx - 1>(str) >> 8) ^ checksumTable[(crc32<idx - 1>(str) ^ c) & 0x000000FF];
 }
 
 // This is the stop-recursion function
@@ -175,6 +178,7 @@ namespace Checksums
         TerrainType = COMPILE_CRC32("TerrainType"),
         Type = COMPILE_CRC32("Type"),
         TriggerScripts = COMPILE_CRC32("TriggerScripts"),
+        TriggerScript = COMPILE_CRC32("TriggerScript"),
         PedAI = COMPILE_CRC32("PedAI"),
         DEFAULT = COMPILE_CRC32("default"),
         TrickObject = COMPILE_CRC32("TrickObject"),
@@ -186,6 +190,15 @@ namespace Checksums
         Links = COMPILE_CRC32("Links"),
         Waypoint = COMPILE_CRC32("Waypoint"),
         Restart = COMPILE_CRC32("Restart"),
+        Obj_MoveToNode = COMPILE_CRC32("Obj_MoveToNode"),
+        Obj_FollowPathLinked = COMPILE_CRC32("Obj_FollowPathLinked"),
+        Obj_StickToGround = COMPILE_CRC32("Obj_StickToGround"),
+        Obj_SetPathVelocity = COMPILE_CRC32("Obj_SetPathVelocity"),
+        Obj_MoveToPos = COMPILE_CRC32("Obj_MoveToPos"),
+        Obj_MoveToRelPos = COMPILE_CRC32("Obj_MoveToRelPos"),
+        Obj_PlaySound = COMPILE_CRC32("Obj_PlaySound"),
+        Sk3_TeleportToNode = COMPILE_CRC32("Sk3_TeleportToNode"),
+        PlaySound = COMPILE_CRC32("PlaySound"),
     };
 };
 /*
@@ -2056,6 +2069,86 @@ struct KnownScript
       this->func[size] = opcode;
       size++;
     }
+  }
+
+  const BYTE* __restrict AddParams(const BYTE* __restrict pFile, bool THUG = false)
+  {
+      signed char ibs;
+      ibs = 0;
+
+      while (true)
+      {
+          const BYTE op = *pFile;
+          pFile++;
+          if (op != 0x9 && op != 0x0E && op != 0x0F)
+             this->Append(op);
+          switch (op)
+          {
+          case 0x49:
+          case 0x48:
+          case 0x47:
+              pFile += 2;
+              break;
+          case 0x1C:
+          case 0x1B:
+              DWORD len;
+              len = *(DWORD*)pFile + 4;
+              this->Append(pFile, len);
+              pFile += len;
+              break;
+          case 0x3:
+              ibs++;
+              break;
+          case 0x4:
+              ibs--;
+              break;
+          case 0x1:
+              this->size--;
+              if (ibs > 0)
+              {
+                  printf("ibs@%p\n", pFile);
+                  this->Append(0x4);
+              }
+              return pFile;
+          case 0x2:
+              pFile += 4;
+              this->size--;
+              if (ibs <= 0)
+                  return pFile;
+              break;
+          case 0x16:
+          case 0x17:
+          case 0x1A:
+          case 0x2E:
+              if (THUG && *(DWORD*)pFile == 0x7DC30BA6)
+              {
+                  this->size--;
+                  pFile += 10;
+                  if (*pFile == 0x9)
+                  {
+                      pFile += 6;
+                  }
+              }
+              else
+              {
+                  this->Append((DWORD*)pFile);
+                  pFile += 4;
+              }
+              break;
+          case 0x40:
+          case 0x2F:
+          case 0x37:
+              const DWORD numRands = *(DWORD*)pFile;
+              this->Append(*(Checksum*)&numRands);
+              pFile += THUG ? numRands * 2 + 4 : 4;
+              const DWORD size = numRands * 4;
+              fprintf(stdout, "adding RNd3\nsize %u num %u\n", size, numRands);
+              this->Append(pFile, size);
+              pFile += size;
+              break;
+          }
+      }
+      return pFile;
   }
 
   void Script(DWORD qbKey)

@@ -1400,6 +1400,226 @@ void Th3Mesh::GeneratePolygons(const MaterialSplit* const __restrict splits, Col
 
 }
 
+void Th3Model::Export(FILE* const __restrict f)
+{
+	static BYTE Th3ModelData[] = { 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xBF, 0x00, 0x00, 0x00,
+		0x00, 0x00, 0x00, 0x80, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+		, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00
+		, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x03, 0x00, 0x00 };
+
+	WriteChunkHeader(f, 0x10L, size+0x10FL);
+	WriteChunkHeader(f, 0x1L, 4);
+	WriteDWORD(f, 1);
+	WriteChunkHeader(f, 0x0EL, 0x54);
+	WriteChunkHeader(f, 0x1L, 0x3C);
+
+	WriteData(f, &Th3ModelData, sizeof(Th3ModelData));
+	
+	WriteChunkHeader(f, 0x1AL, size);
+	WriteChunkHeader(f, 0x1L, 4);
+	WriteDWORD(f, 0x1);
+	size -= (12+4);
+	size -= 12;
+	WriteChunkHeader(f, 0xFL, size);
+	WriteChunkHeader(f, 0x1L, modelSize);
+	WriteDWORD(f, 0x4C);//Flags?
+	WriteDWORD(f, numFaces);
+	WriteDWORD(f, numVertices);
+	WriteDWORD(f, 0x1);
+	WriteDWORD(f, 0x3F800000, 3);//1.0f, scale?
+
+	for (DWORD i = 0; i < numVertices; i++)
+	{
+		WriteDWORD(f, vertices[i].colour.GetBGR());
+	}
+	for (DWORD i = 0; i < numVertices; i++)
+	{
+		WriteData(f, &vertices[i].tUV[0].u, 8);
+	}
+	for (DWORD i = 0; i<numFaces; i++)
+	{
+		WriteData(f, &Polygons[i].a, 8);
+	}
+
+	center.x = (bbox.Max.x + bbox.Min.x) / 2;
+	Vertex diag;
+	diag.x = (bbox.Max.x - bbox.Min.x);
+	float radius = (diag.x * diag.x);
+
+	center.y = (bbox.Max.y + bbox.Min.y) / 2;
+	diag.y = (bbox.Max.y - bbox.Min.y);
+	radius += (diag.y * diag.y);
+
+	center.z = (bbox.Max.z + bbox.Min.z) / 2;
+	diag.z = (bbox.Max.z - bbox.Min.z);
+	radius += (diag.z * diag.z);
+
+	radius = sqrtf(radius) / 2.0f;
+	
+	WriteData(f, &center, 12);
+	WriteData(f, &radius, 4);
+	WriteDWORD(f, 1);
+	WriteDWORD(f, 0);
+	
+
+	for (DWORD i = 0; i < numVertices; i++)
+	{
+		WriteData(f, &vertices[i].x, 12);
+	}
+
+	DWORD numMaterials = materials.size();
+	WriteChunkHeader(f, 0x8, materialSize);
+	WriteChunkHeader(f, 0x1, structSize);
+	WriteDWORD(f, numMaterials);
+	WriteDWORD(f, 0xFFFFFFFF, numMaterials);
+	
+	for (DWORD i = 0; i < materials.size(); i++)
+	{
+		materials[i].Export(f);
+	}
+
+	WriteChunkHeader(f, 0x3L, extensionSize);
+	WriteChunkHeader(f, 0x50EL, splitSize);
+	WriteDWORD(f, 1);
+	WriteDWORD(f, numSplits);
+	WriteDWORD(f, numIndices);
+	for (DWORD i = 0; i < numSplits; i++)
+	{
+		WriteDWORD(f, matSplits[i].numIndices);
+		WriteDWORD(f, matSplits[i].matId);
+		for (DWORD j = 0; j < matSplits[i].numIndices; j++)
+		{
+			WriteDWORD(f, (DWORD)matSplits[i].Indices[j]);
+		}
+	}
+
+	WriteChunkHeader(f, 0x0294AF02, 0x1E);
+	WriteWORD(f, 6);
+	WriteDWORD(f, 0, 7);
+	WriteChunkHeader(f, 0x105L, 4);
+	WriteDWORD(f, 0);
+	WriteChunkHeader(f, 0x14, 0x73);
+	WriteChunkHeader(f, 0x1, 0x10);
+	WriteDWORD(f, 0, 2);
+	WriteDWORD(f, 5);
+	WriteDWORD(f, 0);
+	WriteChunkHeader(f, 0x3, 0x4B);
+	WriteChunkHeader(f, 0x120, 4);
+	WriteDWORD(f, 0);
+	WriteChunkHeader(f, 0x0294AF01, 0x2F);
+	fputc(2, f);
+	WriteWORD(f, 0);
+	WriteDWORD(f, 0, 11);
+	WriteChunkHeader(f, 3, 0x14);
+	WriteChunkHeader(f, 0x0294AF01, 8);
+	WriteDWORD(f, 1);
+	WriteDWORD(f, name.checksum);
+
+}
+
+Th3Model::Th3Model(Mesh* const __restrict mesh, BYTE blendValue)
+{
+	size = 0;
+	modelSize = 0;
+	extensionSize = 0;
+	splitSize = 0;
+	numSplits = 0;
+	numIndices = 0;
+	materialSize = 0;
+	structSize = 0;
+
+	char new_name[256] = "";
+	sprintf(new_name, "%s_GameOb", mesh->GetName().GetString());
+	name = Checksum(new_name);
+
+	SetBBox(mesh->GetBBox());
+
+	extern MaterialSplit* lastSplit;
+	extern DWORD numLastSplit;
+	if (matSplits.size())
+	{
+		lastSplit = &mesh->matSplits.front();
+		numLastSplit = mesh->matSplits.size();
+	}
+	else
+		lastSplit = NULL;
+
+	numVertices = mesh->GetNumVertices();
+	AddVertices(numVertices ? mesh->GetVertices() : NULL, numVertices, false, true, blendValue);
+
+	for (DWORD i = 0; i < mesh->GetNumSplits(); i++)
+	{
+		AddMatSplit(mesh->GetSplit(i), globalMaterialList, true, true);// , true);
+		//matSplits[matSplits.size()-1].type = 0;
+		matSplits.back().type = 0;
+		numSplits++;
+	}
+
+	vector<DWORD> matIndices;
+	WORD found = 0;
+
+	for (DWORD i = 0; i < numSplits; i++)
+	{
+		DWORD numMats = matIndices.size();
+		for (DWORD j = 0; j < numMats; j++)
+		{
+			if (matIndices[j] == matSplits[i].matId)
+				found = j;
+		}
+		if (!found)
+		{
+			matIndices.push_back(matSplits[i].matId);
+			matSplits[i].matId = numMats;
+		}
+		else
+			matSplits[i].matId = found;
+	}
+
+	for (DWORD i = 0; i < matIndices.size(); i++)
+	{
+		materials.push_back(RwMaterial(globalMaterialList->GetMaterial(matIndices[i])));
+		/*materials[i].animated = false;
+		ZeroMemory(&materials[i].anim, sizeof(materials[i].anim));*/
+	}
+
+	for (DWORD i = 0; i < numSplits; i++)
+	{
+		numIndices += matSplits[i].numIndices;
+
+		/*for (DWORD j = 0; j < matSplits[i].numIndices - 2; j++)
+		{
+			ModelFace face = ModelFace(matSplits[i].Indices[j + 1], matSplits[i].Indices[j + 2], matSplits[i].matId, matSplits[i].Indices[j]);
+			Polygons.push_back(face);
+		}*/
+
+		WORD v1 = 0, v2 = 0, v3 = 0;
+		bool tmp = false;
+
+		for (DWORD j = 0; j < matSplits[i].numIndices - 2; j++)
+		{
+			if (tmp == false) {
+				v1 = matSplits[i].Indices[j];
+				v2 = matSplits[i].Indices[j + 1];
+				v3 = matSplits[i].Indices[j + 2];
+				tmp = true;
+			}
+			else {
+				v1 = v3;
+				v3 = matSplits[i].Indices[j + 2];
+				tmp = false;
+			}
+			if (v1 != v2 && v1 != v3 && v2 != v3)
+			{
+				Polygons.push_back(ModelFace(v2, v1, matSplits[i].matId, v3));
+			}
+		}
+	}
+	numFaces = Polygons.size();
+	//numFaces = 0;
+	SetSize();
+}
+
 Th3Mesh::Th3Mesh(Mesh* const __restrict mesh, const BYTE blendValue, const bool renderShadow)
 {
 	//ZeroMemory(this,sizeof(Mesh));
@@ -1421,12 +1641,13 @@ Th3Mesh::Th3Mesh(Mesh* const __restrict mesh, const BYTE blendValue, const bool 
 	numBranches = 0;
 
 	name = mesh->GetName();
+	//flags = mesh->flags;
 	//bbox = mesh->GetBBox();
 	/*bbox.Min.z*=-1;
 	bbox.Max.z*=-1;*/
 	extern MaterialSplit* lastSplit;
 	extern DWORD numLastSplit;
-	if (matSplits.size())
+	if (matSplits.size() && mesh->visible())
 	{
 		lastSplit = &mesh->matSplits.front();
 		numLastSplit = mesh->matSplits.size();
@@ -1547,6 +1768,13 @@ Th3Mesh::Th3Mesh(Mesh* const __restrict mesh, const BYTE blendValue, const bool 
 		numSplits++;
 		delete  matSplit;*/
 	}
+
+	if (!mesh->visible())
+	{
+		//matSplits.clear();
+		numSplits = 0;
+	}
+
 	if (tmpCollision)
 	{
 		GeneratePolygons(GetNumSplits() ? GetMatSplits() : NULL, tmpCollision, &vertexIndices.front(), renderShadow);
@@ -1640,6 +1868,15 @@ bool Th3Scene::UnusedMaterial(const DWORD index)
 		for (DWORD j = 0, numSplits = meshes[i].matSplits.size(); j < numSplits; j++)
 		{
 			if (meshes[i].matSplits[j].matId == index)
+				return false;
+		}
+	}
+
+	for (DWORD i = 0, numModels = models.size(); i < numModels; i++)
+	{
+		for (DWORD j = 0, numSplits = models[i].matSplits.size(); j < numSplits; j++)
+		{
+			if (models[i].matSplits[j].matId == index)
 				return false;
 		}
 	}
@@ -1931,6 +2168,26 @@ Th3Scene::Th3Scene(char* path)
 	}
 }
 */
+void Th3Scene::ExportModels(/*char* path*/FILE* const __restrict f)
+{
+	for (DWORD i = 0; i < models.size(); i++)
+	{
+		/*char new_name[256] = "";
+
+		if (models[i].GetName().GetString())
+		{
+			sprintf(new_name, "%s%s.dff", path, models[i].GetName().GetString());
+			MessageBox(0, models[i].GetName().GetString(), new_name, 0);
+			FILE* f = fopen(new_name, "wb");
+			if (f)
+			{*/
+				models[i].Export(f);
+				/*fclose(f);
+			}
+		}*/
+	}
+}
+
 void Th3Scene::Export(FILE* const __restrict f)
 {
 	//OptimizeMaterials();
@@ -2303,7 +2560,28 @@ Th3Scene::Th3Scene(Scene* const __restrict scene)
 		if (tmpMesh->GetNumSplits() != 0 && !tmpMesh->deleted())
 		{
 			meshes.push_back(Th3Mesh(tmpMesh, scene->GetBlendMode()));
-			printf("mesh %d ", index);
+
+			char new_name[256] = "";
+			sprintf(new_name, "%s_GameOb", tmpMesh->GetName().GetString());
+			Checksum name = Checksum(new_name);
+
+			Node* node = scene->GetNode(name);
+
+			if (node || tmpMesh->movable())
+			{
+				meshes.back().SetFlag(MeshFlags::movable);
+				//MessageBox(0, tmpMesh->GetName().GetString(), tmpMesh->GetName().GetString(), 0);
+				meshes.back().UnSetFlag(MeshFlags::visible);
+				/*char new_name[256] = "";
+				sprintf(new_name, "%s_Coll", nodes[i].Name.GetString());
+				meshes.back().SetName(Checksum(new_name));*/
+				if(tmpMesh->GetNumVertices())
+				    models.push_back(Th3Model(tmpMesh, scene->GetBlendMode()));
+			}
+			/*else
+				MessageBox(0, "WHY?", "", 0);*/
+
+			printf("mesh %d \n", index);
 			numPolygons += meshes[index].Polygons.size();
 			numVertices += meshes[index].GetNumVertices();
 
@@ -2313,6 +2591,26 @@ Th3Scene::Th3Scene(Scene* const __restrict scene)
 		else if (!tmpMesh->deleted())
 		{
 			meshes.push_back(Th3Mesh(tmpMesh, scene->GetBlendMode(), false));
+
+			char new_name[256] = "";
+			sprintf(new_name, "%s_GameOb", tmpMesh->GetName().GetString());
+			Checksum name = Checksum(new_name);
+
+			Node* node = scene->GetNode(name);
+
+			if (node || tmpMesh->movable())
+			{
+				meshes.back().SetFlag(MeshFlags::movable);
+				//MessageBox(0, tmpMesh->GetName().GetString(), tmpMesh->GetName().GetString(), 0);
+				meshes.back().UnSetFlag(MeshFlags::visible);
+				/*char new_name[256] = "";
+				sprintf(new_name, "%s_Coll", nodes[i].Name.GetString());
+				meshes.back().SetName(Checksum(new_name));*/
+				if (tmpMesh->GetNumVertices())
+				    models.push_back(Th3Model(tmpMesh, scene->GetBlendMode()));
+			}
+			/*else
+				MessageBox(0, "WHY2?", "", 0);*/
 			numPolygons += meshes[index].Polygons.size();
 			numVertices += meshes[index].GetNumVertices();
 
@@ -2855,6 +3153,21 @@ void Scene::ExportBSP(const char* const __restrict path)
 		fclose(f);
 		}*/
 
+		memcpy(Path, path, len);
+
+		Path[len - 1] = 'f';
+		Path[len - 2] = 'f';
+		Path[len - 3] = 'd';
+		FILE* f = fopen(Path, "wb");
+		if (f)
+		{
+		/*DWORD pos = ((std::string)path).find_last_of("\\");
+		memcpy(Path, path, len);
+		Path[pos + 1] = 0x0;*/
+			scene->ExportModels(f);
+			fclose(f);
+		}
+
 		delete scene;
 		planeInfo = PlaneInfo();
 
@@ -2966,6 +3279,8 @@ void Scene::ExportBSP(const char* const __restrict path)
 							WriteQBKey("TerrainType", GetTerrainType(nodes[i].TerrainType), f);
 						if (!compressedNodes[j].Type.checksum && nodes[i].Type.checksum)
 							WriteQBKey("Type", nodes[i].Type, f);
+						if (nodes[i].Collision.checksum)
+							WriteQBKey("Collision", nodes[i].Collision, f);
 
 							if (nodes[i].Class.checksum == RailNode::GetClass())
 							{
@@ -3041,6 +3356,7 @@ void Scene::ExportBSP(const char* const __restrict path)
 						WriteQBKey("TriggerScript", nodes[i].Trigger, f);
 					else
 						WriteQBKey("TriggerScript", Checksum("TRG_SpawnSkater"), f);
+					
 
 				}
 				/*else if(nodes[i].Class.checksum==EnvironmentObject::GetClass() && nodes[i].CreatedAtStart)
@@ -3144,6 +3460,8 @@ void Scene::ExportBSP(const char* const __restrict path)
 					if (nodes[i].Permanent)
 						WriteQBKey("Permanent", f);
 				}
+				if (nodes[i].Collision.checksum)
+					WriteQBKey("Collision", nodes[i].Collision, f);
 				if (nodes[i].CreatedAtStart)
 					WriteQBKey("CreatedAtStart", f);
 				if (nodes[i].AbsentInNetGames)
@@ -3449,7 +3767,8 @@ void Scene::ExportBSP(const char* const __restrict path)
 		  Checksum("MakeSkaterGoto",false).checksum, Checksum("SetTerrainDefault",false).checksum, Checksum("SetTerrainMetalSmooth",false).checksum, Checksum("LoadSound",false).checksum,
 		  Checksum("SetTerrainConcRough",false).checksum, Checksum("SetTerrainWater",false).checksum, Checksum("SetTerrainSnow",false).checksum, Checksum("SetTerrainIce",false).checksum,
 		  Checksum("SetTerrainGeneric2",false).checksum, Checksum("SetTerrainGrindTrain",false).checksum, Checksum("SetTerrainGrindRope",false).checksum, Checksum("StartSkating1",false).checksum,
-		  Checksum("SetTerrainMetalFence",false).checksum, Checksum("TRG_SpawnSkater",false).checksum, Checksum("NodeArray",false).checksum
+		  Checksum("SetTerrainMetalFence",false).checksum, Checksum("TRG_SpawnSkater",false).checksum, Checksum("NodeArray",false).checksum,
+		  Checksum("Collision",false).checksum,
 		};
 
 
@@ -3460,8 +3779,8 @@ void Scene::ExportBSP(const char* const __restrict path)
 			{
 				sprintf(Scripts[i].name, "unknown%u", i);
 			}
-			if (Scripts[i].checksum == 0x31ADBD6E || Scripts[i].checksum == 0x6EBDAD31)
-				MessageBox(0, "YEAE", 0, 0);
+			/*if (Scripts[i].checksum == 0x31ADBD6E || Scripts[i].checksum == 0x6EBDAD31)
+				MessageBox(0, "YEAE", 0, 0);*/
 			for (DWORD j = 0; j < globals.size(); j++)
 			{
 				if (Scripts[i].checksum == globals[j].checksum)

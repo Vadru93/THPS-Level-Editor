@@ -1,60 +1,24 @@
-﻿Build started 10/16/2014 8:30:56 PM.
-     1>Project "C:\Users\OjOjOj\Documents\Visual Studio 2013\Projects\THPSLevel\THPS Level Editor\THPS Level Editor.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W0 /WX- /sdl- /MP /O2 /Ob2 /Oi /Ot /Oy /GL /D WIN32 /D NDEBUG /D _MBCS /Gm- /MD /GS- /Gy /Qpar- /fp:fast /fp:except- /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /errorReport:prompt /clr:nostdlib Render.cpp THPSLevel.cpp unzip.cpp zip.cpp
-     1>cl : Command line warning D9025: overriding '/sdl-' with '/GS-'
-     1>cl : Command line warning D9025: overriding '/sdl-' with '/GS-'
-     1>cl : Command line warning D9025: overriding '/sdl-' with '/GS-'
-     1>cl : Command line warning D9025: overriding '/sdl-' with '/GS-'
-         Render.cpp
-         THPSLevel.cpp
-         unzip.cpp
-     1>cl : Command line warning D9025: overriding '/sdl-' with '/GS-'
-         zip.cpp
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W0 /WX- /sdl- /MP /O2 /Ob2 /Oi /Ot /Oy /GL /D WIN32 /D NDEBUG /D _MBCS /Gm- /EHsc /MD /GS- /Gy /Qpar /fp:fast /fp:except- /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /TP /errorReport:prompt .\Script.cpp Camera.cpp Checksum.cpp Collision.cpp Material.cpp Mesh.cpp Scene.cpp Th2Scene.cpp Th4Scene.cpp eventhandler.cpp
-     1>cl : Command line warning D9025: overriding '/sdl-' with '/GS-'
-     1>cl : Command line warning D9025: overriding '/sdl-' with '/GS-'
-     1>cl : Command line warning D9025: overriding '/sdl-' with '/GS-'
-     1>cl : Command line warning D9025: overriding '/sdl-' with '/GS-'
-         Script.cpp
-         Camera.cpp
-     1>cl : Command line warning D9025: overriding '/sdl-' with '/GS-'
-         Checksum.cpp
-         Collision.cpp
-         Material.cpp
-         Mesh.cpp
-         Scene.cpp
-         Th2Scene.cpp
-         Th4Scene.cpp
-         eventhandler.cpp
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /clr /nologo /W0 /WX- /sdl- /MP /O2 /Ob2 /Oi /Ot /Oy /GL /D WIN32 /D NDEBUG /D _MBCS /Gm- /MD /GS- /Gy /Qpar- /fp:fast /fp:except- /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /TP /errorReport:prompt "C:\Users\OjOjOj\AppData\Local\Temp\.NETFramework,Version=v4.5.AssemblyAttributes.cpp"
-     1>cl : Command line warning D9025: overriding '/sdl-' with '/GS-'
-         .NETFramework,Version=v4.5.AssemblyAttributes.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\OjOjOj\Documents\Visual Studio 2013\Projects\THPSLevel\x64\Release\THPS Level Editor.exe" /INCREMENTAL:NO /NOLOGO dxguid.lib dinput8.lib d3dx9.lib comdlg32.lib shell32.lib /ASSEMBLYRESOURCE:x64\Release\THPSLevelEditor.THPSLevel.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\OjOjOj\Documents\Visual Studio 2013\Projects\THPSLevel\x64\Release\THPS Level Editor.pdb" /ASSEMBLYDEBUG:DISABLE /SUBSYSTEM:WINDOWS /HEAP:"0","0" /LARGEADDRESSAWARE /OPT:REF /OPT:NOICF /LTCG /TLBID:1 /RELEASE /DYNAMICBASE:NO /FIXED /NXCOMPAT:NO /MACHINE:X64 /CLRTHREADATTRIBUTE:STA /CLRUNMANAGEDCODECHECK /CLRSupportLastError:NO /SAFESEH:NO x64\Release\app.res
-         x64\Release\AssemblyInfo.obj
-         x64\Release\Camera.obj
-         x64\Release\Checksum.obj
-         x64\Release\Collision.obj
-         x64\Release\eventhandler.obj
-         x64\Release\ImageHandling.obj
-         x64\Release\Material.obj
-         x64\Release\Mesh.obj
-         x64\Release\Render.obj
-         x64\Release\Scene.obj
-         x64\Release\stdafx.obj
-         x64\Release\Th2Scene.obj
-         x64\Release\Th4Scene.obj
-         x64\Release\THPSLevel.obj
-         x64\Release\unzip.obj
-         x64\Release\zip.obj
-         x64\Release\Script.obj
-         "x64\Release\.NETFramework,Version=v4.5.AssemblyAttributes.obj"
-         Generating code
-         Finished generating code
-         THPS Level Editor.vcxproj -> C:\Users\OjOjOj\Documents\Visual Studio 2013\Projects\THPSLevel\x64\Release\THPS Level Editor.exe
-     1>Done Building Project "C:\Users\OjOjOj\Documents\Visual Studio 2013\Projects\THPSLevel\THPS Level Editor\THPS Level Editor.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:01:04.49
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (THPS Level Editor.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+cl : command line warning D9025: overriding '/sdl-' with '/GS-'
+cl : command line warning D9025: overriding '/sdl-' with '/GS-'
+cl : command line warning D9025: overriding '/sdl-' with '/GS-'
+cl : command line warning D9025: overriding '/sdl-' with '/GS-'
+  Render.cpp
+  THPSLevel.cpp
+  Th2xScene.cpp
+cl : command line warning D9025: overriding '/sdl-' with '/GS-'
+cl : command line warning D9025: overriding '/sdl-' with '/GS-'
+cl : command line warning D9025: overriding '/sdl-' with '/GS-'
+  Script.cpp
+cl : command line warning D9025: overriding '/sdl-' with '/GS-'
+  Camera.cpp
+  Collision.cpp
+cl : command line warning D9025: overriding '/sdl-' with '/GS-'
+  Mesh.cpp
+  Scene.cpp
+  Th2Scene.cpp
+  Th4Scene.cpp
+  eventhandler.cpp
+  Generating code
+  Finished generating code
+  THPS Level Editor.vcxproj -> C:\Users\Vadru\Documents\Visual Studio 2019\THPS LevelEd\x64\Release\THPS LevelEd.exe

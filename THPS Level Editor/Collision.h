@@ -672,15 +672,20 @@ public:
     return verts;
   }
 
-  void SetPosition(const D3DXVECTOR3 const*__restrict position, const D3DXVECTOR3 const*__restrict angle)
+  void SetPosition(const D3DXVECTOR3 const*__restrict position, const D3DXVECTOR3 const*__restrict angle, const D3DXVECTOR3 & center)
   {
-    D3DXVECTOR3 center = GetCenter();
+      
+      
+    //D3DXVECTOR3 center = GetCenter();
+    char text[256] = "";
+    sprintf(text, "Collision: OldPos %f %f %f new %f %f %f", center.x, center.y, center.z, position->x, position->y, position->z);
+       // MessageBox(0, text, "SETPOS", 0);
     *(D3DXVECTOR3*)&bbox.Max = *position+(*(D3DXVECTOR3*)&bbox.Max-center);
     *(D3DXVECTOR3*)&bbox.Min = *position-(*(D3DXVECTOR3*)&bbox.Min+center);
     D3DXMATRIX rotation;
     D3DXMATRIX translation;
     D3DXMATRIX result;
-    D3DXMatrixRotationYawPitchRoll(&rotation,-angle->y+D3DX_PI,angle->x,angle->z);
+    D3DXMatrixRotationYawPitchRoll(&rotation, -angle->y + D3DX_PI, angle->x, angle->z);
     D3DXMatrixTranslation(&translation,position->x,position->y,position->z);
     D3DXMatrixMultiply(&result, &rotation, &translation);
     D3DXVec3TransformCoord((D3DXVECTOR3*)&bbox.Max, (D3DXVECTOR3*)&bbox.Max, &result);
@@ -706,7 +711,7 @@ public:
 
     for(DWORD i=0, numVertices = vertices.size(); i<numVertices; i++)
     {
-      *(D3DXVECTOR3*)&vertices[i]-=center;
+      //*(D3DXVECTOR3*)&vertices[i]-=center;
       D3DXVec3TransformCoord((D3DXVECTOR3*)&vertices[i], (D3DXVECTOR3*)&vertices[i], &result);
     }
   }

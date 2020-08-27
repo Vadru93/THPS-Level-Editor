@@ -2324,9 +2324,6 @@ extern char levelName[25];
 
 Th2xScene::Th2xScene(char* Path, bool sky)
 {
-#pragma pack(push)
-#pragma pack(1)
-
   ZeroMemory(name, MAX_PATH);
   SetName(Path); blendValue = 2;
   cullMode = D3DCULL_CW;

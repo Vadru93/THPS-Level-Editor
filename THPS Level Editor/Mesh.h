@@ -976,6 +976,12 @@ public:
     this->bbox.Min = bboxMin;
     this->bbox.Max = bboxMax;
   }
+  
+  void SetBBox(const BBox& _bbox)
+  {
+      this->bbox.Min = _bbox.Min;
+      this->bbox.Max = _bbox.Max;
+  }
 
   void SetBBox(const Vertex &bboxMin, const Vertex &bboxMax)
   {
@@ -1612,6 +1618,8 @@ public:
 
   void SetPosition(const D3DXVECTOR3 &position);
   void SetPosition(const D3DXVECTOR3 const*__restrict position, const D3DXVECTOR3 const*__restrict angle);
+  void SetPositionMeshOnly(const D3DXVECTOR3 const* __restrict position, const D3DXVECTOR3 const* __restrict angle);
+  void SetAngles(const D3DXVECTOR3 const* __restrict angle);
 
   void Move(const D3DXVECTOR3 *direction);
   void Move(const D3DXVECTOR3 *direction, const D3DXVECTOR3 * __restrict angle);
@@ -1839,6 +1847,21 @@ public:
   {
       return flags & MeshFlags::movable;
   }
+
+  /*__declspec (noalias) void AddModelSplit(MaterialSplit* const __restrict split, MaterialList* const __restrict matList)
+  {
+      if (matList)
+      {
+          Material* tmpMat = NULL;
+
+          tmpMat = matList->GetMaterial(split->matId);
+          if (tmpMat)
+          {
+              if (tmpMat->transparent)
+                  flags |= MeshFlags::transparent;
+          }
+      }
+  }*/
 
   __declspec (noalias) void AddMatSplit(MaterialSplit* const __restrict split, MaterialList* const __restrict matList,const bool indexed = false, const bool exporting = false, bool th3=false)
   {

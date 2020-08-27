@@ -1,11 +1,12 @@
-c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\adjacency.obj
-c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\thpslevel.obj
-c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\assemblyinfo.obj
-c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\striper.obj
 c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\revisitedradix.obj
-c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\th2xscene.obj
+c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\thpslevel.obj
+c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\adjacency.obj
+c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\striper.obj
+c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\.netframework,version=v4.5.2.assemblyattributes.obj
 c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\customarray.obj
 c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\zip.obj
+c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\assemblyinfo.obj
+c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\th2xscene.obj
 c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\vc142.pdb
 c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\camera.obj
 c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\material.obj
@@ -17,12 +18,10 @@ c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\relea
 c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\scene.obj
 c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\collision.obj
 c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\mesh.obj
-c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\render.obj
 c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\stdafx.obj
 c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\unzip.obj
+c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\render.obj
 c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\script.obj
-c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\.netframework,version=v4.5.2.assemblyattributes.obj
-c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\.netframework,version=v4.5.2.assemblyattributes.asm
 c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\app.res
 c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\thpsleveleditor.thpslevel.resources
 c:\users\vadru\documents\visual studio 2019\thps leveled\thps level editor\release\thps level editor.vcxproj.generateresource.cache

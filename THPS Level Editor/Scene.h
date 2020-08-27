@@ -46,6 +46,7 @@ struct MultiLayeredVertex
   TexCoord tUV[7];
 };
 
+#pragma pack(push)
 #pragma pack(1)
 struct Thug2VertexHeader2
 {
@@ -55,7 +56,7 @@ struct Thug2VertexHeader2
     WORD numBuffers;
     DWORD bufferSize;
 };
-#pragma pop(pack)
+#pragma pack(pop)
 struct ExtraLayerMesh
 {
   Checksum name;
@@ -861,6 +862,7 @@ public:
 
   void RemoveTriggers(DWORD name)
   {
+      printf("Removing Triggers %s\n", (*(Checksum*)&name).GetString());
     for(DWORD i=0; i<nodes.size(); i++)
     {
       if(nodes[i].Trigger.checksum==name)
@@ -1859,6 +1861,77 @@ struct TreeNodez
     }
 };
 
+struct ModelFace
+{
+    WORD b;
+    WORD a;
+    WORD matIndex;
+    WORD c;
+
+    ModelFace(WORD _b, WORD _a, WORD _matIndex, WORD _c)
+    {
+        this->b = _b;
+        this->a = _a;
+        this->matIndex = _matIndex;
+        this->c = _c;
+    }
+};
+
+struct Th3Model : Mesh
+{
+    DWORD size;
+    DWORD modelSize;
+    DWORD numVertices;
+    //vector <Vertex> vertices;
+    DWORD numFaces;
+    vector<ModelFace> Polygons;
+    vector<RwMaterial> materials;
+    DWORD extensionSize;
+    DWORD splitSize;
+    DWORD numSplits;
+    DWORD numIndices;
+    DWORD structSize;
+    DWORD materialSize;
+
+    Th3Model(Mesh* const __restrict mesh, BYTE blendValue);
+
+    void SetSize()
+    {
+        modelSize = 4 + 4 + 4 + 4 + 12 + 4 * numVertices + 12 * numVertices + 8 * numVertices + numFaces*sizeof(ModelFace) + 24;
+
+
+
+        structSize = 4 + (4 * materials.size());
+        materialSize = structSize + 12;
+        for (DWORD i = 0; i < materials.size(); i++)
+        {
+            materials[i].structSize = 0x1C;
+            materials[i].textureSize = (12 * 4) + 8 + materials[i].texture.imageSize + materials[i].texture.extensionSize;
+            materials[i].extension.th3extensionSize += materials[i].textureSize;
+            materials[i].extensionSize = materials[i].extension.th3extensionSize + 12;
+            materials[i].texture.structSize = 4;
+            materials[i].size = 36 + (12 * 7) + materials[i].texture.imageSize + materials[i].texture.extensionSize + materials[i].extensionSize;
+            if (materials[i].texture.alphaMap)
+                materials[i].size += materials[i].texture.imageSize - 4;
+            materialSize += materials[i].size + 12;
+        }
+
+        splitSize = 12;
+
+        for (DWORD i = 0; i < numSplits; i++)
+        {
+            splitSize += ((matSplits[i].numIndices * 4));
+            splitSize += 8;
+        }
+
+        extensionSize = splitSize + 12 + 12 + 0x1E + 12 + 4;
+
+        size = 12 + 0x1C + 12 + modelSize + materialSize + extensionSize + 12;
+    }
+
+    void Export(FILE* const __restrict f);
+};
+
 struct Th3Mesh : Mesh
 {
     DWORD size;
@@ -2005,6 +2078,7 @@ struct Th3Scene : Scene
     DWORD numVertices;
     DWORD flags;
     vector <Th3Mesh> meshes;
+    vector <Th3Model> models;
     RwMaterialDictionary RWmatList;
 
     Th3LoadMesh mesh;
@@ -2026,6 +2100,7 @@ struct Th3Scene : Scene
     Th3Scene::Th3Scene(char* path, bool sky = false);
 
     void Export(FILE* const __restrict f);
+    void ExportModels(/*char* path*/FILE* const __restrict f);
 
     Th3Scene();
 

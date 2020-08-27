@@ -254,6 +254,7 @@ public:
   Checksum TerrainType;
   //WORD type;
   Checksum Compressed;
+  Checksum Collision;
   bool CreatedAtStart;
   bool AbsentInNetGames;
   bool NetEnabled;
@@ -265,8 +266,7 @@ public:
 
   Node()
   {
-    ZeroMemory(&this->Position, sizeof(SimpleVertex) * 2 + sizeof(Checksum) * 6);
-    ZeroMemory(&this->Compressed, 10);
+      ZeroMemory(this, sizeof(Node));
     //ZeroMemory(this,sizeof(Node));
   }
 
@@ -439,7 +439,7 @@ struct RailNode : public Node
 
   };
 
-  RailNode(const D3DXVECTOR3 & position, Checksum name)
+  RailNode(const D3DXVECTOR3 & position, Checksum name) : Node()
   {
     this->Position = *(SimpleVertex*)&position;
     this->TerrainType = Checksum("TERRAIN_DEFAULT");
@@ -449,9 +449,10 @@ struct RailNode : public Node
     this->Class = rail;
     CreatedAtStart = true;
     this->Compressed.checksum = 0;
+    this->Collision.checksum = 0;
   }
 
-  RailNode(const D3DXVECTOR3 & position, Checksum name, DWORD link)
+  RailNode(const D3DXVECTOR3 & position, Checksum name, DWORD link) : Node()
   {
     this->Position = *(SimpleVertex*)&position;
     this->TerrainType = Checksum("TERRAIN_DEFAULT");
@@ -461,9 +462,10 @@ struct RailNode : public Node
     this->Trigger.checksum = 0;
     CreatedAtStart = true;
     this->Compressed.checksum = 0;
+    this->Collision.checksum = 0;
   }
 
-  RailNode(const SimpleVertex &position, const SimpleVertex &angle, const Checksum name, const DWORD numLinks, const WORD* const __restrict links)
+  RailNode(const SimpleVertex &position, const SimpleVertex &angle, const Checksum name, const DWORD numLinks, const WORD* const __restrict links) : Node()
   {
     this->Position = position;
     this->Angles = angle;
@@ -474,6 +476,7 @@ struct RailNode : public Node
     this->Class = rail;
     CreatedAtStart=true;
     this->Compressed.checksum = 0;
+    this->Collision.checksum = 0;
   }
   static DWORD GetClass()
   {
@@ -487,7 +490,7 @@ struct EnvironmentObject : public Node
 {
   //Checksum TriggerScript;
 
-  EnvironmentObject(const Checksum name, const WORD numLinks, const WORD* const __restrict links, bool CreatedAtStart = false, bool TRICKOB = false)
+  EnvironmentObject(const Checksum name, const WORD numLinks, const WORD* const __restrict links, bool CreatedAtStart = false, bool TRICKOB = false) : Node()
   {
     this->Name = name;
     this->Class = env;
@@ -495,20 +498,22 @@ struct EnvironmentObject : public Node
     this->Trigger.checksum = 0;
     //this->shatter.checksum = shatter;
     this->CreatedAtStart = CreatedAtStart;
-    this->Compressed = 0;
+    this->Compressed.checksum = 0;
+    this->Collision.checksum = 0;
     for(WORD i=0; i<numLinks; i++)
     {
       Links.push_back(links[i]);
     }
   }
 
-  EnvironmentObject()
+  EnvironmentObject() : Node()
   {
     this->Class = env;
     this->Trigger.checksum = 0;
     this->TrickObject = false;
     this->CreatedAtStart = false;
-    this->Compressed = 0;
+    this->Compressed.checksum = 0;
+    this->Collision.checksum = 0;
   }
 
   static DWORD GetClass()
@@ -539,7 +544,7 @@ struct Restart : public Node
   //vector <Checksum> restart_types;
   //Checksum TriggerScript;
 
-  Restart()
+  Restart() : Node()
   {
     //static const Checksum Class = Checksum("Restart");
     Position.y = 200;
@@ -548,11 +553,12 @@ struct Restart : public Node
     this->Class = res;
     RestartName = Checksum("P1: Restart");
     this->Compressed.checksum = 0;
+    this->Collision.checksum = 0;
     //restart_types.push_back(Checksum("Multiplayer"));
     //TriggerScript = Checksum("TRG_SpawnSkater");
   }
 
-  Restart(const SimpleVertex &position, const SimpleVertex &angle, Checksum name,char* restartName, WORD numLinks, WORD* links)
+  Restart(const SimpleVertex &position, const SimpleVertex &angle, Checksum name,char* restartName, WORD numLinks, WORD* links) : Node()
   {
     static const Checksum Class = Checksum("Restart");
     CreatedAtStart=true;
@@ -564,11 +570,13 @@ struct Restart : public Node
     this->Name = name;
     this->RestartName = Checksum(restartName);
     this->Trigger.checksum = 0;
+    this->Collision.checksum = 0;
     for(WORD i=0; i<numLinks; i++)
     {
       Links.push_back(links[i]);
     }
     this->Compressed.checksum = 0;
+    this->Collision.checksum = 0;
   }
 
   static DWORD GetClass()
@@ -597,7 +605,7 @@ struct GenericNode : Node
     this->type=type;
   }*/
 
-  GenericNode(const Checksum name,  const SimpleVertex &position, const Types type)
+  GenericNode(const Checksum name,  const SimpleVertex &position, const Types type) : Node()
   {
     static const Checksum crown = Checksum("Crown");
     static const Checksum zone = Checksum("Zone");
@@ -624,6 +632,7 @@ struct GenericNode : Node
     CreatedAtStart=true;
     this->Class=Class;
     this->Compressed.checksum = 0;
+    this->Collision.checksum = 0;
   }
 };
 

@@ -1,6 +1,7 @@
 // THPS Level Editor.cpp : main project file.
 
 #include "stdafx.h"
+#include <windows.h>
 #include <iostream>
 #include "stdafx.h"
 #include <stdlib.h>
@@ -11,7 +12,6 @@
 #include <wctype.h>
 #include <locale.h>
 #include <fstream>
-#include <windows.h>
 #include <conio.h>
 #include <io.h>
 #include <vector>
@@ -22,7 +22,6 @@
 #include <tlhelp32.h> 
 #include <shlwapi.h>
 #include "player.h"
-#include <windows.h>
 #include <stdio.h>
 #include <fcntl.h>
 #include <io.h>
@@ -1696,6 +1695,7 @@ bool THPSLevel::LoadScene(char* path)
           {
             if (scene->KnownScripts[j].size == 0)
             {
+              printf("Deleting KnownScript %s\n", scene->KnownScripts[j].name.GetString());
               scene->KnownScripts.erase(scene->KnownScripts.begin() + j);
               scene->nodes[i].Trigger.checksum = 0;
               goto notfound;
@@ -1915,11 +1915,13 @@ bool THPSLevel::LoadScene(char* path)
             {
               if (scene->triggers[k].checksum == name)
               {
+                  printf("Deleting Trigger %s\n", scene->triggers[k].GetString());
                 i--;
                 scene->triggers.erase(scene->triggers.begin() + k);
                 break;
               }
             }
+            printf("Deleting KnownScript %s\n", scene->KnownScripts[j].name.GetString());
             scene->KnownScripts.erase(scene->KnownScripts.begin() + j);
             numScripts--;
             j--;
@@ -1982,6 +1984,7 @@ bool THPSLevel::LoadScene(char* path)
           if (scene->triggers[j].checksum == name)
           {
             i--;
+            printf("Deleting Trigger %s\n", scene->triggers[j].GetString());
             scene->triggers.erase(scene->triggers.begin() + j);
             break;
           }
@@ -2049,15 +2052,18 @@ bool THPSLevel::LoadScene(char* path)
       {
         if (scene->triggers[i].checksum == scene->KnownScripts[j].name.checksum)
         {
+            printf("Deleting KnownScript %s\n", scene->KnownScripts[j].name.GetString());
           scene->KnownScripts.erase(scene->KnownScripts.begin() + j);
           break;
         }
       }
+      printf("Deleting Trigger %s\n", scene->triggers[i].GetString());
       scene->triggers.erase(scene->triggers.begin() + i);
       numTriggers--;
       i--;
     next:;
     }
+    scene->GenerateCompressedNodes();
     for (DWORD i = 0; i < scene->nodes.size(); i++)
     {
       if (scene->nodes[i].Class.checksum == EnvironmentObject::GetClass())
@@ -4181,7 +4187,7 @@ void SelectNode()
     {
       if (showSpawns)
       {
-        D3DXMatrixRotationYawPitchRoll(&nodeRotation, -nodes[i].Angles.y + D3DX_PI, nodes[i].Angles.x, nodes[i].Angles.z);
+        D3DXMatrixRotationYawPitchRoll(&nodeRotation, nodes[i].Angles.y - D3DX_PI / 2.0f, nodes[i].Angles.x - D3DX_PI / 2.0f, nodes[i].Angles.z + D3DX_PI / 2.0f);
         D3DXMatrixTranslation(&nodeTranslation, nodes[i].Position.x, nodes[i].Position.y, nodes[i].Position.z);
         D3DXMatrixMultiply(&world, &nodeRotation, &nodeTranslation);
         D3DXMatrixInverse(&invWorld, NULL, &world);
