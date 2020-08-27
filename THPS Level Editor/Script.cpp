@@ -3130,15 +3130,16 @@ __declspec (noalias) void Scene::LoadThugNodeArray(register const BYTE const* __
 							case 0x37:
 								const DWORD numRands = *(DWORD*)pFile;
 								script->Append(*(Checksum*)&numRands);
-								pFile += numRands * 2 + 4;
+								pFile += 4;
 								const DWORD size = numRands * 4;
-								fprintf(stdout, "adding RNdIf2\nsize %u num %u\n", size, numRands);
+								fprintf(stdout, "adding RNdIf0\nsize %u num %u\n", size, numRands);
 								script->Append(pFile, size);
 								pFile += size;
 								break;
 							}
 						}
 					}
+				    ifs[ifCounter] = true;
 					break;
 				case 0x3A717382:
 					script->Append(0x25);
@@ -3156,10 +3157,10 @@ __declspec (noalias) void Scene::LoadThugNodeArray(register const BYTE const* __
 					else if (*pFile == 0x5)
 					{
 						BYTE c;
-						__assume(c != 0x6);
 						while (true)
 						{
 							c = *pFile;
+							__assume(c != 0x6);
 							pFile++;
 							if (c != 0x9 && c != 0x0E && c != 0x0F)
 							{
@@ -3220,7 +3221,8 @@ __declspec (noalias) void Scene::LoadThugNodeArray(register const BYTE const* __
 					else
 					{
 						pFile = Ignore(pFile, eof, true);
-						ifCounter--;
+						ifs[ifCounter] = false;
+						//ifCounter--;
 					}
 					break;
 				case 0xCF66717B:
@@ -3256,6 +3258,10 @@ __declspec (noalias) void Scene::LoadThugNodeArray(register const BYTE const* __
 				{
 					script->Append(0x26);
 					script->EndScript();
+				}
+				else if (lastIf != 0xFFFFFFFF)
+				{
+					script->size = lastIf;
 				}
 			}
 			break;
@@ -3308,7 +3314,7 @@ __declspec (noalias) void Scene::LoadThugNodeArray(register const BYTE const* __
 			//MessageBox(0,"script",script->name.GetString(),0);
 			break;
 		case 0x24:
-			if (!script->size)
+			if (script && !script->size)
 				KnownScripts.pop_back();
 			script = NULL;
 			break;
@@ -3775,39 +3781,41 @@ qbTable:
 			}
 			else if (nodes[i].Class.checksum == Checksums::LevelObject)// || nodes[i].Class.checksum == Checksums::LevelGeometry)
 			{
-				nodes[i].Class.checksum = Checksums::GameObject;
-				for (DWORD j = 0, numMeshes = meshes.size(); j < numMeshes; j++)
+			nodes[i].Class = Checksum("GameObject");
+			for (DWORD j = 0, numMeshes = meshes.size(); j < numMeshes; j++)
+			{
+				if (meshes[j].GetName().checksum == nodes[i].Name.checksum)
 				{
-					if (meshes[j].GetName().checksum == nodes[i].Name.checksum)
+					D3DXVECTOR3 center = meshes[j].GetCenter();
+
+					/*meshes[j].UnSetFlag(MeshFlags::visible);
+					meshes[j].SetFlag(MeshFlags::deleted);
+					CloneMesh(&meshes[j]);
+					Mesh& mesh = meshes.back();
+					mesh.SetFlag(MeshFlags::visible);
+					mesh.UnSetFlag(MeshFlags::deleted);*/
+					/*D3DXVECTOR3 angle = *(D3DXVECTOR3*)&nodes[i].Angles;
+
+					//angle.z += D3DX_PI/2.0f;
+					meshes[j].SetPositionMeshOnly((D3DXVECTOR3*)&nodes[i].Position, &angle);*/
+
+					/*for (DWORD k = 0; k < extraLayerMeshes.size(); k++)
 					{
-						D3DXVECTOR3 center = meshes[j].GetCenter();
-						/*if(center.x == 0 && center.y == 0 && center.z == 0)
+						if (extraLayerMeshes[k].name.checksum == nodes[i].Name.checksum)
 						{
-						MessageBox(0,nodes[i].Name.GetString(),"moving GameObj",0);*/
-						meshes[j].UnSetFlag(MeshFlags::visible);
-						meshes[j].SetFlag(MeshFlags::deleted);
-						CloneMesh(&meshes[j]);
-						Mesh& mesh = meshes.back();
-						mesh.SetFlag(MeshFlags::visible);
-						mesh.UnSetFlag(MeshFlags::deleted);
-						D3DXVECTOR3 angle = *(D3DXVECTOR3*)&nodes[i].Angles;
-						// angle.y*=-1;
-						//angle.y+=D3DX_PI;
-						//angle.x+=D3DX_PI;
-						mesh.SetPosition((D3DXVECTOR3*)&nodes[i].Position, &angle);
-						for (DWORD k = 0; k < extraLayerMeshes.size(); k++)
-						{
-							if (extraLayerMeshes[k].name.checksum == nodes[i].Name.checksum)
-							{
-								extraLayerMeshes[k].SetPosition((D3DXVECTOR3*)&nodes[i].Position, &angle);
-							}
+							extraLayerMeshes[k].SetPosition((D3DXVECTOR3*)&nodes[i].Position, &angle);
 						}
-						/* }
-						else
-						MessageBox(0,nodes[i].Name.GetString(),"NOT moving GameObj",0);*/
-						break;
-					}
+					}*/
+					D3DXVECTOR3 angle = *(D3DXVECTOR3*)&nodes[i].Angles;
+					meshes[j].SetPositionMeshOnly(&D3DXVECTOR3(0, 0, 0), &angle);
+					meshes[j].UnSetFlag(MeshFlags::visible);
+					meshes[j].SetFlag(MeshFlags::movable);
+					if (meshes[j].GetCollision())
+						meshes[j].GetCollision()->SetPosition((D3DXVECTOR3*)&nodes[i].Position, &angle, center);
+					//meshes[j].matSplits.clear();
+					break;
 				}
+			}
 				/*DeleteNode(i);
 				i--;
 				numNodes--;*/
@@ -3875,7 +3883,7 @@ qbTable:
 #define MAX_LINK_DEPTH 32
 	for (DWORD i = 0; i < MAX_LINK_DEPTH; i++)
 		FixLinks();
-	//FixLinksFinal();
+	FixLinksFinal();
 	if (nodes.size() >= 0xFFFF)
 		MessageBox(0, "NodeArray too big...", "", 0);
 
@@ -4193,7 +4201,8 @@ __declspec (noalias) void Th4Scene::LoadProSkaterNodeArray(register const BYTE c
 					else
 					{
 						pFile = Ignore(pFile, eof, false);
-						ifCounter--;
+						ifs[ifCounter] = false;
+						//ifCounter--;
 					}
 					break;
 				case 0xCF66717B:
